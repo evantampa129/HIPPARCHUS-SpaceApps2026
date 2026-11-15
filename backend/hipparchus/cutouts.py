@@ -18,12 +18,12 @@ CACHE_DIR = DATA_DIR / "cache"
 # around it to estimate the local background.
 DEFAULT_SIZE_DEG = 0.05
 
-# Hard limit per file, so a wrong URL can never fill the disk with a full image.
+# We cap every file, so a wrong URL can never fill the disk with a full image.
 MAX_BYTES = 20 * 1024 * 1024
 
 
 def _key(access_url: str, ra: float, dec: float, size: float) -> str:
-    # The cache key is built from everything that defines the cutout, so the
+    # We build the cache key from everything that defines the cutout, so the
     # same request always maps to the same file, and a different one never does.
     raw = f"{access_url}|{ra:.6f}|{dec:.6f}|{size:.4f}"
     return hashlib.sha256(raw.encode()).hexdigest()[:24]
@@ -43,7 +43,7 @@ def fetch(access_url: str, ra: float, dec: float, size: float = DEFAULT_SIZE_DEG
 
     if path.exists() and meta_path.exists():
         meta = json.loads(meta_path.read_text())
-        # Verify the file on every reuse: a truncated download must not end up
+        # We verify the file on every reuse: a truncated download must not end up
         # silently in a science comparison.
         if hashlib.sha256(path.read_bytes()).hexdigest() == meta["sha256"]:
             return meta | {"path": str(path), "cached": True}

@@ -19,12 +19,12 @@ from astropy.io.votable import parse_single_table
 SIA_URL = "https://irsa.ipac.caltech.edu/SIA"
 
 # DR1 is the first full data release and QR3 the latest quick release. QR2 is
-# superseded and no longer served, so it is left out on purpose.
-# Order matters: when the same exposure appears in both, the first wins (DR1 has
-# the newer processing).
+# superseded and no longer served, so we leave it out on purpose.
+# Order matters: when the same exposure appears in both, we keep the first (DR1
+# has the newer processing).
 COLLECTIONS = ("spherex_dr1", "spherex_qr3")
 
-# Citation DOIs that IRSA publishes for these products. They go into every
+# Citation DOIs that IRSA publishes for these products. We put them into every
 # report so each image can be traced back to its release.
 RELEASE_DOI = {
     "spherex_dr1": "10.26131/IRSA678",
@@ -69,8 +69,8 @@ def _parse(votable: bytes, release: str) -> list[Observation]:
     t = parse_single_table(io.BytesIO(votable)).to_table(use_names_over_ids=True)
     out = []
     for row in t:
-        # Only calibrated science frames. Anything else in the collection is
-        # not an image we can compare.
+        # We keep only calibrated science frames; nothing else in the collection
+        # is an image we can compare.
         if str(row["dataproduct_subtype"]) != "science":
             continue
         out.append(
@@ -82,7 +82,7 @@ def _parse(votable: bytes, release: str) -> list[Observation]:
                 mjd_start=float(row["t_min"]),
                 mjd_end=float(row["t_max"]),
                 exptime_s=float(row["t_exptime"]),
-                # ObsCore stores wavelengths in metres; microns are easier to read.
+                # ObsCore stores wavelengths in metres; we switch to microns, they are easier to read.
                 em_min_um=float(row["em_min"]) * 1e6,
                 em_max_um=float(row["em_max"]) * 1e6,
                 access_url=str(row["access_url"]),
@@ -94,8 +94,8 @@ def _parse(votable: bytes, release: str) -> list[Observation]:
 
 
 def _manifest_path(ra: float, dec: float) -> Path:
-    # One manifest per position, rounded to about 0.4 arcsec, so a repeated
-    # search for the same target reuses the same file.
+    # We save one manifest per position, rounded to about 0.4 arcsec, so a
+    # repeated search for the same target reuses the same file.
     return MANIFEST_DIR / f"obs_{ra:.4f}_{dec:+.4f}.json"
 
 
@@ -131,7 +131,7 @@ def query(ra: float, dec: float, timeout: float = 90.0, retries: int = 2) -> dic
                 if attempt == retries:
                     errors.append(f"{release}: {e}")
                 else:
-                    time.sleep(2 * (attempt + 1))  # IRSA sometimes returns 502s; back off briefly
+                    time.sleep(2 * (attempt + 1))  # IRSA sometimes returns 502s, so we back off briefly
 
     if errors and not observations:
         cached = _manifest_path(ra, dec)
@@ -142,7 +142,7 @@ def query(ra: float, dec: float, timeout: float = 90.0, retries: int = 2) -> dic
             return m
         return {"archive_status": "unavailable", "errors": errors, "observations": []}
 
-    # The same exposure can be listed in both releases. Keep the first one
+    # The same exposure can be listed in both releases. We keep the first one
     # (DR1, see COLLECTIONS) and drop the rest.
     seen: dict[tuple, Observation] = {}
     for o in observations:
@@ -158,7 +158,7 @@ def query(ra: float, dec: float, timeout: float = 90.0, retries: int = 2) -> dic
         "errors": errors,
         "observations": [asdict(o) | {"mjd_mid": o.mjd_mid, "utc_mid": o.utc_mid} for o in ordered],
     }
-    # Only a complete answer replaces the saved listing. A partial one (one
+    # We only let a complete answer replace the saved listing. A partial one (one
     # release timed out) would otherwise overwrite a full listing with fewer
     # exposures, and the offline fallback would then silently lose data.
     if not errors:

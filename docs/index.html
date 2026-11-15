@@ -124,6 +124,32 @@ so nothing here waits for a live archive download.</p>
  reproducibility. The same audit
  confirmed the ePSF zone layouts (21×21; detector 3: 11×41). <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/wavecal_check.json'>Evidence</a></p>
 </section>
+<section class='case'>
+ <h2>Does the pairing rule keep the right pairs?</h2>
+ <p>We pair two exposures only if the star's wavelength differs by at most half a channel. In light collected, that is
+ the same as asking the two exposures to share at least half of one channel's response (top-hat model; 55.6% for a
+ Gaussian channel). Over all 4,183 pairs of the three targets the rule and the
+ overlap test agree exactly. No usable pair we refused for wavelength reaches 70% overlap, so the rule does not throw
+ away pairs that see clearly the same light.</p>
+ <p>The compatibility graph below keeps every epoch and every pair: rebuilt from the epoch records alone it gives back
+ the published 8 (RW Aur) and 27 (WISE 0855) pairs and every refusal count.
+ <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/compat_check.json'>Evidence</a></p>
+ <img src='img/compat_graph.png' alt='Compatibility graphs of RW Aur and WISE 0855: epochs by time and wavelength, lines for compared pairs' style='width:100%;max-width:1000px'>
+</section>
+<section class='case'>
+ <h2>Same answer as IRSA's own tools</h2>
+ <p>We ran IRSA's <b>Source Discovery Tool</b>, unmodified, on exactly our exposures. For RW Aur at the same aperture
+ its fluxes are 0.9998 × ours (scatter 0.4%, n = 10), and it calls the same
+ 8 pairs changed. For WISE 0855 it agrees that no pair changed. The ~1% difference in the RW Aur ratios comes from
+ our reprojection of the second image, not from calibration.</p>
+ <p>IRSA's <b>Moving Object Search Tool</b> lists 36 SPHEREx images of (216) Kleopatra in our window; all
+ 36 are in our list, and our 2 extra entries are where we had already found the asteroid off the detector.
+ Its positions differ from our measured ones by 0.33″ (median), far below the 6.15″ pixel.</p>
+ <p>Not run: the SPHEREx Spectrophotometry Tool, which exists only inside IRSA's web interface.
+ <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/irsa_tools_check.json'>Evidence</a></p>
+ <img src='img/irsa_tools_photometry.png' alt='IRSA Source Discovery Tool fluxes and ratios against HIPPARCHUS' style='width:100%;max-width:1000px'>
+ <img src='img/irsa_tools_most.png' alt='MOST image list and positions for Kleopatra against our measurements' style='width:100%;max-width:900px'>
+</section>
 
 <section class='case' id='motion'>
  <h2>Moving-Object Explorer <small>(validation on a known asteroid, not a discovery)</small></h2>
@@ -238,5 +264,5 @@ so nothing here waits for a live archive download.</p>
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
 data; no simulated value appears on this page (the SIMULATED injection-recovery test is only in the report).
 AI tools helped with the logos, the video edit, code, method review and writing; they produced no measurement and did not
-validate the science (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026#data-credits-and-ai-use'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit 701876d.</footer>
+validate the science (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026#data-credits-and-ai-use'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit 4749bbc.</footer>
 </main></body></html>

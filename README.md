@@ -77,6 +77,12 @@ NASA/IPAC IRSA, processed by HIPPARCHUS.*
   34/34. These labels follow a fixed rule; they are not probabilities.
 - **Second measurement (experimental).** Fitting the SPHEREx ePSF to the native pixels reproduces all 8 RW Aur ratios
   within 2%. We don't use it for any published number yet.
+- **Pair rule checked against the light collected.** Our half-channel rule is the same as asking two exposures to
+  share at least half of a channel's response (top-hat model); it gives back exactly the published 8 and 27 pairs, and
+  no refused usable pair reaches 70% overlap. A compatibility graph keeps every refused pair with its reason.
+- **Same answer as IRSA's own tools.** IRSA's Source Discovery Tool, run unmodified on the same exposures, gives
+  RW Aur fluxes within 0.02% of ours (scatter 0.4%) and the same verdict on all 8 pairs; IRSA's Moving Object Search
+  Tool lists the same 36 Kleopatra images we measured. (The Spectrophotometry Tool is web-only; we did not run it.)
 - **Control stars** in the same images stay within ×0.86–1.07 while RW Aur changes by ×2.5.
 - **Catalogue match.** SIMBAD and Gaia DR3 put all three target positions on the right star.
 - **Evidence graph.** Every number links back to its cutout checksum, the archive answer and the dataset DOI. A test
@@ -106,6 +112,8 @@ python scripts/reproduce_catalogs.py     # SIMBAD + Gaia DR3 match (needs networ
 python scripts/reproduce_robustness.py   # stability fingerprint (~30 s)
 python scripts/reproduce_epsf.py         # experimental ePSF check (~12 s)
 python scripts/reproduce_wavecal.py      # wavelength audit against CWAVE/CBAND (~70 s)
+python scripts/reproduce_compat.py       # pair rule vs spectral overlap, compatibility graph (~5 s)
+python scripts/compare_irsa_tools.py    # vs IRSA Source Discovery Tool and MOST (needs network, own venv)
 python scripts/reproduce_motion.py       # Kleopatra vs JPL Horizons + SIMULATED movers (~16 min)
 python scripts/make_judge_site.py        # docs/index.html (Judge Mode)
 cd ../report && ./reproduce_report.sh    # report PDF

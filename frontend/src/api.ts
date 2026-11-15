@@ -1,5 +1,5 @@
-// Types mirror the JSON the FastAPI backend returns. Only the fields the page
-// actually reads are listed; the backend sends more (see the evidence file).
+// These types mirror the JSON our FastAPI backend returns. We only list the
+// fields the page actually reads; the backend sends more (see the evidence file).
 
 export const API = "/api";
 
@@ -42,8 +42,8 @@ export interface Observations {
   per_detector: Record<string, number>; observations: unknown[];
 }
 
-// One helper for every GET: the backend explains failures in "detail", and
-// that text is shown to the user as is, instead of a generic error.
+// One helper for every GET: the backend explains failures in "detail", and we
+// show that text to the user as is, instead of a generic error.
 export async function get<T>(path: string, params: Record<string, string | number>): Promise<T> {
   const q = new URLSearchParams(Object.entries(params).map(([k, v]) => [k, String(v)]));
   const r = await fetch(`${API}${path}?${q}`);

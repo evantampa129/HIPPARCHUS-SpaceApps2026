@@ -1,20 +1,20 @@
 """Second, independent flux measurement: fit the SPHEREx ePSF to the native pixels.
 
 EXPERIMENTAL. The production numbers come from aperture photometry on images
-reprojected to a common grid (compare.py). This module measures the same star
-a different way, so the two can be checked against each other:
+reprojected to a common grid (compare.py). Here we measure the same star a
+different way, so we can check the two against each other:
 
-* the effective PSF (ePSF) is read from the EPSF extension of the same cutout:
+* we read the effective PSF (ePSF) from the EPSF extension of the same cutout:
   a 21x21 grid of zones over the detector, each a 33x33 table oversampled x5;
-* the zone is the one whose centre is nearest the star in parent-detector
+* we use the zone whose centre is nearest the star in parent-detector
   pixels (cutout pixel + 1 - CRPIX1A, as in the IRSA SPHEREx PSF tutorial);
 * model = amplitude * ePSF(star position) + constant background, fitted by
   weighted least squares (weights 1/variance) to the epoch's own pixels.
-  Nothing is reprojected, so there is no interpolation noise.
+  We reproject nothing, so there is no interpolation noise.
 
 The amplitude is the total flux of the star in the units of the image summed
 over pixels (MJy/sr x pixel), the same units as the aperture sum but without
-the aperture loss. Only ratios between epochs are compared.
+the aperture loss. We only compare ratios between epochs.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ from scipy.ndimage import map_coordinates
 from scipy.optimize import minimize
 
 FIT_HALF = 4          # fit box: +-4 native pixels around the star (9x9)
-MIN_PIXELS = 30       # fewer clean pixels than this and the fit is refused
+MIN_PIXELS = 30       # fewer clean pixels than this and we refuse the fit
 
 
 def load_epsf(path_or_hdul, x_cut: float, y_cut: float) -> dict | None:
@@ -108,8 +108,8 @@ def fit(image, variance, bad, x0, y0, epsf: dict, fit_position: bool = False, ha
         normalise_native: bool = False) -> dict:
     """Fit amplitude (+ background) of the ePSF at (x0, y0) on the native grid.
 
-    The defaults reproduce the published experimental check. The options were
-    added while looking for the cause of the high reduced chi2 on RW Aur
+    The defaults reproduce the published experimental check. We added the
+    options while looking for the cause of the high reduced chi2 on RW Aur
     (reproduce_epsf.py, "diagnostics"); none of them is used by a published number:
 
     background        "constant", "plane" (constant + x and y gradient) or "none"
@@ -138,13 +138,13 @@ def fit(image, variance, bad, x0, y0, epsf: dict, fit_position: bool = False, ha
     good = ~b & np.isfinite(img) & np.isfinite(var) & (var > 0)
     core = (xx - x0) ** 2 + (yy - y0) ** 2 <= 1.5 ** 2
     if (core & ~good).any():
-        # Same rule as the aperture photometry: a flagged pixel on the star refuses the fit.
+        # Same rule as the aperture photometry: if a flagged pixel sits on the star, we refuse the fit.
         return {"ok": False, "reason": "flagged pixel in the PSF core"}
     if good.sum() < MIN_PIXELS:
         return {"ok": False, "reason": f"only {int(good.sum())} clean pixels"}
     psf, ovs = epsf["psf"], epsf["ovs"]
-    # A neighbour is fitted only if >3% of its light lands on clean pixels of the
-    # box; decided once, at the start position, so the chi2 surface stays smooth.
+    # We fit a neighbour only if >3% of its light lands on clean pixels of the
+    # box, and decide that once, at the start position, so the chi2 surface stays smooth.
     nbs = [(float(a), float(c)) for a, c in neighbours
            if render(psf, ovs, a, c, xx, yy)[good].sum() > 0.03]
 
@@ -173,7 +173,7 @@ def fit(image, variance, bad, x0, y0, epsf: dict, fit_position: bool = False, ha
         else:
             warn.append("free position moved >1 px; kept the WCS position")
     beta, cov, chi2, resid, P = run(*pos)
-    # Position parameters are not subtracted (kept as published); with a free
+    # We don't subtract the position parameters (kept as published); with a free
     # position the true dof is 2 smaller (~2.5% on a 9x9 box).
     dof = int(good.sum()) - len(beta)
     k = len(nbs) + 1
@@ -201,7 +201,7 @@ def blank_sky_scale(image, variance, bad, x0, y0, r_min: float = 6.0) -> float:
 
     1.00 on the WISE 0855 cutouts (the VARIANCE plane is right there); ~1.34 in the
     RW Aur field, where faint stars and nebulosity add structure that is not noise
-    but is not modelled either. Pixels within r_min of the target are skipped.
+    but is not modelled either. We skip pixels within r_min of the target.
     """
     from scipy.ndimage import median_filter
     z = (image - median_filter(image, size=7, mode="nearest")) / np.sqrt(variance)

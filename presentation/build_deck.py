@@ -2,7 +2,7 @@
 
     backend/.venv/bin/python presentation/build_deck.py
 
-Every number on the slides is read from submission/evidence/*.json at build
+We read every number on the slides from submission/evidence/*.json at build
 time, so the deck cannot drift from the report and the Judge Mode page.
 """
 
@@ -30,7 +30,7 @@ DEMO = "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/"
 REPO = "https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026"
 BG, PANEL, TXT, MUTED, ACC, OK, WARN, BAD = ("070B16", "111830", "E9EDF6", "8E9AB8", "7FD4FF",
                                              "4FD18B", "FFC857", "FF6B6B")
-MEMBERS = "Evangelos Tampachaniotis"  # team members are added by the team, never invented here
+MEMBERS = "Evangelos Tampachaniotis"  # we add team members ourselves; the script never invents them
 
 ev = {p.stem: json.loads(p.read_text()) for p in EVID.glob("*.json")}
 rob = ev["robustness"]["targets"]
@@ -144,7 +144,7 @@ claims = {c["claim"]: c for c in rob["rw_aur"]["claims"]}
 c15 = next(v for k, v in claims.items() if "1.5" in k)
 call = next(v for k, v in claims.items() if "every" in k)
 cw = rob["wise0855"]["claims"][0]
-n_tests = 85
+n_tests = 106
 
 # 1. Identity
 s = slide()

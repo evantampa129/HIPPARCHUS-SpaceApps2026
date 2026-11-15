@@ -19,15 +19,15 @@ from hipparchus import spectral_cal
 # so the note no longer applies. In a web service it would only flood the log.
 log.setLevel("WARNING")
 
-# Flag planes that make a pixel unusable for photometry or differencing. The
-# names are read from each file's own FLAGS header (MSKNnnnn/MSKMnnnn), so if a
-# future pipeline version renumbers the bits, this still selects the right ones.
-# Planes left out on purpose:
+# Flag planes that make a pixel unusable for photometry or differencing. We
+# read the names from each file's own FLAGS header (MSKNnnnn/MSKMnnnn), so if a
+# future pipeline version renumbers the bits, we still select the right ones.
+# Planes we leave out on purpose:
 #   SOURCE      marks pixels on a known catalogued source. Our target IS a source,
 #               so rejecting these would reject every measurement.
 #   FULLSAMPLE  only says the full readout history exists.
 #   DICHROIC    lower throughput near the dichroic edge. That is a calibration
-#               effect and is reported as a warning, not a hard rejection.
+#               effect, so we report it as a warning, not a hard rejection.
 #   PHANMISS    phantom correction not applied; also a warning (see WARN_PLANES).
 BAD_PLANES = {
     "TRANSIENT", "OVERFLOW", "SUR_ERROR", "NONFUNC", "MISSING_DATA", "HOT", "COLD",
@@ -46,14 +46,14 @@ APERTURE_PX = 2.0
 #                celestial SIP polynomial (A_*/B_* keywords carry no alternate
 #                letter) to the W lookup table and evaluates it around CRPIXjW,
 #                so the table is read 3-70 px away from the target: up to 18 nm
-#                on D6. Kept bit for bit so the published numbers reproduce.
+#                on D6. We keep it bit for bit so the published numbers reproduce.
 #   "wcs_nosip"  the same WCS-WAVE table with SIP switched off, as the IRSA
 #                SPHEREx tutorial does (spectral_wcs.sip = None). Equals the
 #                documented 4-point bilinear read to 1e-12 nm; within ~1-2 nm of CWAVE.
 #   "cwave"      CWAVE/CBAND maps of the Spectral WCS calibration product at the
 #                star's parent pixel: what IRSA recommends for science. Falls back
 #                to "wcs_nosip" (with a warning issue) if the map is not on disk.
-# The default stays "wcs" until the lead decides to switch; see
+# We keep "wcs" as the default until the lead decides to switch; see
 # scripts/reproduce_wavecal.py and submission/evidence/wavecal_check.json.
 WAVELENGTH_SOURCES = ("wcs", "wcs_nosip", "cwave")
 DEFAULT_WAVELENGTH_SOURCE = os.environ.get("HIPPARCHUS_WAVELENGTH_SOURCE", "wcs")
@@ -95,7 +95,7 @@ class Epoch:
 
 
 def _plane_masks(header) -> dict[str, int]:
-    # Build {plane name: bit value} from the header, e.g. {"HOT": 1024, ...}.
+    # We build {plane name: bit value} from the header, e.g. {"HOT": 1024, ...}.
     out = {}
     for key in header:
         if key.startswith("MSKN"):
@@ -106,13 +106,13 @@ def _plane_masks(header) -> dict[str, int]:
     return out
 
 
-# Extensions the checks below cannot work without. A file that lacks one is
-# refused with its name, instead of failing later with an unclear KeyError.
+# Extensions the checks below cannot work without. We refuse a file that lacks
+# one and name it, instead of failing later with an unclear KeyError.
 REQUIRED_HDUS = ("IMAGE", "FLAGS", "VARIANCE", "ZODI")
 
 
 def target_pixel(wcs: WCS, ra: float, dec: float) -> tuple[float, float]:
-    """Pixel position of (ra, dec). RA is taken modulo 360, so a target at
+    """Pixel position of (ra, dec). We take RA modulo 360, so a target at
     RA 359.999 and an image centred at RA 0.001 still line up."""
     x, y = wcs.world_to_pixel_values(ra % 360.0, dec)
     return float(x), float(y)
@@ -121,7 +121,7 @@ def target_pixel(wcs: WCS, ra: float, dec: float) -> tuple[float, float]:
 def wavelength_at(h: fits.HDUList, x: float, y: float, source: str) -> tuple[float, float, str, str | None]:
     """(wavelength, bandwidth, source used, note) at cutout pixel (x, y), 0-based."""
     if source == "wcs":
-        # Legacy: SIP is applied to the lookup (see WAVELENGTH_SOURCES). Unchanged on purpose.
+        # Legacy: SIP is applied to the lookup (see WAVELENGTH_SOURCES). We leave it that way on purpose.
         wave = WCS(h["IMAGE"].header, fobj=h, key="W")
         lam, dlam = (float(v) for v in wave.pixel_to_world_values(x, y))
         return lam, dlam, "wcs", None
@@ -156,8 +156,8 @@ def load(path: str, obs_id: str, ra: float, dec: float, wavelength_source: str |
         hdr = h["IMAGE"].header
         # The archive images still contain the zodiacal light (sunlight scattered
         # by interplanetary dust). It changes with the time of year, so two
-        # epochs would differ even for a constant star. Removing the pipeline's
-        # ZODI model before any comparison avoids that false "variability".
+        # epochs would differ even for a constant star. We remove the pipeline's
+        # ZODI model before any comparison to avoid that false "variability".
         image = h["IMAGE"].data.astype(float) - h["ZODI"].data.astype(float)
         variance = h["VARIANCE"].data.astype(float)
         flags = h["FLAGS"].data.astype(np.int64)
@@ -212,7 +212,7 @@ def check(ep: Epoch, flags: np.ndarray, planes: dict[str, int], warn_bits: int) 
     yy, xx = np.mgrid[0:ny, 0:nx]
     ap = (xx - ep.x) ** 2 + (yy - ep.y) ** 2 <= r ** 2
 
-    # 2. No unusable pixels inside the aperture. Name the flags, so the reason
+    # 2. No unusable pixels inside the aperture. We name the flags, so the reason
     #    shown to the user is specific ("SATURATED", "PERSIST", ...).
     hit = {name: int(np.count_nonzero(ap & ((flags & bit) != 0)))
            for name, bit in planes.items() if name in BAD_PLANES}

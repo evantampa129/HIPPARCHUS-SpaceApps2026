@@ -44,7 +44,7 @@ def test_neighbour_removes_bias_and_chi2():
     nb = P.fit(img, var, bad, 14.0, 14.0, e, neighbours=[(17.5, 14.0)])
     assert plain["chi2_red"] > 3 and nb["chi2_red"] < 1.5
     assert abs(nb["amp"] - 100) < 3 * nb["amp_err"] and abs(nb["neighbour_amps"][0] - 30) < 3
-    # A neighbour whose light misses the box is dropped, not fitted as a degenerate column.
+    # We expect a neighbour whose light misses the box to be dropped, not fitted as a degenerate column.
     far = P.fit(img, var, bad, 14.0, 14.0, e, neighbours=[(14.0, 26.0)])
     assert far["n_neighbours"] == 0
 

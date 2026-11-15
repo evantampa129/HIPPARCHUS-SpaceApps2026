@@ -1,0 +1,2069 @@
+{
+ "assumption": "Each exposure's response at the star is one channel centred on the wavelength at the star, with the channel width as full width; we try a Gaussian (FWHM = width) and a top-hat. Wavelengths are the published (legacy WCS) ones.",
+ "rule": "|d\u03bb| <= 0.5 \u00d7 channel width",
+ "overlap_at_rule_limit": {
+  "gaussian": 0.556059175656978,
+  "tophat": 0.5
+ },
+ "targets": {
+  "rw_aur": {
+   "graph_summary": {
+    "n_nodes": 56,
+    "n_usable": 18,
+    "n_pairs": 1540,
+    "n_edges": 8,
+    "n_components_with_edges": 2,
+    "largest_component": 8,
+    "n_isolated_nodes": 46,
+    "refusals_by_code": {
+     "wavelength_mismatch": 1480,
+     "flagged_pixels": 1387
+    }
+   },
+   "published_refusal_counts": {
+    "wavelength_mismatch": 1480,
+    "flagged_pixels": 1387
+   },
+   "rebuilt_comparable_pairs": 8,
+   "published_pairs": 8,
+   "published_min_overlap": {
+    "gaussian": 0.6486640140758471,
+    "tophat": 0.6100095424377158
+   },
+   "published_pairs_overlap_below_0.5": {
+    "gaussian": 0,
+    "tophat": 0
+   },
+   "usable_pairs_refused_only_for_wavelength": 145,
+   "of_which_overlap_ge": {
+    "0.5": {
+     "gaussian": 0,
+     "tophat": 0
+    },
+    "0.7": {
+     "gaussian": 0,
+     "tophat": 0
+    }
+   },
+   "confusion_all_pairs": {
+    "gaussian@0.5": {
+     "rule_pass_overlap_high": 60,
+     "rule_pass_overlap_low": 0,
+     "rule_fail_overlap_high": 20,
+     "rule_fail_overlap_low": 1460
+    },
+    "gaussian@0.7": {
+     "rule_pass_overlap_high": 29,
+     "rule_pass_overlap_low": 31,
+     "rule_fail_overlap_high": 0,
+     "rule_fail_overlap_low": 1480
+    },
+    "tophat@0.5": {
+     "rule_pass_overlap_high": 60,
+     "rule_pass_overlap_low": 0,
+     "rule_fail_overlap_high": 0,
+     "rule_fail_overlap_low": 1480
+    },
+    "tophat@0.7": {
+     "rule_pass_overlap_high": 26,
+     "rule_pass_overlap_low": 34,
+     "rule_fail_overlap_high": 0,
+     "rule_fail_overlap_low": 1480
+    }
+   }
+  },
+  "barnard": {
+   "graph_summary": {
+    "n_nodes": 58,
+    "n_usable": 0,
+    "n_pairs": 1653,
+    "n_edges": 0,
+    "n_components_with_edges": 0,
+    "largest_component": 0,
+    "n_isolated_nodes": 58,
+    "refusals_by_code": {
+     "flagged_pixels": 1653,
+     "wavelength_mismatch": 1579,
+     "nan_pixels": 57,
+     "bad_variance": 57
+    }
+   },
+   "published_refusal_counts": {
+    "wavelength_mismatch": 1579,
+    "flagged_pixels": 1653,
+    "bad_variance": 57,
+    "nan_pixels": 57
+   },
+   "rebuilt_comparable_pairs": 0,
+   "published_pairs": 0,
+   "published_min_overlap": {
+    "gaussian": null,
+    "tophat": null
+   },
+   "published_pairs_overlap_below_0.5": {
+    "gaussian": 0,
+    "tophat": 0
+   },
+   "usable_pairs_refused_only_for_wavelength": 0,
+   "of_which_overlap_ge": {
+    "0.5": {
+     "gaussian": 0,
+     "tophat": 0
+    },
+    "0.7": {
+     "gaussian": 0,
+     "tophat": 0
+    }
+   },
+   "confusion_all_pairs": {
+    "gaussian@0.5": {
+     "rule_pass_overlap_high": 74,
+     "rule_pass_overlap_low": 0,
+     "rule_fail_overlap_high": 5,
+     "rule_fail_overlap_low": 1574
+    },
+    "gaussian@0.7": {
+     "rule_pass_overlap_high": 47,
+     "rule_pass_overlap_low": 27,
+     "rule_fail_overlap_high": 0,
+     "rule_fail_overlap_low": 1579
+    },
+    "tophat@0.5": {
+     "rule_pass_overlap_high": 74,
+     "rule_pass_overlap_low": 0,
+     "rule_fail_overlap_high": 0,
+     "rule_fail_overlap_low": 1579
+    },
+    "tophat@0.7": {
+     "rule_pass_overlap_high": 39,
+     "rule_pass_overlap_low": 35,
+     "rule_fail_overlap_high": 0,
+     "rule_fail_overlap_low": 1579
+    }
+   }
+  },
+  "wise0855": {
+   "graph_summary": {
+    "n_nodes": 45,
+    "n_usable": 37,
+    "n_pairs": 990,
+    "n_edges": 27,
+    "n_components_with_edges": 11,
+    "largest_component": 5,
+    "n_isolated_nodes": 14,
+    "refusals_by_code": {
+     "wavelength_mismatch": 952,
+     "flagged_pixels": 324
+    }
+   },
+   "published_refusal_counts": {
+    "wavelength_mismatch": 952,
+    "flagged_pixels": 324
+   },
+   "rebuilt_comparable_pairs": 27,
+   "published_pairs": 27,
+   "published_min_overlap": {
+    "gaussian": 0.5595688894436794,
+    "tophat": 0.5023105622842367
+   },
+   "published_pairs_overlap_below_0.5": {
+    "gaussian": 0,
+    "tophat": 0
+   },
+   "usable_pairs_refused_only_for_wavelength": 639,
+   "of_which_overlap_ge": {
+    "0.5": {
+     "gaussian": 3,
+     "tophat": 0
+    },
+    "0.7": {
+     "gaussian": 0,
+     "tophat": 0
+    }
+   },
+   "confusion_all_pairs": {
+    "gaussian@0.5": {
+     "rule_pass_overlap_high": 38,
+     "rule_pass_overlap_low": 0,
+     "rule_fail_overlap_high": 4,
+     "rule_fail_overlap_low": 948
+    },
+    "gaussian@0.7": {
+     "rule_pass_overlap_high": 26,
+     "rule_pass_overlap_low": 12,
+     "rule_fail_overlap_high": 0,
+     "rule_fail_overlap_low": 952
+    },
+    "tophat@0.5": {
+     "rule_pass_overlap_high": 38,
+     "rule_pass_overlap_low": 0,
+     "rule_fail_overlap_high": 0,
+     "rule_fail_overlap_low": 952
+    },
+    "tophat@0.7": {
+     "rule_pass_overlap_high": 20,
+     "rule_pass_overlap_low": 18,
+     "rule_fail_overlap_high": 0,
+     "rule_fail_overlap_low": 952
+    }
+   }
+  }
+ },
+ "graphs": {
+  "rw_aur": {
+   "nodes": [
+    {
+     "id": "2025W36_1A_0095_1",
+     "mjd": 60919.420312786,
+     "wavelength_um": 1.0685439421994016,
+     "bandwidth_um": 0.028268167808613937,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0095_2",
+     "mjd": 60919.421805055,
+     "wavelength_um": 1.0942037249463303,
+     "bandwidth_um": 0.028714761764691905,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0155_1",
+     "mjd": 60919.687870495,
+     "wavelength_um": 1.119713261877995,
+     "bandwidth_um": 0.029147130527504093,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W36_1A_0233_2",
+     "mjd": 60920.030804835,
+     "wavelength_um": 0.7453958220635862,
+     "bandwidth_um": 0.017452242811048374,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0233_3",
+     "mjd": 60920.03229708,
+     "wavelength_um": 0.7632065851123939,
+     "bandwidth_um": 0.01803818587208519,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0446_1",
+     "mjd": 60920.978031166,
+     "wavelength_um": 0.7808499207509608,
+     "bandwidth_um": 0.018629232165997548,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0446_2",
+     "mjd": 60920.979523423,
+     "wavelength_um": 0.7999193534560806,
+     "bandwidth_um": 0.019584228145456663,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W36_1A_0446_3",
+     "mjd": 60920.98101568,
+     "wavelength_um": 0.8188537234518892,
+     "bandwidth_um": 0.020527912880544376,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0446_4",
+     "mjd": 60920.982507937,
+     "wavelength_um": 0.8382791962276674,
+     "bandwidth_um": 0.02106440509846581,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0606_1",
+     "mjd": 60921.724549245,
+     "wavelength_um": 0.8580968132756089,
+     "bandwidth_um": 0.021507066995851653,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W36_1A_0606_2",
+     "mjd": 60921.726041513,
+     "wavelength_um": 0.8784873156882116,
+     "bandwidth_um": 0.02226207311670879,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0606_3",
+     "mjd": 60921.72753377,
+     "wavelength_um": 0.8995582922310532,
+     "bandwidth_um": 0.023240861464966355,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W36_1A_0606_4",
+     "mjd": 60921.729026027,
+     "wavelength_um": 0.9209311841093315,
+     "bandwidth_um": 0.024015991014529642,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W36_1A_0663_1",
+     "mjd": 60921.996175113,
+     "wavelength_um": 0.9725649353169872,
+     "bandwidth_um": 0.02533882564116513,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W36_1A_0663_2",
+     "mjd": 60921.99766737,
+     "wavelength_um": 0.9957068214042939,
+     "bandwidth_um": 0.026261821357503802,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0663_3",
+     "mjd": 60921.999159627,
+     "wavelength_um": 1.0194250406304404,
+     "bandwidth_um": 0.027095531646662833,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W36_1A_0663_4",
+     "mjd": 60922.000651895,
+     "wavelength_um": 1.043936099964363,
+     "bandwidth_um": 0.02768903189490906,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W36_1A_0677_1",
+     "mjd": 60922.067199337,
+     "wavelength_um": 0.9429004991962594,
+     "bandwidth_um": 0.024487167987298584,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W36_1A_0677_2",
+     "mjd": 60922.068691594,
+     "wavelength_um": 0.9651116113479746,
+     "bandwidth_um": 0.025040187493696194,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W10_1A_0445_1",
+     "mjd": 61103.330272729,
+     "wavelength_um": 0.8572347662539632,
+     "bandwidth_um": 0.02120419404104826,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W10_1A_0445_2",
+     "mjd": 61103.331764974,
+     "wavelength_um": 0.8779813308350701,
+     "bandwidth_um": 0.021858631208076486,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W10_1A_0445_3",
+     "mjd": 61103.333257242,
+     "wavelength_um": 0.8989425047169083,
+     "bandwidth_um": 0.022581552270622716,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W10_1A_0445_4",
+     "mjd": 61103.334749499,
+     "wavelength_um": 0.9204410667916172,
+     "bandwidth_um": 0.023461739096528714,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W10_2B_0137_1",
+     "mjd": 61105.230463608,
+     "wavelength_um": 0.9423901505913734,
+     "bandwidth_um": 0.024458636246433983,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W10_2B_0137_2",
+     "mjd": 61105.231955854,
+     "wavelength_um": 0.9648457021261714,
+     "bandwidth_um": 0.025338631631620687,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W10_2B_0137_3",
+     "mjd": 61105.233448099,
+     "wavelength_um": 0.9880222467045049,
+     "bandwidth_um": 0.026024154661847043,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W10_2B_0137_4",
+     "mjd": 61105.234940379,
+     "wavelength_um": 1.0115053443051893,
+     "bandwidth_um": 0.026742461249582516,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W10_2B_0591_3",
+     "mjd": 61107.676268921,
+     "wavelength_um": 0.7390348771553458,
+     "bandwidth_um": 0.017049414601931687,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W10_2B_0591_4",
+     "mjd": 61107.677761178,
+     "wavelength_um": 0.756644297476894,
+     "bandwidth_um": 0.017784771534493385,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W10_2B_0626_1",
+     "mjd": 61107.879286583,
+     "wavelength_um": 1.0357510737114854,
+     "bandwidth_um": 0.027619680562556884,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W10_2B_0626_2",
+     "mjd": 61107.88077884,
+     "wavelength_um": 1.0600313663948298,
+     "bandwidth_um": 0.0284975932313913,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W10_2B_0626_3",
+     "mjd": 61107.882271108,
+     "wavelength_um": 1.085712142089191,
+     "bandwidth_um": 0.02913449783370188,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W10_2B_0626_4",
+     "mjd": 61107.883763354,
+     "wavelength_um": 1.1114037077632675,
+     "bandwidth_um": 0.029765818582161582,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W11_1A_0285_1",
+     "mjd": 61109.44007818,
+     "wavelength_um": 0.7742239913473395,
+     "bandwidth_um": 0.018522271022726588,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W11_1A_0285_2",
+     "mjd": 61109.441570448,
+     "wavelength_um": 0.7929356504827658,
+     "bandwidth_um": 0.019383625646516297,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W11_1A_0285_3",
+     "mjd": 61109.443062682,
+     "wavelength_um": 0.8118924974331772,
+     "bandwidth_um": 0.020274985412111698,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W11_1A_0285_4",
+     "mjd": 61109.444554951,
+     "wavelength_um": 0.8314326129226257,
+     "bandwidth_um": 0.02076919485326272,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W11_1A_0645_1",
+     "mjd": 61111.002753168,
+     "wavelength_um": 0.8510300414747013,
+     "bandwidth_um": 0.021099562155290214,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W36_1A_0476_1",
+     "mjd": 61285.097835518,
+     "wavelength_um": 0.981826573949307,
+     "bandwidth_um": 0.025710827757233764,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W36_1A_0476_2",
+     "mjd": 61285.099327775,
+     "wavelength_um": 1.005010678463552,
+     "bandwidth_um": 0.026698529858152752,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W36_1A_0476_3",
+     "mjd": 61285.100820032,
+     "wavelength_um": 1.0291659538761084,
+     "bandwidth_um": 0.027404134970539836,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W36_1A_0476_4",
+     "mjd": 61285.102312277,
+     "wavelength_um": 1.0536216981496662,
+     "bandwidth_um": 0.028021530323502665,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W36_1A_0493_1",
+     "mjd": 61285.170245402,
+     "wavelength_um": 1.0785978341068156,
+     "bandwidth_um": 0.02861373605975998,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W36_1A_0506_1",
+     "mjd": 61285.237894314,
+     "wavelength_um": 1.1042489034316625,
+     "bandwidth_um": 0.029191136291427867,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0234_2",
+     "mjd": 61291.275824175,
+     "wavelength_um": 0.752182758171844,
+     "bandwidth_um": 0.017627428078472045,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W37_1A_0234_3",
+     "mjd": 61291.277316444,
+     "wavelength_um": 0.7700237543094984,
+     "bandwidth_um": 0.018192485085921712,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W37_1A_0234_4",
+     "mjd": 61291.278808689,
+     "wavelength_um": 0.7874997288914356,
+     "bandwidth_um": 0.018954471651851504,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0331_1",
+     "mjd": 61291.8180634,
+     "wavelength_um": 0.807172966011638,
+     "bandwidth_um": 0.020049102560849665,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0331_2",
+     "mjd": 61291.819555657,
+     "wavelength_um": 0.8263362043624651,
+     "bandwidth_um": 0.020925687197089676,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0331_3",
+     "mjd": 61291.821047925,
+     "wavelength_um": 0.8460814605706627,
+     "bandwidth_um": 0.02138093808672999,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0331_4",
+     "mjd": 61291.822540171,
+     "wavelength_um": 0.8660261542947386,
+     "bandwidth_um": 0.021879761697943475,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0365_1",
+     "mjd": 61292.022537867,
+     "wavelength_um": 0.8868032891374484,
+     "bandwidth_um": 0.022726385347465024,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0365_2",
+     "mjd": 61292.024030113,
+     "wavelength_um": 0.9076573449686165,
+     "bandwidth_um": 0.023577376510065775,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0365_3",
+     "mjd": 61292.025522381,
+     "wavelength_um": 0.9293834404856413,
+     "bandwidth_um": 0.024105884282826267,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0365_4",
+     "mjd": 61292.027032393,
+     "wavelength_um": 0.9516064600455745,
+     "bandwidth_um": 0.024586070165344125,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W37_1A_0524_1",
+     "mjd": 61292.904993458,
+     "wavelength_um": 0.9743416247263388,
+     "bandwidth_um": 0.02539191749739713,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    }
+   ],
+   "edges": [
+    {
+     "a": "2025W36_1A_0233_2",
+     "b": "2026W10_2B_0591_3",
+     "dlambda_um": 0.006360944908240462,
+     "overlap_gaussian": 0.664065644685458,
+     "overlap_tophat": 0.6239819097265618,
+     "flux_ratio": 1.6206894504563238,
+     "significance": 80.26654611537782
+    },
+    {
+     "a": "2025W36_1A_0233_2",
+     "b": "2026W37_1A_0234_2",
+     "dlambda_um": 0.006786936108257757,
+     "overlap_gaussian": 0.6486640140758471,
+     "overlap_tophat": 0.6100095424377158,
+     "flux_ratio": 2.5035813894696424,
+     "significance": 173.47512584247258
+    },
+    {
+     "a": "2025W36_1A_0233_3",
+     "b": "2026W10_2B_0591_4",
+     "dlambda_um": 0.0065622876354999304,
+     "overlap_gaussian": 0.6661559913466909,
+     "overlap_tophat": 0.6291758577204122,
+     "flux_ratio": 1.6676714402661559,
+     "significance": 84.38411748325935
+    },
+    {
+     "a": "2025W36_1A_0233_3",
+     "b": "2026W37_1A_0234_3",
+     "dlambda_um": 0.006817169197104511,
+     "overlap_gaussian": 0.6576905808296216,
+     "overlap_tophat": 0.6210347969801032,
+     "flux_ratio": 2.558575455811674,
+     "significance": 175.07751792388433
+    },
+    {
+     "a": "2025W36_1A_0446_1",
+     "b": "2026W11_1A_0285_1",
+     "dlambda_um": 0.006625929403621278,
+     "overlap_gaussian": 0.6744930076593584,
+     "overlap_tophat": 0.6414554332814569,
+     "flux_ratio": 1.4051471427144122,
+     "significance": 54.99042696106351
+    },
+    {
+     "a": "2025W36_1A_0606_2",
+     "b": "2026W10_1A_0445_2",
+     "dlambda_um": 0.0005059848531414612,
+     "overlap_gaussian": 0.9772998373780923,
+     "overlap_tophat": 0.9682102469187143,
+     "flux_ratio": 1.085057760865031,
+     "significance": 18.51411482641399
+    },
+    {
+     "a": "2026W10_2B_0591_4",
+     "b": "2026W37_1A_0234_2",
+     "dlambda_um": 0.00446153930505,
+     "overlap_gaussian": 0.7666847510852092,
+     "overlap_tophat": 0.7447135587738675,
+     "flux_ratio": 1.4245489774802604,
+     "significance": 80.26793834819547
+    },
+    {
+     "a": "2026W11_1A_0285_1",
+     "b": "2026W37_1A_0234_3",
+     "dlambda_um": 0.004200237037841115,
+     "overlap_gaussian": 0.7875098302453029,
+     "overlap_tophat": 0.7643307345580027,
+     "flux_ratio": 1.5001748173862999,
+     "significance": 84.75979833186769
+    }
+   ],
+   "summary": {
+    "n_nodes": 56,
+    "n_usable": 18,
+    "n_pairs": 1540,
+    "n_edges": 8,
+    "n_components_with_edges": 2,
+    "largest_component": 8,
+    "n_isolated_nodes": 46,
+    "refusals_by_code": {
+     "wavelength_mismatch": 1480,
+     "flagged_pixels": 1387
+    }
+   }
+  },
+  "barnard": {
+   "nodes": [
+    {
+     "id": "2025W33_2C_0321_1",
+     "mjd": 60902.865380738,
+     "wavelength_um": 4.922886442845558,
+     "bandwidth_um": 0.03694871486906019,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W33_2C_0321_2",
+     "mjd": 60902.866872983,
+     "wavelength_um": 4.9592130625342605,
+     "bandwidth_um": 0.036899178757618445,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W33_2C_0321_3",
+     "mjd": 60902.86836524,
+     "wavelength_um": 4.995592296220112,
+     "bandwidth_um": 0.03674217591582526,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W33_2C_0386_3",
+     "mjd": 60903.139031814,
+     "wavelength_um": 4.413573229297032,
+     "bandwidth_um": 0.036910057755929,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W33_2C_0386_4",
+     "mjd": 60903.140524083,
+     "wavelength_um": 4.445454093897652,
+     "bandwidth_um": 0.036135093324633986,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W34_1B_0164_1",
+     "mjd": 60905.853922786,
+     "wavelength_um": 4.4777358000959335,
+     "bandwidth_um": 0.035455076000100075,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W34_1B_0164_2",
+     "mjd": 60905.855415043,
+     "wavelength_um": 4.51051807275379,
+     "bandwidth_um": 0.03555972732756834,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W34_2B_0030_1",
+     "mjd": 60908.639855842,
+     "wavelength_um": 4.577357905736468,
+     "bandwidth_um": 0.03618003301826798,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W34_2B_0030_2",
+     "mjd": 60908.641348099,
+     "wavelength_um": 4.610749638305757,
+     "bandwidth_um": 0.03672763035347028,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W34_2B_0030_3",
+     "mjd": 60908.642840356,
+     "wavelength_um": 4.644991466807576,
+     "bandwidth_um": 0.03707432325610107,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W34_2B_0030_4",
+     "mjd": 60908.644332613,
+     "wavelength_um": 4.678960906386945,
+     "bandwidth_um": 0.03733266918956896,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W35_1A_0008_1",
+     "mjd": 60912.035090796,
+     "wavelength_um": 4.71323455261976,
+     "bandwidth_um": 0.037003344837892006,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W35_1A_0008_2",
+     "mjd": 60912.036583053,
+     "wavelength_um": 4.748201530059809,
+     "bandwidth_um": 0.03614604833373581,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W35_1A_0008_3",
+     "mjd": 60912.03807531,
+     "wavelength_um": 4.783848936687805,
+     "bandwidth_um": 0.035601024222712,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W35_1A_0008_4",
+     "mjd": 60912.039567567,
+     "wavelength_um": 4.818227962146998,
+     "bandwidth_um": 0.035702029220257565,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W35_1A_0484_1",
+     "mjd": 60914.483259048,
+     "wavelength_um": 4.852443218543486,
+     "bandwidth_um": 0.03594195833720457,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W35_1A_0484_2",
+     "mjd": 60914.484751305,
+     "wavelength_um": 4.88858170979066,
+     "bandwidth_um": 0.036827084677003366,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_1A_0598_1",
+     "mjd": 61118.309897451,
+     "wavelength_um": 4.548547432101836,
+     "bandwidth_um": 0.03585730093633786,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_1A_0598_2",
+     "mjd": 61118.311389719,
+     "wavelength_um": 4.5833563856780595,
+     "bandwidth_um": 0.036113692604776,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_1A_0598_3",
+     "mjd": 61118.312881976,
+     "wavelength_um": 4.616991248919015,
+     "bandwidth_um": 0.03638328394324353,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_1A_0598_4",
+     "mjd": 61118.314374233,
+     "wavelength_um": 4.6509245475854355,
+     "bandwidth_um": 0.036619660403294514,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_1A_0610_1",
+     "mjd": 61118.377706224,
+     "wavelength_um": 4.6853704384910735,
+     "bandwidth_um": 0.0368481601755851,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_1A_0610_2",
+     "mjd": 61118.379198469,
+     "wavelength_um": 4.71994968957301,
+     "bandwidth_um": 0.03694877697753993,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_1A_0610_3",
+     "mjd": 61118.380690726,
+     "wavelength_um": 4.753931779210866,
+     "bandwidth_um": 0.0369622479259396,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_1A_0610_4",
+     "mjd": 61118.382182983,
+     "wavelength_um": 4.788882056874039,
+     "bandwidth_um": 0.037195280356562846,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_2A_0324_1",
+     "mjd": 61120.279264777,
+     "wavelength_um": 4.966344614364348,
+     "bandwidth_um": 0.03711232649446582,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels",
+      "nan_pixels",
+      "bad_variance"
+     ]
+    },
+    {
+     "id": "2026W12_2A_0324_2",
+     "mjd": 61120.280757034,
+     "wavelength_um": 5.002516556532587,
+     "bandwidth_um": 0.03783169726199049,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_2A_0520_1",
+     "mjd": 61121.364791062,
+     "wavelength_um": 4.823618244245873,
+     "bandwidth_um": 0.03781641383213719,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_2A_0520_2",
+     "mjd": 61121.36628333,
+     "wavelength_um": 4.858537239527939,
+     "bandwidth_um": 0.038206993268497816,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_2A_0520_3",
+     "mjd": 61121.367775576,
+     "wavelength_um": 4.894160645775955,
+     "bandwidth_um": 0.03733607585206002,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W12_2A_0520_4",
+     "mjd": 61121.369267844,
+     "wavelength_um": 4.930193385475053,
+     "bandwidth_um": 0.03646610633069254,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W13_1A_0129_1",
+     "mjd": 61122.654791722,
+     "wavelength_um": 4.3947617595992785,
+     "bandwidth_um": 0.03783095608996577,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W13_1A_0129_2",
+     "mjd": 61122.656283979,
+     "wavelength_um": 4.437292876443227,
+     "bandwidth_um": 0.03691769953182915,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W13_1A_0129_3",
+     "mjd": 61122.657776236,
+     "wavelength_um": 4.4687534011515835,
+     "bandwidth_um": 0.0362474828837553,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W13_1A_0129_4",
+     "mjd": 61122.659268481,
+     "wavelength_um": 4.501596435979015,
+     "bandwidth_um": 0.03624402423449238,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W13_1A_0549_1",
+     "mjd": 61124.894932277,
+     "wavelength_um": 4.534786044422973,
+     "bandwidth_um": 0.03639412021956557,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W15_2A_0137_1",
+     "mjd": 61140.030727046,
+     "wavelength_um": 4.549123097215683,
+     "bandwidth_um": 0.035848886821105,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W19_1A_0046_1",
+     "mjd": 61164.133799766,
+     "wavelength_um": 4.788845088887732,
+     "bandwidth_um": 0.037186496859041074,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W19_1A_0216_1",
+     "mjd": 61164.607786143,
+     "wavelength_um": 4.82342362606884,
+     "bandwidth_um": 0.03780048522264787,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W19_1A_0326_1",
+     "mjd": 61164.879785113,
+     "wavelength_um": 4.858090902798987,
+     "bandwidth_um": 0.038207703038500164,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W19_1A_0403_1",
+     "mjd": 61165.083637763,
+     "wavelength_um": 4.894137359328642,
+     "bandwidth_um": 0.037341042045736454,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W33_2A_0594_4",
+     "mjd": 61268.631477786,
+     "wavelength_um": 4.429043859097156,
+     "bandwidth_um": 0.03643388196358299,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0007_1",
+     "mjd": 61269.034084627,
+     "wavelength_um": 4.461122024942725,
+     "bandwidth_um": 0.0358692953479008,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0007_2",
+     "mjd": 61269.035576872,
+     "wavelength_um": 4.49123939584141,
+     "bandwidth_um": 0.035664169417942086,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0007_3",
+     "mjd": 61269.037069152,
+     "wavelength_um": 4.526393475239937,
+     "bandwidth_um": 0.035732214526738935,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0007_4",
+     "mjd": 61269.038561386,
+     "wavelength_um": 4.559634425309056,
+     "bandwidth_um": 0.03593380887971025,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0176_1",
+     "mjd": 61269.850117138,
+     "wavelength_um": 4.900538348572214,
+     "bandwidth_um": 0.03667899133064446,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0176_2",
+     "mjd": 61269.851609407,
+     "wavelength_um": 4.93557040968505,
+     "bandwidth_um": 0.03665214239250318,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0238_1",
+     "mjd": 61270.189303134,
+     "wavelength_um": 4.972059331901688,
+     "bandwidth_um": 0.03646056371859738,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0308_1",
+     "mjd": 61270.595445182,
+     "wavelength_um": 4.593684032975596,
+     "bandwidth_um": 0.03638551143382399,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0308_2",
+     "mjd": 61270.596937439,
+     "wavelength_um": 4.627533340195914,
+     "bandwidth_um": 0.03679669907494829,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0308_3",
+     "mjd": 61270.598429696,
+     "wavelength_um": 4.661804310528088,
+     "bandwidth_um": 0.03704362465651272,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0308_4",
+     "mjd": 61270.599921953,
+     "wavelength_um": 4.695235091849391,
+     "bandwidth_um": 0.037282039089060005,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0431_1",
+     "mjd": 61271.206736722,
+     "wavelength_um": 4.730343825086397,
+     "bandwidth_um": 0.036833757418753374,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0431_2",
+     "mjd": 61271.20822899,
+     "wavelength_um": 4.7672734559783265,
+     "bandwidth_um": 0.036382381915917424,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0431_3",
+     "mjd": 61271.209721236,
+     "wavelength_um": 4.800359480652935,
+     "bandwidth_um": 0.036540351014916594,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_1A_0431_4",
+     "mjd": 61271.211213504,
+     "wavelength_um": 4.834841401035738,
+     "bandwidth_um": 0.03690600213967706,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W34_2A_0081_1",
+     "mjd": 61272.906841421,
+     "wavelength_um": 4.8699681606514424,
+     "bandwidth_um": 0.03707942086843941,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    }
+   ],
+   "edges": [],
+   "summary": {
+    "n_nodes": 58,
+    "n_usable": 0,
+    "n_pairs": 1653,
+    "n_edges": 0,
+    "n_components_with_edges": 0,
+    "largest_component": 0,
+    "n_isolated_nodes": 58,
+    "refusals_by_code": {
+     "flagged_pixels": 1653,
+     "wavelength_mismatch": 1579,
+     "nan_pixels": 57,
+     "bad_variance": 57
+    }
+   }
+  },
+  "wise0855": {
+   "nodes": [
+    {
+     "id": "2025W19_1B_0116_1",
+     "mjd": 60800.70069465,
+     "wavelength_um": 4.9674101229120895,
+     "bandwidth_um": 0.03718679576950839,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W19_1B_0116_2",
+     "mjd": 60800.702186907,
+     "wavelength_um": 5.00341271476707,
+     "bandwidth_um": 0.03758108185981852,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W19_1B_0138_1",
+     "mjd": 60800.835104036,
+     "wavelength_um": 4.859533400605324,
+     "bandwidth_um": 0.03794062133576144,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_1A_0075_4",
+     "mjd": 60989.297473643,
+     "wavelength_um": 4.412408323102822,
+     "bandwidth_um": 0.037410816525235625,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_1A_0076_1",
+     "mjd": 60989.299214604,
+     "wavelength_um": 4.444203611210475,
+     "bandwidth_um": 0.036730980745801146,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_1A_0076_2",
+     "mjd": 60989.300706861,
+     "wavelength_um": 4.476846787384221,
+     "bandwidth_um": 0.03610986110070771,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W46_1A_0076_3",
+     "mjd": 60989.302199117,
+     "wavelength_um": 4.50969010261948,
+     "bandwidth_um": 0.03596180122110086,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_1A_0090_1",
+     "mjd": 60989.3654423,
+     "wavelength_um": 4.542038610456494,
+     "bandwidth_um": 0.03582964166473516,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W46_1A_0090_2",
+     "mjd": 60989.366934557,
+     "wavelength_um": 4.576185969849565,
+     "bandwidth_um": 0.03603252336490389,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_1A_0090_3",
+     "mjd": 60989.368426814,
+     "wavelength_um": 4.610756256854229,
+     "bandwidth_um": 0.036283853379210966,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_1A_0238_1",
+     "mjd": 60989.977657659,
+     "wavelength_um": 4.628626996513315,
+     "bandwidth_um": 0.0366123276294554,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_1A_0238_2",
+     "mjd": 60989.979149916,
+     "wavelength_um": 4.6632022879479935,
+     "bandwidth_um": 0.036691701895930635,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W46_2A_0214_1",
+     "mjd": 60993.505774928,
+     "wavelength_um": 4.697672845304095,
+     "bandwidth_um": 0.036771266694276245,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W46_2A_0214_2",
+     "mjd": 60993.507267173,
+     "wavelength_um": 4.7320644857111205,
+     "bandwidth_um": 0.036587330454107225,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W46_2A_0214_3",
+     "mjd": 60993.508759418,
+     "wavelength_um": 4.766544341751372,
+     "bandwidth_um": 0.03640774744523191,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_2A_0214_4",
+     "mjd": 60993.510251698,
+     "wavelength_um": 4.801248011508153,
+     "bandwidth_um": 0.03664395511079767,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_2A_0226_1",
+     "mjd": 60993.574916062,
+     "wavelength_um": 4.835572494503612,
+     "bandwidth_um": 0.036950347373890205,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_2A_0226_2",
+     "mjd": 60993.576408319,
+     "wavelength_um": 4.871407726816899,
+     "bandwidth_um": 0.03722877409051498,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_2A_0226_3",
+     "mjd": 60993.577900564,
+     "wavelength_um": 4.90733727388756,
+     "bandwidth_um": 0.03748120930370908,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W46_2A_0226_4",
+     "mjd": 60993.579392833,
+     "wavelength_um": 4.943366090217366,
+     "bandwidth_um": 0.03755336063178057,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W46_2A_0289_1",
+     "mjd": 60993.913551328,
+     "wavelength_um": 4.97902118935529,
+     "bandwidth_um": 0.037382815585721804,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W50_2A_0232_1",
+     "mjd": 61021.283493666,
+     "wavelength_um": 4.628813630418623,
+     "bandwidth_um": 0.03659417700565834,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2025W50_2A_0254_1",
+     "mjd": 61021.352084106,
+     "wavelength_um": 4.6974463759836915,
+     "bandwidth_um": 0.03677499413733401,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2025W50_2A_0428_1",
+     "mjd": 61022.029798828,
+     "wavelength_um": 4.732007556599594,
+     "bandwidth_um": 0.036598773300622695,
+     "usable": false,
+     "reasons": [
+      "flagged_pixels"
+     ]
+    },
+    {
+     "id": "2026W17_1B_0227_2",
+     "mjd": 61151.198599395,
+     "wavelength_um": 4.413959913372187,
+     "bandwidth_um": 0.035680036986610764,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_1B_0227_3",
+     "mjd": 61151.200091652,
+     "wavelength_um": 4.446614096772146,
+     "bandwidth_um": 0.035708471989284445,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_1B_0227_4",
+     "mjd": 61151.201583909,
+     "wavelength_um": 4.4778179247199335,
+     "bandwidth_um": 0.035739186957809595,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_1B_0507_1",
+     "mjd": 61152.757969777,
+     "wavelength_um": 4.509517090621312,
+     "bandwidth_um": 0.03572745404635625,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_1B_0507_2",
+     "mjd": 61152.759462023,
+     "wavelength_um": 4.542364578143493,
+     "bandwidth_um": 0.035702544771412006,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_1B_0507_3",
+     "mjd": 61152.76095428,
+     "wavelength_um": 4.577915915613172,
+     "bandwidth_um": 0.035884207163901734,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_1B_0634_1",
+     "mjd": 61153.437123226,
+     "wavelength_um": 4.609109414570835,
+     "bandwidth_um": 0.036138771119142286,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_1B_0634_2",
+     "mjd": 61153.438615495,
+     "wavelength_um": 4.643595450123955,
+     "bandwidth_um": 0.03632047645723253,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_1B_0634_3",
+     "mjd": 61153.44010774,
+     "wavelength_um": 4.667201171473046,
+     "bandwidth_um": 0.03635684815726883,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_1B_0634_4",
+     "mjd": 61153.441599997,
+     "wavelength_um": 4.71044772421729,
+     "bandwidth_um": 0.03641074654029732,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_2A_0591_1",
+     "mjd": 61156.086177138,
+     "wavelength_um": 4.814794895791296,
+     "bandwidth_um": 0.03677456830117401,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_2A_0609_1",
+     "mjd": 61156.153381895,
+     "wavelength_um": 4.74413578223196,
+     "bandwidth_um": 0.03678837431938543,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_2A_0609_2",
+     "mjd": 61156.154891907,
+     "wavelength_um": 4.780100860476677,
+     "bandwidth_um": 0.03718940235795864,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_2A_0692_1",
+     "mjd": 61156.493846861,
+     "wavelength_um": 4.894957248714554,
+     "bandwidth_um": 0.03740359977172962,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W17_2A_0692_2",
+     "mjd": 61156.495339106,
+     "wavelength_um": 4.93153367498146,
+     "bandwidth_um": 0.036859930818078944,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W18_2A_0065_1",
+     "mjd": 61160.771483435,
+     "wavelength_um": 4.824697947614325,
+     "bandwidth_um": 0.03753403213626036,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W19_2A_0568_1",
+     "mjd": 61168.985404546,
+     "wavelength_um": 4.824640098062018,
+     "bandwidth_um": 0.037528787847330214,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W19_2A_0651_1",
+     "mjd": 61169.194888736,
+     "wavelength_um": 4.859536971525825,
+     "bandwidth_um": 0.03793791285783683,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W19_2A_0782_1",
+     "mjd": 61169.528318874,
+     "wavelength_um": 4.895079328927339,
+     "bandwidth_um": 0.037401776392515414,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W19_2A_0952_1",
+     "mjd": 61169.933874661,
+     "wavelength_um": 4.931247033198039,
+     "bandwidth_um": 0.036866444179929764,
+     "usable": true,
+     "reasons": []
+    },
+    {
+     "id": "2026W20_1A_0033_1",
+     "mjd": 61171.097016444,
+     "wavelength_um": 4.967352092718526,
+     "bandwidth_um": 0.037187137678487824,
+     "usable": true,
+     "reasons": []
+    }
+   ],
+   "edges": [
+    {
+     "a": "2025W19_1B_0116_1",
+     "b": "2025W46_2A_0289_1",
+     "dlambda_um": 0.011611066443200535,
+     "overlap_gaussian": 0.7138631323255089,
+     "overlap_tophat": 0.6867791746596332,
+     "flux_ratio": 2.92000301084374,
+     "significance": 1.3261205845944548
+    },
+    {
+     "a": "2025W19_1B_0116_1",
+     "b": "2026W20_1A_0033_1",
+     "dlambda_um": 5.803019356331873e-05,
+     "overlap_gaussian": 0.9985340068315425,
+     "overlap_tophat": 0.9984349118623879,
+     "flux_ratio": 1.6963508819248854,
+     "significance": 0.5058442718368649
+    },
+    {
+     "a": "2025W19_1B_0138_1",
+     "b": "2025W46_2A_0226_2",
+     "dlambda_um": 0.011874326211574804,
+     "overlap_gaussian": 0.7098140195770236,
+     "overlap_tophat": 0.6776476134651543,
+     "flux_ratio": 1.74565197399684,
+     "significance": 0.9914902389893581
+    },
+    {
+     "a": "2025W19_1B_0138_1",
+     "b": "2026W19_2A_0651_1",
+     "dlambda_um": 3.570920501516639e-06,
+     "overlap_gaussian": 0.9999072733294475,
+     "overlap_tophat": 0.9998701876961935,
+     "flux_ratio": 1.6439049240384618,
+     "significance": 0.8429699072523965
+    },
+    {
+     "a": "2025W46_1A_0075_4",
+     "b": "2026W17_1B_0227_2",
+     "dlambda_um": 0.0015515902693650219,
+     "overlap_gaussian": 0.9559034179483371,
+     "overlap_tophat": 0.9353935502304007,
+     "flux_ratio": 1.0266772420803378,
+     "significance": 0.06635147110170374
+    },
+    {
+     "a": "2025W46_1A_0076_1",
+     "b": "2026W17_1B_0227_3",
+     "dlambda_um": 0.0024104855616711163,
+     "overlap_gaussian": 0.9365549489169532,
+     "overlap_tophat": 0.9204557057664937,
+     "flux_ratio": 0.694599967896315,
+     "significance": -0.8912619074434643
+    },
+    {
+     "a": "2025W46_1A_0076_3",
+     "b": "2026W17_1B_0507_1",
+     "dlambda_um": 0.0001730119981679934,
+     "overlap_gaussian": 0.9947344292497083,
+     "overlap_tophat": 0.9919307271691803,
+     "flux_ratio": 1.9350243892958496,
+     "significance": 1.4462096785873728
+    },
+    {
+     "a": "2025W46_1A_0090_2",
+     "b": "2026W17_1B_0507_3",
+     "dlambda_um": 0.001729945763607077,
+     "overlap_gaussian": 0.9547982186778085,
+     "overlap_tophat": 0.9499312372370367,
+     "flux_ratio": 1.2107535311549376,
+     "significance": 0.5619503129465175
+    },
+    {
+     "a": "2025W46_1A_0090_3",
+     "b": "2025W46_1A_0238_1",
+     "dlambda_um": 0.017870739659086254,
+     "overlap_gaussian": 0.5637302303708905,
+     "overlap_tophat": 0.5074069868833391,
+     "flux_ratio": 1.3196322330132941,
+     "significance": 0.8233088812222725
+    },
+    {
+     "a": "2025W46_1A_0090_3",
+     "b": "2025W50_2A_0232_1",
+     "dlambda_um": 0.018057373564394297,
+     "overlap_gaussian": 0.5595688894436794,
+     "overlap_tophat": 0.5023105622842367,
+     "flux_ratio": 1.1215083528807304,
+     "significance": 0.3362778436020419
+    },
+    {
+     "a": "2025W46_1A_0090_3",
+     "b": "2026W17_1B_0634_1",
+     "dlambda_um": 0.0016468422833941787,
+     "overlap_gaussian": 0.9572662231904249,
+     "overlap_tophat": 0.9526129875055421,
+     "flux_ratio": 0.9833779647953448,
+     "significance": -0.04573497888836918
+    },
+    {
+     "a": "2025W46_1A_0238_1",
+     "b": "2025W50_2A_0232_1",
+     "dlambda_um": 0.00018663390530804236,
+     "overlap_gaussian": 0.9952059126212949,
+     "overlap_tophat": 0.9946545540838946,
+     "flux_ratio": 0.7385154712474395,
+     "significance": -1.0423389981129738
+    },
+    {
+     "a": "2025W46_1A_0238_1",
+     "b": "2026W17_1B_0634_2",
+     "dlambda_um": 0.014968453610640253,
+     "overlap_gaussian": 0.6288747174729912,
+     "overlap_tophat": 0.5871778667087113,
+     "flux_ratio": 0.509953518081368,
+     "significance": -1.930004820195549
+    },
+    {
+     "a": "2025W46_2A_0214_3",
+     "b": "2026W17_2A_0609_2",
+     "dlambda_um": 0.013556518725304834,
+     "overlap_gaussian": 0.6643719809372742,
+     "overlap_tophat": 0.6249644980195865,
+     "flux_ratio": 1.3117887465341524,
+     "significance": 0.30961635667164267
+    },
+    {
+     "a": "2025W46_2A_0214_4",
+     "b": "2026W17_2A_0591_1",
+     "dlambda_um": 0.013546884283143434,
+     "overlap_gaussian": 0.6639217466693366,
+     "overlap_tophat": 0.6298477043468922,
+     "flux_ratio": 0.7611527355373541,
+     "significance": -0.5744051869279045
+    },
+    {
+     "a": "2025W46_2A_0226_1",
+     "b": "2026W18_2A_0065_1",
+     "dlambda_um": 0.010874546889287018,
+     "overlap_gaussian": 0.7309307711436155,
+     "overlap_tophat": 0.7024996080907531,
+     "flux_ratio": 0.9263234526832279,
+     "significance": -0.15256527416633656
+    },
+    {
+     "a": "2025W46_2A_0226_1",
+     "b": "2026W19_2A_0568_1",
+     "dlambda_um": 0.010932396441594605,
+     "overlap_gaussian": 0.7295389301018038,
+     "overlap_tophat": 0.7009864340952172,
+     "flux_ratio": 0.5134045228494157,
+     "significance": -0.9941523965294929
+    },
+    {
+     "a": "2025W46_2A_0226_2",
+     "b": "2026W19_2A_0651_1",
+     "dlambda_um": 0.011870755291073287,
+     "overlap_gaussian": 0.7098880210237184,
+     "overlap_tophat": 0.6777544215322109,
+     "flux_ratio": 0.9039805234305173,
+     "significance": -0.2322804352742031
+    },
+    {
+     "a": "2025W46_2A_0226_4",
+     "b": "2026W17_2A_0692_2",
+     "dlambda_um": 0.011832415235906169,
+     "overlap_gaussian": 0.7079918348675468,
+     "overlap_tophat": 0.6756846807353376,
+     "flux_ratio": 0.706390964941763,
+     "significance": -0.43492203261601714
+    },
+    {
+     "a": "2025W46_2A_0226_4",
+     "b": "2026W19_2A_0952_1",
+     "dlambda_um": 0.01211905701932725,
+     "overlap_gaussian": 0.701284638208614,
+     "overlap_tophat": 0.668138482532894,
+     "flux_ratio": 0.9956340653169732,
+     "significance": -0.00620152657414052
+    },
+    {
+     "a": "2025W46_2A_0289_1",
+     "b": "2026W20_1A_0033_1",
+     "dlambda_um": 0.011669096636763854,
+     "overlap_gaussian": 0.7124978245046487,
+     "overlap_tophat": 0.6852314250274267,
+     "flux_ratio": 0.4735216988521986,
+     "significance": -1.167852852508729
+    },
+    {
+     "a": "2025W50_2A_0232_1",
+     "b": "2026W17_1B_0634_2",
+     "dlambda_um": 0.014781819705332211,
+     "overlap_gaussian": 0.6330760049580519,
+     "overlap_tophat": 0.5923212051677538,
+     "flux_ratio": 0.675636560472253,
+     "significance": -1.0581977137337104
+    },
+    {
+     "a": "2026W17_2A_0591_1",
+     "b": "2026W18_2A_0065_1",
+     "dlambda_um": 0.009903051823028974,
+     "overlap_gaussian": 0.7535276974147562,
+     "overlap_tophat": 0.7260410577994387,
+     "flux_ratio": 0.9578813911430054,
+     "significance": -0.07530872953432806
+    },
+    {
+     "a": "2026W17_2A_0591_1",
+     "b": "2026W19_2A_0568_1",
+     "dlambda_um": 0.009845202270721387,
+     "overlap_gaussian": 0.754904888697669,
+     "overlap_tophat": 0.7276141162516563,
+     "flux_ratio": 0.4155090869543372,
+     "significance": -1.0279016051923588
+    },
+    {
+     "a": "2026W17_2A_0692_1",
+     "b": "2026W19_2A_0782_1",
+     "dlambda_um": 0.00012208021278503622,
+     "overlap_gaussian": 0.9969336801128094,
+     "overlap_tophat": 0.996711762954842,
+     "flux_ratio": -2.121515834928338,
+     "significance": -0.2778378552949517
+    },
+    {
+     "a": "2026W17_2A_0692_2",
+     "b": "2026W19_2A_0952_1",
+     "dlambda_um": 0.00028664178342108215,
+     "overlap_gaussian": 0.9926948581496542,
+     "overlap_tophat": 0.9921365222278618,
+     "flux_ratio": 1.515038082715384,
+     "significance": 0.4746003724790559
+    },
+    {
+     "a": "2026W18_2A_0065_1",
+     "b": "2026W19_2A_0568_1",
+     "dlambda_um": 5.784955230758726e-05,
+     "overlap_gaussian": 0.9985509160586876,
+     "overlap_tophat": 0.998388883545663,
+     "flux_ratio": 0.602741066491284,
+     "significance": -0.980278433442182
+    }
+   ],
+   "summary": {
+    "n_nodes": 45,
+    "n_usable": 37,
+    "n_pairs": 990,
+    "n_edges": 27,
+    "n_components_with_edges": 11,
+    "largest_component": 5,
+    "n_isolated_nodes": 14,
+    "refusals_by_code": {
+     "wavelength_mismatch": 952,
+     "flagged_pixels": 324
+    }
+   }
+  }
+ }
+}

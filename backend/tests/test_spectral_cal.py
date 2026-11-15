@@ -122,7 +122,7 @@ def test_load_reads_maps_and_refuses_wrong_shape(tmp_path):
     c = S.load(6, path=str(p))
     assert c["detector"] == 6 and c["cwave"].shape == (S.NPIX, S.NPIX) and c["detcoord"] == "sky"
     assert c["verified"] is False          # D6 has a recorded hash; a simulated file must not match it
-    assert S.load(5, path=str(p)) is None  # header says D6, so it is refused for D5
+    assert S.load(5, path=str(p)) is None  # header says D6, so we refuse it for D5
     small = tmp_path / "small.fits"
     fits.HDUList([fits.PrimaryHDU(), fits.ImageHDU(np.ones((10, 10)), name="CWAVE"),
                   fits.ImageHDU(np.ones((10, 10)), name="CBAND")]).writeto(small)

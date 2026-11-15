@@ -110,7 +110,7 @@ class RateLimiter:
         if len(q) >= n:
             return max(1.0, q[0] + window - now)
         q.append(now)
-        if len(self.hits) > 20000:  # forget idle clients so the table cannot grow forever
+        if len(self.hits) > 20000:  # we forget idle clients so the table cannot grow forever
             for k in [k for k, v in self.hits.items() if not v or v[-1] <= now - self.rates[k[1]][1]]:
                 del self.hits[k]
         return 0.0
@@ -153,7 +153,7 @@ def validate_query(kind: str, query: str, max_epochs: int) -> tuple[str | None, 
             if not 2 <= lim <= max_epochs:
                 return f"'limit' must be between 2 and {max_epochs} on this public server.", query
         else:
-            # The page asks for every epoch; here that is capped so one request
+            # The page asks for every epoch; we cap that here so one request
             # cannot download thousands of cutouts at a deep-field position.
             params["limit"] = str(max_epochs)
     return None, urlencode(params)
@@ -162,7 +162,7 @@ def validate_query(kind: str, query: str, max_epochs: int) -> tuple[str | None, 
 def prune_cache(cache_dir: Path, max_bytes: int) -> int:
     """Delete least-recently-used cutouts (FITS + its JSON) until under 80 % of the cap.
 
-    Only top-level cutout files are touched; calibration/ and sia/ stay.
+    We only touch top-level cutout files; calibration/ and sia/ stay.
     Returns the number of cutouts removed.
     """
     if max_bytes <= 0 or not cache_dir.is_dir():
@@ -227,7 +227,7 @@ class PublicGuard:
             for name, value in scope.get("headers", []):
                 if name == b"x-forwarded-for":
                     hops = [h.strip() for h in value.decode("latin-1").split(",") if h.strip()]
-                    # Take the address added by the outermost trusted proxy; anything
+                    # We take the address added by the outermost trusted proxy; anything
                     # further left was written by the client and could be forged.
                     if hops:
                         return hops[-min(self.s.trusted_proxy_hops, len(hops))]
@@ -263,7 +263,7 @@ class PublicGuard:
         if not self.active_by_client[client]:
             del self.active_by_client[client]
         self._trim_results()
-        # Only delete cutouts when no analysis could be reading them right now.
+        # We only delete cutouts when no analysis could be reading them right now.
         # This runs on the event loop thread, so no analysis can start meanwhile.
         if not self.active["analyze"] and self.cache_dir is not None:
             prune_cache(self.cache_dir, self.s.cache_max_bytes)
@@ -323,7 +323,7 @@ class PublicGuard:
 
         async def guarded_send(msg):
             if state["timed_out"]:
-                return  # the client already got a 504; drop the late answer
+                return  # the client already got a 504, so we drop the late answer
             if msg["type"] == "http.response.start":
                 state["started"] = True
             await send(msg)
@@ -340,4 +340,4 @@ class PublicGuard:
                 send, 504, "Still working (first downloads from IRSA can take several minutes). "
                            "The result is cached when ready: run the same request again shortly.",
                 [(b"retry-after", b"60")])
-        await task  # the answer is already streaming; let it finish
+        await task  # the answer is already streaming, so we let it finish

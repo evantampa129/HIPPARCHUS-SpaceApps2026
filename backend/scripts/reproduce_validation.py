@@ -8,8 +8,8 @@
 * evidence graph of every result back to its dataset DOI
 * timings of the analysis and of the API answers (p50/p95)
 
-Runs through the API, as the web app does, so the timings are the ones a user
-sees. Cutouts come from the verified cache; the archive listing is queried live.
+We go through the API, as the web app does, so the timings are the ones a user
+sees. Cutouts come from the verified cache; we query the archive listing live.
 """
 
 import json

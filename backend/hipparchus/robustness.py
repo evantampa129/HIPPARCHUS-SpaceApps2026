@@ -10,7 +10,7 @@ Four checks, all run on the real comparisons from pipeline.analyze():
   calibration error and add it to the formal error of the target.
 * trials(): what a 5 sigma threshold means when many pairs are tested.
 
-Nothing here changes the production measurement; it reports alongside it.
+Nothing here changes the production measurement; we report it alongside.
 The labels robust / sensitive / inconclusive follow the explicit rule in
 classify(). They are not probabilities.
 """
@@ -34,7 +34,7 @@ ANNULI = ((3.5, 6.0), (4.0, 7.0), (5.0, 8.0))
 MASKS = ("as_flagged", "flags_grown_1px")
 CALIBRATIONS = ("none", "ensemble")
 
-# Field stars used for the ensemble: a local peak, detected at S/N >= 10 in
+# Field stars we use for the ensemble: a local peak, detected at S/N >= 10 in
 # epoch a (the same bar as the single control star in compare.py), at least
 # this far from the target and from any brighter accepted star, and with no
 # flagged pixel in its aperture in either epoch. Near the cutout edge part of
@@ -75,7 +75,7 @@ def field_stars(A: dict, tx: float, ty: float) -> list[tuple[float, float]]:
         if r is None or r["fa"] < ENSEMBLE_MIN_SNR * r["err"] / math.sqrt(2):
             continue
         out.append((x, y, r["fa"]))
-    # Isolation: drop a star if a brighter accepted one is within ISOLATION_PX.
+    # Isolation: we drop a star if a brighter accepted one is within ISOLATION_PX.
     out.sort(key=lambda s: -s[2])
     kept: list[tuple[float, float, float]] = []
     for s in out:
@@ -168,7 +168,7 @@ def _tan_wcs(crval, rot_deg=0.0, shift=(0.0, 0.0), n=29):
 def reprojection_noise_mc(n_trials: int = 300, rot_deg: float = 37.0, seed: int = 1) -> dict:
     """Pure white noise, rotated and shifted onto another grid as in compare().
 
-    Compares the real scatter of the aperture flux (and of single pixels)
+    We compare the real scatter of the aperture flux (and of single pixels)
     after reprojection with the error our code predicts from the
     reprojected variance. Ratios near 1 mean the aperture error is right.
     """

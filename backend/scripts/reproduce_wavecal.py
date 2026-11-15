@@ -8,12 +8,12 @@ Spectral WCS calibration files in data/cache/calibration (fetched with
 spectral_cal.download if missing). It does not change the production code
 or any published evidence file; it only reports what would change.
 
-Three wavelength readings are compared at every epoch's target pixel:
+We compare three wavelength readings at every epoch's target pixel:
   production  astropy WCS(key="W"), exactly as quality.py reads it
   table       the same WCS-WAVE table, bilinear between control points (IRSA recipe)
   calibrated  CWAVE/CBAND maps of the Spectral WCS product (what IRSA recommends)
-They are the quality.WAVELENGTH_SOURCES "wcs", "wcs_nosip" and "cwave"; the
-pipeline is also rerun in each mode and must give the same numbers.
+They are the quality.WAVELENGTH_SOURCES "wcs", "wcs_nosip" and "cwave"; we also
+rerun the pipeline in each mode, and it must give the same numbers.
 """
 
 import dataclasses
@@ -280,7 +280,7 @@ def audit_target(t):
         "dband_nm_cal_minus_production", "dlambda_over_cband_cal_minus_production")}
     diffs_all = stats([p["dlambda_nm_cal_minus_production"] for p in per_epoch])
 
-    # Re-run the pair rule. Pixels are compared only where some variant
+    # We re-run the pair rule, and compare pixels only where some variant
     # accepts the pair, since compare() never looks at the wavelength itself.
     ids = [e.obs_id for e in epochs]
     rows = {k: [] for k in variants}
@@ -367,7 +367,7 @@ def epsf_layout():
                 d["tables"][key]["random_positions_checked"] = 2000
                 d["tables"][key]["random_positions_wrong_zone"] = bad
             d["tables"][key]["n_cutouts"] += 1
-            # The cutout centre as the star position, on every cached file.
+            # We take the cutout centre as the star position, on every cached file.
             ny, nx = h["IMAGE"].data.shape
             e = P.load_epsf(h, (nx - 1) / 2, (ny - 1) / 2)
             d["zone_checks"] += 1
@@ -383,8 +383,8 @@ def epsf_layout():
 
 
 def orientation_check():
-    """The EPSF zones carry CWAVE taken from the same Spectral WCS product. Comparing
-    them with our map at the zone centres, as is and with x flipped, tells whether
+    """The EPSF zones carry CWAVE taken from the same Spectral WCS product. We compare
+    them with our map at the zone centres, as is and with x flipped, to tell whether
     our indexing (map[y, x], 'sky' orientation) is the one the pipeline used."""
     out = {}
     for det in (1, 6):
@@ -424,8 +424,8 @@ def robustness_summary(d):
 
 
 def robustness_by_mode():
-    """Rerun reproduce_robustness in every mode. Legacy goes to a temp file and is
-    compared with the published robustness.json (it must reproduce it)."""
+    """Rerun reproduce_robustness in every mode. We write legacy to a temp file and
+    compare it with the published robustness.json (it must reproduce it)."""
     out = {"published": robustness_summary(json.loads(RR.OUT.read_text()))}
     for m in Q.WAVELENGTH_SOURCES:
         if m == "wcs":

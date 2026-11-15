@@ -1,6 +1,6 @@
 """Check the three preset positions against SIMBAD and Gaia DR3 (live, via mirrors).
 
-Writes submission/evidence/catalog_match.json. Measurements are not touched:
+Writes submission/evidence/catalog_match.json. We don't touch any measurement:
 this only records whether each preset is on the right star, how far off it
 is, and which Gaia stars fall inside the 2-pixel photometry aperture.
 """

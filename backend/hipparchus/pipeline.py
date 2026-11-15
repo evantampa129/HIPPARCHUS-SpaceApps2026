@@ -29,7 +29,7 @@ def load_epochs(ra: float, dec: float, detector: str, limit: int | None = None,
         except Exception as e:  # one broken file must not stop the whole target
             return None, {"obs": o, "error": str(e)}
 
-    # Downloads are I/O-bound, so a few threads cut the wait roughly in proportion.
+    # Downloads are I/O-bound, so we use a few threads; they cut the wait roughly in proportion.
     with ThreadPoolExecutor(6) as pool:
         results = list(pool.map(one, obs))
     epochs = [ep for ep, _ in results if ep is not None]
@@ -49,13 +49,13 @@ def analyze(ra: float, dec: float, detector: str, limit: int | None = None,
     for a, b in combinations(epochs, 2):
         v = compatibility(a, b)
         if not v.comparable:
-            # Count every cause, so the summary can say how many pairs failed
+            # We count every cause, so the summary can say how many pairs failed
             # on wavelength and how many on flagged pixels (a pair can have both).
             refusals.update(set(v.codes))
             continue
         c = compare(a, b)
         if not c["verdict"]["comparable"]:
-            # Refused only once the pixels were aligned (bad aperture or no sky).
+            # We can only refuse these after aligning the pixels (bad aperture or no sky).
             refusals.update(set(c["verdict"]["codes"]))
             continue
         (nulls if v.kind == "null_test" else comparisons).append(c)

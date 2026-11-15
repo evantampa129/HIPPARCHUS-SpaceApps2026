@@ -19,7 +19,7 @@ Status as of 16 Nov 2026. Filled in from the commands we actually ran; this file
 | Six-slide deck | IMPLEMENTED AND VERIFIED | `presentation/HIPPARCHUS_AETHENOVA_FINAL.pptx/.pdf` (6 pages) | assert in build script | — |
 | Moving objects: blind linking validated on (216) Kleopatra vs JPL Horizons (observer = SPHEREx) | IMPLEMENTED (validation on one known asteroid) | `submission/evidence/motion_check.json`, `report/figures/motion_check.png` | `test_motion.py` (8, SIMULATED) | One object, one 3.3-day window, slow motion only; 3-visit tracks can be chance alignments; the second track is explained as two faint static Gaia/AllWISE stars plus one detector hit (`motion_followup.json`, `test_motion_vetting.py` 5 tests); further known-asteroid cases (Tamriko, Eros) found but not run because IRSA returned 502. HIPPARCHUS has not found Planet X |
 | SPHEREx pipeline flags moving asteroids as OUTLIER (35/38 exposures) | FOUND AND DOCUMENTED | `motion_check.json` → `pipeline_flag_finding` | — | Motion check keeps OUTLIER pixels; static pipeline unchanged |
-| Research report | IMPLEMENTED AND VERIFIED | `report/HIPPARCHUS_AETHENOVA_FINAL.pdf` (14 pages, XeLaTeX) | builds clean | — |
+| Research report | IMPLEMENTED AND VERIFIED | `report/HIPPARCHUS_AETHENOVA_FINAL.pdf` (16 pages, XeLaTeX) | builds clean | — |
 | 29 s film (Remotion) | IMPLEMENTED AND VERIFIED | `video/hipparchus_aethenova_29s.mp4` (29.4 s, 1920×1080, 30 fps, H.264 + AAC, −15.7 LUFS), `.en.srt`, `credits.txt`, `video/qc/` | ffprobe + QC frames | No voice-over (captions only); IRSA returned 502 during the screen recording, the app's cached listing is shown and labelled |
 | First-person code comments pass | PARTIAL | new modules use "we"; older modules not fully rewritten | — | — |
 | IRSA tools comparison (Spectrophotometry Tool, MOST, Source Discovery) | NOT IMPLEMENTED | — | — | Out of time |
@@ -66,10 +66,10 @@ Checked on 16 Nov 2026.
 | Private repo (`final-aethenova`) | `815115f` verified (this checklist update is the next commit); repository stays private |
 | Public repo (`main`) | `9fd0cc0` verified and served by Pages (this checklist update is the next commit) |
 | GitHub Pages | built from `9fd0cc0`; https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/ returns 200 with the updated Moving-Object Explorer |
-| Backend tests | 85 passed (`cd backend && pytest -q`) |
+| Backend tests | 106 passed (`cd backend && pytest -q`) |
 | Frontend build | `npm run build` OK |
 | Deck | 6 slides (PPTX + PDF) |
-| Report | 14 pages |
+| Report | 16 pages |
 | Video | 29.42 s, 1920×1080, 30 fps, H.264 + AAC; plays on the Judge Mode page with English captions |
 | Public interactive app | ready in `deploy/`, verified locally with a live RW Aur analysis; not deployed (no host login on the build machine) |
 | Links | every link on the page returns 200, except the IRSA archive-query links, which returned 502 because IRSA was down at check time |

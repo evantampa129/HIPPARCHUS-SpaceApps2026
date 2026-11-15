@@ -138,6 +138,29 @@ since the target is itself a source; DICHROIC and PHANMISS are reported as warni
 the target's wavelengths differ by at most half a channel width. Pairs taken less than 0.5 days apart are treated as
 null tests of the noise.
 
+\paragraph{What the half-channel rule means in light collected.} We checked the rule against the spectral response it
+stands for (\texttt{reproduce\_compat.py}, \texttt{compat\_check.json}). We model each exposure's response at the
+star as one channel centred on the wavelength at the star, with the channel width as full width, and try two shapes:
+a top-hat, and a Gaussian with FWHM equal to the width. We did not use the measured per-pixel response curves
+\parencite{hui2026}; the two shapes bracket the answer. At the rule's limit two equal channels share exactly 50\% (top-hat) or 55.6\% (Gaussian) of their response,
+so the rule is the same as asking for a top-hat overlap of at least one half; over all 4,183 pairs of the three
+targets the two give identical verdicts. No published pair has an overlap below 0.61 (RW~Aur) or 0.50 (WISE~0855,
+top-hat; 0.56 Gaussian). Among usable pairs refused only for wavelength (145 for RW~Aur, 639 for WISE~0855), none
+reaches an overlap of 0.7 under either shape, and only 3 WISE~0855 pairs reach 0.5 under the Gaussian shape; the rule
+does not throw away pairs that see clearly the same light.
+
+\paragraph{Compatibility graph.} Per target we also store the pairs as a graph: epochs are nodes, compared pairs are
+edges with $\Delta\lambda$, overlap, ratio and significance, and every refused pair keeps its reason codes
+(Fig.~\ref{fig:compat}). Rebuilt from the epoch records alone, the graph gives back exactly the published 8 (RW~Aur),
+27 (WISE~0855) and 0 (Barnard's Star) pairs and the published refusal counts. The RW~Aur edges form 2 groups (largest
+8 epochs); WISE~0855 has 11 groups (largest 5): its pairs are short chains at fixed wavelength, not one connected web.
+
+\begin{figure}[h]\centering
+\includegraphics[width=\linewidth]{figures/compat_graph.png}
+\caption{Observation compatibility graphs. Points are epochs at their time and wavelength at the star (green usable,
+grey flagged); lines join pairs that pass every check.}\label{fig:compat}
+\end{figure}
+
 \paragraph{Comparison.} The later image, its variance and its flag mask are reprojected onto the earlier epoch's
 pixel grid (\texttt{reproject}, bilinear). Flux is the sum inside $r=2$\,px minus the median sky in a 4--7\,px
 annulus; its uncertainty combines the pixel variances and the error of the sky level. A change is called significant
@@ -432,6 +455,39 @@ The same audit checked the ePSF tables in all 204 cached cutouts: detectors 1, 2
 grid and detector 3 an $11\times41$ grid, as documented. Our zone selection picks the zone containing the star for
 both layouts.
 
+\section{Comparison with IRSA's own SPHEREx tools}\label{sec:irsatools}
+We ran two of IRSA's own tools on exactly our exposures (\texttt{compare\_irsa\_tools.py},
+\texttt{irsa\_tools\_check.json}, Fig.~\ref{fig:irsatools}).
+
+\paragraph{Source Discovery Tool (SDT).} We ran IRSA's tutorial package unmodified (irsa-tutorials commit
+\texttt{8a83a9e3}) on fresh cutouts of the same exposures, matched by observation ID, and converted our fluxes to mJy
+with the pixel solid-angle map. For RW~Aur at the same 2\,px aperture the per-exposure ratio SDT/ours is 0.9998
+(robust scatter 0.0040, $n=10$): 0.9979 on exposures we measure on their own grid and 1.0055 on exposures we measure
+after reprojection, so our bilinear reprojection costs about 0.8\% of the flux in a 2\,px aperture. On the 8 published
+pairs SDT's brightness ratio is 1.0093 times ours (scatter 0.0037), and both call all 8 pairs changed. SDT's
+significances are higher because its error omits the sky-level term that ours includes. Two differences are worth
+knowing: SDT reads the solid-angle map at the detector corner rather than at the cutout's position (1.3\% low here),
+and it reads the wavelength without the SIP terms ($+1.4$\,nm on D1, $+3.7$\,nm median on D6 relative to our legacy
+values; Section~\ref{sec:wavecal-audit}). For WISE~0855 (our $S/N\approx3$) SDT/ours is 0.98 with scatter 0.22, and all
+27 ``no change'' verdicts agree at 2\,px. At SDT's default 3\,px aperture it calls 3 pairs changed; each involves
+flagged pixels 2--3\,px from the target that SDT sums and our 2\,px aperture never reaches.
+
+\paragraph{Moving Object Search Tool (MOST).} For (216)~Kleopatra over MJD 60843.4--60846.7, MOST lists 36 SPHEREx
+DR1 images and we used 38: 36 are common, none is MOST-only, and our 2 extra entries are one exposure on D3 and D6
+where we had already found the asteroid beyond the detector edge and measured nothing. MOST's positions equal JPL
+Horizons as seen from SPHEREx at exposure start (rms $0.001''$); against our measured centroids they differ by
+$0.33''$ median ($n=31$), mostly that start-versus-mid-exposure offset, far below the $6.15''$ pixel.
+
+\paragraph{Not run.} The SPHEREx Spectrophotometry Tool is available only inside the SPHEREx Data Explorer web
+interface, with no documented scripting interface, so we did not run it.
+
+\begin{figure}[h]\centering
+\includegraphics[width=\linewidth]{figures/irsa_tools_photometry.png}\\[4pt]
+\includegraphics[width=0.85\linewidth]{figures/irsa_tools_most.png}
+\caption{Top: IRSA's Source Discovery Tool against HIPPARCHUS on the same exposures (fluxes, and the 8 RW~Aur
+ratios). Bottom: MOST image list and positions for (216)~Kleopatra against our measurements.}\label{fig:irsatools}
+\end{figure}
+
 \section{Moving objects}\label{sec:motion}
 Section~\ref{sec:planetx} explains why a distant planet would appear in our comparisons, if at all, as a source present
 in one epoch and absent or displaced in another. Our pipeline was designed for fixed targets and is not a
@@ -522,7 +578,10 @@ Stability fingerprint & validated & claims rechecked under many settings: 24/24,
 Evidence graph & validated & no broken links and no result without a DOI for all three targets (\texttt{graph\_*.json})\\
 Catalogue match & validated & SIMBAD and Gaia DR3: $2.1''$, $5.4''$, $1.1''$ from the presets (\texttt{catalog\_match.json})\\\midrule
 ePSF photometry & experimental & 8/8 RW~Aur pairs compatible with the aperture ratios, $\chi^2_\nu=4$--18; not used by any published number (\texttt{epsf\_check.json}, Section~\ref{sec:epsf})\\\midrule
-Moving-object discovery & not demonstrated & no search for moving objects; Planet X not found (Sections~\ref{sec:planetx}, \ref{sec:motion})\\
+Agreement with IRSA tools & validated & SDT/ours 0.9998 per exposure, 8/8 RW~Aur verdicts; MOST image list 36/36 (\texttt{irsa\_tools\_check.json})\\
+Pair rule vs spectral overlap & validated & rule equals top-hat overlap $\ge0.5$; graph rebuilds 8/27/0 published pairs (\texttt{compat\_check.json})\\
+Moving-object search & validated on one asteroid & (216) Kleopatra: $0.15''$/$0.18''$ rms vs JPL Horizons from SPHEREx (\texttt{motion\_check.json}, Section~\ref{sec:motion-check})\\\midrule
+Discovery of unknown movers & not demonstrated & no wide search; Planet X not found (Sections~\ref{sec:planetx}, \ref{sec:motion})\\
 Resolved RW~Aur components & not demonstrated & the two stars are $1.6''$ apart, $6.15''$ pixels; both are measured together\\
 Barnard's Star photometry & not demonstrated & every epoch saturated; no flux is reported\\
 Calibrated probabilities & not demonstrated & labels come from fixed rules, not probabilities\\

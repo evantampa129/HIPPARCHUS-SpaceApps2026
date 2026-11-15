@@ -10,8 +10,8 @@ matplotlib.use("Agg")  # no display on a server; render straight to memory
 import matplotlib.pyplot as plt
 import numpy as np
 
-# A cutout is only ~29x29 pixels. Scaling it up with "nearest" keeps every real
-# pixel visible as a square, instead of smoothing it into detail that does not exist.
+# A cutout is only ~29x29 pixels. We scale it up with "nearest" so every real pixel
+# stays visible as a square, instead of smoothing it into detail that does not exist.
 OUT_PX = 320
 
 
@@ -38,14 +38,14 @@ def stretch_limits(*images) -> tuple[float, float]:
     vals = np.concatenate([np.asarray(i)[np.isfinite(i)].ravel() for i in images])
     if vals.size == 0:
         return 0.0, 1.0
-    # Top of the scale at the brightest pixel: with a percentile the star's core
+    # We put the top of the scale at the brightest pixel: with a percentile the star's core
     # would clip to white in both epochs and the blink would hide its change.
     return float(np.percentile(vals, 1)), float(vals.max())
 
 
 def epoch_png(image, bad, x, y, limits) -> bytes:
     img = np.where(bad, np.nan, image)
-    # asinh-like view: compress the bright core so faint sky stays visible.
+    # asinh-like view: we compress the bright core so faint sky stays visible.
     lo, hi = limits
     scaled = np.arcsinh((img - lo) / max((hi - lo) / 20, 1e-9))
     return _png(scaled, "gray", 0, np.arcsinh(20), mark=(x, y))

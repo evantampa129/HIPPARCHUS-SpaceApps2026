@@ -19,6 +19,6 @@ def test_bad_edge_and_missing_source_are_caught():
     g = graph.build(json.loads(EV.read_text()))
     g["edges"].append({"from": "pair:x>y", "to": "epoch:does-not-exist"})
     assert len(graph.broken_edges(g)) == 1
-    # Cut every link from cutouts to observations: no epoch can reach a DOI any more.
+    # We cut every link from cutouts to observations: no epoch can reach a DOI any more.
     g["edges"] = [e for e in g["edges"] if not e["from"].startswith("cutout:")]
     assert graph.unsourced(g)

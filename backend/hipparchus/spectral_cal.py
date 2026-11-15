@@ -6,11 +6,11 @@ for visualization and asks science analyses to use the CWAVE and CBAND images
 of the Spectral WCS calibration product instead: one 2040x2040 map per detector
 with the central wavelength and the bandwidth of every pixel, in microns.
 
-This module reads those maps and evaluates them at the target. A cutout pixel
-is mapped to the full-detector ("parent") pixel with the cutout's alternate
-WCS "A" (0-based active pixel coordinates): parent = cutout(0-based) + 1 - CRPIX1A.
+Here we read those maps and evaluate them at the target. We map a cutout pixel
+to the full-detector ("parent") pixel with the cutout's alternate WCS "A"
+(0-based active pixel coordinates): parent = cutout(0-based) + 1 - CRPIX1A.
 
-If the calibration file is not available, the cutout's WCS-WAVE table is read
+If the calibration file is not available, we read the cutout's WCS-WAVE table
 instead (bilinear between control points, as the IRSA user guide describes)
 and the result says so ("source": "wcs-wave fallback").
 """
@@ -38,8 +38,8 @@ VERSION = "cal-swcs-v5-2026-191"
 URL = ("https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/spectral_wcs/"
        "{version}/{det}/spectral_wcs_D{det}_spx_{version}.fits")
 
-# SHA-256 of the files we downloaded and checked. A detector without an entry
-# is still read, but its result is marked as unverified.
+# SHA-256 of the files we downloaded and checked. We still read a detector
+# without an entry, but mark its result as unverified.
 # D2-D5 added 2026-11-16; their MD5 equals the S3 ETag listed in wavecal_check.json.
 SHA256 = {
     1: "44fb48b236e25a99d42c8986da0064cc58359527e1fc76e182eda52371a1ae23",

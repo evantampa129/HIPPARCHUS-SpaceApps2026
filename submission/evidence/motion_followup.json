@@ -3149,6 +3149,366 @@
   "figure": "report/figures/motion_followup_track2.png",
   "conclusion": "The 6 detections fall into 3 fixed sky positions, each seen only within < 4 h (too short for the static-source flag); a polynomial of order 2 passes through 3 points exactly, so the fit says nothing about motion. A straight line through the same points has rms 4.0\" (chi2_red 29) versus 1.4\" for the quadratic. Position 0 (201.39257, -8.12068; 1 member(s)): a single-exposure event in 2025W25_1B_0290_3 D6 at 4.94 um (S/N 19.0); its peak pixel stands 4.5x higher above its neighbours than a PSF-sampled source would, the other exposures of the same visit on the same detector (minutes apart) give forced S/N [0.13, 0.47, 0.46], the simultaneous exposure on the other detector gives [-1.09], and nothing is catalogued there: most likely an unflagged cosmic-ray or detector hit. Catalogue sources within 6\": gaia_dr3 0, 2mass_psc 0, allwise 0, SIMBAD 0. Position 1 (201.38873, -8.12191; 2 member(s)): a STATIC source: forced S/N stacks to 14.9 over 19 exposures below 2.42 um (median 3.5) but 1.1 above; it crosses 5 sigma only in 2 exposure(s). Catalogue sources within 6\": gaia_dr3 1, 2mass_psc 0, allwise 1, SIMBAD 0. Position 2 (201.37214, -8.11009; 3 member(s)): a STATIC source: forced S/N stacks to 15.1 over 19 exposures below 2.42 um (median 3.8) but 3.4 above; it crosses 5 sigma only in 3 exposure(s). Catalogue sources within 6\": gaia_dr3 1, 2mass_psc 0, allwise 1, SIMBAD 0. sb_ident from SPHEREx (positive control finds Kleopatra: True) lists [7, 8, 8, 11, 11, 11] known bodies within 0.1 deg of the members, the nearest 100\" away (none within the 12\" match radius). The geocentric (code 500) lookup used in motion_check.json finds Kleopatra at its own position: True. Most likely explanation: NOT a moving object, but two faint static sources (each with a Gaia DR3 and an AllWISE counterpart) that reach 5 sigma only in a few short-wavelength exposures, plus one single-exposure artefact; the order-2 fit through three positions made them look like a slow track."
  },
+ "kleopatra_with_vetting": {
+  "what": "reproduce_motion.py blind search on the same cached cutouts, with M.link(vet=...) switched on",
+  "vet_settings": {
+   "radius_arcsec": 6.0,
+   "min_dt_hours": 4.0
+  },
+  "n_tracks_published_without_vetting": 2,
+  "n_tracks_with_vetting": 1,
+  "tracks": [
+   {
+    "n_detections": 31,
+    "n_visits": 7,
+    "rate_ra_cosdec_arcsec_h": 2.0766717180752385,
+    "rate_dec_arcsec_h": 4.310176265147129,
+    "fit_rms_arcsec": 0.3935439487053558,
+    "median_offset_from_horizons_arcsec": 0.3800186095980828,
+    "matches_horizons": true
+   }
+  ],
+  "rejected_candidates": [
+   {
+    "n_detections": 6,
+    "n_visits": 5,
+    "n_position_groups": 3,
+    "fit_order": 2,
+    "groups": [
+     {
+      "n": 1,
+      "mjd_min": 60843.500832092,
+      "mjd_max": 60843.500832092,
+      "span_hours": 0.0,
+      "xi": -110.64622716130488,
+      "eta": 173.87661774549463
+     },
+     {
+      "n": 2,
+      "mjd_min": 60843.972526293,
+      "mjd_max": 60844.113082358,
+      "span_hours": 3.3733455600449815,
+      "xi": -124.31825927912016,
+      "eta": 169.414427519375
+     },
+     {
+      "n": 3,
+      "mjd_min": 60845.874527578,
+      "mjd_max": 60845.94414833,
+      "span_hours": 1.6708980480325408,
+      "xi": -183.4545676719922,
+      "eta": 211.99426046613442
+     }
+    ]
+   },
+   {
+    "n_detections": 13,
+    "n_visits": 3,
+    "n_position_groups": 3,
+    "fit_order": 2,
+    "groups": [
+     {
+      "n": 2,
+      "mjd_min": 60845.874527578,
+      "mjd_max": 60845.874527578,
+      "span_hours": 0.0,
+      "xi": 29.597266281763034,
+      "eta": 91.57629692463182
+     },
+     {
+      "n": 3,
+      "mjd_min": 60845.942638296,
+      "mjd_max": 60845.944148319,
+      "span_hours": 0.03624055202817544,
+      "xi": 34.246360705596764,
+      "eta": 98.5140636155997
+     },
+     {
+      "n": 8,
+      "mjd_min": 60846.62369208,
+      "mjd_max": 60846.628168851,
+      "span_hours": 0.10744250396965072,
+      "xi": 84.39478371896405,
+      "eta": 162.605996905955
+     }
+    ]
+   },
+   {
+    "n_detections": 9,
+    "n_visits": 2,
+    "n_position_groups": 2,
+    "fit_order": 2,
+    "groups": [
+     {
+      "n": 7,
+      "mjd_min": 60843.49784759,
+      "mjd_max": 60843.502324349,
+      "span_hours": 0.10744221601635218,
+      "xi": -83.83693311412317,
+      "eta": -155.66244753314686
+     },
+     {
+      "n": 2,
+      "mjd_min": 60845.942638296,
+      "mjd_max": 60845.94414833,
+      "span_hours": 0.03624081605812535,
+      "xi": -183.20316965888497,
+      "eta": 212.51373110009644
+     }
+    ]
+   },
+   {
+    "n_detections": 4,
+    "n_visits": 3,
+    "n_position_groups": 2,
+    "fit_order": 1,
+    "groups": [
+     {
+      "n": 1,
+      "mjd_min": 60843.497847601,
+      "mjd_max": 60843.497847601,
+      "span_hours": 0.0,
+      "xi": 129.59802247847827,
+      "eta": -82.29894879472596
+     },
+     {
+      "n": 3,
+      "mjd_min": 60845.874527578,
+      "mjd_max": 60845.94414833,
+      "span_hours": 1.6708980480325408,
+      "xi": -183.4545676719922,
+      "eta": 211.99426046613442
+     }
+    ]
+   },
+   {
+    "n_detections": 4,
+    "n_visits": 3,
+    "n_position_groups": 2,
+    "fit_order": 1,
+    "groups": [
+     {
+      "n": 1,
+      "mjd_min": 60843.497847601,
+      "mjd_max": 60843.497847601,
+      "span_hours": 0.0,
+      "xi": 94.96553416275732,
+      "eta": -87.1148224451784
+     },
+     {
+      "n": 3,
+      "mjd_min": 60845.874527578,
+      "mjd_max": 60845.94414833,
+      "span_hours": 1.6708980480325408,
+      "xi": -183.4545676719922,
+      "eta": 211.99426046613442
+     }
+    ]
+   },
+   {
+    "n_detections": 4,
+    "n_visits": 3,
+    "n_position_groups": 2,
+    "fit_order": 1,
+    "groups": [
+     {
+      "n": 1,
+      "mjd_min": 60843.499339847,
+      "mjd_max": 60843.499339847,
+      "span_hours": 0.0,
+      "xi": -157.31837007396166,
+      "eta": 322.89880063636895
+     },
+     {
+      "n": 3,
+      "mjd_min": 60845.874527578,
+      "mjd_max": 60845.94414833,
+      "span_hours": 1.6708980480325408,
+      "xi": -183.4545676719922,
+      "eta": 211.99426046613442
+     }
+    ]
+   },
+   {
+    "n_detections": 4,
+    "n_visits": 3,
+    "n_position_groups": 2,
+    "fit_order": 1,
+    "groups": [
+     {
+      "n": 1,
+      "mjd_min": 60843.500832092,
+      "mjd_max": 60843.500832092,
+      "span_hours": 0.0,
+      "xi": -94.12455219751223,
+      "eta": 283.8428849334504
+     },
+     {
+      "n": 3,
+      "mjd_min": 60845.874527578,
+      "mjd_max": 60845.94414833,
+      "span_hours": 1.6708980480325408,
+      "xi": -183.4545676719922,
+      "eta": 211.99426046613442
+     }
+    ]
+   },
+   {
+    "n_detections": 5,
+    "n_visits": 3,
+    "n_position_groups": 3,
+    "fit_order": 2,
+    "groups": [
+     {
+      "n": 1,
+      "mjd_min": 60843.500832092,
+      "mjd_max": 60843.500832092,
+      "span_hours": 0.0,
+      "xi": -94.12455219751223,
+      "eta": 283.8428849334504
+     },
+     {
+      "n": 1,
+      "mjd_min": 60844.113082358,
+      "mjd_max": 60844.113082358,
+      "span_hours": 0.0,
+      "xi": -123.5695380133083,
+      "eta": 169.4512304209467
+     },
+     {
+      "n": 3,
+      "mjd_min": 60846.623692092,
+      "mjd_max": 60846.628168851,
+      "span_hours": 0.10744221601635218,
+      "xi": -219.35506135882613,
+      "eta": -244.01113068948882
+     }
+    ]
+   },
+   {
+    "n_detections": 3,
+    "n_visits": 3,
+    "n_position_groups": 2,
+    "fit_order": 1,
+    "groups": [
+     {
+      "n": 2,
+      "mjd_min": 60843.972526293,
+      "mjd_max": 60844.113082358,
+      "span_hours": 3.3733455600449815,
+      "xi": -124.31825927912016,
+      "eta": 169.414427519375
+     },
+     {
+      "n": 1,
+      "mjd_min": 60845.94414833,
+      "mjd_max": 60845.94414833,
+      "span_hours": 0.0,
+      "xi": -38.254110042321656,
+      "eta": 303.82682670479596
+     }
+    ]
+   },
+   {
+    "n_detections": 3,
+    "n_visits": 3,
+    "n_position_groups": 2,
+    "fit_order": 1,
+    "groups": [
+     {
+      "n": 2,
+      "mjd_min": 60843.972526293,
+      "mjd_max": 60844.113082358,
+      "span_hours": 3.3733455600449815,
+      "xi": -124.31825927912016,
+      "eta": 169.414427519375
+     },
+     {
+      "n": 1,
+      "mjd_min": 60846.625184349,
+      "mjd_max": 60846.625184349,
+      "span_hours": 0.0,
+      "xi": -93.48989339788945,
+      "eta": -18.404930799705756
+     }
+    ]
+   },
+   {
+    "n_detections": 3,
+    "n_visits": 3,
+    "n_position_groups": 2,
+    "fit_order": 1,
+    "groups": [
+     {
+      "n": 2,
+      "mjd_min": 60843.972526293,
+      "mjd_max": 60844.113082358,
+      "span_hours": 3.3733455600449815,
+      "xi": -124.31825927912016,
+      "eta": 169.414427519375
+     },
+     {
+      "n": 1,
+      "mjd_min": 60846.626676594,
+      "mjd_max": 60846.626676594,
+      "span_hours": 0.0,
+      "xi": -251.19874420308298,
+      "eta": 24.404215612539
+     }
+    ]
+   },
+   {
+    "n_detections": 4,
+    "n_visits": 3,
+    "n_position_groups": 2,
+    "fit_order": 1,
+    "groups": [
+     {
+      "n": 1,
+      "mjd_min": 60843.972526293,
+      "mjd_max": 60843.972526293,
+      "span_hours": 0.0,
+      "xi": -224.196810305383,
+      "eta": 55.217041454319435
+     },
+     {
+      "n": 3,
+      "mjd_min": 60845.874527578,
+      "mjd_max": 60845.94414833,
+      "span_hours": 1.6708980480325408,
+      "xi": -183.4545676719922,
+      "eta": 211.99426046613442
+     }
+    ]
+   },
+   {
+    "n_detections": 4,
+    "n_visits": 3,
+    "n_position_groups": 2,
+    "fit_order": 1,
+    "groups": [
+     {
+      "n": 1,
+      "mjd_min": 60844.113082358,
+      "mjd_max": 60844.113082358,
+      "span_hours": 0.0,
+      "xi": -166.29295954516937,
+      "eta": 0.8725552375541707
+     },
+     {
+      "n": 3,
+      "mjd_min": 60845.874527578,
+      "mjd_max": 60845.94414833,
+      "span_hours": 1.6708980480325408,
+      "xi": -183.4545676719922,
+      "eta": 211.99426046613442
+     }
+    ]
+   }
+  ],
+  "only_kleopatra_survives": true,
+  "kleopatra_track_unchanged": true
+ },
  "case_search": {
   "sb_ident_around_kleopatra_field": "sb_ident from SPHEREx (xobs), MJD 60845.0, 1.5 deg half-width around the Kleopatra field, V < 17: Kleopatra (V 12.8), (2052) Tamriko (V 16.2, 0.40 deg away), (641) Agnes (V 16.8, 1.6 deg away).",
   "neo_scan": "Horizons from SPHEREx, 2025-05-01..2026-07-25, daily, for 40 well-known NEOs; kept days with V < 16 and elongation 88-125 deg. Windows found for 433 Eros, 1036 Ganymed, 1620 Geographos, 2100 Ra-Shalom, 1943 Anteros, 4183 Cuno, 35107 (1991 VH), 3361 Orpheus, 3103 Eger; none for the other 31.",
@@ -3156,8 +3516,8 @@
  },
  "validation_cases": [],
  "run": {
-  "started_utc": "2026-11-16T06:41:51+00:00",
-  "runtime_s": 91.4,
+  "started_utc": "2026-11-16T07:40:47+00:00",
+  "runtime_s": 145.5,
   "python": "3.12.3",
   "numpy": "2.5.4"
  }

@@ -3,7 +3,7 @@ from pathlib import Path
 from hipparchus import archive
 
 # A real response from IRSA's SIA service (spherex_dr1, around Barnard's Star),
-# saved on 2026-11-15, so the parser can be tested without a network connection.
+# saved on 2026-11-15, so we can test the parser without a network connection.
 FIXTURE = Path(__file__).parent / "fixtures" / "sia_dr1_barnard.xml"
 
 

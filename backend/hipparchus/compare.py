@@ -63,7 +63,7 @@ def compatibility(a: Epoch, b: Epoch) -> Verdict:
     return Verdict(True, "comparison", [], [])
 
 
-# Fewer clean sky pixels than this and the local sky level is not trusted.
+# With fewer clean sky pixels than this we don't trust the local sky level.
 MIN_SKY_PIX = 8
 
 
@@ -88,16 +88,16 @@ def photometry(img, var, bad, x, y, r_ap=APERTURE_PX, r_in=SKY_INNER, r_out=SKY_
     n_sky = int(sky_ok.sum())
     # Pixels in the aperture that are flagged, missing, or (after reprojection)
     # touched by a flagged pixel of the other epoch. Summing them would put bad
-    # data into the flux without anyone knowing, so the flux becomes NaN and
-    # the comparison is refused instead.
+    # data into the flux without anyone knowing, so we make the flux NaN and
+    # refuse the comparison instead.
     n_bad = int((ap & (bad | ~np.isfinite(img) | ~np.isfinite(var))).sum())
     n = int(ap.sum())
     if n_sky < MIN_SKY_PIX or n_bad:
-        # Earlier versions used a sky of 0 here, which silently biases the flux.
-        # On the three demonstration targets this branch is never taken.
+        # Our earlier versions used a sky of 0 here, which silently biases the
+        # flux. None of the three demonstration targets ever reaches this branch.
         return {"flux": float("nan"), "flux_err": float("nan"), "sky": float("nan"), "n_pix": n,
                 "n_sky": n_sky, "n_bad": n_bad}
-    # The median ignores stars that fall inside the annulus.
+    # We take the median so stars that fall inside the annulus don't pull the sky up.
     bkg = float(np.median(img[sky_ok]))
     flux = float(np.sum(img[ap] - bkg))
     # Uncertainty: pixel variances in the aperture, plus the error of the sky
@@ -115,7 +115,7 @@ def centroid(img, bad, x0, y0, half=3) -> tuple[float, float]:
     x1, x2 = max(xs - half, 0), min(xs + half + 1, nx)
     box = img[y1:y2, x1:x2].copy()
     box[bad[y1:y2, x1:x2]] = np.nan
-    # Use only the light above the box median, so the sky does not pull the
+    # We use only the light above the box median, so the sky does not pull the
     # centre towards the middle of the box.
     w = np.clip(box - np.nanmedian(box), 0, None)
     w[~np.isfinite(w)] = 0
@@ -140,7 +140,7 @@ def control_star(img, bad, x, y, min_sep=APERTURE_PX + SKY_OUTER, edge=APERTURE_
           # missing; photometry() then uses the sky pixels that remain.
           & ((xx - x) ** 2 + (yy - y) ** 2 >= min_sep ** 2)
           & (xx >= edge) & (xx <= nx - 1 - edge) & (yy >= edge) & (yy <= ny - 1 - edge))
-    # It must be the peak of a star (brighter than its 8 neighbours), not the
+    # We want the peak of a star (brighter than its 8 neighbours), not the
     # wing of a star whose centre lies outside the cutout.
     from scipy.ndimage import maximum_filter
     filled = np.where(np.isfinite(img), img, -np.inf)
@@ -181,7 +181,7 @@ def compare(a: Epoch, b: Epoch) -> dict:
     if not verdict.comparable:
         return out
 
-    # Put b on a's pixel grid. The two visits have different pointings and
+    # We put b on a's pixel grid. The two visits have different pointings and
     # rotations, so subtracting raw arrays would compare different sky.
     # Interpolating the variance the same way is an approximation (it slightly
     # smooths the noise), which we accept for a quick-look difference.
@@ -193,7 +193,7 @@ def compare(a: Epoch, b: Epoch) -> dict:
     pa = photometry(a.image, a.variance, a.bad, a.x, a.y)
     pb = photometry(b_img, b_var, bad, a.x, a.y)
     if not (np.isfinite(pa["flux"]) and np.isfinite(pb["flux"])):
-        # Refuse rather than report a number built on bad pixels or no sky.
+        # We refuse rather than report a number built on bad pixels or no sky.
         out["verdict"] = asdict(Verdict(False, "refused",
             ["After aligning the two images, the aperture has flagged/missing pixels or too little clean sky."],
             ["aperture_invalid"]))
@@ -241,7 +241,7 @@ def compare(a: Epoch, b: Epoch) -> dict:
         "control_star": ctrl,
         "centroid_shift_arcsec": {"dra": dra, "ddec": ddec, "total": float(np.hypot(dra, ddec))},
         "max_abs_z": float(np.nanmax(np.abs(z))) if np.isfinite(z).any() else None,
-        # Kept in memory for the images and the validation checks; not serialised.
+        # We keep these in memory for the images and the validation checks; never serialised.
         "_arrays": {"a": a.image, "b": b_img, "diff": diff, "z": z,
                     "a_var": a.variance, "b_var": b_var, "a_bad": a.bad, "bad": bad},
     })

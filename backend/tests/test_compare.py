@@ -33,7 +33,7 @@ def test_epoch_against_itself_shows_no_change():
     a, _ = _pair()
     r = compare.compare(a, replace(a, obs_id="copy", mjd=a.mjd + 10))
     # Not exactly zero: reprojecting through the SIP distortion and back moves
-    # pixels by a tiny fraction, so allow a residual far below the noise.
+    # pixels by a tiny fraction, so we allow a residual far below the noise.
     assert abs(r["significance"]) < 0.5
     assert not r["changed"]
 

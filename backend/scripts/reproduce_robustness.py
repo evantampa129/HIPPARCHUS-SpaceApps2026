@@ -52,7 +52,7 @@ def claim_rw_strong(rows):
     return any(r["ratio"] >= 1.5 and r["sig"] >= C.DETECTION_SIGMA for r in rows)
 
 
-# Both RW Aur statements appear in the published text, so both are tested.
+# Both RW Aur statements appear in the published text, so we test both.
 CLAIMS = {"rw_aur": [("brightened by at least x1.5 at >= 5 sigma in some pair", claim_rw_strong),
                      ("every valid pair brighter later, at least one >= 5 sigma", claim_rw)],
           "wise0855": [("no pair changes by >= 5 sigma", claim_none)]}
@@ -159,8 +159,8 @@ def main(wavelength_source: str | None = None, out: Path = OUT):
                         grid[k].append(r)
             configs = []
             for k, rs in grid.items():
-                # A configuration that loses pairs (bad pixels in a bigger
-                # aperture or a grown mask) is shown but not used for the verdict.
+                # We show a configuration that loses pairs (bad pixels in a bigger
+                # aperture or a grown mask) but don't use it for the verdict.
                 full = len(rs) == len(comps)
                 configs.append({"r_ap": k[0], "annulus": list(k[1]), "mask": k[2], "calibration": k[3],
                                 "n_pairs": len(rs), "complete": full,

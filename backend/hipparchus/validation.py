@@ -2,16 +2,16 @@
 
 Both checks reuse the real reprojected image pairs of a finished analysis.
 
-* Null test (blank apertures): the same photometry is run at many places in
+* Null test (blank apertures): we run the same photometry at many places in
   the field away from the target. Almost everything there (sky, or ordinary
   constant stars) should not change, so the significances should scatter like
   a standard normal: mean near 0, spread near 1. A spread well above 1 means
   our error bars are too small and our "5 sigma" is not really 5 sigma.
 
-* Injection-recovery: an artificial star of known brightness is added to the
-  later epoch and we ask whether the comparison finds it. These injected
-  sources are SIMULATED and are labelled as such everywhere they appear; they
-  are never mixed with the real measurements.
+* Injection-recovery: we add an artificial star of known brightness to the
+  later epoch and ask whether the comparison finds it. These injected sources
+  are SIMULATED; we label them as such everywhere they appear and never mix
+  them with the real measurements.
 """
 
 from __future__ import annotations
@@ -88,10 +88,10 @@ def injection_recovery(pair: dict, x: float, y: float, fwhm_px: float,
                        snr_levels=(1, 2, 3, 4, 5, 6, 7, 8, 10, 15)) -> list[dict]:
     """SIMULATED: add a star of known S/N to epoch b at blank positions.
 
-    The injected S/N is defined as the flux that falls inside our aperture
+    We define the injected S/N as the flux that falls inside our aperture
     divided by the noise of the aperture difference, so a perfect method
-    detects it half of the time at S/N = 5. The photon noise of the injected
-    star itself is not added, which makes bright injections slightly easier.
+    detects it half of the time at S/N = 5. We don't add the photon noise of
+    the injected star itself, which makes bright injections slightly easier.
     """
     arr = pair["_arrays"]
     shape = arr["a"].shape

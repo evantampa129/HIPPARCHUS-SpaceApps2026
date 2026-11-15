@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { API, Analysis, Epoch, Observations, Pair, Robustness, Target, get } from "./api";
 
-// Plain-language meaning of every refusal code the backend can return. Shown
-// next to the counts, so a refusal is an explanation and not just a number.
+// Plain-language meaning of every refusal code the backend can return. We show
+// it next to the counts, so a refusal is an explanation and not just a number.
 const REFUSAL_TEXT: Record<string, string> = {
   wavelength_mismatch:
     "The star fell at a different wavelength in each visit. SPHEREx's filters change wavelength across the detector, so a brightness difference could just be the star's spectrum.",
@@ -32,7 +32,7 @@ export default function App() {
   const [epochSel, setEpochSel] = useState<string | null>(null);
   const [pairSel, setPairSel] = useState<Pair | null>(null);
 
-  // Presets come from the backend, so the list and its explanations live in one place.
+  // We take the presets from the backend, so the list and its explanations live in one place.
   useEffect(() => { get<Target[]>("/targets", {}).then(setTargets).catch(() => setTargets([])); }, []);
 
   // The stability report exists only for the presets (it is precomputed).
@@ -57,7 +57,7 @@ export default function App() {
     try {
       const r = await get<Analysis>("/analyze", { ra, dec, detector });
       setRes(r);
-      // Open the strongest comparison first, if there is any.
+      // We open the strongest comparison first, if there is one.
       const best = [...r.comparisons].sort((a, b) => Math.abs(b.significance ?? 0) - Math.abs(a.significance ?? 0))[0];
       setPairSel(best ?? null);
     } catch (e) { setError(String((e as Error).message)); }
@@ -175,7 +175,7 @@ function Summary({ r }: { r: Analysis }) {
 }
 
 function Timeline({ r, selected, onSelect }: { r: Analysis; selected: string | null; onSelect: (id: string) => void }) {
-  // Epochs placed on a real time axis (MJD), so gaps between visits are visible.
+  // We place the epochs on a real time axis (MJD), so gaps between visits are visible.
   const W = 900, H = 70, pad = 20;
   const t0 = Math.min(...r.epochs.map((e) => e.mjd)), t1 = Math.max(...r.epochs.map((e) => e.mjd));
   const x = (m: number) => pad + ((m - t0) / Math.max(t1 - t0, 1)) * (W - 2 * pad);
@@ -270,7 +270,7 @@ function Pairs({ r, selected, onSelect }: { r: Analysis; selected: Pair | null; 
 function PairView({ r, p }: { r: Analysis; p: Pair }) {
   const [showB, setShowB] = useState(false);
   const [blink, setBlink] = useState(true);
-  // Blink: alternate the two epochs at the same place on screen. The eye picks
+  // Blink: we alternate the two epochs at the same place on screen. The eye picks
   // up a change in brightness or position far better than in a side-by-side view.
   useEffect(() => {
     if (!blink) return;

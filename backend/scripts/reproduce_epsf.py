@@ -4,15 +4,15 @@ Writes submission/evidence/epsf_check.json, report/figures/epsf_residuals.png an
 report/figures/epsf_diagnostics.png (the "diagnostics" section: why reduced chi2 is
 high on RW Aur; real pixels only, none of it changes a published number).
 Uses only cached real SPHEREx cutouts and the pairs already in robustness.json
-(run reproduce_robustness.py first). Barnard's Star has no usable epoch and is
-not fitted: its pixels are saturated, and no fit can fix that.
+(run reproduce_robustness.py first). Barnard's Star has no usable epoch, so we
+don't fit it: its pixels are saturated, and no fit can fix that.
 
 Agreement rule (fixed before looking at the result):
   z = (ln R_epsf - ln R_aperture) / sqrt(s_epsf^2 + s_ap^2), s = fractional errors
   compatible |z| < 3, discrepant |z| >= 5, inconclusive otherwise or if a fit failed.
 Both methods read the same photons, so their errors are positively correlated
 and this denominator is too large: "discrepant" is conservative, "compatible"
-is lenient. That is stated with the result, not hidden.
+is lenient. We state that with the result rather than hide it.
 """
 
 import json
@@ -50,7 +50,7 @@ def epoch_paths(t):
     # The RW Aur manifest was later re-queried with only spherex_dr1 listed, which
     # dropped the 2026W37 (qr3) epochs that robustness.json still uses. Their
     # cutouts are in the cache; the sidecar .json keeps each one's access URL,
-    # so they are found from there (same target centre, same detector).
+    # so we find them from there (same target centre, same detector).
     centre = f'center={t["ra"]}%2C{t["dec"]}'
     for side in sorted(cutouts.CACHE_DIR.glob("*.json")):
         try:
@@ -84,8 +84,8 @@ def fit_epoch(path, obs_id, t):
     if f["ok"] and f["amp"] / f["amp_err"] >= FREE_POSITION_SNR:
         f = P.fit(ep.image, ep.variance, ep.bad, ep.x, ep.y, e, fit_position=True)
     if f["ok"]:
-        # Standard practice: when chi2_red > 1 the model is imperfect, so the
-        # amplitude error is scaled up by sqrt(chi2_red) (never down).
+        # Standard practice: when chi2_red > 1 the model is imperfect, so we
+        # scale the amplitude error up by sqrt(chi2_red) (never down).
         f["amp_err_scaled"] = f["amp_err"] * math.sqrt(max(1.0, f["chi2_red"]))
     return ep, e, f
 
@@ -96,8 +96,8 @@ def simulated_checks(t, n_pos=4, seed=7):
     Positions are blank spots away from the target. For each: a fit with no star
     (noise only: false positives), then the same spot with an ePSF star of known
     flux added (bias and error calibration), and a 0.3 px position error
-    (astrometric sensitivity). Aperture photometry on the same native pixels is
-    done alongside for comparison.
+    (astrometric sensitivity). We also run aperture photometry on the same
+    native pixels, for comparison.
     """
     from hipparchus.compare import photometry
     rng = np.random.default_rng(seed)
@@ -197,7 +197,7 @@ def pair_rows(pairs, fits_):
                     "z_agreement": z, "agreement": label(z),
                     "warnings": fa["warnings"] + fb["warnings"]}
         else:
-            # A flux ratio means nothing below S/N 5; the claim is then checked on significances.
+            # A flux ratio means nothing below S/N 5; there we check the claim on significances.
             row |= {"agreement": "inconclusive",
                     "reason": "; ".join(f["reason"] for f in (fa, fb) if not f["ok"]) or "S/N < 5 in an epoch"}
         rows.append(row)
@@ -206,8 +206,8 @@ def pair_rows(pairs, fits_):
 # Gaia DR3 sources within 45" of RW Aur (VizieR I/355/gaiadr3, queried 2026-11-16;
 # CDS itself was offline, see catalog_match.json). source_id, RA, Dec (epoch 2016.0),
 # pmRA*cos(Dec), pmDec (mas/yr), G. The first two, 1.65" apart (0.27 SPHEREx pixel),
-# are the RW Aur pair itself; every other one is a field star. Stored here so the
-# check runs offline.
+# are the RW Aur pair itself; every other one is a field star. We store them here
+# so the check runs offline.
 RW_AUR_GAIA = [
     ("156430822114424576", 76.95608119553, 30.40120458910, 2.641, -27.398, 12.184),
     ("156430817820015232", 76.95654431103, 30.40131614989, 4.906, -24.578, 13.035),
@@ -500,7 +500,7 @@ def diagnostics(rob, fits_by_target):
             res[tid] = (fz, pair_rows(rob["targets"][tid]["pairs"], fz))
         return res
 
-    # model_error re-weights the pixels (the core counts less), so it is scanned, not assumed.
+    # model_error re-weights the pixels (the core counts less), so we scan it rather than assume it.
     eps_scan = {}
     for eps in (0.01, 0.02, 0.04, 0.08):
         res = run_variant(nb=True, sky=True, eps=eps)

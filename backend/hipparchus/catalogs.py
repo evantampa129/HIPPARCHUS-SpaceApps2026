@@ -21,13 +21,13 @@ import math
 import httpx
 from astropy.io import ascii as asc
 
-# SIMBAD TAP mirrors listed by CDS during the outage, then the main server.
+# We try the SIMBAD TAP mirrors CDS listed during the outage, then the main server.
 SIMBAD_TAP = (
     "https://simbad.cfa.harvard.edu/simbad/sim-tap/sync",
     "https://simbad.idia.ac.za/simbad/sim-tap/sync",
     "https://simbad.cds.unistra.fr/simbad/sim-tap/sync",
 )
-# Gaia DR3 copies: IRSA's Gator (NASA/IPAC), then VizieR at CfA Harvard (I/355).
+# For Gaia DR3 we try IRSA's Gator (NASA/IPAC), then VizieR at CfA Harvard (I/355).
 GATOR_URL = "https://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query"
 VIZIER_URL = "https://vizier.cfa.harvard.edu/viz-bin/asu-tsv"
 
@@ -45,7 +45,7 @@ def propagate(ra: float, dec: float, pmra: float | None, pmdec: float | None,
               from_epoch: float, to_epoch: float) -> tuple[float, float]:
     """Move a position by its proper motion (mas/yr; pmra includes cos dec).
 
-    Linear motion is enough here: over ~25 years the error is far below a
+    We treat the motion as linear: over ~25 years the error stays far below a
     SPHEREx pixel even for Barnard's Star.
     """
     if pmra is None or pmdec is None or not math.isfinite(pmra) or not math.isfinite(pmdec):
@@ -163,8 +163,8 @@ def match(name: str, ra: float, dec: float, simbad: dict, gaia: dict,
         r["sep_from_target_arcsec"] = sep_arcsec(ref_ra, ref_dec, r["ra_epoch"], r["dec_epoch"])
         srcs.append(r)
     srcs.sort(key=lambda r: r["sep_from_target_arcsec"])
-    # A Gaia counterpart must sit within one SPHEREx pixel of the target; a
-    # star without one (e.g. WISE 0855, far too red for Gaia) is reported as such.
+    # We only accept a Gaia counterpart within one SPHEREx pixel of the target, and
+    # report a star without one (e.g. WISE 0855, far too red for Gaia) as such.
     cp = srcs[0] if srcs and srcs[0]["sep_from_target_arcsec"] < PIXEL_ARCSEC else None
     out["gaia_counterpart"] = cp
     out["gaia_in_aperture"] = [s for s in srcs if s["sep_from_target_arcsec"] <= APERTURE_ARCSEC]

@@ -2,8 +2,8 @@
 
     cd backend && python scripts/reproduce_evidence.py
 
-Cutouts already in data/cache are reused after their checksum is verified;
-missing ones are downloaded again from IRSA. The output contains every
+We reuse cutouts already in data/cache once their checksum checks out, and
+download missing ones again from IRSA. The output contains every
 identifier, checksum, setting and number, so the files can be compared
 line by line with the committed ones.
 """

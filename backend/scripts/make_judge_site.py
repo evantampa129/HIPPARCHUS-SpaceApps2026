@@ -2,7 +2,7 @@
 
 Everything comes from what is already saved: the cached real SPHEREx cutouts,
 the archive listings in data/manifests and the files in submission/evidence.
-No new analysis choices are made and no live archive query is sent, so the page
+We make no new analysis choices and send no live archive query, so the page
 loads instantly and shows exactly the published numbers.
 
     python scripts/make_judge_site.py      # writes docs/index.html, docs/img/, docs/capsule_*.json
@@ -271,7 +271,7 @@ def pair_table(d: dict, rob: dict) -> str:
         cs = c["control_star"]["ratio"] if c["control_star"] else None
         sa, sb = (c[k]["flux"] / c[k]["flux_err"] for k in ("flux_a", "flux_b"))
         # A ratio of two fluxes measured at S/N < 5 is dominated by noise (×0.5 or ×2.9 for a constant
-        # source), so it is not shown; the significance is the meaningful number there.
+        # source), so we don't show it; the significance is the meaningful number there.
         ratio = f"×{c['flux_ratio']:.2f}" if min(sa, sb) >= 5 else "<span class='muted'>n/a (S/N&lt;5)</span>"
         rows.append(f"<tr><td>{date[c['a']]} → {date[c['b']]}</td><td>{c['lambda_a_um']:.3f}/{c['lambda_b_um']:.3f}</td>"
                     f"<td>{sa:.0f} / {sb:.0f}</td><td>{ratio}</td><td>{c['significance']:+.1f}</td>"
@@ -281,6 +281,52 @@ def pair_table(d: dict, rob: dict) -> str:
             "floor could be measured (fewer than 3 pairs with reference stars). Blank control star: none passed the "
             "criteria in that pair.</p>")
 
+
+def irsa_tools_section() -> str:
+    """HIPPARCHUS against IRSA's Source Discovery Tool and MOST, read from irsa_tools_check.json."""
+    d = json.loads((EVID / "irsa_tools_check.json").read_text())
+    for f in ("irsa_tools_photometry.png", "irsa_tools_most.png"):
+        shutil.copy(ROOT / "report" / "figures" / f, OUT / "img" / f)
+    s = d["source_discovery_tool"]["rw_aur"]["summary"]["flux_ratio_sdt_r2_omegafixed_over_ours"]
+    m = d["most"]["match"]
+    # We fail the build if IRSA's tools ever stop agreeing with the published numbers.
+    assert abs(s["median"] - 1) < 0.01 and m["only_most"] == []
+    return f"""<section class='case'>
+ <h2>Same answer as IRSA's own tools</h2>
+ <p>We ran IRSA's <b>Source Discovery Tool</b>, unmodified, on exactly our exposures. For RW Aur at the same aperture
+ its fluxes are {s['median']:.4f} × ours (scatter {100 * s['robust_sigma']:.1f}%, n = {s['n']}), and it calls the same
+ 8 pairs changed. For WISE 0855 it agrees that no pair changed. The ~1% difference in the RW Aur ratios comes from
+ our reprojection of the second image, not from calibration.</p>
+ <p>IRSA's <b>Moving Object Search Tool</b> lists {m['n_most']} SPHEREx images of (216) Kleopatra in our window; all
+ {m['n_both']} are in our list, and our 2 extra entries are where we had already found the asteroid off the detector.
+ Its positions differ from our measured ones by 0.33″ (median), far below the 6.15″ pixel.</p>
+ <p>Not run: the SPHEREx Spectrophotometry Tool, which exists only inside IRSA's web interface.
+ <a href='{REPO}/blob/main/submission/evidence/irsa_tools_check.json'>Evidence</a></p>
+ <img src='img/irsa_tools_photometry.png' alt='IRSA Source Discovery Tool fluxes and ratios against HIPPARCHUS' style='width:100%;max-width:1000px'>
+ <img src='img/irsa_tools_most.png' alt='MOST image list and positions for Kleopatra against our measurements' style='width:100%;max-width:900px'>
+</section>"""
+
+def compat_section() -> str:
+    """Pair rule against spectral overlap, and the compatibility graph, read from compat_check.json."""
+    d = json.loads((EVID / "compat_check.json").read_text())
+    shutil.copy(ROOT / "report" / "figures" / "compat_graph.png", OUT / "img" / "compat_graph.png")
+    t = d["targets"]
+    # We fail the build if the graph stops giving back the published pairs.
+    assert t["rw_aur"]["graph_summary"]["n_edges"] == 8 and t["wise0855"]["graph_summary"]["n_edges"] == 27
+    hi = sum(t[k]["of_which_overlap_ge"]["0.7"][s] for k in t for s in ("gaussian", "tophat"))
+    assert hi == 0
+    return f"""<section class='case'>
+ <h2>Does the pairing rule keep the right pairs?</h2>
+ <p>We pair two exposures only if the star's wavelength differs by at most half a channel. In light collected, that is
+ the same as asking the two exposures to share at least half of one channel's response (top-hat model; 55.6% for a
+ Gaussian channel). Over all {sum(t[k]['graph_summary']['n_pairs'] for k in t):,} pairs of the three targets the rule and the
+ overlap test agree exactly. No usable pair we refused for wavelength reaches 70% overlap, so the rule does not throw
+ away pairs that see clearly the same light.</p>
+ <p>The compatibility graph below keeps every epoch and every pair: rebuilt from the epoch records alone it gives back
+ the published 8 (RW Aur) and 27 (WISE 0855) pairs and every refusal count.
+ <a href='{REPO}/blob/main/submission/evidence/compat_check.json'>Evidence</a></p>
+ <img src='img/compat_graph.png' alt='Compatibility graphs of RW Aur and WISE 0855: epochs by time and wavelength, lines for compared pairs' style='width:100%;max-width:1000px'>
+</section>"""
 
 def wavecal_section() -> str:
     """Side-by-side wavelength audit, read from wavecal_check.json (production numbers unchanged)."""
@@ -498,6 +544,8 @@ so nothing here waits for a live archive download.</p>
 
 {epsf_section()}
 {wavecal_section()}
+{compat_section()}
+{irsa_tools_section()}
 {motion_section()}
 <section class='case'>
  <h2>Why this matters for “Planet X and SPHEREx”</h2>
