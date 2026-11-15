@@ -1,0 +1,670 @@
+{
+ "title": "HIPPARCHUS survey benchmark",
+ "frozen_at": "2026-11-16T08:59:41+00:00",
+ "selection": "Objects chosen by class from the literature before running the pipeline on them; none of the non-dev objects was used while building or tuning the code. Settings are the published ones (submission/evidence/evidence_manifest.json config) and are not changed by this benchmark.",
+ "splits": {
+  "dev": "used during development; scored from the published evidence, reported separately",
+  "calibration": "used only to look at the null distribution and photometric bias; no setting is changed from it",
+  "held_out": "scored once, never used to adjust anything",
+  "rule": "non-dev archive objects: calibration if int(sha256(id),16) % 3 == 0, else held_out"
+ },
+ "expected_outcome": {
+  "known_variable": "change detected in at least one valid pair",
+  "stable_control": "no change claimed",
+  "saturated": "refused (no valid comparison)",
+  "low_snr": "no change claimed (refusal is also acceptable)",
+  "known_asteroid": "linked track that matches JPL Horizons"
+ },
+ "coordinates": "SIMBAD via CDS Sesame (ICRS, epoch J2000), propagated with the SIMBAD proper motion to epoch 2026.0 by `run_benchmark.py resolve`; dev targets keep the coordinates of the published evidence.",
+ "objects": [
+  {
+   "id": "rw_aur",
+   "name": "RW Aurigae",
+   "category": "known_variable",
+   "detector": "SPHEREx-D1",
+   "source": "published_evidence",
+   "evidence": "submission/evidence/rw_aur_spherex-d1.json",
+   "ra": 76.956,
+   "dec": 30.401,
+   "split": "dev"
+  },
+  {
+   "id": "barnard",
+   "name": "Barnard's Star",
+   "category": "saturated",
+   "detector": "SPHEREx-D6",
+   "source": "published_evidence",
+   "evidence": "submission/evidence/barnard_spherex-d6.json",
+   "ra": 269.4463,
+   "dec": 4.7667,
+   "split": "dev"
+  },
+  {
+   "id": "wise0855",
+   "name": "WISE 0855-0714",
+   "category": "low_snr",
+   "detector": "SPHEREx-D6",
+   "source": "published_evidence",
+   "evidence": "submission/evidence/wise0855_spherex-d6.json",
+   "ra": 133.76,
+   "dec": -7.2424,
+   "split": "dev"
+  },
+  {
+   "id": "kleopatra",
+   "name": "(216) Kleopatra",
+   "category": "known_asteroid",
+   "source": "published_evidence",
+   "evidence": "submission/evidence/motion_check.json",
+   "split": "dev"
+  },
+  {
+   "id": "aa_tau",
+   "name": "AA Tau",
+   "category": "known_variable",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 68.73096,
+   "dec": 24.481249,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?AA%20Tau",
+    "utc": "2026-11-16T09:11:55+00:00",
+    "simbad_name": "V* AA Tau",
+    "j2000": [
+     68.73091745933,
+     24.48139822905
+    ],
+    "pm_mas_yr": [
+     5.323,
+     -20.68
+    ]
+   }
+  },
+  {
+   "id": "dr_tau",
+   "name": "DR Tau",
+   "category": "known_variable",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 71.775936,
+   "dec": 16.978459,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?DR%20Tau",
+    "utc": "2026-11-16T09:11:58+00:00",
+    "simbad_name": "V* DR Tau",
+    "j2000": [
+     71.77589648386,
+     16.97855940905
+    ],
+    "pm_mas_yr": [
+     5.207,
+     -13.889
+    ]
+   }
+  },
+  {
+   "id": "gm_aur",
+   "name": "GM Aur",
+   "category": "known_variable",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 73.795788,
+   "dec": 30.366317,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?GM%20Aur",
+    "utc": "2026-11-16T09:12:00+00:00",
+    "simbad_name": "V* GM Aur",
+    "j2000": [
+     73.79575649039,
+     30.36649271441
+    ],
+    "pm_mas_yr": [
+     3.748,
+     -24.298
+    ]
+   }
+  },
+  {
+   "id": "dg_tau",
+   "name": "DG Tau",
+   "category": "known_variable",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 66.769595,
+   "dec": 26.104313,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?DG%20Tau",
+    "utc": "2026-11-16T09:12:03+00:00",
+    "simbad_name": "V* DG Tau",
+    "j2000": [
+     66.76955053162,
+     26.10446115813
+    ],
+    "pm_mas_yr": [
+     5.514,
+     -20.478
+    ]
+   }
+  },
+  {
+   "id": "v1647_ori",
+   "name": "V1647 Ori",
+   "category": "known_variable",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 86.554744,
+   "dec": -0.101365,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?V1647%20Ori",
+    "utc": "2026-11-16T09:12:05+00:00",
+    "simbad_name": "V* V1647 Ori",
+    "j2000": [
+     86.55473774103,
+     -0.10135697036
+    ],
+    "pm_mas_yr": [
+     0.918,
+     -1.057
+    ]
+   }
+  },
+  {
+   "id": "ex_lup",
+   "name": "EX Lup",
+   "category": "known_variable",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 240.772785,
+   "dec": -40.307226,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?EX%20Lup",
+    "utc": "2026-11-16T09:12:08+00:00",
+    "simbad_name": "HD 325367",
+    "j2000": [
+     240.77288128576998,
+     -40.30706297991
+    ],
+    "pm_mas_yr": [
+     -10.157,
+     -22.531
+    ]
+   }
+  },
+  {
+   "id": "v2492_cyg",
+   "name": "V2492 Cyg",
+   "category": "known_variable",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 312.859298,
+   "dec": 44.089935,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?V2492%20Cyg",
+    "utc": "2026-11-16T09:12:10+00:00",
+    "simbad_name": "V* V2492 Cyg",
+    "j2000": [
+     312.85931966189,
+     44.08996370957999
+    ],
+    "pm_mas_yr": [
+     -2.197,
+     -3.935
+    ]
+   }
+  },
+  {
+   "id": "tw_hya",
+   "name": "TW Hya",
+   "category": "known_variable",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 165.465672,
+   "dec": -34.704832,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?TW%20Hya",
+    "utc": "2026-11-16T09:12:13+00:00",
+    "simbad_name": "V* TW Hya",
+    "j2000": [
+     165.46627220211,
+     -34.70473144955
+    ],
+    "pm_mas_yr": [
+     -68.309,
+     -13.9
+    ]
+   }
+  },
+  {
+   "id": "p330e",
+   "name": "P330E",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 247.890811,
+   "dec": 30.145942,
+   "simbad_query": "GSC 02581-02323",
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?GSC%2002581-02323",
+    "utc": "2026-11-16T09:20:07+00:00",
+    "simbad_name": "GSC 02581-02323",
+    "j2000": [
+     247.89088493190997,
+     30.14622149509
+    ],
+    "pm_mas_yr": [
+     -8.882,
+     -38.705
+    ]
+   }
+  },
+  {
+   "id": "p177d",
+   "name": "P177D",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 239.806492,
+   "dec": 47.611651,
+   "simbad_query": "GSC 03493-00432",
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?GSC%2003493-00432",
+    "utc": "2026-11-16T09:25:34+00:00",
+    "simbad_name": "GSPC P177-D",
+    "j2000": [
+     239.80657771981998,
+     47.6116407703
+    ],
+    "pm_mas_yr": [
+     -7.965,
+     1.459
+    ]
+   }
+  },
+  {
+   "id": "bd17_4708",
+   "name": "BD+17 4708",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 332.884576,
+   "dec": 18.093255,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?BD%2B17%204708",
+    "utc": "2026-11-16T09:12:33+00:00",
+    "simbad_name": "BD+17 4708",
+    "j2000": [
+     332.88073201368917,
+     18.09282721765222
+    ],
+    "pm_mas_yr": [
+     505.945,
+     59.27
+    ]
+   }
+  },
+  {
+   "id": "g191b2b",
+   "name": "G191-B2B",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 76.377727,
+   "dec": 52.830414,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?G191-B2B",
+    "utc": "2026-11-16T09:12:36+00:00",
+    "simbad_name": "BD+52 913",
+    "j2000": [
+     76.37757540733,
+     52.83108869489
+    ],
+    "pm_mas_yr": [
+     12.701,
+     -93.416
+    ]
+   }
+  },
+  {
+   "id": "gd71",
+   "name": "GD 71",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 88.115659,
+   "dec": 15.885759,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?GD%2071",
+    "utc": "2026-11-16T09:12:38+00:00",
+    "simbad_name": "GD 71",
+    "j2000": [
+     88.11508274659,
+     15.88700802429
+    ],
+    "pm_mas_yr": [
+     76.728,
+     -172.96
+    ]
+   }
+  },
+  {
+   "id": "gd153",
+   "name": "GD 153",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 194.259378,
+   "dec": 22.029821,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?GD%20153",
+    "utc": "2026-11-16T09:12:40+00:00",
+    "simbad_name": "GD 153",
+    "j2000": [
+     194.25967704565,
+     22.0312874384
+    ],
+    "pm_mas_yr": [
+     -38.402,
+     -202.99
+    ]
+   }
+  },
+  {
+   "id": "hd37725",
+   "name": "HD 37725",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 85.476665,
+   "dec": 29.297294,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?HD%2037725",
+    "utc": "2026-11-16T09:12:45+00:00",
+    "simbad_name": "HD 37725",
+    "j2000": [
+     85.47654073643,
+     29.2974874454
+    ],
+    "pm_mas_yr": [
+     14.97,
+     -26.792
+    ]
+   }
+  },
+  {
+   "id": "hd116405",
+   "name": "HD 116405",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 200.6881,
+   "dec": 44.714904,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?HD%20116405",
+    "utc": "2026-11-16T09:12:48+00:00",
+    "simbad_name": "HD 116405",
+    "j2000": [
+     200.68801188915998,
+     44.71497067632
+    ],
+    "pm_mas_yr": [
+     8.662,
+     -9.203
+    ]
+   }
+  },
+  {
+   "id": "hd180609",
+   "name": "HD 180609",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 288.196614,
+   "dec": 64.176936,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?HD%20180609",
+    "utc": "2026-11-16T09:12:51+00:00",
+    "simbad_name": "HD 180609",
+    "j2000": [
+     288.19666513014,
+     64.17699359791
+    ],
+    "pm_mas_yr": [
+     -3.095,
+     -7.948
+    ]
+   }
+  },
+  {
+   "id": "hd55677",
+   "name": "HD 55677",
+   "category": "stable_control",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 108.630354,
+   "dec": 13.86017,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?HD%2055677",
+    "utc": "2026-11-16T09:12:54+00:00",
+    "simbad_name": "HD 55677",
+    "j2000": [
+     108.63037365861,
+     13.86021725201
+    ],
+    "pm_mas_yr": [
+     -2.595,
+     -6.579
+    ]
+   }
+  },
+  {
+   "id": "procyon",
+   "name": "Procyon",
+   "category": "saturated",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 114.820315,
+   "dec": 5.2175,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?Procyon",
+    "utc": "2026-11-16T09:12:57+00:00",
+    "simbad_name": "* alf CMi",
+    "j2000": [
+     114.825497908,
+     5.224987557
+    ],
+    "pm_mas_yr": [
+     -714.59,
+     -1036.8
+    ]
+   }
+  },
+  {
+   "id": "arcturus",
+   "name": "Arcturus",
+   "category": "saturated",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 213.906939,
+   "dec": 19.167964,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?Arcturus",
+    "utc": "2026-11-16T09:13:00+00:00",
+    "simbad_name": "* alf Boo",
+    "j2000": [
+     213.915300295,
+     19.182409162
+    ],
+    "pm_mas_yr": [
+     -1093.39,
+     -2000.06
+    ]
+   }
+  },
+  {
+   "id": "vega",
+   "name": "Vega",
+   "category": "saturated",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 279.236596,
+   "dec": 38.785756,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?Vega",
+    "utc": "2026-11-16T09:13:02+00:00",
+    "simbad_name": "* alf Lyr",
+    "j2000": [
+     279.234734787,
+     38.783688956
+    ],
+    "pm_mas_yr": [
+     200.94,
+     286.23
+    ]
+   }
+  },
+  {
+   "id": "61cyga",
+   "name": "61 Cyg A",
+   "category": "saturated",
+   "detector": "SPHEREx-D1",
+   "source": "archive",
+   "split": "calibration",
+   "ra": 316.763311,
+   "dec": 38.772887,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?61%20Cyg%20A",
+    "utc": "2026-11-16T09:13:03+00:00",
+    "simbad_name": "* 61 Cyg A",
+    "j2000": [
+     316.7247482895925,
+     38.74941731943694
+    ],
+    "pm_mas_yr": [
+     4164.209,
+     3249.614
+    ]
+   }
+  },
+  {
+   "id": "wise1828",
+   "name": "WISE J182831.08+265037.8",
+   "category": "low_snr",
+   "detector": "SPHEREx-D6",
+   "source": "archive",
+   "split": "held_out",
+   "ra": null,
+   "dec": null,
+   "simbad_query": "WISEPA J182831.08+265037.8",
+   "resolve_error": "2026-11-16T09:25:43+00:00 Sesame did not resolve 'WISEPA J182831.08+265037.8'"
+  },
+  {
+   "id": "wise0350",
+   "name": "WISE J035000.32-565830.2",
+   "category": "low_snr",
+   "detector": "SPHEREx-D6",
+   "source": "archive",
+   "split": "held_out",
+   "ra": 57.49972,
+   "dec": -56.977556,
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV?WISE%20J035000.32-565830.2",
+    "utc": "2026-11-16T09:24:25+00:00",
+    "simbad_name": "WISE J035000.32-565830.2",
+    "j2000": [
+     57.502485375,
+     -56.973400806
+    ],
+    "pm_mas_yr": [
+     -208.7,
+     -575.4
+    ]
+   }
+  },
+  {
+   "id": "wise1405",
+   "name": "WISE J140518.40+553421.4",
+   "category": "low_snr",
+   "detector": "SPHEREx-D6",
+   "source": "archive",
+   "split": "calibration",
+   "ra": null,
+   "dec": null,
+   "simbad_query": "WISEPC J140518.40+553421.5",
+   "resolve_error": "2026-11-16T09:25:51+00:00 Sesame did not resolve 'WISEPC J140518.40+553421.5'"
+  },
+  {
+   "id": "wise2056",
+   "name": "WISE J205628.90+145953.2",
+   "category": "low_snr",
+   "detector": "SPHEREx-D6",
+   "source": "archive",
+   "split": "held_out",
+   "ra": null,
+   "dec": null,
+   "simbad_query": "WISEPC J205628.90+145953.3",
+   "resolve_error": "2026-11-16T09:26:00+00:00 Sesame did not resolve 'WISEPC J205628.90+145953.3'"
+  },
+  {
+   "id": "tamriko",
+   "name": "(2052) Tamriko",
+   "category": "known_asteroid",
+   "source": "published_evidence",
+   "evidence": "submission/evidence/motion_followup.json",
+   "evidence_index": 0,
+   "split": "held_out"
+  },
+  {
+   "id": "eros",
+   "name": "(433) Eros",
+   "category": "known_asteroid",
+   "source": "published_evidence",
+   "evidence": "submission/evidence/motion_followup.json",
+   "evidence_index": 1,
+   "split": "held_out"
+  }
+ ]
+}
