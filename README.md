@@ -49,6 +49,10 @@ measures second, and then tries to break its own result.
 | Barnard's Star | **Comparison refused** | 0 of 58 epochs usable: saturation flags on the star in every one. |
 | WISE 0855 | **No significant change** | 27 valid pairs, largest change 1.9σ. Too faint to prove it is constant. |
 
+**Moving objects (validation).** A blind search over 38 real SPHEREx exposures found and linked the known asteroid
+(216) Kleopatra across 7 visits. Its positions agree with JPL Horizons, computed as seen from SPHEREx, to 0.15″ and
+0.18″ rms, and the fitted rates match within 0.8σ. SIMULATED movers at S/N ≥ 7 are recovered in 75–100% of trials.
+
 RW Aur is a known variable young binary. At 6.15″ pixels both stars (1.6″ apart) fall in our aperture, so this is a
 measurement of the pair, not a discovery. **HIPPARCHUS has not found Planet X**, and we don't claim it has.
 
@@ -101,6 +105,8 @@ python scripts/reproduce_validation.py   # null test, SIMULATED injection-recove
 python scripts/reproduce_catalogs.py     # SIMBAD + Gaia DR3 match (needs network)
 python scripts/reproduce_robustness.py   # stability fingerprint (~30 s)
 python scripts/reproduce_epsf.py         # experimental ePSF check (~12 s)
+python scripts/reproduce_wavecal.py      # wavelength audit against CWAVE/CBAND (~70 s)
+python scripts/reproduce_motion.py       # Kleopatra vs JPL Horizons + SIMULATED movers (~16 min)
 python scripts/make_judge_site.py        # docs/index.html (Judge Mode)
 cd ../report && ./reproduce_report.sh    # report PDF
 cd .. && backend/.venv/bin/python presentation/build_deck.py   # six-slide deck

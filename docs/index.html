@@ -115,6 +115,35 @@ so nothing here waits for a live archive download.</p>
  <p><b>No published conclusion changes.</b> We keep the published numbers for reproducibility and say so here. The same audit
  confirmed the ePSF zone layouts (21×21; detector 3: 11×41). <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/wavecal_check.json'>Evidence</a></p>
 </section>
+
+<section class='case' id='motion'>
+ <h2>Moving-Object Explorer <small>(validation on a known asteroid, not a discovery)</small></h2>
+ <p>A distant planet would show up as something that moves between SPHEREx epochs. Before looking for unknown
+ movers, we checked that our detection, linking and astrometry work on a known one: the main-belt asteroid
+ <b>(216) Kleopatra</b> in 38 real SPHEREx exposures, 2025-06-17 to
+ 2025-06-20.</p>
+ <table>
+  <tr><th>Check</th><th>Result</th></tr>
+  <tr><td>Blind linking</td><td>1314 detections, 1248 stationary;
+   Kleopatra linked from 31 detections over 7 visits</td></tr>
+  <tr><td>Position vs JPL Horizons (seen from SPHEREx)</td><td>0.15″ / 0.18″ rms
+   (RA cos Dec / Dec); vs geocentric Horizons 1.34″ / 0.63″: we see SPHEREx's own parallax</td></tr>
+  <tr><td>Rate (″/h)</td><td>2.0767, 4.3102 ± 0.0037 vs Horizons 2.0771,
+   4.3075 (-0.12σ, +0.74σ)</td></tr>
+  <tr><td>SIMULATED movers, S/N ≥ 7, 2–15″/h</td><td>75–100% recovered</td></tr>
+  <tr><td>False links (SIMULATED / permuted)</td><td>noise-only fields: 0/10 runs with a track;
+   shuffled epoch times: 14/20 runs with a 3-visit track, none with 5 visits</td></tr>
+ </table>
+ <p><b>Found along the way:</b> the SPHEREx pipeline flags the moving asteroid as OUTLIER in
+ 35 of 38 exposures, so a static-star mask erases it.
+ The motion check keeps OUTLIER pixels; the star pipeline is unchanged.</p>
+ <p><b>Limits:</b> one object, one 3.3-day window, slow motion only. A second track (6 detections, 5 visits) matches no
+ known object and is reported without interpretation. 3-visit tracks can be chance alignments.
+ <b>HIPPARCHUS has not found Planet X.</b></p>
+ <img src='img/motion_check.png' alt='Kleopatra in SPHEREx cutouts, linking, residuals and SIMULATED tests' style='width:100%;max-width:1000px'>
+ <p class='small'>Evidence: <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/motion_check.json'>motion_check.json</a>
+ · reproduce with <code>backend/scripts/reproduce_motion.py</code></p>
+</section>
 <section class='case'>
  <h2>Why this matters for “Planet X and SPHEREx”</h2>
  <p>SPHEREx sees every part of the sky many times, each time at a slightly different wavelength. A distant moving
@@ -197,5 +226,5 @@ so nothing here waits for a live archive download.</p>
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
 data; no simulated value appears on this page (the SIMULATED injection-recovery test is only in the report).
 AI tools helped with the logos, the video edit, code, method review and writing; they produced no measurement and did not
-validate the science (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/docs/AI_USAGE_DISCLOSURE.md'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit 658a215.</footer>
+validate the science (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/docs/AI_USAGE_DISCLOSURE.md'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit 962aee0.</footer>
 </main></body></html>

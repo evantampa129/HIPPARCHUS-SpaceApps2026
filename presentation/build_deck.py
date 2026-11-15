@@ -144,7 +144,7 @@ claims = {c["claim"]: c for c in rob["rw_aur"]["claims"]}
 c15 = next(v for k, v in claims.items() if "1.5" in k)
 call = next(v for k, v in claims.items() if "every" in k)
 cw = rob["wise0855"]["claims"][0]
-n_tests = 38
+n_tests = 54
 
 # 1. Identity
 s = slide()
@@ -233,8 +233,10 @@ text(s, "Green: claim holds. Grey: not evaluated (a pair was refused). Numbers: 
 
 # 6. Impact and next frontier
 s = slide("From changing stars to moving worlds", "IMPACT, NEXT STEPS AND LIVE DEMO")
-if motion and motion.get("slide_summary"):
-    mline = (motion["slide_summary"], OK, 15)
+if motion:
+    mr = motion["residuals_vs_horizons_spherex_arcsec"]["all_detections_near_prediction"]
+    mline = (f"Moving objects (validated): our blind search linked the known asteroid (216) Kleopatra across "
+             f"7 SPHEREx visits; positions match JPL Horizons to {mr['rms_ra_cosdec']:.2f}″/{mr['rms_dec']:.2f}″ rms.", OK, 15)
 else:
     mline = ("Moving objects: linking detections across epochs is the next step toward a Planet X search; "
              "not yet validated on real data. FUTURE WORK.", WARN, 15)

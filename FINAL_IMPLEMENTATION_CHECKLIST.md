@@ -17,5 +17,5 @@ Status as of 15 Nov 2026. Filled in from the commands we actually ran; this file
 | Catalogue match (SIMBAD, Gaia DR3) | IMPLEMENTED AND VERIFIED | `catalog_match.json` | — | CDS mirrors used during outage |
 | Judge Mode page | IMPLEMENTED AND VERIFIED | `docs/index.html` (GitHub Pages) | built from evidence with asserts | Static, precomputed |
 | Six-slide deck | IMPLEMENTED AND VERIFIED | `presentation/HIPPARCHUS_AETHENOVA_FINAL.pptx/.pdf` (6 pages) | assert in build script | — |
-| Moving-object search (Planet X direction) | IN PROGRESS | — | — | HIPPARCHUS has not found Planet X |
+| Moving objects: blind linking validated on (216) Kleopatra vs JPL Horizons (observer = SPHEREx) | IMPLEMENTED (validation on one known asteroid) | `submission/evidence/motion_check.json`, `report/figures/motion_check.png` | `test_motion.py` (8, SIMULATED) | One object, one 3.3-day window, slow motion only; 3-visit tracks can be chance alignments; a second unexplained track is reported, not claimed. HIPPARCHUS has not found Planet X |
 | Machine-learning ranking | NOT IMPLEMENTED | — | — | No labelled data to train or test on fairly |

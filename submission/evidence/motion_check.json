@@ -1,0 +1,2424 @@
+{
+ "experiment": "Track B validation: motion of a KNOWN asteroid in real SPHEREx exposures, checked against JPL Horizons",
+ "claim": "none about new objects; this checks our detection, linking and astrometry on a body with a well-known orbit",
+ "object": "(216) Kleopatra",
+ "horizons": {
+  "api": "https://ssd.jpl.nasa.gov/api/horizons.api",
+  "command": "216;",
+  "observer_spherex": "500@-163182",
+  "observer_geocentric": "500@399",
+  "quantities": "1 (astrometric RA/Dec ICRF), 3 (rates), 9 (V), 20 (delta), 23 (elongation)",
+  "time_scale": "UT, at FITS MJD-AVG (mid-exposure)",
+  "query_urls_spherex": [
+   "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27216%3B%27&EPHEM_TYPE=OBSERVER&CENTER=%27500%40-163182%27&TLIST=60843.49784759+60843.49784760+60843.49933985+60843.49933985+60843.50083209+60843.50083209+60843.50232435+60843.50232435+60843.97252629+60843.97252629+60843.97401854+60843.97401854+60843.97551080+60843.97551081+60844.10860559+60844.10860560+60844.11009784+60844.11009784+60844.11159009+60844.11159009+60844.11308236+60844.11308236+60844.65207007+60844.65207007+60845.87452758+60845.87452758+60845.94263830+60845.94263830+60845.94414833+60845.94414832+60846.62369208+60846.62369209+60846.62518435+60846.62518435+60846.62667659+60846.62667659+60846.62816885+60846.62816885&TLIST_TYPE=MJD&TIME_TYPE=UT&QUANTITIES=%271%2C3%2C9%2C20%2C23%27&ANG_FORMAT=DEG&CSV_FORMAT=YES&EXTRA_PREC=YES&OBJ_DATA=NO"
+  ],
+  "query_urls_geocentric": [
+   "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27216%3B%27&EPHEM_TYPE=OBSERVER&CENTER=%27500%40399%27&TLIST=60843.49784759+60843.49784760+60843.49933985+60843.49933985+60843.50083209+60843.50083209+60843.50232435+60843.50232435+60843.97252629+60843.97252629+60843.97401854+60843.97401854+60843.97551080+60843.97551081+60844.10860559+60844.10860560+60844.11009784+60844.11009784+60844.11159009+60844.11159009+60844.11308236+60844.11308236+60844.65207007+60844.65207007+60845.87452758+60845.87452758+60845.94263830+60845.94263830+60845.94414833+60845.94414832+60846.62369208+60846.62369209+60846.62518435+60846.62518435+60846.62667659+60846.62667659+60846.62816885+60846.62816885&TLIST_TYPE=MJD&TIME_TYPE=UT&QUANTITIES=%271%2C3%2C9%2C20%2C23%27&ANG_FORMAT=DEG&CSV_FORMAT=YES&EXTRA_PREC=YES&OBJ_DATA=NO"
+  ],
+  "coarse_track_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27216%3B%27&EPHEM_TYPE=OBSERVER&CENTER=%27500%40-163182%27&START_TIME=%27JD+2460843.9%27&STOP_TIME=%27JD+2460847.2%27&STEP_SIZE=%271h%27&QUANTITIES=%271%27&ANG_FORMAT=DEG&CSV_FORMAT=YES&OBJ_DATA=NO",
+  "spacecraft_check": {
+   "what": "|SPHEREx position in FITS header (X_SC,Y_SC,Z_SC, geocentric) - Horizons -163182 vector|",
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27-163182%27&EPHEM_TYPE=VECTORS&CENTER=%27500%40399%27&TLIST=60843.49784759+60843.49784760+60843.49933985+60843.49933985+60843.50083209+60843.50083209+60843.50232435+60843.50232435+60843.97252629+60843.97252629+60843.97401854+60843.97401854+60843.97551080+60843.97551081+60844.10860559+60844.10860560+60844.11009784+60844.11009784+60844.11159009+60844.11159009+60844.11308236+60844.11308236+60844.65207007+60844.65207007+60845.87452758+60845.87452758+60845.94263830+60845.94263830+60845.94414833+60845.94414832+60846.62369208+60846.62369209+60846.62518435+60846.62518435+60846.62667659+60846.62667659+60846.62816885+60846.62816885&TLIST_TYPE=MJD&TIME_TYPE=UT&REF_PLANE=FRAME&REF_SYSTEM=ICRF&VEC_TABLE=1&CSV_FORMAT=YES&OUT_UNITS=KM-S&OBJ_DATA=NO&VEC_LABELS=NO",
+   "median_km": 1.3383474744394839,
+   "max_km": 4.43288767267957,
+   "equivalent_arcsec_at_object": 0.0020892737905992037
+  }
+ },
+ "parallax_note": "SPHEREx orbits ~650 km up (|r| ~ 7000 km from the geocentre). At the asteroid's distance this shifts it by up to 3.3 arcsec versus a geocentric ephemeris, with a 98-minute period. We therefore compare with Horizons evaluated AT SPHEREx (500@-163182); the geocentric residuals are listed only to show the size of the effect.",
+ "field": {
+  "ra_center": 201.42361293505957,
+  "dec_center": -8.168975776501933,
+  "cutout_size_deg": 0.186,
+  "window_mjd": [
+   60843.4,
+   60846.7
+  ]
+ },
+ "archive": {
+  "sia_url": "https://irsa.ipac.caltech.edu/SIA",
+  "queries": [
+   {
+    "release": "spherex_dr1",
+    "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+201.42361293505957+-8.168975776501933+0.001&RESPONSEFORMAT=VOTABLE",
+    "sha256": "cdbf38efb38d571ed40fcf916397d517a4ac2b1fa5e16b292b14d6725ae55b2a",
+    "status": "cached"
+   },
+   {
+    "release": "spherex_qr3",
+    "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+201.42361293505957+-8.168975776501933+0.001&RESPONSEFORMAT=VOTABLE",
+    "sha256": "e824a3bf800bb436fe6d068446d1f7f8d3fffbb27d1e265bf7f7884d964aed05",
+    "status": "cached"
+   }
+  ],
+  "n_exposures_in_window": 38
+ },
+ "settings": {
+  "nsigma": 5.0,
+  "static_radius_arcsec": 6.0,
+  "v_min_arcsec_h": 1.5,
+  "v_max_arcsec_h": 120.0,
+  "min_dt_static_hours": 4.0,
+  "link_tol_arcsec": 12.0,
+  "min_visits": 3,
+  "fit_order": 2,
+  "match_radius_arcsec": 12.0
+ },
+ "blind_search": {
+  "n_detections": 1314,
+  "n_static": 1248,
+  "tracks": [
+   {
+    "track": 0,
+    "n_detections": 31,
+    "n_visits": 7,
+    "rate_ra_cosdec_arcsec_h": 2.0766717180752385,
+    "rate_dec_arcsec_h": 4.310176265147129,
+    "fit_rms_arcsec": 0.3935439487053558,
+    "median_offset_from_horizons_arcsec": 0.3800186095980828,
+    "matches_horizons": true
+   },
+   {
+    "track": 1,
+    "n_detections": 6,
+    "n_visits": 5,
+    "rate_ra_cosdec_arcsec_h": -1.3106041046027792,
+    "rate_dec_arcsec_h": 0.9577457880098273,
+    "fit_rms_arcsec": 1.4040989392308973,
+    "median_offset_from_horizons_arcsec": 255.15717829725799,
+    "matches_horizons": false,
+    "position_at_t_ref": {
+     "mjd": 60845.00021600932,
+     "ra": 201.38106358863476,
+     "dec": -8.118993598263012
+    },
+    "jpl_sb_ident_geocentric": {
+     "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-19_00%3A00%3A18&mpc-code=500&fov-ra-center=13-25-31.46&fov-dec-center=M08-07-08.4&fov-ra-hwidth=0.03&fov-dec-hwidth=0.03&two-pass=true&suppress-first-pass=true",
+     "n_objects": 0,
+     "objects": []
+    }
+   }
+  ],
+  "n_tracks_not_matching_kleopatra": 1
+ },
+ "pipeline_flag_finding": {
+  "what": "exposures whose 2-px aperture at the Horizons position contains pixels flagged OUTLIER by the SPHEREx pipeline",
+  "n_with_outlier": 35,
+  "n_exposures": 38,
+  "consequence": "with the static-target mask (quality.BAD_PLANES) the asteroid is masked out; Track B keeps OUTLIER pixels"
+ },
+ "exposures": [
+  {
+   "obs_id": "2025W25_1B_0290_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60843.49784759,
+   "date_obs": "2025-06-17T11:55:56.473",
+   "wavelength_um": 2.1921,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/3/level2_2025W25_1B_0290_1D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "95cf1f6cfc337a41099cf4e4b179abfacdd1f5346a69daf0185dea6b32503c56",
+   "spacecraft_xyz_km": [
+    -7005.617266661408,
+    567.2198693845755,
+    287.71254607389704
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.400084308,
+    "dec": -8.212447945
+   },
+   "horizons_geocentric": {
+    "ra": 201.399675213,
+    "dec": -8.212291883
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5621653155277542,
+   "V_mag_horizons": 12.756,
+   "delta_au": 2.9174734137547,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 1,
+    "SOURCE": 11
+   },
+   "measured": {
+    "ra": 201.40002454333535,
+    "dec": -8.212472619186473,
+    "err_arcsec": 0.07712704499879497,
+    "snr": 133.7087236348692,
+    "x": 51.23328614325831,
+    "y": 83.0672878845515,
+    "resid_ra_cosdec_arcsec": -0.2129413481040956,
+    "resid_dec_arcsec": -0.08883963683035745,
+    "resid_vs_geocentric_arcsec": [
+     1.2447320220682343,
+     -0.6505769588309249
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0290_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60843.497847601,
+   "date_obs": "2025-06-17T11:55:56.474",
+   "wavelength_um": 4.849,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/6/level2_2025W25_1B_0290_1D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "d26209a3670aee40a06ff3f0bef60eb619a1fdfa48624b7aa05f5c04157ddd3f",
+   "spacecraft_xyz_km": [
+    -7005.617266661408,
+    567.2198693845755,
+    287.71254607389704
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.400084308,
+    "dec": -8.212447944
+   },
+   "horizons_geocentric": {
+    "ra": 201.399675213,
+    "dec": -8.212291883
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5621640208184517,
+   "V_mag_horizons": 12.756,
+   "delta_au": 2.91747341387919,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 1,
+    "SOURCE": 13
+   },
+   "measured": {
+    "ra": 201.40002262326541,
+    "dec": -8.212415563560098,
+    "err_arcsec": 0.13735247010313142,
+    "snr": 36.35382302482963,
+    "x": 51.33851899843808,
+    "y": 83.11519569301434,
+    "resid_ra_cosdec_arcsec": -0.21979473544392647,
+    "resid_dec_arcsec": 0.11655675071099836,
+    "resid_vs_geocentric_arcsec": [
+     1.2378786345183386,
+     -0.4451769712983946
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0290_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60843.499339847,
+   "date_obs": "2025-06-17T11:58:05.404",
+   "wavelength_um": 2.2428,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/3/level2_2025W25_1B_0290_2D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "d012e9d711aacff453b4965ee2b59c5b4885a7183d87b9418491002efdf4b1b8",
+   "spacecraft_xyz_km": [
+    -6967.392585060572,
+    698.3179796322294,
+    -673.008978765223
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.400110744,
+    "dec": -8.212274552
+   },
+   "horizons_geocentric": {
+    "ra": 201.3996873,
+    "dec": -8.212244813
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.512561073282965,
+   "V_mag_horizons": 12.756,
+   "delta_au": 2.91749236767293,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 2,
+    "SOURCE": 12,
+    "HALO": 1
+   },
+   "measured": {
+    "ra": 201.4000904276983,
+    "dec": -8.21241097594432,
+    "err_arcsec": 0.06286695014556593,
+    "snr": 109.79547013401162,
+    "x": 50.825180926280794,
+    "y": 82.57167090220835,
+    "resid_ra_cosdec_arcsec": -0.07236007891371798,
+    "resid_dec_arcsec": -0.49113076384941223,
+    "resid_vs_geocentric_arcsec": [
+     1.43641364414556,
+     -0.598102035772115
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0290_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60843.499339847,
+   "date_obs": "2025-06-17T11:58:05.404",
+   "wavelength_um": 4.8846,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/6/level2_2025W25_1B_0290_2D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "5fa897202f18872ae5dea87063882783703f1c30e345cc871865ece05b30c8e0",
+   "spacecraft_xyz_km": [
+    -6967.392585060572,
+    698.3179796322294,
+    -673.008978765223
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.400110744,
+    "dec": -8.212274552
+   },
+   "horizons_geocentric": {
+    "ra": 201.3996873,
+    "dec": -8.212244813
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.512561073282965,
+   "V_mag_horizons": 12.756,
+   "delta_au": 2.91749236767293,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 2,
+    "SOURCE": 11
+   },
+   "measured": {
+    "ra": 201.4000897768054,
+    "dec": -8.212303484115719,
+    "err_arcsec": 0.12192511012883599,
+    "snr": 39.77730434348743,
+    "x": 50.702419171266286,
+    "y": 82.73222849858492,
+    "resid_ra_cosdec_arcsec": -0.07470184029205029,
+    "resid_dec_arcsec": -0.10416006376902942,
+    "resid_vs_geocentric_arcsec": [
+     1.4340718827672276,
+     -0.21113133569173215
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0290_3",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60843.500832092,
+   "date_obs": "2025-06-17T12:00:14.334",
+   "wavelength_um": 2.286,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/3/level2_2025W25_1B_0290_3D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "94cc5e50240cb6431c7021ce209a6b007733c8e6f9167a58b879bdb9dc32b952",
+   "spacecraft_xyz_km": [
+    -6796.453756658585,
+    816.1120303452323,
+    -1620.8772537890563
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.400129133,
+    "dec": -8.212100606
+   },
+   "horizons_geocentric": {
+    "ra": 201.399699397,
+    "dec": -8.212197748
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5706149756022176,
+   "V_mag_horizons": 12.756,
+   "delta_au": 2.91751211844392,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 1,
+    "SOURCE": 10
+   },
+   "measured": {
+    "ra": 201.40011179330534,
+    "dec": -8.21200468808908,
+    "err_arcsec": 0.14543325445360222,
+    "snr": 128.35369237763115,
+    "x": 50.74639600193657,
+    "y": 82.91904044819252,
+    "resid_ra_cosdec_arcsec": -0.061802974548172074,
+    "resid_dec_arcsec": 0.3453010839639319,
+    "resid_vs_geocentric_arcsec": [
+     1.469363260205398,
+     0.6951029752345903
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0290_3",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60843.500832092,
+   "date_obs": "2025-06-17T12:00:14.334",
+   "wavelength_um": 4.9205,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/6/level2_2025W25_1B_0290_3D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "e030747bf9f435993a1de9403b6f084f2de4480727dd7384f2a3cecd0543d23d",
+   "spacecraft_xyz_km": [
+    -6796.453756658585,
+    816.1120303452323,
+    -1620.8772537890563
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.400129133,
+    "dec": -8.212100606
+   },
+   "horizons_geocentric": {
+    "ra": 201.399699397,
+    "dec": -8.212197748
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5706149756022176,
+   "V_mag_horizons": 12.756,
+   "delta_au": 2.91751211844392,
+   "quality_issues_at_prediction": [],
+   "flag_pixels_at_prediction": {
+    "SOURCE": 12
+   },
+   "measured": {
+    "ra": 201.40005618234787,
+    "dec": -8.212068906550916,
+    "err_arcsec": 0.16220004473070182,
+    "snr": 34.912475114095116,
+    "x": 51.39089766741916,
+    "y": 82.2804437669094,
+    "resid_ra_cosdec_arcsec": -0.259936223684889,
+    "resid_dec_arcsec": 0.114102849354623,
+    "resid_vs_geocentric_arcsec": [
+     1.2712300110686812,
+     0.4639047406252814
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0290_4",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60843.502324349,
+   "date_obs": "2025-06-17T12:02:23.265",
+   "wavelength_um": 2.3479,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/3/level2_2025W25_1B_0290_4D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "60419ef5405b27a8a6878bda7b167e09bd459946e40b67affe0bb5f79b85aeff",
+   "spacecraft_xyz_km": [
+    -6496.093797203426,
+    918.364522585064,
+    -2537.7994970390155
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.400139356,
+    "dec": -8.211928522
+   },
+   "horizons_geocentric": {
+    "ra": 201.399711505,
+    "dec": -8.212150687
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.7215351324647563,
+   "V_mag_horizons": 12.756,
+   "delta_au": 2.91753265823643,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 3,
+    "SOURCE": 10
+   },
+   "measured": {
+    "ra": 201.40019007601038,
+    "dec": -8.211826340690058,
+    "err_arcsec": 0.07884067282031672,
+    "snr": 105.13402511143035,
+    "x": 51.38261714894594,
+    "y": 82.31416645983202,
+    "resid_ra_cosdec_arcsec": 0.18069854470643065,
+    "resid_dec_arcsec": 0.36786351551975827,
+    "resid_vs_geocentric_arcsec": [
+     1.705122348443382,
+     1.1677480565071505
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0290_4",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60843.502324349,
+   "date_obs": "2025-06-17T12:02:23.265",
+   "wavelength_um": 4.9566,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/6/level2_2025W25_1B_0290_4D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "79a2662a4b4c3e49d71f655b6f817478168fbebc8fbd43022695fd8a1167ffb0",
+   "spacecraft_xyz_km": [
+    -6496.093797203426,
+    918.364522585064,
+    -2537.7994970390155
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.400139356,
+    "dec": -8.211928522
+   },
+   "horizons_geocentric": {
+    "ra": 201.399711505,
+    "dec": -8.212150687
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.7215351324647563,
+   "V_mag_horizons": 12.756,
+   "delta_au": 2.91753265823643,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "TRANSIENT": 1,
+    "SUR_ERROR": 1,
+    "NONFUNC": 1,
+    "OUTLIER": 1,
+    "SOURCE": 10
+   },
+   "measured": null
+  },
+  {
+   "obs_id": "2025W25_1B_0393_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60843.972526293,
+   "date_obs": "2025-06-17T23:19:28.713",
+   "wavelength_um": 1.6145,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/3/level2_2025W25_1B_0393_1D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "c9f4454eef4d0e7a4ab16182941a694d9a9479d5eb0238349eb71abd5257e2a8",
+   "spacecraft_xyz_km": [
+    -6971.001542052653,
+    430.60176014300407,
+    835.5065525076743
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.404415097,
+    "dec": -8.197783174
+   },
+   "horizons_geocentric": {
+    "ra": 201.404025246,
+    "dec": -8.197556768
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.610586603979337,
+   "V_mag_horizons": 12.762,
+   "delta_au": 2.9236316032163,
+   "quality_issues_at_prediction": [
+    "off_edge"
+   ],
+   "flag_pixels_at_prediction": {},
+   "measured": null
+  },
+  {
+   "obs_id": "2025W25_1B_0393_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60843.972526293,
+   "date_obs": "2025-06-17T23:19:28.713",
+   "wavelength_um": 4.4032,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/6/level2_2025W25_1B_0393_1D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "bb019b581e318b874f1f6b3fd2b76df2d8b12e8c7eb6a841a7ae89466b7405f9",
+   "spacecraft_xyz_km": [
+    -6971.001542052653,
+    430.60176014300407,
+    835.5065525076743
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.404415097,
+    "dec": -8.197783174
+   },
+   "horizons_geocentric": {
+    "ra": 201.404025246,
+    "dec": -8.197556768
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.610586603979337,
+   "V_mag_horizons": 12.762,
+   "delta_au": 2.9236316032163,
+   "quality_issues_at_prediction": [
+    "off_edge"
+   ],
+   "flag_pixels_at_prediction": {},
+   "measured": null
+  },
+  {
+   "obs_id": "2025W25_1B_0393_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60843.974018539,
+   "date_obs": "2025-06-17T23:21:37.643",
+   "wavelength_um": 1.6518,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/3/level2_2025W25_1B_0393_2D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "02543c7838dfde7defb10956d4ba4bff3226585e6c6e7c5158f14ff21c6cab3c",
+   "spacecraft_xyz_km": [
+    -7010.2234509255095,
+    567.9111946872376,
+    -124.35557227969747
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.404449161,
+    "dec": -8.197612952
+   },
+   "horizons_geocentric": {
+    "ra": 201.404040519,
+    "dec": -8.197511196
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5014529226502167,
+   "V_mag_horizons": 12.762,
+   "delta_au": 2.92365017596705,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 12
+   },
+   "measured": {
+    "ra": 201.40435475942095,
+    "dec": -8.197670442574266,
+    "err_arcsec": 0.1496875178094937,
+    "snr": 120.62570157532683,
+    "x": 49.669768899976674,
+    "y": 73.9504004781199,
+    "resid_ra_cosdec_arcsec": -0.3363633939159314,
+    "resid_dec_arcsec": -0.20698221202185607,
+    "resid_vs_geocentric_arcsec": [
+     1.1197343695004633,
+     -0.5732337407676766
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0393_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60843.974018539,
+   "date_obs": "2025-06-17T23:21:37.643",
+   "wavelength_um": 4.4354,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/6/level2_2025W25_1B_0393_2D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "cff9f335500fa98555c91dbd6a7264dd91ecd907ed25df23446a996c8632a028",
+   "spacecraft_xyz_km": [
+    -7010.2234509255095,
+    567.9111946872376,
+    -124.35557227969747
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.404449161,
+    "dec": -8.197612952
+   },
+   "horizons_geocentric": {
+    "ra": 201.404040519,
+    "dec": -8.197511196
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5014529226502167,
+   "V_mag_horizons": 12.762,
+   "delta_au": 2.92365017596705,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 10
+   },
+   "measured": {
+    "ra": 201.40440296398972,
+    "dec": -8.197662882029476,
+    "err_arcsec": 0.11328696186303269,
+    "snr": 33.21428362918867,
+    "x": 49.453030272098225,
+    "y": 73.6317768843185,
+    "resid_ra_cosdec_arcsec": -0.16460139302085963,
+    "resid_dec_arcsec": -0.17975602073533992,
+    "resid_vs_geocentric_arcsec": [
+     1.291496370395535,
+     -0.5460075494811605
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0393_3",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60843.975510796,
+   "date_obs": "2025-06-17T23:23:46.574",
+   "wavelength_um": 1.689,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/3/level2_2025W25_1B_0393_3D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "c2def1c5e385909a538a581a0306516e56d4f1083b88733edc610fab3bfd5d62",
+   "spacecraft_xyz_km": [
+    -6915.886106646931,
+    694.3997355195289,
+    -1081.8417487632682
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.404475458,
+    "dec": -8.1974408
+   },
+   "horizons_geocentric": {
+    "ra": 201.404055801,
+    "dec": -8.197465629
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.4979985566801821,
+   "V_mag_horizons": 12.762,
+   "delta_au": 2.92366954711409,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 11
+   },
+   "measured": {
+    "ra": 201.40446624161757,
+    "dec": -8.197388009310506,
+    "err_arcsec": 0.1816991273530954,
+    "snr": 130.65807663104331,
+    "x": 49.80873937158215,
+    "y": 74.05298530707836,
+    "resid_ra_cosdec_arcsec": -0.032849005604433046,
+    "resid_dec_arcsec": 0.19004497480433713,
+    "resid_vs_geocentric_arcsec": [
+     1.4624761176395964,
+     0.279501397777409
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0393_3",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60843.975510807,
+   "date_obs": "2025-06-17T23:23:46.575",
+   "wavelength_um": 4.4676,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/6/level2_2025W25_1B_0393_3D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "e5f42c31f71d30a3ef0ac972337ef688928d0ce551d8f7aa03189942cf696c58",
+   "spacecraft_xyz_km": [
+    -6915.886106646931,
+    694.3997355195289,
+    -1081.8417487632682
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.404475458,
+    "dec": -8.197440799
+   },
+   "horizons_geocentric": {
+    "ra": 201.404055801,
+    "dec": -8.197465629
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.497998771496237,
+   "V_mag_horizons": 12.762,
+   "delta_au": 2.92366954724644,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "TRANSIENT": 2,
+    "SUR_ERROR": 2,
+    "OUTLIER": 8,
+    "SOURCE": 1,
+    "HALO": 6
+   },
+   "measured": null
+  },
+  {
+   "obs_id": "2025W25_1B_0431_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D2",
+   "mjd_mid": 60844.108605587,
+   "date_obs": "2025-06-18T02:35:25.964",
+   "wavelength_um": 1.3332,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/2/level2_2025W25_1B_0431_1D2_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "848da9540d8974680cf00588eb54731f3ea50a9a8c286524bfefb862169c6039",
+   "spacecraft_xyz_km": [
+    -6985.8742284279515,
+    434.84813090307796,
+    697.6105129954576
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.405849903,
+    "dec": -8.193629061
+   },
+   "horizons_geocentric": {
+    "ra": 201.405459055,
+    "dec": -8.193420433
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5823017161699822,
+   "V_mag_horizons": 12.764,
+   "delta_au": 2.92540108423731,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 8,
+    "SOURCE": 4
+   },
+   "measured": {
+    "ra": 201.40587521109322,
+    "dec": -8.193569129775756,
+    "err_arcsec": 0.057323960354153214,
+    "snr": 117.23541791426723,
+    "x": 49.652763137343506,
+    "y": 71.27423148258255,
+    "resid_ra_cosdec_arcsec": 0.09016962717038979,
+    "resid_dec_arcsec": 0.215756438704517,
+    "resid_vs_geocentric_arcsec": [
+     1.4828934261333444,
+     -0.5352423234759982
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0431_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D5",
+   "mjd_mid": 60844.108605599,
+   "date_obs": "2025-06-18T02:35:25.965",
+   "wavelength_um": 4.1005,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/5/level2_2025W25_1B_0431_1D5_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "cee99447ecb08ee6423a5776de79ec0d080cfadfe0ab2e385cc50db19a6f2e93",
+   "spacecraft_xyz_km": [
+    -6985.8742284279515,
+    434.84813090307796,
+    697.6105129954576
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.405849903,
+    "dec": -8.19362906
+   },
+   "horizons_geocentric": {
+    "ra": 201.405459055,
+    "dec": -8.193420433
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5823000073833626,
+   "V_mag_horizons": 12.764,
+   "delta_au": 2.92540108436001,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 4,
+    "SOURCE": 6,
+    "HALO": 1
+   },
+   "measured": null
+  },
+  {
+   "obs_id": "2025W25_1B_0431_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D2",
+   "mjd_mid": 60844.110097844,
+   "date_obs": "2025-06-18T02:37:34.895",
+   "wavelength_um": 1.3656,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/2/level2_2025W25_1B_0431_2D2_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "76d96486494df396874b7a7d0ac84e9596613c90605cc523c9a9dc0d0979b8c1",
+   "spacecraft_xyz_km": [
+    -7006.119668867232,
+    570.7300436852162,
+    -263.0442293813692
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.405883778,
+    "dec": -8.193458921
+   },
+   "horizons_geocentric": {
+    "ra": 201.405475239,
+    "dec": -8.193375291
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.4865351037243222,
+   "V_mag_horizons": 12.764,
+   "delta_au": 2.92541979097308,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "PERSIST": 1,
+    "OUTLIER": 8,
+    "SOURCE": 4
+   },
+   "measured": null
+  },
+  {
+   "obs_id": "2025W25_1B_0431_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D5",
+   "mjd_mid": 60844.110097844,
+   "date_obs": "2025-06-18T02:37:34.895",
+   "wavelength_um": 4.1368,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/5/level2_2025W25_1B_0431_2D5_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "b8900a35c355f8a0d5363ade9583b7be2229990da7e37f8f61aa413e3301fbaf",
+   "spacecraft_xyz_km": [
+    -7006.119668867232,
+    570.7300436852162,
+    -263.0442293813692
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.405883778,
+    "dec": -8.193458921
+   },
+   "horizons_geocentric": {
+    "ra": 201.405475239,
+    "dec": -8.193375291
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.4865351037243222,
+   "V_mag_horizons": 12.764,
+   "delta_au": 2.92541979097308,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 5,
+    "SOURCE": 7
+   },
+   "measured": {
+    "ra": 201.4058563102862,
+    "dec": -8.193453660962321,
+    "err_arcsec": 0.12003529545033359,
+    "snr": 38.327242402277385,
+    "x": 50.27922517625371,
+    "y": 71.30885722308966,
+    "resid_ra_cosdec_arcsec": -0.09787526625860465,
+    "resid_dec_arcsec": 0.018931820457154913,
+    "resid_vs_geocentric_arcsec": [
+     1.3578663757462266,
+     -0.28207131297796195
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0431_3",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D2",
+   "mjd_mid": 60844.11159009,
+   "date_obs": "2025-06-18T02:39:43.825",
+   "wavelength_um": 1.3978,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/2/level2_2025W25_1B_0431_3D2_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "51f164409368f63cdb59e496774cf86f0bb990c1e5dba5130573fdda0c1ec8f4",
+   "spacecraft_xyz_km": [
+    -6892.884116243582,
+    695.7393055140506,
+    -1218.6741545189811
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.405909887,
+    "dec": -8.193287198
+   },
+   "horizons_geocentric": {
+    "ra": 201.405491433,
+    "dec": -8.193330153
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.4990556704852598,
+   "V_mag_horizons": 12.764,
+   "delta_au": 2.92543929788821,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 8,
+    "SOURCE": 4
+   },
+   "measured": {
+    "ra": 201.40589400151,
+    "dec": -8.193260845811858,
+    "err_arcsec": 0.04544182426857531,
+    "snr": 104.25370963068043,
+    "x": 49.52394444273245,
+    "y": 71.32688273099953,
+    "resid_ra_cosdec_arcsec": -0.05660822382782982,
+    "resid_dec_arcsec": 0.09486540514767228,
+    "resid_vs_geocentric_arcsec": [
+     1.4344432276705206,
+     0.24956987243506035
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0431_3",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D5",
+   "mjd_mid": 60844.11159009,
+   "date_obs": "2025-06-18T02:39:43.825",
+   "wavelength_um": 4.1729,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/5/level2_2025W25_1B_0431_3D5_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "d7901aff8065179c0c53b0b0182d2dd3059d56c22a0100f1c31eef04b21868fe",
+   "spacecraft_xyz_km": [
+    -6892.884116243582,
+    695.7393055140506,
+    -1218.6741545189811
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.405909887,
+    "dec": -8.193287198
+   },
+   "horizons_geocentric": {
+    "ra": 201.405491433,
+    "dec": -8.193330153
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.4990556704852598,
+   "V_mag_horizons": 12.764,
+   "delta_au": 2.92543929788821,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 4,
+    "SOURCE": 7
+   },
+   "measured": {
+    "ra": 201.4058927275976,
+    "dec": -8.193260565220802,
+    "err_arcsec": 0.15000397779207938,
+    "snr": 45.95210290357767,
+    "x": 49.925747982866476,
+    "y": 70.95618017885,
+    "resid_ra_cosdec_arcsec": -0.06114754352588392,
+    "resid_dec_arcsec": 0.0958753331241553,
+    "resid_vs_geocentric_arcsec": [
+     1.4299039079724665,
+     0.2505798004115434
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0431_4",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D2",
+   "mjd_mid": 60844.113082358,
+   "date_obs": "2025-06-18T02:41:52.757",
+   "wavelength_um": 1.432,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/2/level2_2025W25_1B_0431_4D2_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "4c057fa1d1081ee3ec4f529aface11c538b8ebdb0bc749309697ae7cda98a7bb",
+   "spacecraft_xyz_km": [
+    -6648.351892182232,
+    807.4967344077074,
+    -2151.028700683153
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.405928045,
+    "dec": -8.193116305
+   },
+   "horizons_geocentric": {
+    "ra": 201.405507637,
+    "dec": -8.19328502
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.6164688303592158,
+   "V_mag_horizons": 12.764,
+   "delta_au": 2.92545960343967,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 9,
+    "SOURCE": 5
+   },
+   "measured": {
+    "ra": 201.40589537418305,
+    "dec": -8.193194845852682,
+    "err_arcsec": 0.1028375776236298,
+    "snr": 120.63317350150119,
+    "x": 50.415683131522115,
+    "y": 70.88793304833295,
+    "resid_ra_cosdec_arcsec": -0.11640208506271676,
+    "resid_dec_arcsec": -0.282752258438947,
+    "resid_vs_geocentric_arcsec": [
+     1.3815922862303793,
+     0.3246885560418491
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0431_4",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D5",
+   "mjd_mid": 60844.113082358,
+   "date_obs": "2025-06-18T02:41:52.757",
+   "wavelength_um": 4.2089,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/5/level2_2025W25_1B_0431_4D5_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "309dea1820e91b9416d088097e2225f7b8ddbb23047052c9407b8b4fb45f17d8",
+   "spacecraft_xyz_km": [
+    -6648.351892182232,
+    807.4967344077074,
+    -2151.028700683153
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.405928045,
+    "dec": -8.193116305
+   },
+   "horizons_geocentric": {
+    "ra": 201.405507637,
+    "dec": -8.19328502
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.6164688303592158,
+   "V_mag_horizons": 12.764,
+   "delta_au": 2.92545960343967,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 4,
+    "SOURCE": 9
+   },
+   "measured": {
+    "ra": 201.40587145278408,
+    "dec": -8.193144004908271,
+    "err_arcsec": 0.10043214698460194,
+    "snr": 38.298622754923095,
+    "x": 50.24451972892043,
+    "y": 70.5730963105764,
+    "resid_ra_cosdec_arcsec": -0.20164820732530586,
+    "resid_dec_arcsec": -0.09972857637997379,
+    "resid_vs_geocentric_arcsec": [
+     1.2963461639677902,
+     0.5077122381008223
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0570_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60844.652070067,
+   "date_obs": "2025-06-18T15:38:01.295",
+   "wavelength_um": 2.4081,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/3/level2_2025W25_1B_0570_1D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "9d88ef7ba98e5ea0c90da63fecb600fa1ba4fc8b8fd148c8483110ea33918bbf",
+   "spacecraft_xyz_km": [
+    -6990.384252427313,
+    370.9169676320459,
+    689.0927944115498
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.412396049,
+    "dec": -8.177498779
+   },
+   "horizons_geocentric": {
+    "ra": 201.412013786,
+    "dec": -8.1772909
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5541926980320717,
+   "V_mag_horizons": 12.771,
+   "delta_au": 2.932487845389,
+   "quality_issues_at_prediction": [
+    "flagged_pixels",
+    "calibration_warning"
+   ],
+   "flag_pixels_at_prediction": {
+    "DICHROIC": 7,
+    "OUTLIER": 5
+   },
+   "measured": {
+    "ra": 201.41235733119902,
+    "dec": -8.177574473282162,
+    "err_arcsec": 0.05942160621931674,
+    "snr": 63.62895746310457,
+    "x": 49.45117906211727,
+    "y": 54.51478583144859,
+    "resid_ra_cosdec_arcsec": -0.13795924977170415,
+    "resid_dec_arcsec": -0.27250327544622976,
+    "resid_vs_geocentric_arcsec": [
+     1.2242167153934105,
+     -1.0208291286296536
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_1B_0570_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60844.652070067,
+   "date_obs": "2025-06-18T15:38:01.295",
+   "wavelength_um": 4.9992,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_1B/l2b-v27-2026-213/6/level2_2025W25_1B_0570_1D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "36ab357797e476caa16beb56278f213a011d628825e039c09e1a32aff653450f",
+   "spacecraft_xyz_km": [
+    -6990.384252427313,
+    370.9169676320459,
+    689.0927944115498
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.412396049,
+    "dec": -8.177498779
+   },
+   "horizons_geocentric": {
+    "ra": 201.412013786,
+    "dec": -8.1772909
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5541926980320717,
+   "V_mag_horizons": 12.771,
+   "delta_au": 2.932487845389,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 9
+   },
+   "measured": {
+    "ra": 201.41242517405126,
+    "dec": -8.177449040819988,
+    "err_arcsec": 0.1332877092070706,
+    "snr": 37.56049576616936,
+    "x": 49.68085854504136,
+    "y": 45.035048962993535,
+    "resid_ra_cosdec_arcsec": 0.103779122394009,
+    "resid_dec_arcsec": 0.179060341544087,
+    "resid_vs_geocentric_arcsec": [
+     1.4659550875591236,
+     -0.5692655116393368
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0095_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60845.874527578,
+   "date_obs": "2025-06-19T20:58:21.624",
+   "wavelength_um": 1.7401,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/3/level2_2025W25_2A_0095_1D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "0db6b055d1498c8b427107691987a94841927c32b1cace2b92ca11eacf960138",
+   "spacecraft_xyz_km": [
+    -6973.472266535979,
+    195.07906466948583,
+    894.0525783852536
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.431945493,
+    "dec": -8.143516106
+   },
+   "horizons_geocentric": {
+    "ra": 201.431587374,
+    "dec": -8.143282458
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.528484385271862,
+   "V_mag_horizons": 12.787,
+   "delta_au": 2.94853872926756,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 12
+   },
+   "measured": {
+    "ra": 201.43190534256678,
+    "dec": -8.143563103862409,
+    "err_arcsec": 0.06356853512389309,
+    "snr": 103.33649575561604,
+    "x": 52.53182918456672,
+    "y": 38.70549609574583,
+    "resid_ra_cosdec_arcsec": -0.143087550811682,
+    "resid_dec_arcsec": -0.1691893991739022,
+    "resid_vs_geocentric_arcsec": [
+     1.1331242476942656,
+     -1.0103481008313935
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0095_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60845.874527578,
+   "date_obs": "2025-06-19T20:58:21.624",
+   "wavelength_um": 4.5102,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/6/level2_2025W25_2A_0095_1D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "80c9b330faea728f6dc1861a4b3b75b7bcead6d785bf84f11b095bcceab586ed",
+   "spacecraft_xyz_km": [
+    -6973.472266535979,
+    195.07906466948583,
+    894.0525783852536
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.431945493,
+    "dec": -8.143516106
+   },
+   "horizons_geocentric": {
+    "ra": 201.431587374,
+    "dec": -8.143282458
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.528484385271862,
+   "V_mag_horizons": 12.787,
+   "delta_au": 2.94853872926756,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 9
+   },
+   "measured": {
+    "ra": 201.43193094593875,
+    "dec": -8.143512563157772,
+    "err_arcsec": 0.16365169530067114,
+    "snr": 37.3523920542756,
+    "x": 52.79385868583794,
+    "y": 38.62131402387283,
+    "resid_ra_cosdec_arcsec": -0.051841089121264616,
+    "resid_dec_arcsec": 0.012755301711266043,
+    "resid_vs_geocentric_arcsec": [
+     1.224370709384683,
+     -0.8284033999462252
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0113_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60845.942638296,
+   "date_obs": "2025-06-19T22:36:26.390",
+   "wavelength_um": 1.7838,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/3/level2_2025W25_2A_0113_1D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "b16acd1168b339e5e9368a28f972df00b2d05a75f1cc268a0497e1a6d44d9dc7",
+   "spacecraft_xyz_km": [
+    -6986.356551586271,
+    202.7478046917866,
+    785.2509241735974
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.433233769,
+    "dec": -8.141698984
+   },
+   "horizons_geocentric": {
+    "ra": 201.432874061,
+    "dec": -8.141479942
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5050162616592937,
+   "V_mag_horizons": 12.788,
+   "delta_au": 2.94943721969358,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 11
+   },
+   "measured": {
+    "ra": 201.4331689141445,
+    "dec": -8.14166679160377,
+    "err_arcsec": 0.1610446973893772,
+    "snr": 142.74917833482343,
+    "x": 52.910858206270305,
+    "y": 36.88707864430135,
+    "resid_ra_cosdec_arcsec": -0.23112151123025626,
+    "resid_dec_arcsec": 0.11589813199024945,
+    "resid_vs_geocentric_arcsec": [
+     1.0507573732365074,
+     -0.672683172262623
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0113_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60845.942638296,
+   "date_obs": "2025-06-19T22:36:26.390",
+   "wavelength_um": 4.5423,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/6/level2_2025W25_2A_0113_1D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "dbe59bf1f947e8b092a0fb264b5fb3f01d326040fa424f6067f4ba20b15ba8fc",
+   "spacecraft_xyz_km": [
+    -6986.356551586271,
+    202.7478046917866,
+    785.2509241735974
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.433233769,
+    "dec": -8.141698984
+   },
+   "horizons_geocentric": {
+    "ra": 201.432874061,
+    "dec": -8.141479942
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5050162616592937,
+   "V_mag_horizons": 12.788,
+   "delta_au": 2.94943721969358,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 9
+   },
+   "measured": {
+    "ra": 201.4332772324349,
+    "dec": -8.141679409701156,
+    "err_arcsec": 0.19643588122293731,
+    "snr": 42.201660077006,
+    "x": 52.977253418743935,
+    "y": 36.92524373836705,
+    "resid_ra_cosdec_arcsec": 0.15489300820554774,
+    "resid_dec_arcsec": 0.07046380108133121,
+    "resid_vs_geocentric_arcsec": [
+     1.4367718926723114,
+     -0.7181175031715412
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0113_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D3",
+   "mjd_mid": 60845.94414833,
+   "date_obs": "2025-06-19T22:38:36.857",
+   "wavelength_um": 1.8253,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/3/level2_2025W25_2A_0113_2D3_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "0356df1acb49949b0b263811cbe2fc4dfbaac4b3a4d72f68ec6a247f0a93ead8",
+   "spacecraft_xyz_km": [
+    -7022.62998411004,
+    340.56679127441936,
+    -190.0837066932479
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.433281025,
+    "dec": -8.141533982
+   },
+   "horizons_geocentric": {
+    "ra": 201.432902822,
+    "dec": -8.141440091
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.3895456912045996,
+   "V_mag_horizons": 12.788,
+   "delta_au": 2.94945633734829,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "TRANSIENT": 1,
+    "SUR_ERROR": 1,
+    "OUTLIER": 14,
+    "HALO": 6
+   },
+   "measured": null
+  },
+  {
+   "obs_id": "2025W25_2A_0113_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D6",
+   "mjd_mid": 60845.944148319,
+   "date_obs": "2025-06-19T22:38:36.856",
+   "wavelength_um": 4.5765,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/6/level2_2025W25_2A_0113_2D6_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "4f416d456c2d697555f3d531bc3580692bb6a60f25b046ded1b296d8f9c0c9f2",
+   "spacecraft_xyz_km": [
+    -7022.62998411004,
+    340.56679127441936,
+    -190.0837066932479
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.433281025,
+    "dec": -8.141533981
+   },
+   "horizons_geocentric": {
+    "ra": 201.432902822,
+    "dec": -8.14144009
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.3895456912050903,
+   "V_mag_horizons": 12.788,
+   "delta_au": 2.94945633747764,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "TRANSIENT": 1,
+    "SUR_ERROR": 1,
+    "NONFUNC": 1,
+    "COLD": 1,
+    "OUTLIER": 8
+   },
+   "measured": {
+    "ra": 201.4332218565298,
+    "dec": -8.141485742487706,
+    "err_arcsec": 0.14216458231374543,
+    "snr": 37.538751028114014,
+    "x": 53.355910083274196,
+    "y": 36.958402584161874,
+    "resid_ra_cosdec_arcsec": -0.210855546908995,
+    "resid_dec_arcsec": 0.17366370995296165,
+    "resid_vs_geocentric_arcsec": [
+     1.13694513805995,
+     -0.16437555040576513
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0253_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D1",
+   "mjd_mid": 60846.62369208,
+   "date_obs": "2025-06-20T14:57:09.437",
+   "wavelength_um": 0.8274,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/1/level2_2025W25_2A_0253_1D1_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "087b4d80c2951afa5cb2aa3aef5ee69eaefd8a2ea019d94c2136b166d367714c",
+   "spacecraft_xyz_km": [
+    -7020.201306609389,
+    278.0453620730882,
+    -328.75849820772265
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.447244532,
+    "dec": -8.124065711
+   },
+   "horizons_geocentric": {
+    "ra": 201.446874944,
+    "dec": -8.123990371
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.344799597691589,
+   "V_mag_horizons": 12.797,
+   "delta_au": 2.95844666333299,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 10
+   },
+   "measured": {
+    "ra": 201.447238857746,
+    "dec": -8.124031208302263,
+    "err_arcsec": 0.15459756989513448,
+    "snr": 157.30362097796973,
+    "x": 55.9038268564053,
+    "y": 25.049873803979104,
+    "resid_ra_cosdec_arcsec": -0.020215045732769,
+    "resid_dec_arcsec": 0.12421097690662464,
+    "resid_vs_geocentric_arcsec": [
+     1.2969341760192634,
+     -0.14708938356028511
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0253_1",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D4",
+   "mjd_mid": 60846.623692092,
+   "date_obs": "2025-06-20T14:57:09.438",
+   "wavelength_um": 2.7244,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/4/level2_2025W25_2A_0253_1D4_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "772ce969ec4a43816b89d88d5a11ef817dd94417e7a26c890aab8ebb4878605c",
+   "spacecraft_xyz_km": [
+    -7020.201306609389,
+    278.0453620730882,
+    -328.75849820772265
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.447244532,
+    "dec": -8.12406571
+   },
+   "horizons_geocentric": {
+    "ra": 201.446874944,
+    "dec": -8.123990371
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.3447988716358228,
+   "V_mag_horizons": 12.797,
+   "delta_au": 2.95844666346363,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 11,
+    "SOURCE": 3
+   },
+   "measured": {
+    "ra": 201.44724752870962,
+    "dec": -8.12404880171317,
+    "err_arcsec": 0.12248553065350024,
+    "snr": 93.03626876320669,
+    "x": 56.60541551693955,
+    "y": 24.135857766740404,
+    "resid_ra_cosdec_arcsec": 0.010683461720773835,
+    "resid_dec_arcsec": 0.060869252441648314,
+    "resid_vs_geocentric_arcsec": [
+     1.3278326836837948,
+     -0.21042750801669285
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0253_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D1",
+   "mjd_mid": 60846.625184349,
+   "date_obs": "2025-06-20T14:59:18.369",
+   "wavelength_um": 0.847,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/1/level2_2025W25_2A_0253_2D1_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "377d07283daf0aacd1135b514faf84a5c32207afa225ec504d7f15ee3d17ff70",
+   "spacecraft_xyz_km": [
+    -6903.316858564083,
+    407.48113696138495,
+    -1283.472573408814
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.447287619,
+    "dec": -8.123903304
+   },
+   "horizons_geocentric": {
+    "ra": 201.446907884,
+    "dec": -8.123953115
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.3651565078470784,
+   "V_mag_horizons": 12.797,
+   "delta_au": 2.95846658747542,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 11
+   },
+   "measured": {
+    "ra": 201.44727184167314,
+    "dec": -8.123854596240335,
+    "err_arcsec": 0.09336669246957917,
+    "snr": 124.02755800541962,
+    "x": 56.424613383306244,
+    "y": 24.085876666655547,
+    "resid_ra_cosdec_arcsec": -0.056218131345133315,
+    "resid_dec_arcsec": 0.1753513399222868,
+    "resid_vs_geocentric_arcsec": [
+     1.2971202721087138,
+     0.35459267626583824
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0253_2",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D4",
+   "mjd_mid": 60846.625184349,
+   "date_obs": "2025-06-20T14:59:18.369",
+   "wavelength_um": 2.7978,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/4/level2_2025W25_2A_0253_2D4_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "59d8c15beeb5a36d7bd328778ac2c78f1208331588f80a89d372b4e615052d76",
+   "spacecraft_xyz_km": [
+    -6903.316858564083,
+    407.48113696138495,
+    -1283.472573408814
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.447287619,
+    "dec": -8.123903304
+   },
+   "horizons_geocentric": {
+    "ra": 201.446907884,
+    "dec": -8.123953115
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.3651565078470784,
+   "V_mag_horizons": 12.797,
+   "delta_au": 2.95846658747542,
+   "quality_issues_at_prediction": [
+    "flagged_pixels",
+    "nan_pixels",
+    "bad_variance"
+   ],
+   "flag_pixels_at_prediction": {
+    "OVERFLOW": 1,
+    "SUR_ERROR": 1,
+    "NONFUNC": 1,
+    "OUTLIER": 8,
+    "SOURCE": 3,
+    "HALO": 2
+   },
+   "measured": {
+    "ra": 201.447329820728,
+    "dec": -8.12392008258554,
+    "err_arcsec": 0.15623256891658485,
+    "snr": 95.20168147050539,
+    "x": 55.942120864838415,
+    "y": 24.288823741555973,
+    "resid_ra_cosdec_arcsec": 0.15039812778343276,
+    "resid_dec_arcsec": -0.0604117402444615,
+    "resid_vs_geocentric_arcsec": [
+     1.50373653123728,
+     0.11882959609908994
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0253_3",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D1",
+   "mjd_mid": 60846.626676594,
+   "date_obs": "2025-06-20T15:01:27.299",
+   "wavelength_um": 0.8673,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/1/level2_2025W25_2A_0253_3D1_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "f911d7e1466a9bd69db1352a42608e9cefaf991b4f25df919cdf413d2a02833c",
+   "spacecraft_xyz_km": [
+    -6654.8937418598625,
+    529.1538075150609,
+    -2213.6670003515055
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.447323487,
+    "dec": -8.123741862
+   },
+   "horizons_geocentric": {
+    "ra": 201.446940834,
+    "dec": -8.123915864
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5007132593590602,
+   "V_mag_horizons": 12.797,
+   "delta_au": 2.95848732517265,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 13
+   },
+   "measured": {
+    "ra": 201.44730554627202,
+    "dec": -8.123720327670403,
+    "err_arcsec": 0.09823325161061848,
+    "snr": 116.43260211526784,
+    "x": 56.519207371639645,
+    "y": 24.10698667330791,
+    "resid_ra_cosdec_arcsec": -0.06393398155340435,
+    "resid_dec_arcsec": 0.07752737887275885,
+    "resid_vs_geocentric_arcsec": [
+     1.2998302411088503,
+     0.7038559123138839
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0253_3",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D4",
+   "mjd_mid": 60846.626676594,
+   "date_obs": "2025-06-20T15:01:27.299",
+   "wavelength_um": 2.875,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/4/level2_2025W25_2A_0253_3D4_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "54662d9ca97adb4de1ef09b372482e3cdcd5403cf9cab472d161a3550405f137",
+   "spacecraft_xyz_km": [
+    -6654.8937418598625,
+    529.1538075150609,
+    -2213.6670003515055
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.447323487,
+    "dec": -8.123741862
+   },
+   "horizons_geocentric": {
+    "ra": 201.446940834,
+    "dec": -8.123915864
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.5007132593590602,
+   "V_mag_horizons": 12.797,
+   "delta_au": 2.95848732517265,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 10,
+    "SOURCE": 4
+   },
+   "measured": {
+    "ra": 201.44732422586844,
+    "dec": -8.1237402300329,
+    "err_arcsec": 0.07994853496579882,
+    "snr": 89.70236301281149,
+    "x": 55.80600026185526,
+    "y": 24.41978664260068,
+    "resid_ra_cosdec_arcsec": 0.0026335812895013078,
+    "resid_dec_arcsec": 0.005874931728982347,
+    "resid_vs_geocentric_arcsec": [
+     1.366397803951756,
+     0.6322034651701074
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0253_4",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D1",
+   "mjd_mid": 60846.628168851,
+   "date_obs": "2025-06-20T15:03:36.230",
+   "wavelength_um": 0.8879,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/1/level2_2025W25_2A_0253_4D1_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "c0db7e2e0b7146ec617b4038b523ba4422a517d36a5d269ecc8a445c5f541147",
+   "spacecraft_xyz_km": [
+    -6279.715086329667,
+    640.7486491541465,
+    -3101.5879304304153
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.447352084,
+    "dec": -8.12358375
+   },
+   "horizons_geocentric": {
+    "ra": 201.446973795,
+    "dec": -8.123878616
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.7159250197366172,
+   "V_mag_horizons": 12.797,
+   "delta_au": 2.95850885882671,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 12
+   },
+   "measured": {
+    "ra": 201.4473248394783,
+    "dec": -8.12356525761595,
+    "err_arcsec": 0.11898286807030337,
+    "snr": 145.56033983831722,
+    "x": 56.31399689576717,
+    "y": 24.047453341875663,
+    "resid_ra_cosdec_arcsec": -0.09709223085528151,
+    "resid_dec_arcsec": 0.06657831137079029,
+    "resid_vs_geocentric_arcsec": [
+     1.2511450291535056,
+     1.1280183539931272
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  },
+  {
+   "obs_id": "2025W25_2A_0253_4",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678",
+   "detector": "SPHEREx-D4",
+   "mjd_mid": 60846.628168851,
+   "date_obs": "2025-06-20T15:03:36.230",
+   "wavelength_um": 2.954,
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W25_2A/l2b-v27-2026-213/4/level2_2025W25_2A_0253_4D4_spx_l2b-v27-2026-213.fits?center=201.42361293505957%2C-8.168975776501933&size=0.186",
+   "cutout_sha256": "f1f82c05fae80641e329782362fd3f2e784eaab3782d8f2b25f105cd82071c1f",
+   "spacecraft_xyz_km": [
+    -6279.715086329667,
+    640.7486491541465,
+    -3101.5879304304153
+   ],
+   "spacecraft_frame": "GEOCENTER",
+   "horizons_spherex": {
+    "ra": 201.447352084,
+    "dec": -8.12358375
+   },
+   "horizons_geocentric": {
+    "ra": 201.446973795,
+    "dec": -8.123878616
+   },
+   "parallax_spherex_minus_geo_arcsec": 1.7159250197366172,
+   "V_mag_horizons": 12.797,
+   "delta_au": 2.95850885882671,
+   "quality_issues_at_prediction": [
+    "flagged_pixels"
+   ],
+   "flag_pixels_at_prediction": {
+    "OUTLIER": 9,
+    "SOURCE": 3
+   },
+   "measured": {
+    "ra": 201.4473057902859,
+    "dec": -8.123573646145363,
+    "err_arcsec": 0.060761488151456385,
+    "snr": 77.70482356662255,
+    "x": 56.37279821361239,
+    "y": 24.461632429168457,
+    "resid_ra_cosdec_arcsec": -0.1649830021303842,
+    "resid_dec_arcsec": 0.03638355262745563,
+    "resid_vs_geocentric_arcsec": [
+     1.1832542578784029,
+     1.0978235952497926
+    ],
+    "flagged_static": false,
+    "in_linked_track": true
+   }
+  }
+ ],
+ "residuals_vs_horizons_spherex_arcsec": {
+  "all_detections_near_prediction": {
+   "n": 31,
+   "mean_ra_cosdec": -0.079131747926426,
+   "mean_dec": 0.02266068564671229,
+   "rms_ra_cosdec": 0.14707510745601235,
+   "rms_dec": 0.18459864735135753,
+   "median_total": 0.20696065364884164,
+   "max_total": 0.49643268246531336
+  },
+  "linked_track_members": {
+   "n": 31,
+   "mean_ra_cosdec": -0.079131747926426,
+   "mean_dec": 0.02266068564671229,
+   "rms_ra_cosdec": 0.14707510745601235,
+   "rms_dec": 0.18459864735135753,
+   "median_total": 0.20696065364884164,
+   "max_total": 0.49643268246531336
+  }
+ },
+ "residuals_vs_horizons_geocentric_arcsec": {
+  "all_detections_near_prediction": {
+   "n": 31,
+   "rms_ra_cosdec": 1.3378099334048528,
+   "rms_dec": 0.629691183704793,
+   "median_total": 1.4559919280810156
+  }
+ },
+ "fitted_motion": {
+  "model": "polynomial of order 2 in (RA cos Dec, Dec) vs time, tangent plane at the field centre",
+  "t_ref_mjd": 60844.81700337815,
+  "measured_rate_arcsec_h": {
+   "ra_cosdec": 2.0766717180752385,
+   "dec": 4.310176265147129,
+   "err_ra_cosdec": 0.0036522574525081094,
+   "err_dec": 0.0036522574525081094,
+   "total": 4.784368804899056
+  },
+  "horizons_same_model_rate_arcsec_h": {
+   "ra_cosdec": 2.077117371386983,
+   "dec": 4.307462772319928,
+   "total": 4.782117952271739
+  },
+  "rate_difference_arcsec_h": {
+   "ra_cosdec": -0.00044565331174428735,
+   "dec": 0.002713492827201236,
+   "sigma_ra_cosdec": -0.12202132996901532,
+   "sigma_dec": 0.7429631844101798
+  },
+  "horizons_geocentric_instantaneous_rate_at_t_ref_arcsec_h": {
+   "ra_cosdec": 2.077588,
+   "dec": 4.315923
+  },
+  "fit_rms_arcsec": 0.3935439487053558,
+  "fit_chi2_red": 22.760556870906743,
+  "quadratic_coef_arcsec_h2": [
+   0.013910256275344863,
+   -0.005871704936654077
+  ],
+  "time_span_hours": 75.12771026400151,
+  "note": "fit_rms and chi2_red measure the scatter about a smooth polynomial. The asteroid's path seen from SPHEREx also carries the orbital parallax (a few arcsec, 98-min period), which no low-order polynomial follows; the per-exposure residuals against Horizons evaluated AT SPHEREx are the astrometric test, the polynomial is only the motion summary."
+ },
+ "astrometric_floor_field_stars": {
+  "n_stars": 70,
+  "snr_5_10": {
+   "n_stars": 39,
+   "median_rms_axis_arcsec": 0.6710913457102133,
+   "median_formal_err_arcsec": 0.7614940040999383
+  },
+  "snr_10_20": {
+   "n_stars": 18,
+   "median_rms_axis_arcsec": 0.43991394669221084,
+   "median_formal_err_arcsec": 0.32870332099302213
+  },
+  "snr_20_50": {
+   "n_stars": 12,
+   "median_rms_axis_arcsec": 0.41477115054309643,
+   "median_formal_err_arcsec": 0.15881439829636293
+  },
+  "snr_50_up": {
+   "n_stars": 1,
+   "median_rms_axis_arcsec": 0.20770542532122566,
+   "median_formal_err_arcsec": 0.12868864248598524
+  },
+  "floor_arcsec_bright_snr_ge_20": 0.39755273740556396
+ },
+ "simulated_injection_recovery": [
+  {
+   "label": "SIMULATED",
+   "snr": 5,
+   "speed_arcsec_h": 2,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 8,
+   "recovered": 4,
+   "recovery_rate": 0.5,
+   "median_rate_error_arcsec_h": 0.018196386177216473,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 5,
+   "speed_arcsec_h": 5,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 8,
+   "recovered": 2,
+   "recovery_rate": 0.25,
+   "median_rate_error_arcsec_h": 0.055774780529709966,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 5,
+   "speed_arcsec_h": 15,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 7,
+   "recovered": 1,
+   "recovery_rate": 0.14285714285714285,
+   "median_rate_error_arcsec_h": 10.959257505387287,
+   "extra_tracks_not_injected_not_in_real_run": 1
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 5,
+   "speed_arcsec_h": 30,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 1,
+   "recovered": 0,
+   "recovery_rate": 0.0,
+   "median_rate_error_arcsec_h": null,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 7,
+   "speed_arcsec_h": 2,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 8,
+   "recovered": 8,
+   "recovery_rate": 1.0,
+   "median_rate_error_arcsec_h": 0.019378246993476348,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 7,
+   "speed_arcsec_h": 5,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 8,
+   "recovered": 8,
+   "recovery_rate": 1.0,
+   "median_rate_error_arcsec_h": 0.02127159976349577,
+   "extra_tracks_not_injected_not_in_real_run": 1
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 7,
+   "speed_arcsec_h": 15,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 8,
+   "recovered": 6,
+   "recovery_rate": 0.75,
+   "median_rate_error_arcsec_h": 0.1103482777873985,
+   "extra_tracks_not_injected_not_in_real_run": 1
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 7,
+   "speed_arcsec_h": 30,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 2,
+   "recovered": 1,
+   "recovery_rate": 0.5,
+   "median_rate_error_arcsec_h": 17.601927934204856,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 10,
+   "speed_arcsec_h": 2,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 8,
+   "recovered": 8,
+   "recovery_rate": 1.0,
+   "median_rate_error_arcsec_h": 0.007330708735114492,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 10,
+   "speed_arcsec_h": 5,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 8,
+   "recovered": 8,
+   "recovery_rate": 1.0,
+   "median_rate_error_arcsec_h": 0.015235224329522139,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 10,
+   "speed_arcsec_h": 15,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 6,
+   "recovered": 5,
+   "recovery_rate": 0.8333333333333334,
+   "median_rate_error_arcsec_h": 0.03358896013034211,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 10,
+   "speed_arcsec_h": 30,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 0,
+   "recovered": 0,
+   "recovery_rate": null,
+   "median_rate_error_arcsec_h": null,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 20,
+   "speed_arcsec_h": 2,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 8,
+   "recovered": 8,
+   "recovery_rate": 1.0,
+   "median_rate_error_arcsec_h": 0.0035372857749691256,
+   "extra_tracks_not_injected_not_in_real_run": 1
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 20,
+   "speed_arcsec_h": 5,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 8,
+   "recovered": 7,
+   "recovery_rate": 0.875,
+   "median_rate_error_arcsec_h": 0.004138429124869369,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 20,
+   "speed_arcsec_h": 15,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 6,
+   "recovered": 5,
+   "recovery_rate": 0.8333333333333334,
+   "median_rate_error_arcsec_h": 0.017391633620810476,
+   "extra_tracks_not_injected_not_in_real_run": 0
+  },
+  {
+   "label": "SIMULATED",
+   "snr": 20,
+   "speed_arcsec_h": 30,
+   "trials": 8,
+   "trials_with_ge_3_visits_in_frame": 2,
+   "recovered": 2,
+   "recovery_rate": 1.0,
+   "median_rate_error_arcsec_h": 29.85614253442226,
+   "extra_tracks_not_injected_not_in_real_run": 2
+  }
+ ],
+ "simulated_false_positive_tests": {
+  "label": "SIMULATED / permuted",
+  "time_shuffled_real_data": {
+   "what": "real detections, epoch times randomly permuted; Kleopatra's own detections lose their order too",
+   "runs": 20,
+   "visits_of_each_track_per_run": [
+    [
+     3,
+     3
+    ],
+    [
+     3
+    ],
+    [
+     3
+    ],
+    [
+     3,
+     3,
+     3
+    ],
+    [
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [],
+    [
+     3,
+     3,
+     3
+    ],
+    [
+     3,
+     3,
+     3
+    ],
+    [
+     3
+    ],
+    [],
+    [
+     3,
+     3,
+     3
+    ],
+    [],
+    [],
+    [
+     3,
+     3,
+     3,
+     3
+    ],
+    [],
+    [
+     3
+    ],
+    [
+     3
+    ],
+    [],
+    [
+     3
+    ]
+   ],
+   "runs_with_any_track": 14,
+   "runs_with_track_ge_4_visits": 0,
+   "runs_with_track_ge_5_visits": 0
+  },
+  "time_shuffled_real_data_without_kleopatra": {
+   "what": "as above, with the detections linked to Kleopatra removed first",
+   "runs": 20,
+   "visits_of_each_track_per_run": [
+    [
+     3,
+     3
+    ],
+    [
+     4
+    ],
+    [
+     3,
+     3,
+     3
+    ],
+    [
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     3
+    ],
+    [
+     3
+    ],
+    [
+     3
+    ],
+    [
+     3,
+     3,
+     3
+    ],
+    [
+     3,
+     3,
+     3
+    ],
+    [],
+    [
+     3,
+     3
+    ],
+    [],
+    [
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     3
+    ],
+    [
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "runs_with_any_track": 18,
+   "runs_with_track_ge_4_visits": 1,
+   "runs_with_track_ge_5_visits": 0
+  },
+  "noise_only_fields": {
+   "what": "SIMULATED Gaussian noise drawn from each real VARIANCE plane, real flag mask and WCS, no sources",
+   "runs": 10,
+   "per_run": [
+    {
+     "detections": 0,
+     "tracks": 0
+    },
+    {
+     "detections": 0,
+     "tracks": 0
+    },
+    {
+     "detections": 0,
+     "tracks": 0
+    },
+    {
+     "detections": 0,
+     "tracks": 0
+    },
+    {
+     "detections": 0,
+     "tracks": 0
+    },
+    {
+     "detections": 0,
+     "tracks": 0
+    },
+    {
+     "detections": 0,
+     "tracks": 0
+    },
+    {
+     "detections": 0,
+     "tracks": 0
+    },
+    {
+     "detections": 0,
+     "tracks": 0
+    },
+    {
+     "detections": 0,
+     "tracks": 0
+    }
+   ],
+   "runs_with_any_track": 0
+  }
+ },
+ "limitations": [
+  "One asteroid, one 3.3-day window, one field. This shows the method works on a real case; it is not a survey-level completeness measurement.",
+  "Kleopatra was near its stationary point (rates of a few arcsec/hour), so the real test covers slow motion only; faster motion is covered by SIMULATED injections alone.",
+  "Centroids come from a fixed-width circular Gaussian, not the SPHEREx ePSF; SPHEREx pixels (6.15 arcsec) undersample the PSF, so sub-arcsec astrometry is not expected.",
+  "We keep pixels flagged OUTLIER (the pipeline marks the moving asteroid with it); other bad planes stay masked. Cosmic rays or artefacts flagged only as OUTLIER can therefore become detections; the false-positive tests include this.",
+  "Position errors are the formal fit errors scaled by sqrt(chi2_red); the field-star scatter is the better guide to the real floor.",
+  "SIMULATED sources are Gaussians without their own photon noise, injected into real cutouts; recovery is measured on this one field and cadence.",
+  "The time-shuffled test reuses this field's detections; it measures chance alignments among real transients, not every kind of false link. Such alignments are common at the 3-visit minimum, so a 3-visit track on its own is not evidence of a real mover in this field.",
+  "Linking assumes a polynomial path over the window; the SPHEREx orbital parallax (a few arcsec, 98-min period) is absorbed by the link tolerance, not modelled.",
+  "Tracks not matching Kleopatra were found. Each is listed with a JPL sb_ident lookup at its position; they are reported without interpretation (a slow 'track' can also come from a blended source whose centroid shifts with wavelength across detectors) and no new object is claimed."
+ ],
+ "run": {
+  "started_utc": "2026-11-15T23:19:18+00:00",
+  "finished_utc": "2026-11-15T23:35:27+00:00",
+  "runtime_s": 969.4,
+  "python": "3.12.3",
+  "numpy": "2.5.4"
+ }
+}

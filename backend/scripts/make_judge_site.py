@@ -139,6 +139,57 @@ def capsule(d: dict, rob: dict, cat: dict, graph: dict) -> dict:
     }
 
 
+def motion_section() -> str:
+    """Moving-object validation on (216) Kleopatra, read from motion_check.json; empty if absent."""
+    f = EVID / "motion_check.json"
+    if not f.exists():
+        return ""
+    d = json.loads(f.read_text())
+    res = d["residuals_vs_horizons_spherex_arcsec"]["all_detections_near_prediction"]
+    geo = d["residuals_vs_horizons_geocentric_arcsec"]["all_detections_near_prediction"]
+    fm = d["fitted_motion"]
+    m, h, sg = fm["measured_rate_arcsec_h"], fm["horizons_same_model_rate_arcsec_h"], fm["rate_difference_arcsec_h"]
+    k = next(tr for tr in d["blind_search"]["tracks"] if tr["matches_horizons"])
+    fp = d["simulated_false_positive_tests"]
+    ts, noise = fp["time_shuffled_real_data"], fp["noise_only_fields"]
+    hi = [r for r in d["simulated_injection_recovery"] if r["snr"] >= 7 and r["speed_arcsec_h"] <= 15]
+    lo = min(r["recovery_rate"] for r in hi)
+    # The page text must match the evidence file.
+    assert d["object"] == "(216) Kleopatra" and k["n_visits"] == 7
+    assert res["rms_ra_cosdec"] < 0.2 and res["rms_dec"] < 0.2 and abs(sg["sigma_dec"]) < 1 and abs(sg["sigma_ra_cosdec"]) < 1
+    assert noise["runs_with_any_track"] == 0 and ts["runs_with_track_ge_5_visits"] == 0
+    shutil.copy(ROOT / "report" / "figures" / "motion_check.png", OUT / "img" / "motion_check.png")
+    return f"""
+<section class='case' id='motion'>
+ <h2>Moving-Object Explorer <small>(validation on a known asteroid, not a discovery)</small></h2>
+ <p>A distant planet would show up as something that moves between SPHEREx epochs. Before looking for unknown
+ movers, we checked that our detection, linking and astrometry work on a known one: the main-belt asteroid
+ <b>(216) Kleopatra</b> in {len(d["exposures"])} real SPHEREx exposures, {d["exposures"][0]["date_obs"][:10]} to
+ {d["exposures"][-1]["date_obs"][:10]}.</p>
+ <table>
+  <tr><th>Check</th><th>Result</th></tr>
+  <tr><td>Blind linking</td><td>{d["blind_search"]["n_detections"]} detections, {d["blind_search"]["n_static"]} stationary;
+   Kleopatra linked from {k["n_detections"]} detections over {k["n_visits"]} visits</td></tr>
+  <tr><td>Position vs JPL Horizons (seen from SPHEREx)</td><td>{res["rms_ra_cosdec"]:.2f}″ / {res["rms_dec"]:.2f}″ rms
+   (RA cos Dec / Dec); vs geocentric Horizons {geo["rms_ra_cosdec"]:.2f}″ / {geo["rms_dec"]:.2f}″: we see SPHEREx's own parallax</td></tr>
+  <tr><td>Rate (″/h)</td><td>{m["ra_cosdec"]:.4f}, {m["dec"]:.4f} ± {m["err_dec"]:.4f} vs Horizons {h["ra_cosdec"]:.4f},
+   {h["dec"]:.4f} ({sg["sigma_ra_cosdec"]:+.2f}σ, {sg["sigma_dec"]:+.2f}σ)</td></tr>
+  <tr><td>SIMULATED movers, S/N ≥ 7, 2–15″/h</td><td>{100 * lo:.0f}–100% recovered</td></tr>
+  <tr><td>False links (SIMULATED / permuted)</td><td>noise-only fields: {noise["runs_with_any_track"]}/{noise["runs"]} runs with a track;
+   shuffled epoch times: {ts["runs_with_any_track"]}/{ts["runs"]} runs with a 3-visit track, none with 5 visits</td></tr>
+ </table>
+ <p><b>Found along the way:</b> the SPHEREx pipeline flags the moving asteroid as OUTLIER in
+ {d["pipeline_flag_finding"]["n_with_outlier"]} of {d["pipeline_flag_finding"]["n_exposures"]} exposures, so a static-star mask erases it.
+ The motion check keeps OUTLIER pixels; the star pipeline is unchanged.</p>
+ <p><b>Limits:</b> one object, one 3.3-day window, slow motion only. A second track (6 detections, 5 visits) matches no
+ known object and is reported without interpretation. 3-visit tracks can be chance alignments.
+ <b>HIPPARCHUS has not found Planet X.</b></p>
+ <img src='img/motion_check.png' alt='Kleopatra in SPHEREx cutouts, linking, residuals and SIMULATED tests' style='width:100%;max-width:1000px'>
+ <p class='small'>Evidence: <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/motion_check.json'>motion_check.json</a>
+ · reproduce with <code>backend/scripts/reproduce_motion.py</code></p>
+</section>"""
+
+
 def epsf_section() -> str:
     """EXPERIMENTAL second measurement (ePSF fit), read from epsf_check.json; empty if absent."""
     f = EVID / "epsf_check.json"
@@ -435,6 +486,7 @@ so nothing here waits for a live archive download.</p>
 
 {epsf_section()}
 {wavecal_section()}
+{motion_section()}
 <section class='case'>
  <h2>Why this matters for “Planet X and SPHEREx”</h2>
  <p>SPHEREx sees every part of the sky many times, each time at a slightly different wavelength. A distant moving

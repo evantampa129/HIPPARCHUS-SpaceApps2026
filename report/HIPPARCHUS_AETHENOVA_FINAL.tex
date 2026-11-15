@@ -403,12 +403,44 @@ Section~\ref{sec:planetx} explains why a distant planet would appear in our comp
 in one epoch and absent or displaced in another. Our pipeline was designed for fixed targets and is not a
 moving-object search; the check below only asks whether the validated comparison step flags such sources.
 
-\subsection{Moving-object check}\label{sec:motion-check}
-% MOTION-RESULTS
-% We fill this subsection in from motion_check.json once the check is final;
-% until then it only points to the evidence file and claims nothing.
-The moving-object check and its settings are described in \path{submission/evidence/motion_check.json}; its results
-will be summarised here. Nothing in this subsection is a detection claim.
+\subsection{Validation on a known asteroid: (216) Kleopatra}\label{sec:motion-check}
+% Numbers below are from submission/evidence/motion_check.json (backend/scripts/reproduce_motion.py, ~16 min).
+To test whether our detection, linking and astrometry work on a real moving body, we ran a blind search on 38 real
+SPHEREx DR1 exposures (all six detectors, 0.83--5.0\,$\mu$m, MJD 60843.4--60846.7, seven visits) of a 0.19$^\circ$
+field crossed by the main-belt asteroid (216)~Kleopatra ($V\approx12.8$, 2.9\,AU). This is a validation on a known
+object, not a search for new ones.
+
+\begin{itemize}\setlength\itemsep{1pt}
+\item \textbf{Blind linking.} Of 1314 detections, 1248 were stationary. Linking returned two tracks; one is Kleopatra
+(31 detections over 7 visits and 75\,h, median 0.38$''$ from the JPL Horizons prediction).
+\item \textbf{Astrometry against Horizons.} We query Horizons as seen from SPHEREx itself (observer
+\texttt{500@-163182}): from 650\,km altitude the orbital parallax shifts the asteroid by up to 3.3$''$ with a 98-minute
+period. Residuals are 0.15$''$ (RA\,cos\,Dec) and 0.18$''$ (Dec) rms; against a geocentric ephemeris they rise to
+1.34$''$ and 0.63$''$, so we resolve SPHEREx's own parallax. Field stars in the same cutouts give an astrometric floor
+of 0.40$''$ per axis at S/N$\geq$20.
+\item \textbf{Fitted motion.} $2.0767\pm0.0037$ and $4.3102\pm0.0037\,''$/h, versus 2.0771 and 4.3075 from Horizons
+fitted the same way ($-0.12\sigma$, $+0.74\sigma$).
+\item \textbf{Pipeline flag finding.} In 35 of 38 exposures the SPHEREx pipeline flags pixels on the asteroid as
+OUTLIER, so our static-target mask erases it. The motion check keeps OUTLIER pixels and masks every other bad flag;
+the static pipeline is unchanged.
+\item \textbf{SIMULATED injection-recovery.} Fake movers added to the real cutouts are recovered in 75--100\% of trials
+at S/N$\geq$7 and 2--15$''$/h, and 14--50\% at S/N\,5, as expected at a 5$\sigma$ threshold.
+\item \textbf{False links.} Noise-only fields: no tracks in 10/10 runs. Real detections with shuffled epoch times:
+at least one 3-visit track in 14/20 runs (18/20 without Kleopatra), none with 5 visits. A 3-visit track in this field
+is therefore not evidence of a real mover.
+\end{itemize}
+
+The second track (6 detections, 5 visits, $\approx$1.6$''$/h, fit rms 1.4$''$) matches no known object in the JPL
+small-body identification service; we report it without interpretation (a blended source whose centroid shifts with
+wavelength would do the same). One object, one 3.3-day window and slow motion only: this shows the method works on
+a real case, not survey-level completeness. HIPPARCHUS has not found Planet X.
+
+\begin{figure}[h]\centering
+\includegraphics[width=\linewidth]{figures/motion_check.png}
+\caption{(216) Kleopatra in real SPHEREx exposures. Top: cutouts with the Horizons prediction (blue) and our detection
+(red). Middle: blind linking on the field and residuals against Horizons computed at SPHEREx. Bottom: SIMULATED
+injection-recovery and false-link tests.}\label{fig:motion}
+\end{figure}
 
 \section{Limitations}\label{sec:lim}
 \begin{itemize}\setlength\itemsep{1pt}
