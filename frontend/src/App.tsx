@@ -72,6 +72,7 @@ export default function App() {
         <div>
           <h1>HIPPARCHUS</h1>
           <p className="sub">Compare real SPHEREx observations of the same star across time, and refuse when the comparison is not valid.</p>
+          <p className="team">Team AETHENOVA · The universe is never still.</p>
         </div>
       </header>
 
@@ -111,7 +112,7 @@ export default function App() {
       )}
 
       <footer>
-        Data: NASA SPHEREx via NASA/IPAC Infrared Science Archive (IRSA). Independent student project for the NASA Space Apps
+        Team AETHENOVA. Data: NASA SPHEREx via NASA/IPAC Infrared Science Archive (IRSA). Independent student project for the NASA Space Apps
         Challenge 2026; not an official NASA product. Images are shown as measured; flagged pixels are drawn in dark red (grey on difference maps).
       </footer>
     </div>

@@ -332,6 +332,7 @@ footer{{color:var(--muted);font-size:13px;margin:24px 0}}
 .rc{{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--na);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px}}
 .rc.ok{{border-top-color:#2e9e5e}} .rc.warn{{border-top-color:#c99a1c}} .rc.neutral{{border-top-color:#7d8697}}
 .rc h2{{margin:0;font-size:20px}} .rc p{{margin:4px 0}} .cimg img{{width:100%;max-width:200px;display:block;margin:0 auto;image-rendering:pixelated;border:1px solid var(--line)}}
+.team{{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}}
 .verdict{{font-weight:700;letter-spacing:.06em;font-size:13px}} .key{{font-weight:600}} .lim{{font-size:14px;color:var(--muted)}}
 .flowd{{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;counter-reset:s}}
 @media (max-width:820px){{.flowd{{grid-template-columns:1fr}}}}
@@ -339,6 +340,7 @@ footer{{color:var(--muted);font-size:13px;margin:24px 0}}
 .flowd li b{{color:var(--acc);letter-spacing:.06em}} .flowd em{{font-style:normal;font-size:14px;border-left:3px solid var(--acc);padding-left:8px}}
 </style></head><body><main>
 <header><h1>HIPPARCHUS · Judge Mode</h1>
+<p class='team'>Team AETHENOVA · The universe is never still.</p>
 <p class='flow'>OBSERVE → VERIFY → CHALLENGE → EXPLAIN</p>
 <p>HIPPARCHUS does not just show the difference between two SPHEREx images. It checks whether the difference can be
 interpreted (same detector, same wavelength, clean pixels), challenges the result with other reasonable analysis
@@ -346,8 +348,9 @@ choices, and keeps the evidence back to the NASA archive. Three real cases, prec
 so nothing here waits for a live archive download.</p>
 <nav><a href='#rw_aur'>RW Aurigae</a><a href='#barnard'>Barnard's Star</a><a href='#wise0855'>WISE 0855</a>
 <a href='{REPO}/blob/main/report/hipparchus_scientific_report.pdf'>Report (PDF)</a>
-<a href='{REPO}/blob/main/presentation/hipparchus_7_slides.pdf'>Slides (PDF)</a>
-<a href='{REPO}/blob/main/video/hipparchus_demo_30s.mp4'>Video</a><a href='{REPO}'>Code</a></nav>
+<a href='{REPO}/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Slides (PDF)</a>
+<a href='{REPO}/blob/main/video/hipparchus_demo_30s.mp4'>Video</a><a href='{REPO}'>Code</a>
+<a href='{REPO}/blob/main/docs/DATA_PROVENANCE.md'>Data provenance</a><a href='{REPO}/blob/main/docs/SCIENTIFIC_REFERENCES.md'>References</a><a href='{REPO}/blob/main/docs/AI_USAGE_DISCLOSURE.md'>AI use</a><a href='{REPO}/blob/main/FINAL_IMPLEMENTATION_CHECKLIST.md'>Checklist</a></nav>
 </header>
 <section class='cards' aria-label='Results at a glance'>
 {''.join(f"""<article class='rc {cls}'><a class='cimg' href='#{tid}'><img src='{img}' alt='{esc(alt)}'></a>
@@ -392,7 +395,7 @@ so nothing here waits for a live archive download.</p>
  </div>
 </section>
 {''.join(sections)}
-<footer>Team AITHENOVA, NASA Space Apps Challenge 2026 (Planet X and SPHEREx). Data: NASA SPHEREx via NASA/IPAC
+<footer>Team AETHENOVA, NASA Space Apps Challenge 2026 (Planet X and SPHEREx). Data: NASA SPHEREx via NASA/IPAC
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
 data; no simulated value appears on this page (the SIMULATED injection-recovery test is only in the report).
 AI tools were used for the graphics, the demo video, cross-checking NASA/IRSA references and as a coding assistant;

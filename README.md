@@ -1,6 +1,6 @@
 # HIPPARCHUS
 
-Team **AITHENOVA**: NASA Space Apps Challenge 2026, *Planet X and SPHEREx* (Athens).
+Team **AETHENOVA**: NASA Space Apps Challenge 2026, *Planet X and SPHEREx* (Athens).
 
 **Observe → verify → challenge → explain.** You give HIPPARCHUS a sky position (RA/Dec). It finds the real SPHEREx exposures of that field in NASA/IPAC IRSA, checks
 each one (WCS, wavelength at the star, 18 quality flag planes, variance), and compares two epochs only when they were
@@ -22,7 +22,7 @@ backend/      FastAPI + astropy: archive lookup, cutouts, quality checks, compar
 frontend/     React/TypeScript app (timeline, playback, blink, difference and significance maps)
 submission/   evidence files with checksums
 report/       technical report (LaTeX + PDF), figures, bibliography
-presentation/ 7-slide deck (PPTX + PDF), app screenshots, watermarked logos
+presentation/ 6-slide deck HIPPARCHUS_AETHENOVA_FINAL (PPTX + PDF), its build script, watermarked logos
 video/        26 s demo video with English captions, and the scripts that made it
 data/         archive listings (manifests); downloaded FITS go to data/cache (not in git)
 ```
@@ -89,7 +89,7 @@ cd ../report && ./reproduce_report.sh               # figures + hipparchus_scien
 - AI tools were used mainly for the graphics (the logos, watermarked "AI-generated", and putting together the
   demo video), to cross-check the NASA/IRSA dataset references, and as a coding assistant. All code was run and
   tested by me; every measurement comes from real SPHEREx images.
-- This is independent work by team AITHENOVA. It is not a NASA publication, NASA has not endorsed it, and it uses no
+- This is independent work by team AETHENOVA. It is not a NASA publication, NASA has not endorsed it, and it uses no
   NASA branding.
 
 MIT licence (see `LICENSE`).

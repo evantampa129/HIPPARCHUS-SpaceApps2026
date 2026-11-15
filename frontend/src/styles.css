@@ -70,3 +70,6 @@ footer { color: var(--muted); font-size: 0.78rem; margin: 24px 0; }
 .heat td.ok { background: #1f5c3a; }
 .heat td.no { background: #6b2430; }
 .heat td.na { background: #3a3f4b; color: #aab; }
+
+/* We keep the team line quiet so the science stays the first thing a visitor reads. */
+.team { margin: 2px 0 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .6; }
