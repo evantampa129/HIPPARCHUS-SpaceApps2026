@@ -59,17 +59,19 @@ can trust, because it says when it cannot answer. This is the first step towards
 (Planet X-like) and variable sources in SPHEREx data.
 
 **Tools.** Python 3.12, FastAPI, Astropy, NumPy, SciPy, reproject, Matplotlib; React 18 + TypeScript + Vite; pytest
-(23 tests on real SPHEREx cutouts); LaTeX for the technical report. Source code is under the MIT licence.
+(27 tests on real SPHEREx cutouts); LaTeX for the technical report. Source code is under the MIT licence.
 
 **Validation.** A null test at blank positions in the real image pairs gives significances with spread 0.91
 (1 would be exact, n=93, none beyond 3σ), so the error bars are right or conservative. Injection-recovery with
 SIMULATED stars (kept apart from the real results) finds 44% at S/N 5, 87% at 6 and 99% at 7, as expected for a 5σ
 threshold. An evidence graph links every result to its cutout checksum, archive answer and dataset DOI, with no
 broken links. Plotting brightness against wavelength shows the RW Aur brightening directly. With cached cutouts one
-target takes about a minute; image requests answer in 30 ms (p50).
+target takes about a minute; image requests answer in 30 ms (p50). A match against SIMBAD and Gaia DR3 (with
+proper motion) confirms all three positions are on the right object. It also shows that the RW Aur measurement
+covers both stars of the binary, and that a G = 16.3 field star lies inside the WISE 0855 aperture.
 
 **Reproducibility.** `backend/scripts/reproduce_evidence.py` rebuilds every result in `submission/evidence/`,
-`backend/scripts/reproduce_validation.py` the validation checks, and `report/reproduce_report.sh` the figures and the
+`backend/scripts/reproduce_validation.py` the validation checks, `backend/scripts/reproduce_catalogs.py` the catalogue match, and `report/reproduce_report.sh` the figures and the
 7-page technical report
 (`report/hipparchus_scientific_report.pdf`).
 
@@ -84,8 +86,9 @@ target takes about a minute; image requests answer in 30 ms (p50).
 - Luhman 2014, ApJL 786, L18, doi:10.1088/2041-8205/786/2/L18 (WISE 0855−0714)
 - Software: Astropy (A&A 558, A33; AJ 156, 123; ApJ 935, 167), NumPy (Nature 585, 357), SciPy (Nat. Methods 17, 261),
   Matplotlib (CiSE 9, 90), reproject (Astropy project)
-- No external catalogue (SIMBAD, Gaia) was used: they were unreachable during the hackathon, so star positions are
-  approximate priors and the stars are measured in the images.
+- SIMBAD (Wenger et al. 2000, A&AS 143, 9), queried through the CfA Harvard mirror, and Gaia DR3 (Gaia Collaboration
+  2023, A&A 674, A1), queried through IRSA. The main CDS servers were offline after a cybersecurity incident
+  (https://cds.unistra.fr/, notice of 9 Nov 2026), so we used the mirrors CDS recommends.
 
 ## Use of Artificial Intelligence (AI)
 I used AI tools mainly for the graphics: the logos, which carry a visible "AI-generated" watermark, and putting

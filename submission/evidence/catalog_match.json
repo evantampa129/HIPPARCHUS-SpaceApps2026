@@ -1,0 +1,255 @@
+{
+ "queried_at": "2026-11-15T19:46:08+00:00",
+ "note": "CDS Strasbourg offline after a cybersecurity incident (cds.unistra.fr notice, 9 Nov 2026); mirrors used as recommended by CDS. Gaia DR3 epoch 2016.0 and SIMBAD epoch 2000.0 positions moved to 2026.0 with their proper motions.",
+ "targets": {
+  "rw_aur": {
+   "preset": {
+    "ra": 76.956,
+    "dec": 30.401
+   },
+   "epoch": 2026.0,
+   "simbad": {
+    "main_id": "V* RW Aur",
+    "ra": 76.95652603458333,
+    "dec": 30.401438173888888,
+    "pmra": 7.23,
+    "pmdec": -20.33,
+    "otype": "TT*",
+    "ra_epoch": 76.95658657557826,
+    "dec_epoch": 30.401291346111112,
+    "sep_from_preset_arcsec": 2.1017377281249714
+   },
+   "gaia_counterpart": {
+    "source_id": "156430817820015232",
+    "ra": 76.95654431103,
+    "dec": 30.40131614989,
+    "pmra": 4.906,
+    "pmdec": -24.578,
+    "g": 13.035076,
+    "ra_epoch": 76.9565601113146,
+    "dec_epoch": 30.401247877667778,
+    "sep_from_target_arcsec": 0.1767489528942441
+   },
+   "gaia_in_aperture": [
+    {
+     "source_id": "156430817820015232",
+     "ra": 76.95654431103,
+     "dec": 30.40131614989,
+     "pmra": 4.906,
+     "pmdec": -24.578,
+     "g": 13.035076,
+     "ra_epoch": 76.9565601113146,
+     "dec_epoch": 30.401247877667778,
+     "sep_from_target_arcsec": 0.1767489528942441
+    },
+    {
+     "source_id": "156430822114424576",
+     "ra": 76.95608119553,
+     "dec": 30.4012045891,
+     "pmra": 2.641,
+     "pmdec": -27.398,
+     "g": 12.184072,
+     "ra_epoch": 76.9560897011362,
+     "dec_epoch": 30.401128483544444,
+     "sep_from_target_arcsec": 1.650450590381929
+    },
+    {
+     "source_id": "156430856474162688",
+     "ra": 76.95576839814,
+     "dec": 30.40300437168,
+     "pmra": 1.075,
+     "pmdec": -1.194,
+     "g": 18.826244,
+     "ra_epoch": 76.95577186034946,
+     "dec_epoch": 30.403001055013334,
+     "sep_from_target_arcsec": 6.654524155427936
+    }
+   ],
+   "preset_offset_arcsec": 2.1017377281249714,
+   "preset_offset_px": 0.34174597205284085,
+   "simbad_service": {
+    "status": "ok",
+    "server": "https://simbad.cfa.harvard.edu/simbad/sim-tap/sync",
+    "query": "SELECT main_id, ra, dec, pmra, pmdec, otype FROM basic WHERE CONTAINS(POINT('ICRS', ra, dec), CIRCLE('ICRS', 76.956, 30.401, 0.1))=1",
+    "sha256": "fcf2f7dc48105b0fab38b695f9c408fc6d7c70a3716969ff0501af60f8a1c001",
+    "errors": [],
+    "n_rows": 17
+   },
+   "gaia_service": {
+    "status": "ok",
+    "server": "https://vizier.cfa.harvard.edu/viz-bin/asu-tsv",
+    "params": {
+     "-source": "I/355/gaiadr3",
+     "-c": "76.956 +30.401",
+     "-c.rs": 120.0,
+     "-out": "Source,RA_ICRS,DE_ICRS,pmRA,pmDE,Gmag",
+     "-out.max": 5000
+    },
+    "sha256": "ba602d9ef535b9d2dd40e7b8d44735fde5266d1bd50362eaabc96954c0b3d1c8",
+    "errors": [
+     "https://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query: TypeError"
+    ],
+    "n_rows": 106
+   }
+  },
+  "barnard": {
+   "preset": {
+    "ra": 269.4463,
+    "dec": 4.7667
+   },
+   "epoch": 2026.0,
+   "simbad": {
+    "main_id": "NAME Barnard's star",
+    "ra": 269.4520769586187,
+    "dec": 4.693364966576667,
+    "pmra": -801.551,
+    "pmdec": 10362.394,
+    "otype": "BY*",
+    "ra_epoch": 269.4462685026598,
+    "dec_epoch": 4.768204478798888,
+    "sep_from_preset_arcsec": 5.417302303631335
+   },
+   "gaia_counterpart": {
+    "source_id": "4472832130942575872",
+    "ra": 269.44850252544,
+    "dec": 4.73942005111,
+    "pmra": -801.551,
+    "pmdec": 10362.394,
+    "g": 8.193974,
+    "ra_epoch": 269.4462683557589,
+    "dec_epoch": 4.768204478887777,
+    "sep_from_target_arcsec": 0.0005270129575412919
+   },
+   "gaia_in_aperture": [
+    {
+     "source_id": "4472832130942575872",
+     "ra": 269.44850252544,
+     "dec": 4.73942005111,
+     "pmra": -801.551,
+     "pmdec": 10362.394,
+     "g": 8.193974,
+     "ra_epoch": 269.4462683557589,
+     "dec_epoch": 4.768204478887777,
+     "sep_from_target_arcsec": 0.0005270129575412919
+    },
+    {
+     "source_id": "4472835979229621248",
+     "ra": 269.44674391865,
+     "dec": 4.76743338542,
+     "pmra": null,
+     "pmdec": null,
+     "g": 20.897268,
+     "ra_epoch": 269.44674391865,
+     "dec_epoch": 4.76743338542,
+     "sep_from_target_arcsec": 3.258037537126757
+    },
+    {
+     "source_id": "4472835983521061120",
+     "ra": 269.44850763284,
+     "dec": 4.76816850316,
+     "pmra": -1.481,
+     "pmdec": -5.662,
+     "g": 20.37084,
+     "ra_epoch": 269.4485035046643,
+     "dec_epoch": 4.768152775382222,
+     "sep_from_target_arcsec": 8.020321558751217
+    },
+    {
+     "source_id": "4472835979229627392",
+     "ra": 269.44786671339,
+     "dec": 4.76611936831,
+     "pmra": null,
+     "pmdec": null,
+     "g": 20.97153,
+     "ra_epoch": 269.44786671339,
+     "dec_epoch": 4.76611936831,
+     "sep_from_target_arcsec": 9.445676677472864
+    }
+   ],
+   "preset_offset_arcsec": 5.417302303631335,
+   "preset_offset_px": 0.8808621631920869,
+   "simbad_service": {
+    "status": "ok",
+    "server": "https://simbad.cfa.harvard.edu/simbad/sim-tap/sync",
+    "query": "SELECT main_id, ra, dec, pmra, pmdec, otype FROM basic WHERE CONTAINS(POINT('ICRS', ra, dec), CIRCLE('ICRS', 269.4463, 4.7667, 0.1))=1",
+    "sha256": "280b7eabd84e5f0b58b6244ff94fe9e3c7c9741e802891d33af3ee1e9637f21d",
+    "errors": [],
+    "n_rows": 22
+   },
+   "gaia_service": {
+    "status": "ok",
+    "server": "https://vizier.cfa.harvard.edu/viz-bin/asu-tsv",
+    "params": {
+     "-source": "I/355/gaiadr3",
+     "-c": "269.4463 +4.7667",
+     "-c.rs": 120.0,
+     "-out": "Source,RA_ICRS,DE_ICRS,pmRA,pmDE,Gmag",
+     "-out.max": 5000
+    },
+    "sha256": "c9b9453150e4f89b020798675ee9d39c55b0f030054ecebf1966b523fad41e33",
+    "errors": [
+     "https://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query: TypeError"
+    ],
+    "n_rows": 286
+   }
+  },
+  "wise0855": {
+   "preset": {
+    "ra": 133.76,
+    "dec": -7.2424
+   },
+   "epoch": 2026.0,
+   "simbad": {
+    "main_id": "WISEA J085510.74-071442.5",
+    "ra": 133.81890825,
+    "dec": -7.247048000000001,
+    "pmra": -8123.7,
+    "pmdec": 673.2,
+    "otype": "BD*",
+    "ra_epoch": 133.75976461144327,
+    "dec_epoch": -7.242186000000001,
+    "sep_from_preset_arcsec": 1.140258180746104
+   },
+   "gaia_counterpart": null,
+   "gaia_in_aperture": [
+    {
+     "source_id": "5756956644387831296",
+     "ra": 133.75818250494,
+     "dec": -7.24115590697,
+     "pmra": -6.188,
+     "pmdec": 1.931,
+     "g": 16.314917,
+     "ra_epoch": 133.75816517785756,
+     "dec_epoch": -7.241150543081111,
+     "sep_from_target_arcsec": 6.8207505777989805
+    }
+   ],
+   "preset_offset_arcsec": 1.140258180746104,
+   "preset_offset_px": 0.1854078342676592,
+   "simbad_service": {
+    "status": "ok",
+    "server": "https://simbad.cfa.harvard.edu/simbad/sim-tap/sync",
+    "query": "SELECT main_id, ra, dec, pmra, pmdec, otype FROM basic WHERE CONTAINS(POINT('ICRS', ra, dec), CIRCLE('ICRS', 133.76, -7.2424, 0.1))=1",
+    "sha256": "c0d92ae1dd4b0b73ed745041097e6e26ec7f37909b7efbf690f14ea346947305",
+    "errors": [],
+    "n_rows": 6
+   },
+   "gaia_service": {
+    "status": "ok",
+    "server": "https://vizier.cfa.harvard.edu/viz-bin/asu-tsv",
+    "params": {
+     "-source": "I/355/gaiadr3",
+     "-c": "133.76 -7.2424",
+     "-c.rs": 120.0,
+     "-out": "Source,RA_ICRS,DE_ICRS,pmRA,pmDE,Gmag",
+     "-out.max": 5000
+    },
+    "sha256": "130cb650746a82918472c13e74e5084e70559b396c28de07847128c885398d6a",
+    "errors": [
+     "https://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query: TypeError"
+    ],
+    "n_rows": 26
+   }
+  }
+ }
+}

@@ -26,7 +26,7 @@ data/         archive listings (manifests); downloaded FITS go to data/cache (no
 
 ```bash
 cd backend && python3 -m venv .venv && . .venv/bin/activate && pip install -e ".[dev]"
-pytest                                              # 23 tests, on real SPHEREx cutouts
+pytest                                              # 27 tests, on real SPHEREx cutouts
 cd ../frontend && npm install && npm run build      # builds frontend/dist
 cd ../backend && uvicorn hipparchus.serve:app --port 8080   # app + API on http://localhost:8080
 ```
@@ -44,15 +44,20 @@ The first analysis of a target downloads its cutouts and takes 1–4 minutes. Af
 - **Evidence graph:** `submission/evidence/graph_*.json` links every result to its cutout checksum, the archive
   answer and the dataset DOI. A test fails if any link is broken.
 - **Control stars** in the same images stay within 0.86–1.07 while RW Aur changes by ×2.5.
+- **Catalogue match:** SIMBAD and Gaia DR3 confirm that all three preset positions are on the right object (within
+  0.2–0.9 pixels, after proper motion). It also shows that the RW Aur aperture holds both stars of the binary, and the
+  WISE 0855 aperture a G = 16.3 field star 6.8″ away. The main CDS servers were offline after a cybersecurity incident
+  (notice on cds.unistra.fr, 9 Nov 2026), so the script uses the mirrors CDS recommends and IRSA's copy of Gaia DR3.
 
-Not done: catalogue cross-match (SIMBAD and Gaia were down on 15 Nov 2026), and any machine-learning ranking. With
-three targets and no labelled examples there is nothing to train or test one on fairly.
+Not done: any machine-learning ranking. With three targets and no labelled examples there is nothing to train or
+test one on fairly.
 
 ## Reproducing the results
 
 ```bash
 cd backend && python scripts/reproduce_evidence.py   # rewrites submission/evidence/*.json and the manifest
 python scripts/reproduce_validation.py              # null test, injection-recovery, spectra, evidence graphs, timings
+python scripts/reproduce_catalogs.py                # SIMBAD + Gaia DR3 match of the targets (needs network)
 cd ../report && ./reproduce_report.sh               # figures + hipparchus_scientific_report.pdf
 ```
 

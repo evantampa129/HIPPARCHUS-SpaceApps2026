@@ -59,8 +59,9 @@ checksum is verified every time a cached file is reused. Each cutout contains th
 the pipeline flags, the variance, the zodiacal-light model and a spectral WCS lookup table.
 
 Table~\ref{tab:targets} lists the three demonstration targets. Their positions are approximate priors used only to
-centre the cutouts: SIMBAD, Gaia and IRSA TAP were unreachable when the presets were defined, so we did not claim
-catalogue precision and we measure the star in the images instead.
+centre the cutouts; the star is measured in the images. The main CDS servers were offline after a cybersecurity
+incident \parencite{cds_incident2026} and the ESA Gaia archive did not answer, so the presets were later checked against
+SIMBAD \parencite{simbad2000} and Gaia DR3 \parencite{gaiadr3} through the mirrors CDS recommends (Section~\ref{sec:val}).
 
 \begin{table}[h]\centering\small
 \caption{Targets and archive coverage (queries of 15 November 2026, all \emph{live}).}\label{tab:targets}
@@ -92,13 +93,13 @@ at $|\Delta F|/\sigma_{\Delta F}\ge5$. We also report the flux ratio, a per-pixe
 light-weighted centroid in arcseconds. As a check of calibration, the brightest clean local peak at least 9\,px from
 the target is measured the same way in the same two images (\emph{control star}).
 
-\section{Validation}
+\section{Validation}\label{sec:val}
 \begin{itemize}\setlength\itemsep{1pt}
-\item \textbf{Unit tests} (23, \texttt{pytest}) run on real SPHEREx cutouts committed as fixtures, with their source
+\item \textbf{Unit tests} (27, \texttt{pytest}) run on real SPHEREx cutouts committed as fixtures, with their source
 URL and checksum recorded. They cover cache integrity, flag decoding from headers, refusal of files that lack a
 required extension, targets near RA~$0^\circ$, wavelength at the target, refusal of wavelength mismatches and flagged
 epochs, the classification of same-visit pairs, a self-comparison that must show no change ($|\sigma|<0.5$ after
-reprojection), the control-star check, the evidence graph, and that a partial archive answer never replaces a
+reprojection), the control-star check, the evidence graph, proper-motion propagation and catalogue matching, and that a partial archive answer never replaces a
 complete saved listing.
 \item \textbf{Control stars.} For the six RW~Aur pairs with a control star, its ratio lies between 0.86 and 1.07 and
 its significance between $-2.2\sigma$ and $+0.7\sigma$ (Table~\ref{tab:rw}).
@@ -121,6 +122,13 @@ added, which makes bright injections slightly easier than real ones.
 \item \textbf{Evidence graph.} Each result is linked to its epochs, cutouts (SHA-256), observations, archive queries
 (SHA-256 of the raw answer) and the dataset DOI. For all three targets the graph has no broken links and no result
 without a DOI (\texttt{submission/evidence/graph\_*.json}); a test checks that a broken link is detected.
+\item \textbf{Catalogue match.} SIMBAD (CfA Harvard mirror) and Gaia DR3 (IRSA copy) were queried on
+15~November~2026; both positions were moved to epoch 2026.0 with their proper motions.
+The answers and their SHA-256 are kept in \texttt{catalog\_match.json}. All three presets fall on the right object: RW~Aur is
+$2.1''$ (0.34~px) from SIMBAD, Barnard's Star $5.4''$ (0.88~px; it moves $10''$ per year), WISE~0855 $1.1''$
+(0.19~px). The match also shows what lies inside our $12.3''$ aperture: for RW~Aur both components of the binary
+(Gaia $G=13.0$ and $12.2$, $1.6''$ apart) and a $G=18.8$ star; for WISE~0855, which Gaia does not detect, a
+$G=16.3$ field star $6.8''$ away.
 \end{itemize}
 
 \begin{figure}[h]\centering
@@ -185,7 +193,9 @@ SUR\_ERROR in 45; one epoch also has missing values and variance on the target (
 \paragraph{C. Insufficient signal: WISE 0855$-$0714.} The coldest known brown dwarf \parencite{luhman2014} is detected
 only weakly in D6. HIPPARCHUS finds 27 valid pairs and no change above $1.9\sigma$. This does \emph{not} show the object
 is constant; it shows SPHEREx single-epoch cutouts cannot constrain its variability at this level. Centroid shifts for
-this target are dominated by noise and are not interpreted as proper motion.
+this target are dominated by noise and are not interpreted as proper motion. The catalogue match adds a further
+caution: a $G=16.3$ field star lies $6.8''$ away, inside the aperture, so the measured flux is a blend and part of it
+may come from that star.
 
 \paragraph{D. Spectral context.} Because of the linear variable filters, each visit samples the star at a different
 wavelength. Plotting the brightness of every usable epoch against its wavelength, coloured by date
@@ -211,9 +221,9 @@ but are not calibrated flux densities.
 \item The SPHEREx PSF is undersampled; aperture photometry after bilinear reprojection carries a systematic error that
 the formal $\sigma$ does not include. The control star bounds it to roughly 15\% in our pairs. The 175$\sigma$ figure is
 therefore a formal value; the size of the change ($\times2.5$) is the robust result.
-\item Only one control star is used, and not every pair has one. Target positions are approximate priors, not
-catalogue positions: SIMBAD and the Gaia archive were unreachable on 15~November~2026 (SIMBAD answered ``Page
-unavailable'', Gaia timed out), so no epoch-aware catalogue match was made.
+\item Only one control star is used, and not every pair has one. Target positions are approximate priors checked
+against catalogues only after the analysis. SPHEREx pixels are $6.15''$, so the RW~Aur measurement is of both
+components of the binary together, not of one star.
 \item Injection-recovery inserts stars after reprojection and without their own photon noise; it measures the
 detection threshold of the comparison step, not of the full pipeline.
 \item We did not build a machine-learning ranker or a Bayesian model of candidates: with three targets and no
@@ -231,11 +241,11 @@ RW~Aur, refuses saturated Barnard's Star, and reports no detectable change for f
 
 \section{Reproducibility}
 \sloppy % long file paths below would otherwise run into the margin
-Code: repository \texttt{HIPPARCHUS} (MIT licence), evidence produced at commit \texttt{ffdb565}, validation at \texttt{fe7cba1}. Run
+Code: repository \texttt{HIPPARCHUS} (MIT licence), evidence produced at commit \texttt{ffdb565}, validation at \texttt{fe7cba1}, catalogue match at \texttt{aa79a9e}. Run
 \texttt{python backend/scripts/reproduce\_evidence.py} to rebuild \texttt{submission/evidence/*.json} (identifiers,
 archive query URLs with SHA-256 of each answer, cutout URLs and checksums, settings, software versions, outputs),
 \texttt{python backend/scripts/reproduce\_validation.py} for the null test, injection-recovery, spectra, evidence
-graphs and timings, then \texttt{report/reproduce\_report.sh} to rebuild the figures and this PDF.
+graphs and timings, \texttt{python backend/scripts/reproduce\_catalogs.py} for the catalogue match, then \texttt{report/reproduce\_report.sh} to rebuild the figures and this PDF.
 
 \section*{Use of AI tools}
 AI tools were used mainly for the graphics: the logos, which carry a visible ``AI-generated'' watermark, and
