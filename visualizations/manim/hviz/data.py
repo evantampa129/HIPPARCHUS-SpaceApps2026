@@ -15,6 +15,7 @@ HERE = Path(__file__).resolve().parents[1]
 ROOT = HERE.parents[1]
 EVID = ROOT / "submission" / "evidence"
 PIXELS = HERE / "data" / "rw_aur_pixels.json"
+PAIR = HERE / "data" / "rw_aur_pair.json"
 
 
 class EvidenceError(ValueError):
@@ -151,6 +152,28 @@ def pixels():
     # If the FITS cache is here we re-hash the file too; on a fresh clone it isn't.
     if cache.exists() and sha256(cache) != d["cutout_sha256"]:
         raise EvidenceError("cached cutout changed since the extract")
+    return d
+
+
+def pair():
+    """The largest-ratio RW Aur pair (tools/extract_pair.py), checked against the evidence."""
+    if not PAIR.exists():
+        return None
+    d = json.loads(PAIR.read_text())
+    ev = target("rw_aur")
+    top = max(ev["comparisons"], key=lambda c: c["flux_ratio"])
+    if (d["a"], d["b"]) != (top["a"], top["b"]):
+        raise EvidenceError("pair extract is not the largest-ratio published pair")
+    epochs = {e["obs_id"]: e for e in ev["epochs"]}
+    for oid in (d["a"], d["b"]):
+        if epochs[oid]["provenance"]["cutout"]["sha256"] != d["cutout_sha256"][oid]:
+            raise EvidenceError(f"pair extract for {oid} does not come from the evidence cutout")
+        cache = ROOT / "data" / "cache" / d["cutout_file"][oid]
+        if cache.exists() and sha256(cache) != d["cutout_sha256"][oid]:
+            raise EvidenceError(f"cached cutout {oid} changed since the extract")
+    for k, side in (("a", "flux_a"), ("b", "flux_b")):
+        if not math.isclose(d["flux"][k], top[side]["flux"], rel_tol=1e-9):
+            raise EvidenceError(f"pair extract flux {k} differs from the evidence")
     return d
 
 

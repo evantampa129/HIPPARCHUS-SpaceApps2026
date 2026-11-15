@@ -5,7 +5,7 @@ from manim import (DOWN, LEFT, RIGHT, UP, BOLD, Arrow, FadeIn, GrowArrow, Line, 
 
 import _path  # noqa: F401
 from hviz import data as D
-from hviz.style import BLUE, GOLD, GREY, MUTED, ORANGE, PANEL, TEXT, HScene, T
+from hviz.style import BLUE, GOLD, GREY, INVALID, MUTED, PANEL, TEXT, HScene, T
 
 EVIDENCE = ["barnard_spherex-d6.json", "rw_aur_spherex-d1.json", "robustness.json", "epsf_check.json",
             "compat_check.json"]
@@ -62,7 +62,7 @@ class M08Falsification(HScene):
                                   max_tip_length_to_length_ratio=0.25) for i in range(3)])
         self.play(FadeIn(heads), *[GrowArrow(a) for a in arrows_h], run_time=0.8)
 
-        for key, y, name, colours in (("barnard", 1.0, "Barnard's Star", [BLUE, ORANGE, GREY, ORANGE]),
+        for key, y, name, colours in (("barnard", 1.0, "Barnard's Star", [BLUE, INVALID, GREY, INVALID]),
                                       ("rw_aur", -1.55, "RW Aur", [BLUE, BLUE, BLUE, BLUE])):
             hh = 1.55 if key == "barnard" else 1.75
             lab = T(name, 18, TEXT, weight=BOLD).move_to([-6.45, y + hh / 2 + 0.22, 0]).align_to([-6.0, 0, 0], LEFT)

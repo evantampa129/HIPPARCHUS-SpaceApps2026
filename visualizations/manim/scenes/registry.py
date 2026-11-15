@@ -1,4 +1,4 @@
-"""The ten scenes, in order, with what each one is allowed to call itself."""
+"""The scenes, in order, with what each one is allowed to call itself."""
 
 SCENES = [
     # (module, class); labels and evidence files live in each scene module
@@ -12,4 +12,9 @@ SCENES = [
     ("m08_falsification", "M08Falsification"),
     ("m09_compat_graph", "M09CompatGraph"),
     ("m10_spectral_time", "M10SpectralTime"),
+    ("m11_change_real", "M11ChangeReal"),
+    ("m12_wcs", "M12WCS"),
+    ("m13_uncertainty", "M13Uncertainty"),
+    ("m14_barnard_refusal", "M14BarnardRefusal"),
+    ("m15_identity", "M15Identity"),
 ]

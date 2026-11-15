@@ -20,6 +20,13 @@ MUST_SHOW = {
     "M08Falsification": ["COMPARISON REFUSED", "SUPPORTED CHANGE", "0/58", "×2.56"],
     "M09CompatGraph": ["8 edges of 1540 pairs", "27 edges of 990 pairs"],
     "M10SpectralTime": ["never a coadd"],
+    "M11ChangeReal": ["IS THIS CHANGE REAL?", "difference: later − earlier", "ratio ×2.56", "83.22 → 212.93",
+                      "flagged pixels: INVALID"],
+    "M12WCS": ["RA 76.956°, Dec +30.401°", "RA---TAN-SIP", "(x, y) → (RA, Dec)", "RA (°, east ←)"],
+    "M13Uncertainty": ["12.4σ", "floor 12.5%", "formal σ = √(0.47² + 0.58²) = 0.74", "175σ formal"],
+    "M14BarnardRefusal": ["COMPARISON REFUSED", "usable: 0/58", "OVERFLOW", "56/58", "INVALID", "saturates"],
+    "M15Identity": ["HIPPARCHUS", "THE UNIVERSE IS NEVER STILL.", "AETHENOVA", "OBSERVE", "VERIFY", "CHALLENGE",
+                    "EXPLAIN"],
 }
 
 

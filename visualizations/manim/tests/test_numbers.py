@@ -126,3 +126,69 @@ def test_m10_per_epoch_fluxes(raw):
     want = sorted([c["flux_a"]["flux"] for c in comps] + [c["flux_b"]["flux"] for c in comps])
     assert shown == want  # every per-pair flux, nothing invented, nothing averaged away
     assert n["n_epochs"] == 56
+
+
+def _top(raw):
+    return max(raw("rw_aur_spherex-d1.json")["comparisons"], key=lambda c: c["flux_ratio"])
+
+
+def test_m11_largest_ratio_pair(raw):
+    from m11_change_real import numbers
+    n = numbers()
+    assert not n["conceptual"]
+    top = _top(raw)
+    ep = {e["obs_id"]: e for e in raw("rw_aur_spherex-d1.json")["epochs"]}
+    assert (n["a"], n["b"]) == (top["a"], top["b"])
+    assert n["flux_a"] == top["flux_a"]["flux"] and n["flux_b"] == top["flux_b"]["flux"]
+    assert n["ratio"] == top["flux_ratio"] and round(n["ratio"], 2) == 2.56
+    assert n["date_a"] == ep[top["a"]]["date_obs"][:10] and n["date_b"] == ep[top["b"]]["date_obs"][:10]
+    assert f'{top["flux_a"]["flux"]:.2f} → {top["flux_b"]["flux"]:.2f}' in n["line"]
+    assert f'{top["lambda_a_um"]:.3f} µm' in n["heads"][0] and f'{top["lambda_b_um"]:.3f} µm' in n["heads"][1]
+
+
+def test_m12_wcs_maps_star_to_evidence_position(raw):
+    from m12_wcs import numbers
+    n = numbers()
+    d = raw("rw_aur_spherex-d1.json")
+    assert (n["ra"], n["dec"]) == (d["ra"], d["dec"])
+    # The interpolated real WCS puts the star's pixel back on the evidence RA/Dec (< 0.01 arcsec).
+    assert abs(n["ra_interp"] - d["ra"]) * 3600 < 0.01 and abs(n["dec_interp"] - d["dec"]) * 3600 < 0.01
+    assert "TAN" in n["ctype"][0] and "TAN" in n["ctype"][1]
+    assert 5.5 < n["scale_arcsec"] < 6.5  # SPHEREx native pixels are ~6.2 arcsec
+    assert f'{d["ra"]:.3f}°' in n["sky_text"] and f'{d["dec"]:.3f}°' in n["sky_text"]
+
+
+def test_m13_uncertainty(raw):
+    from m13_uncertainty import numbers, sigma_parts
+    n = numbers()
+    top = _top(raw)
+    rob = raw("robustness.json")["targets"]["rw_aur"]
+    rp = next(p for p in rob["pairs"] if (p["a"], p["b"]) == (top["a"], top["b"]))
+    assert n["floor"] == rob["systematic_floor"] and round(100 * n["floor"], 1) == 12.5
+    assert n["sig"] == top["significance"] and round(n["sig"]) == 175
+    assert n["sig_sys"] == rp["sig_with_systematics"] and round(n["sig_sys"]) == 12
+    # The animation ends exactly on the published values: formal at floor 0, systematic at the floor.
+    assert close(sigma_parts(n, 0.0)[1], top["delta_flux_err"], rel=1e-9)
+    assert close(sigma_parts(n, 0.0)[2], top["significance"], rel=1e-9)
+    assert close(sigma_parts(n, n["floor"])[2], rp["sig_with_systematics"], rel=1e-9)
+    assert f'{top["delta_flux"]:.2f}' in n["lines"][1] and f'{100*rob["systematic_floor"]:.1f}%' in n["lines"][3]
+    assert f'{rp["sig_with_systematics"]:.1f}σ' in n["final"][0]
+
+
+def test_m14_barnard(raw):
+    from m14_barnard_refusal import numbers
+    n = numbers()
+    b = raw("barnard_spherex-d6.json")
+    assert (n["n"], n["n_usable"], n["usable_counted"]) == (b["n_epochs"], b["n_usable"], 0) == (58, 0, 0)
+    assert len(n["per_epoch"]) == 58 and all(n["per_epoch"])  # every epoch has at least one reason
+    flagged = sum(any(i["code"] == "flagged_pixels" for i in e["issues"]) for e in b["epochs"])
+    assert max(n["tally"].values()) <= flagged
+    for name, k in n["tally"].items():
+        if name.isupper():
+            assert k == sum(f"{name} (" in i["message"] for e in b["epochs"] for i in e["issues"])
+    assert n["usable_text"] == "usable: 0/58" and n["why"] == b["target"]["why"]
+
+
+def test_m15_identity_has_no_data():
+    import m15_identity as m
+    assert m.EVIDENCE == [] and m.M15Identity.LABELS == ("CONCEPTUAL",)

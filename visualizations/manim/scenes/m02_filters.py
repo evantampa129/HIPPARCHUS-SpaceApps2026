@@ -9,7 +9,7 @@ from manim import (DOWN, LEFT, RIGHT, UP, UR, BOLD, Create, FadeIn, Polygon, VGr
 import _path  # noqa: F401
 from hviz import data as D
 from hviz.plot import Panel
-from hviz.style import BLUE, GOLD, GREY, MUTED, ORANGE, TEXT, HScene, T, badge
+from hviz.style import BLUE, GOLD, GREY, INVALID, MUTED, TEXT, HScene, T, badge
 
 EVIDENCE = ["compat_check.json"]
 LABELS = ("DATA-DRIVEN",)
@@ -105,7 +105,7 @@ class M02Filters(HScene):
             lb_t = T(f'{b["id"]}  λ = {lb:.4f} µm', 14, GOLD)
             leg = VGroup(la_t, lb_t).arrange(DOWN, aligned_edge=LEFT, buff=0.05)
             leg.next_to(p.box, RIGHT, buff=0.3).align_to(p.box, UP)
-            col = BLUE if r["ok"] else ORANGE
+            col = BLUE if r["ok"] else INVALID
             txt = VGroup(*[T(s, 16, TEXT) for s in r["text"][:2]],
                          T(r["text"][2], 19, col, weight=BOLD)).arrange(DOWN, aligned_edge=LEFT, buff=0.08)
             txt.next_to(leg, DOWN, buff=0.22, aligned_edge=LEFT)

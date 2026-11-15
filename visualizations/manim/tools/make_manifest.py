@@ -38,6 +38,8 @@ def main():
         extra = []
         if mod in ("m03_aperture", "m04_epsf") and D.PIXELS.exists():
             extra.append(entry(D.PIXELS) | {"from": "tools/extract_pixels.py (real cached cutout, checksum-checked)"})
+        if mod in ("m11_change_real", "m12_wcs") and D.PAIR.exists():
+            extra.append(entry(D.PAIR) | {"from": "tools/extract_pair.py (real cached cutouts and WCS, checksum-checked)"})
         mp4 = HERE / "renders" / f"{mod}.mp4"
         rows.append({
             "scene": scene.SCENE_ID, "module": f"scenes/{mod}.py", "class": cls, "title": scene.TITLE,
@@ -48,7 +50,7 @@ def main():
             "duration_s": duration(mp4) if mp4.exists() else None,
             "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720",
         })
-    out = {"what": "HIPPARCHUS Manim scenes M01-M10", "label_types": list(__import__("hviz.style").style.LABELS),
+    out = {"what": f"HIPPARCHUS Manim scenes {rows[0]['scene']}-{rows[-1]['scene']}", "label_types": list(__import__("hviz.style").style.LABELS),
            "scenes": rows}
     (HERE / "MANIFEST.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
     print("wrote", HERE / "MANIFEST.json")

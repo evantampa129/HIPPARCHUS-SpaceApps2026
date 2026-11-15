@@ -47,3 +47,14 @@ def test_pixel_extract_is_the_evidence_cutout(raw):
     assert math.isclose(p["epsf"]["chi2_red"], fit["chi2_red"], rel_tol=1e-9)
     r = np.array([[np.nan if v is None else v for v in row] for row in p["epsf"]["residual_sigma"]])
     assert math.isclose(np.nansum(r ** 2) / p["epsf"]["dof"], fit["chi2_red"], rel_tol=1e-6)
+
+
+def test_pair_extract_is_the_evidence_pair(raw):
+    p = D.pair()
+    assert p is not None, "run tools/extract_pair.py with the backend venv"
+    top = max(raw("rw_aur_spherex-d1.json")["comparisons"], key=lambda c: c["flux_ratio"])
+    assert (p["a"], p["b"]) == (top["a"], top["b"])
+    assert math.isclose(p["flux"]["significance"], top["significance"], rel_tol=1e-9)
+    a, b = np.array(p["stamp_a"], dtype=float), np.array(p["stamp_b"], dtype=float)
+    d = np.array(p["stamp_diff"], dtype=float)
+    assert np.allclose(b - a, d, atol=1e-9)  # the difference is exactly b - a (each minus its own sky)

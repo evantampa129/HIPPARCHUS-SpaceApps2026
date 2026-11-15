@@ -1,5 +1,5 @@
 {
- "what": "HIPPARCHUS Manim scenes M01-M10",
+ "what": "HIPPARCHUS Manim scenes M01-M15",
  "label_types": [
   "DATA-DRIVEN",
   "SIMULATED",
@@ -76,23 +76,23 @@
    "outputs": {
     "mp4": {
      "path": "visualizations/manim/renders/m02_filters.mp4",
-     "bytes": 514228,
-     "sha256": "7b687b8a0cb2e29d5dd8545d11c89c8a403e5c4ea4631079c2232e94b0116f12"
+     "bytes": 509958,
+     "sha256": "b3e652a7d4b09271cd7c1c7456230cc4f7df2f4fcdbc6a6614632b2544b2645f"
     },
     "still_png": {
      "path": "visualizations/manim/renders/m02_filters.png",
-     "bytes": 693641,
-     "sha256": "0b83bdac06f5eaf6b93155309a9c3bcdc7906b267aeb43bfb61ea9769a4d9610"
+     "bytes": 693130,
+     "sha256": "bc63d6080c7e94cfa2392fcac59a6581dbc127fbb2aef25fb78137460acc9667"
     },
     "web_mp4": {
      "path": "docs/media/manim/m02_filters.mp4",
-     "bytes": 158624,
-     "sha256": "f67983ebe112f67eaa68a56e546af0fb5a247d1bfb3ba80389c2e42c82562809"
+     "bytes": 156961,
+     "sha256": "8303764b504e004ed9b64e743fbeec9b8ff5bd79c2a3fd6cba68e27b97a31570"
     },
     "web_poster_png": {
      "path": "docs/media/manim/m02_filters_poster.png",
-     "bytes": 365356,
-     "sha256": "6abf067c0955fdc2c1a64f01991e9e26f53cfcf97f0c7ba4286ff8ee9ea70b28"
+     "bytes": 364586,
+     "sha256": "01c26ca12b682483f89e0712166be2a3d88f013da41c23f20029c7ceda15dca1"
     }
    },
    "duration_s": 6.4,
@@ -349,23 +349,23 @@
    "outputs": {
     "mp4": {
      "path": "visualizations/manim/renders/m08_falsification.mp4",
-     "bytes": 400570,
-     "sha256": "c8cb297458c3fb77bba0fbf0780f134b393f4a2e795434ed12b4c539602521b3"
+     "bytes": 399371,
+     "sha256": "97f62fc77d7656fb5aae816decb1735e2c74d5fe4b42bfcca0f23ed99db991e6"
     },
     "still_png": {
      "path": "visualizations/manim/renders/m08_falsification.png",
-     "bytes": 551341,
-     "sha256": "742687e828f7b3164deab0e7391c8ed1a35467ab366029b709a0a1d648878fe3"
+     "bytes": 550724,
+     "sha256": "73c2573360f63371fb6818693345d21cea53d7a5d3889247f876820d8e65677b"
     },
     "web_mp4": {
      "path": "docs/media/manim/m08_falsification.mp4",
-     "bytes": 140766,
-     "sha256": "1b2a464344e026c56d65a041c2005c848b8b4a0ff790915c7de07fc0d068fd5d"
+     "bytes": 141337,
+     "sha256": "c6dc80a12f1c5da8a313692aa6c5fad08f0ca3f9d9e271a030a6d2ffd83fc3f0"
     },
     "web_poster_png": {
      "path": "docs/media/manim/m08_falsification_poster.png",
-     "bytes": 290226,
-     "sha256": "cdc0807d4eacd2f2e15cec94e18ae060a32adee2ea3785143a535674a258ba6c"
+     "bytes": 289643,
+     "sha256": "d439a887c896f10bdbda8d51e9939772da0dad3f56894df068392c183aa02916"
     }
    },
    "duration_s": 6.967,
@@ -390,23 +390,23 @@
    "outputs": {
     "mp4": {
      "path": "visualizations/manim/renders/m09_compat_graph.mp4",
-     "bytes": 455610,
-     "sha256": "40f823237acd145d628c0da374137e20e146a2455f25f598fe8ec3e7f17a8722"
+     "bytes": 476465,
+     "sha256": "222064743863f7d2b01715711d9d3aff7521fc796ee4dd9a2a3d3115ea2ce849"
     },
     "still_png": {
      "path": "visualizations/manim/renders/m09_compat_graph.png",
-     "bytes": 600661,
-     "sha256": "18232d6ffd118aba84dda56da68638a775dfef313e7116956f9e8b11a1bf3dba"
+     "bytes": 639639,
+     "sha256": "781ebaa6597958cbd136524138eec8f9fa639322a17a36ad7811b6a70e9dc905"
     },
     "web_mp4": {
      "path": "docs/media/manim/m09_compat_graph.mp4",
-     "bytes": 163006,
-     "sha256": "fd3c9b10305377acfa4d2efb8f9a58b81e88937e49db3e7e0a377f4d4834cae9"
+     "bytes": 168176,
+     "sha256": "3b9740409337bc91e38b6aab545a6655472c946b484fbd91996a2b461f5cbdaf"
     },
     "web_poster_png": {
      "path": "docs/media/manim/m09_compat_graph_poster.png",
-     "bytes": 325691,
-     "sha256": "1dbc2b7e565fe63b8a0ace28fa7931958b68e99ed162044fcb7fd376e35e47e6"
+     "bytes": 345355,
+     "sha256": "73ab89c4dacc712b64a75c20c01fbd839b0049671b1ae4e786db5f2e94c6dfc3"
     }
    },
    "duration_s": 6.7,
@@ -451,6 +451,224 @@
     }
    },
    "duration_s": 5.3,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M11",
+   "module": "scenes/m11_change_real.py",
+   "class": "M11ChangeReal",
+   "title": "RW Aur: two exposures, one difference",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1/QR3, NASA/IPAC IRSA · cutout SHA-256 in rw_aur_spherex-d1.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/rw_aur_spherex-d1.json",
+     "sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad"
+    }
+   ],
+   "derived_inputs": [
+    {
+     "path": "visualizations/manim/data/rw_aur_pair.json",
+     "bytes": 50514,
+     "sha256": "85d7a46c0245909b0b243ebe7eb4da1ab19d715981414f8a8ead6aa4fed909b7",
+     "from": "tools/extract_pair.py (real cached cutouts and WCS, checksum-checked)"
+    }
+   ],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m11_change_real.mp4",
+     "bytes": 523996,
+     "sha256": "09bac8b9e17a47f8053b210e2e77de33babbad7451b5f495f7001fd5945bb097"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m11_change_real.png",
+     "bytes": 689434,
+     "sha256": "49cc8096d160935b7c40ea5af91e6205afececd2c3c01733c855fd7db3b0fb4c"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m11_change_real.mp4",
+     "bytes": 172788,
+     "sha256": "7b4487d1eee63196d4530e00b71ef465485660e6dfd95a0042de744d455ac98c"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m11_change_real_poster.png",
+     "bytes": 414270,
+     "sha256": "2d912fca8dd993af20ca6325caedb2dff69bff20d5c61219afcd96cb15e96715"
+    }
+   },
+   "duration_s": 6.1,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M12",
+   "module": "scenes/m12_wcs.py",
+   "class": "M12WCS",
+   "title": "From pixels to sky: the cutout's own WCS",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1, NASA/IPAC IRSA · cutout SHA-256 in rw_aur_spherex-d1.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/rw_aur_spherex-d1.json",
+     "sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad"
+    }
+   ],
+   "derived_inputs": [
+    {
+     "path": "visualizations/manim/data/rw_aur_pair.json",
+     "bytes": 50514,
+     "sha256": "85d7a46c0245909b0b243ebe7eb4da1ab19d715981414f8a8ead6aa4fed909b7",
+     "from": "tools/extract_pair.py (real cached cutouts and WCS, checksum-checked)"
+    }
+   ],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m12_wcs.mp4",
+     "bytes": 844899,
+     "sha256": "2ca766bdb2cc31f59e03aceaf86a0bc163ed4af622f8f3e4f68d2fced46560cd"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m12_wcs.png",
+     "bytes": 754190,
+     "sha256": "a9f5b759ae2089fe665524177bd4195aecc5c0e28ff528c41135c3ac59bfaeae"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m12_wcs.mp4",
+     "bytes": 313905,
+     "sha256": "209bd69b7332f6722d33866f3737583132708f6bf14adcdf7ef300a7a3b18804"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m12_wcs_poster.png",
+     "bytes": 378834,
+     "sha256": "af18e71761bdc8cd8ac5f84bf434abf2dec2f353ea8ba4c6ebea5bc513ff03c9"
+    }
+   },
+   "duration_s": 6.1,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M13",
+   "module": "scenes/m13_uncertainty.py",
+   "class": "M13Uncertainty",
+   "title": "RW Aur: how much of 175σ survives calibration?",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1/QR3, NASA/IPAC IRSA · rw_aur_spherex-d1.json · robustness.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/rw_aur_spherex-d1.json",
+     "sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad"
+    },
+    {
+     "file": "submission/evidence/robustness.json",
+     "sha256": "499f7bf3383668ea162ed4f61df20e5fce470f421d990b33c36c76498c6df0f2"
+    }
+   ],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m13_uncertainty.mp4",
+     "bytes": 514948,
+     "sha256": "033ddc3a557a89cdff222bca449db238d0c6914907c29ea67383bbbd994dfafa"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m13_uncertainty.png",
+     "bytes": 544498,
+     "sha256": "3ee89eaeb069c8e9527052935ef8233a2ed6820abd507205fe7d3472653e466c"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m13_uncertainty.mp4",
+     "bytes": 167346,
+     "sha256": "4896361a72ccf126ad6dc1376059f7df3813857cbff7a487bd628287aa58e9b3"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m13_uncertainty_poster.png",
+     "bytes": 285710,
+     "sha256": "e8a0ec6ac7e3a20fe8e47c2253009156b1d9755daa0e144fd3b3064de2b0732c"
+    }
+   },
+   "duration_s": 7.9,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M14",
+   "module": "scenes/m14_barnard_refusal.py",
+   "class": "M14BarnardRefusal",
+   "title": "Barnard's Star: why we refuse to compare",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1/QR3, NASA/IPAC IRSA · barnard_spherex-d6.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/barnard_spherex-d6.json",
+     "sha256": "f7fdc32c09ce0c78011e26c98863d7d85d50b423e1ac7b6dfa72b6bb8e2c130f"
+    }
+   ],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m14_barnard_refusal.mp4",
+     "bytes": 521111,
+     "sha256": "f5e891d34860ab039bc30224d6efcd5a71a173df30b90779bc5273dc12a231f8"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m14_barnard_refusal.png",
+     "bytes": 678381,
+     "sha256": "23eb9787ef50ba7896c0554fe26ca7df15cea0b6bce652e26af715a559cc5654"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m14_barnard_refusal.mp4",
+     "bytes": 180267,
+     "sha256": "79213c2272f8b440db7f582ed78b4ba270b2e7232c2eacedc1dae9fb949d5712"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m14_barnard_refusal_poster.png",
+     "bytes": 366699,
+     "sha256": "02181cec73f94f68c742dc953be46e0108c104e2ea1e20b41f4cefabdde182f5"
+    }
+   },
+   "duration_s": 7.1,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M15",
+   "module": "scenes/m15_identity.py",
+   "class": "M15Identity",
+   "title": "Identity",
+   "labels": [
+    "CONCEPTUAL"
+   ],
+   "source_line": "Illustration by HIPPARCHUS · no archive data shown",
+   "evidence": [],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m15_identity.mp4",
+     "bytes": 150230,
+     "sha256": "629be29b306ae4b6fb9755946adbfc3258bdbb58bd4e5634e9ae2b2c46b46d23"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m15_identity.png",
+     "bytes": 271489,
+     "sha256": "5d4e60d661f7216053e7582f774c704a21ffd870a2e53d126a26124dfb0ff5ab"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m15_identity.mp4",
+     "bytes": 51873,
+     "sha256": "0ab787d1f40f5293720038df75ddee8eeee4a927eb33dbf529d019d0215dcad7"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m15_identity_poster.png",
+     "bytes": 149453,
+     "sha256": "34cbe623c801e75c06ba3b23fd2342109edb171d497a8fbbe798389a0562896e"
+    }
+   },
+   "duration_s": 3.5,
    "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
   }
  ]

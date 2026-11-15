@@ -6,7 +6,7 @@ from manim import (DOWN, LEFT, RIGHT, UP, BOLD, Circle, Create, Dot, FadeIn, Lag
 import _path  # noqa: F401
 from hviz import data as D
 from hviz.plot import Panel, mjd_label
-from hviz.style import BLUE, GOLD, GREY, MUTED, TEXT, HScene, T
+from hviz.style import BLUE, GOLD, GREY, INVALID, MUTED, TEXT, HScene, T
 
 EVIDENCE = ["compat_check.json"]
 ORDER = ("rw_aur", "barnard", "wise0855")
@@ -48,18 +48,18 @@ class M09CompatGraph(HScene):
                 if v["usable"]:
                     nodes.add(Dot(pos[v["id"]], radius=0.05, color=BLUE))
                 else:
-                    # Flagged epochs stay in the graph, grey and hollow, with their reason in the data.
-                    nodes.add(Circle(radius=0.045, stroke_color=GREY, stroke_width=1.5).move_to(pos[v["id"]]))
+                    # Flagged epochs stay in the graph, hollow and in the INVALID colour, with their reason in the data.
+                    nodes.add(Circle(radius=0.045, stroke_color=INVALID, stroke_width=1.5).move_to(pos[v["id"]]))
             edges = VGroup(*[Line(pos[e["a"]], pos[e["b"]], stroke_color=GOLD, stroke_width=2.2) for e in g["edges"]])
             cap = T(g["caption"], 14, TEXT).next_to(p, DOWN, buff=0.15)
             self.play(FadeIn(p), LaggedStart(*[FadeIn(d) for d in nodes], lag_ratio=0.01), run_time=0.9)
             if len(edges):
                 self.play(Create(edges), FadeIn(cap), run_time=0.7)
             else:
-                none = T("no edges: every epoch flagged on the star", 15, GOLD).next_to(cap, DOWN, buff=0.1)
+                none = T("no edges: every epoch flagged on the star", 15, INVALID).next_to(cap, DOWN, buff=0.1)
                 self.play(FadeIn(cap), FadeIn(none), run_time=0.7)
         legend = VGroup(Dot(radius=0.06, color=BLUE), T("usable epoch", 15, TEXT),
-                        Circle(radius=0.055, stroke_color=GREY, stroke_width=1.5), T("flagged / unusable epoch", 15, TEXT),
+                        Circle(radius=0.055, stroke_color=INVALID, stroke_width=1.5), T("flagged / unusable epoch", 15, TEXT),
                         Line([0, 0, 0], [0.4, 0, 0], stroke_color=GOLD, stroke_width=3),
                         T("compared pair (same detector, |Δλ| ≤ ½ channel)", 15, TEXT)).arrange(RIGHT, buff=0.15)
         legend.move_to([0, -2.95, 0])

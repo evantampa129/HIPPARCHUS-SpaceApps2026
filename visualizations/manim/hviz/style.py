@@ -19,6 +19,15 @@ TEXT = "#EAF0FA"
 MUTED = "#9FB0CC"
 GREY = "#5D6B82"      # flagged / unusable
 
+# Semantic tokens: what a colour *means*. New scenes use these; the names above stay
+# as aliases so older scenes keep working. Rule: never colour alone, always a word
+# next to a state (OBSERVED, MODEL, ±σ, INVALID ...).
+OBSERVED = BLUE       # measured from real pixels
+MODEL = GOLD          # model, prediction or fit
+UNCERTAINTY = ORANGE  # error bars, systematic floors
+INVALID = "#B5545C"   # muted red: flagged, refused or unusable observation
+GEOMETRY = TEXT       # grids, axes, coordinate frames
+
 FONT = "Inter"
 
 SOURCE_SPHEREX = "SPHEREx DR1/QR3, NASA/IPAC IRSA · HIPPARCHUS"
@@ -106,8 +115,8 @@ def colorbar(cfn, lo_txt, hi_txt, title, width=0.22, height=2.4, n=40, diverging
     return VGroup(cells, lo, hi, ttl)
 
 
-def pixel_grid(arr, px=0.2, cfn=seq_color, norm=lambda v: v, bad=None, stroke=GRID):
-    """One square per native pixel; None/NaN or flagged pixels are grey and hatched-free."""
+def pixel_grid(arr, px=0.2, cfn=seq_color, norm=lambda v: v, bad=None, stroke=GRID, bad_color=GREY):
+    """One square per native pixel; None/NaN or flagged pixels get bad_color (grey by default)."""
     rows = len(arr)
     cols = len(arr[0])
     g = VGroup()
@@ -116,7 +125,7 @@ def pixel_grid(arr, px=0.2, cfn=seq_color, norm=lambda v: v, bad=None, stroke=GR
             v = arr[i][j]
             flagged = bad is not None and bad[i][j]
             if v is None or v != v or flagged:
-                c, op = GREY, 1.0
+                c, op = bad_color, 1.0
             else:
                 c, op = cfn(norm(v)), 1.0
             sq = Square(side_length=px, stroke_color=stroke, stroke_width=0.6,

@@ -1,6 +1,6 @@
 # HIPPARCHUS scene library (Manim)
 
-Ten short animated scenes (3–8 s each) for the film, the slides and the Judge Mode page. Every number on screen is
+Fifteen short animated scenes (3–9 s each) for the film, the slides and the Judge Mode page. Every number on screen is
 read from `submission/evidence/*.json` at render time, and every frame carries a label (DATA-DRIVEN, SIMULATED,
 CONCEPTUAL, HISTORICAL ILLUSTRATION, EXPERIMENTAL) and a source line.
 
@@ -16,6 +16,11 @@ CONCEPTUAL, HISTORICAL ILLUSTRATION, EXPERIMENTAL) and a source line.
 | M08 | Observe → Verify → Challenge → Explain: Barnard refused, RW Aur supported | DATA-DRIVEN |
 | M09 | observation compatibility graph for the three targets | DATA-DRIVEN |
 | M10 | RW Aur wavelength and flux per exposure (never a coadd) | DATA-DRIVEN |
+| M11 | RW Aur largest-ratio pair: two real exposures, their difference, "is this change real?" | DATA-DRIVEN |
+| M12 | a cutout's pixel grid carried onto RA/Dec by its own TAN-SIP WCS, RW Aur marked | DATA-DRIVEN |
+| M13 | 175σ formal → 12.4σ once the 12.5% calibration floor is added | DATA-DRIVEN |
+| M14 | Barnard's Star: 58 exposures, each flagged on the star, comparison refused | DATA-DRIVEN |
+| M15 | identity card: name, line, team, the four steps | CONCEPTUAL |
 
 ## Setup
 
@@ -34,6 +39,13 @@ fit; the script stops if the cutout's SHA-256 or the fitted χ² differ from the
 backend/.venv/bin/python visualizations/manim/tools/extract_pixels.py   # writes data/rw_aur_pixels.json
 ```
 
+M11 and M12 use the two cutouts of the largest-ratio RW Aur pair (b reprojected onto a's grid, as the backend
+does) and a's WCS sampled on the stamp's pixel edges, from the same kind of checked extract:
+
+```bash
+backend/.venv/bin/python visualizations/manim/tools/extract_pair.py     # writes data/rw_aur_pair.json
+```
+
 ## Render
 
 ```bash
@@ -46,6 +58,9 @@ backend/.venv/bin/python visualizations/manim/tools/extract_pixels.py   # writes
 (≤ 2 MB) with poster frames. `MANIFEST.json` lists each scene's labels, the evidence files with their SHA-256, the
 outputs and the duration.
 
+Colours are semantic tokens in `hviz/style.py`: OBSERVED (sky blue), MODEL (gold), UNCERTAINTY (amber), INVALID
+(muted red), GEOMETRY (white); a state always has a word next to it, never colour alone.
+
 Layout: `hviz/style.py` (palette, fonts, frame labels), `hviz/data.py` (evidence loader and unit checks),
 `hviz/plot.py` (panels without LaTeX), `scenes/` (one file per scene, each with a `numbers()` function the tests
-check), `tools/` (pixel extract, manifest).
+check), `tools/` (pixel and pair extracts, manifest).
