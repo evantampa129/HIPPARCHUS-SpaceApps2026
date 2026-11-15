@@ -1,0 +1,308 @@
+{
+ "note": "Built by backend/scripts/make_claims_registry.py from the evidence files. backend/tests/test_claims_drift.py fails if a number changes here or disappears from an output that quotes it.",
+ "statuses": [
+  "validated_real_observation",
+  "experimental_real_observation",
+  "synthetic_test",
+  "conceptual_explanation",
+  "future_work"
+ ],
+ "claims": [
+  {
+   "id": "rw_aur.flux_ratio",
+   "status": "validated_real_observation",
+   "claim": "RW Aur is about 2.56 times brighter at 0.76 µm about a year later (largest ratio among the compared pairs).",
+   "caveat": "RW Aur A+B is unresolved by SPHEREx; ratio includes both components.",
+   "value": 2.558575455811674,
+   "display": "2.56",
+   "evidence": "submission/evidence/rw_aur_spherex-d1.json",
+   "evidence_sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "rw_aur.formal_sigma",
+   "status": "validated_real_observation",
+   "claim": "Formal significance of the largest change.",
+   "caveat": "Formal only; about 12σ once a 12.5% calibration floor is added.",
+   "value": 175.07751792388433,
+   "display": "175",
+   "evidence": "submission/evidence/rw_aur_spherex-d1.json",
+   "evidence_sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "rw_aur.valid_pairs",
+   "status": "validated_real_observation",
+   "claim": "Number of RW Aur pairs that pass every check.",
+   "caveat": "",
+   "value": 8,
+   "display": "8",
+   "evidence": "submission/evidence/rw_aur_spherex-d1.json",
+   "evidence_sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "rw_aur.all_pairs",
+   "status": "validated_real_observation",
+   "claim": "Number of RW Aur epoch pairs considered.",
+   "caveat": "",
+   "value": 1540,
+   "display": "1540",
+   "evidence": "submission/evidence/rw_aur_spherex-d1.json",
+   "evidence_sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "barnard.epochs",
+   "status": "validated_real_observation",
+   "claim": "Barnard's Star epochs found; none usable (saturation flags), so the comparison is refused.",
+   "caveat": "",
+   "value": 58,
+   "display": "58",
+   "evidence": "submission/evidence/barnard_spherex-d6.json",
+   "evidence_sha256": "f7fdc32c09ce0c78011e26c98863d7d85d50b423e1ac7b6dfa72b6bb8e2c130f",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "barnard.usable",
+   "status": "validated_real_observation",
+   "claim": "Usable Barnard's Star epochs.",
+   "caveat": "",
+   "value": 0,
+   "display": "0",
+   "evidence": "submission/evidence/barnard_spherex-d6.json",
+   "evidence_sha256": "f7fdc32c09ce0c78011e26c98863d7d85d50b423e1ac7b6dfa72b6bb8e2c130f",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": []
+  },
+  {
+   "id": "wise0855.valid_pairs",
+   "status": "validated_real_observation",
+   "claim": "WISE 0855 valid pairs.",
+   "caveat": "Low sensitivity: cannot prove constancy.",
+   "value": 27,
+   "display": "27",
+   "evidence": "submission/evidence/wise0855_spherex-d6.json",
+   "evidence_sha256": "71d8e2b813eb58e213676c51aaceae3461255fbd3aab6e97bb9bd67561aff691",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "wise0855.max_sigma",
+   "status": "validated_real_observation",
+   "claim": "Largest WISE 0855 change in σ; no ≥5σ change.",
+   "caveat": "",
+   "value": 1.930004820195549,
+   "display": "1.9",
+   "evidence": "submission/evidence/wise0855_spherex-d6.json",
+   "evidence_sha256": "71d8e2b813eb58e213676c51aaceae3461255fbd3aab6e97bb9bd67561aff691",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "robustness.rw_aur_settings",
+   "status": "validated_real_observation",
+   "claim": "RW Aur '≥1.5× at ≥5σ' holds across the analysis settings (24/24).",
+   "caveat": "Rule-based stability labels, not probabilities.",
+   "value": [
+    24,
+    24
+   ],
+   "display": "24/24",
+   "evidence": "submission/evidence/robustness.json",
+   "evidence_sha256": "499f7bf3383668ea162ed4f61df20e5fce470f421d990b33c36c76498c6df0f2",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "validation.null_scatter",
+   "status": "validated_real_observation",
+   "claim": "Blank-sky null-test scatter (ideal 1).",
+   "caveat": "",
+   "value": 0.912328767527708,
+   "display": "0.91",
+   "evidence": "submission/evidence/validation.json",
+   "evidence_sha256": "4a9249c007fcb9702a0ca6e2e78c40f66d77916ace5935e311d988f29cb3f9a0",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "validation.injection_snr5",
+   "status": "synthetic_test",
+   "claim": "SIMULATED injection recovery at S/N 5.",
+   "caveat": "SIMULATED sources on real backgrounds.",
+   "value": 0.44086021505376344,
+   "display": "44%",
+   "evidence": "submission/evidence/validation.json",
+   "evidence_sha256": "4a9249c007fcb9702a0ca6e2e78c40f66d77916ace5935e311d988f29cb3f9a0",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "validation.injection_snr7",
+   "status": "synthetic_test",
+   "claim": "SIMULATED injection recovery at S/N 7.",
+   "caveat": "SIMULATED sources on real backgrounds.",
+   "value": 0.989247311827957,
+   "display": "99%",
+   "evidence": "submission/evidence/validation.json",
+   "evidence_sha256": "4a9249c007fcb9702a0ca6e2e78c40f66d77916ace5935e311d988f29cb3f9a0",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "kleopatra.rms_ra",
+   "status": "experimental_real_observation",
+   "claim": "Kleopatra RA·cosDec rms offset from JPL Horizons (observer SPHEREx), arcsec.",
+   "caveat": "Known asteroid; method validation only, not a discovery.",
+   "value": 0.14707510745601235,
+   "display": "0.15",
+   "evidence": "submission/evidence/motion_check.json",
+   "evidence_sha256": "e9ec2b867f03e9886fdcbbded3f22e7738ef0122ea891d74eaa433f879528a3c",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "kleopatra.rms_dec",
+   "status": "experimental_real_observation",
+   "claim": "Kleopatra Dec rms offset from JPL Horizons (observer SPHEREx), arcsec.",
+   "caveat": "",
+   "value": 0.18459864735135753,
+   "display": "0.18",
+   "evidence": "submission/evidence/motion_check.json",
+   "evidence_sha256": "e9ec2b867f03e9886fdcbbded3f22e7738ef0122ea891d74eaa433f879528a3c",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "README.md",
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  },
+  {
+   "id": "kleopatra.outlier_flagged",
+   "status": "validated_real_observation",
+   "claim": "Exposures where the SPHEREx pipeline flags the asteroid as OUTLIER.",
+   "caveat": "",
+   "value": [
+    35,
+    38
+   ],
+   "display": "35 of 38",
+   "evidence": "submission/evidence/motion_check.json",
+   "evidence_sha256": "e9ec2b867f03e9886fdcbbded3f22e7738ef0122ea891d74eaa433f879528a3c",
+   "datasets": {
+    "DR1": "10.26131/IRSA678",
+    "QR3": "10.26131/IRSA662"
+   },
+   "quoted_in": [
+    "docs/index.html",
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex",
+    "submission/portal_texts.md"
+   ]
+  }
+ ]
+}
