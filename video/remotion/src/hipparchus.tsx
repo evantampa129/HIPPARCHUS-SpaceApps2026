@@ -23,61 +23,69 @@
  *   scripts/capture_judge.mjs crops of the real Judge Mode page -> public/judge/*.png
  *
  * STORYBOARD (frames at 30 fps; scenes overlap by 10 frames for cross-fades)
- *   0.0– 4.0 s  ANCIENT CURIOSITY   Manim scene M01 (CONCEPTUAL / HISTORICAL ILLUSTRATION):
- *                                   celestial sphere -> RA/Dec grid; text: 2,000 YEARS OF LOOKING UP
- *   4.0– 8.0 s  A NEW WINDOW        sphere -> flat RA/Dec chart, zoom onto RW Aur (RA 76.956°,
- *                                   Dec +30.401°), cross-fade into real SPHEREx cutouts of RW Aur,
- *                                   WISE 0855-0714, Barnard's Star; text: THE INFRARED UNIVERSE
- *   8.0–12.0 s  THE CHALLENGE       RW Aur 2025-09-02 (0.763 µm) / 2026-09-08 (0.770 µm), then the
- *                                   difference; "wavelength?" "uncertainty?"; NOT EVERY CHANGE IS REAL
- *  12.0–18.0 s  HIPPARCHUS IN ACTION real screen recording: search, archive answer, quality checks +
- *                                   timeline, comparison (four 1x cuts)
- *  18.0–24.0 s  THE EVIDENCE        Judge Mode page: RW Aur card, robustness heatmap (24/24), Barnard
- *                                   card (refused); OBSERVE. VERIFY. CHALLENGE. EXPLAIN.
- *  24.0–27.0 s  MOVING WORLDS       Manim scene M06 (DATA-DRIVEN): (216) Kleopatra's real SPHEREx
- *                                   detections vs JPL Horizons; tagged KNOWN ASTEROID, NOT PLANET X
- *  27.0–29.4 s  FINAL IDENTITY      HIPPARCHUS logo, THE UNIVERSE IS NEVER STILL., AETHENOVA logo,
- *                                   ANCIENT CURIOSITY. INFINITE DISCOVERY., fade to black
+ * Manim explains, the real app demonstrates, real SPHEREx numbers prove. Every Manim clip is
+ * rendered from visualizations/manim (numbers read from submission/evidence) and carries its
+ * own DATA-DRIVEN / CONCEPTUAL label and source line.
+ *   0.0– 3.0 s  THE PROBLEM          M11: two real SPHEREx images of RW Aur a year apart, their
+ *                                    difference, "IS THIS CHANGE REAL?"
+ *   3.0– 7.0 s  WHY IT IS HARD       M02: two spectral responses; the compatible pair is compared,
+ *                                    the one 10.8 nm apart is refused
+ *   7.0–15.0 s  THE WORKING APP      real screen recording: search, archive answer, quality checks
+ *                                    + timeline, comparison (four 1x cuts)
+ *  15.0–18.5 s  THE EVIDENCE (1)     M13: RW Aur fluxes with error bars; the calibration floor
+ *                                    grows them and the significance drops but stays far above 5 sigma
+ *  18.5–20.3 s  THE EVIDENCE (2)     M05: Stability Fingerprint, 24/24 settings
+ *  20.3–22.0 s  THE EVIDENCE (3)     M14: Barnard's Star exposures flagged, comparison refused
+ *  22.0–26.0 s  MOVING OBJECTS       M06: (216) Kleopatra's real detections vs JPL Horizons
+ *  26.0–29.4 s  FINAL IDENTITY       HIPPARCHUS, THE UNIVERSE IS NEVER STILL., AETHENOVA
  * Captions: src/captions.ts (burned in + .srt). Audio: synthesised ambient bed, no voice, no music.
  */
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Captions, SceneFade } from "./ui";
-import { Frontier, SceneAction, SceneChallenge, SceneEvidence, SceneIdentity, SceneManim, SceneWindow } from "./scenes";
+import { Frontier, SceneAction, SceneIdentity, SceneManim } from "./scenes";
 
 export const FPS = 30;
 export const DURATION = 882; // 29.4 s
 const OVERLAP = 10;
 
 // Scene start frames on the 30 fps timeline (each scene runs until the next one + OVERLAP).
-const T = { ancient: 0, window: 120, challenge: 240, action: 360, evidence: 540, frontier: 720, identity: 810 };
+const T = { problem: 0, wavelength: 90, app: 210, errors: 450, fingerprint: 555, barnard: 610, moving: 660, identity: 780 };
+const len = (a: number, b: number) => b - a + OVERLAP;
 
 export type Props = { frontier: Frontier };
 
 export const Hipparchus: React.FC<Props> = () => (
   <AbsoluteFill style={{ background: "#000" }}>
-    <Sequence name="1 Ancient curiosity" from={T.ancient} durationInFrames={T.window - T.ancient + OVERLAP}>
-      <SceneFade><SceneManim src="manim/m01_ancient_sky.mp4" headline="2,000 YEARS OF LOOKING UP" /></SceneFade>
+    <Sequence name="1 The problem" from={T.problem} durationInFrames={len(T.problem, T.wavelength)}>
+      <SceneFade inF={1}><SceneManim src="manim/m11_change_real.mp4" headline="TWO REAL SPHEREx IMAGES, ONE YEAR APART" startFrom={M.m11} /></SceneFade>
     </Sequence>
-    <Sequence name="2 A new window" from={T.window} durationInFrames={T.challenge - T.window + OVERLAP}>
-      <SceneFade><SceneWindow /></SceneFade>
+    <Sequence name="2 Why it is hard" from={T.wavelength} durationInFrames={len(T.wavelength, T.app)}>
+      <SceneFade><SceneManim src="manim/m02_filters.mp4" headline="A DIFFERENT WAVELENGTH CAN FAKE A CHANGE" startFrom={M.m02} /></SceneFade>
     </Sequence>
-    <Sequence name="3 The challenge" from={T.challenge} durationInFrames={T.action - T.challenge + OVERLAP}>
-      <SceneFade><SceneChallenge /></SceneFade>
-    </Sequence>
-    <Sequence name="4 HIPPARCHUS in action" from={T.action} durationInFrames={T.evidence - T.action + OVERLAP}>
+    <Sequence name="3 The working app" from={T.app} durationInFrames={len(T.app, T.errors)}>
       <SceneFade><SceneAction /></SceneFade>
     </Sequence>
-    <Sequence name="5 The evidence" from={T.evidence} durationInFrames={T.frontier - T.evidence + OVERLAP}>
-      <SceneFade><SceneEvidence /></SceneFade>
+    <Sequence name="4 Bigger than the errors?" from={T.errors} durationInFrames={len(T.errors, T.fingerprint)}>
+      <SceneFade><SceneManim src="manim/m13_uncertainty.mp4" headline="IS IT BIGGER THAN THE ERRORS?" startFrom={M.m13} /></SceneFade>
     </Sequence>
-    <Sequence name="6 Moving worlds" from={T.frontier} durationInFrames={T.identity - T.frontier + OVERLAP}>
-      <SceneFade><SceneManim src="manim/m06_kleopatra.mp4" headline="FROM CHANGING STARS TO MOVING WORLDS" startFrom={114} tag="KNOWN ASTEROID, NOT PLANET X" /></SceneFade>
+    <Sequence name="5 Every analysis choice" from={T.fingerprint} durationInFrames={len(T.fingerprint, T.barnard)}>
+      <SceneFade><SceneManim src="manim/m05_fingerprint.mp4" headline="DOES IT SURVIVE EVERY ANALYSIS CHOICE?" startFrom={M.m05} /></SceneFade>
     </Sequence>
-    <Sequence name="7 Final identity" from={T.identity} durationInFrames={DURATION - T.identity}>
+    <Sequence name="6 Refused" from={T.barnard} durationInFrames={len(T.barnard, T.moving)}>
+      <SceneFade><SceneManim src="manim/m14_barnard_refusal.mp4" headline="WHEN THE DATA CANNOT ANSWER, WE SAY SO" startFrom={M.m14} /></SceneFade>
+    </Sequence>
+    <Sequence name="7 Moving objects" from={T.moving} durationInFrames={len(T.moving, T.identity)}>
+      <SceneFade><SceneManim src="manim/m06_kleopatra.mp4" headline="FROM CHANGING STARS TO MOVING WORLDS" startFrom={M.m06} tag="KNOWN ASTEROID, NOT PLANET X" /></SceneFade>
+    </Sequence>
+    <Sequence name="8 Final identity" from={T.identity} durationInFrames={DURATION - T.identity}>
       <SceneFade outF={1}><SceneIdentity /></SceneFade>
     </Sequence>
     <Captions />
     <Audio src={staticFile("audio/ambient.wav")} />
   </AbsoluteFill>
 );
+
+// Where each Manim clip starts (frames into the clip), chosen by looking at the frames so the
+// slot shows the part that carries the argument.
+const M = { m11: 80, m02: 20, m13: 122, m05: 30, m14: 150, m06: 70 };

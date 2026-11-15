@@ -1,8 +1,8 @@
 // Writes the English .srt next to the final video from src/captions.ts (the burned-in text).
-// Usage: node scripts/make_srt.mjs ../hipparchus_aethenova_29s.en.srt
+// Usage: node scripts/make_srt.mjs ../hipparchus_aethenova_29s.en.srt [src/captions_extended.ts]
 import fs from "node:fs";
 
-const src = fs.readFileSync(new URL("../src/captions.ts", import.meta.url), "utf8");
+const src = fs.readFileSync(process.argv[3] || new URL("../src/captions.ts", import.meta.url), "utf8");
 const cues = [...src.matchAll(/startMs: (\d+), endMs: (\d+), text: "((?:[^"\\]|\\.)*)"/g)].map((m) => ({
   start: +m[1],
   end: +m[2],

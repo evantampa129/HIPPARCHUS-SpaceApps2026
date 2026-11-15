@@ -73,16 +73,16 @@ export const Credit: React.FC<{ children: React.ReactNode; style?: React.CSSProp
 );
 
 // Burned-in English captions (exact narration text), bottom centre.
-export const Captions: React.FC = () => {
+export const Captions: React.FC<{ cues?: typeof CUES; bottom?: number; size?: number; maxWidth?: number }> = ({ cues = CUES, bottom = 64, size = 40, maxWidth = 1780 }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const ms = (f / fps) * 1000;
-  const cue = CUES.find((c) => ms >= c.startMs && ms < c.endMs);
+  const cue = cues.find((c) => ms >= c.startMs && ms < c.endMs);
   if (!cue) return null;
   const o = Math.min(1, (ms - cue.startMs) / 200, (cue.endMs - ms) / 200);
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, bottom: 64, display: "flex", justifyContent: "center", opacity: o }}>
-      <div style={{ maxWidth: 1780, fontFamily: FONT, fontWeight: 500, fontSize: 40, lineHeight: 1.3, color: "#fff", textAlign: "center",
+    <div style={{ position: "absolute", left: 0, right: 0, bottom, display: "flex", justifyContent: "center", opacity: o }}>
+      <div style={{ maxWidth, fontFamily: FONT, fontWeight: 500, fontSize: size, lineHeight: 1.3, color: "#fff", textAlign: "center",
         background: "rgba(3,6,12,0.78)", padding: "10px 26px", borderRadius: 10 }}>
         {cue.text}
       </div>

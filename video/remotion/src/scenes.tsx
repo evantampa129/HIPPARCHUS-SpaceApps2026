@@ -196,10 +196,10 @@ export const SceneChallenge: React.FC = () => {
 // Real screen recording of the app (public/rec/app.mp4, made by scripts/record_app.mjs).
 // Four cuts at 1× speed; times in seconds of the recording (see public/rec/marks.json).
 const SEGMENTS = [
-  { from: 1.2, len: 51, step: 0, ox: 420, oy: 180, z0: 1.0, z1: 1.18 }, // pick RW Aurigae, "1. Search archive"
-  { from: 19.0, len: 42, step: 1, ox: 900, oy: 420, z0: 1.08, z1: 1.16 }, // archive answer
-  { from: 24.6, len: 54, step: 2, ox: 960, oy: 520, z0: 1.0, z1: 1.1 }, // quality checks + timeline playback
-  { from: 30.4, len: 33, step: 3, ox: 640, oy: 640, z0: 1.12, z1: 1.2 }, // comparison: blink, difference, significance
+  { from: 1.2, len: 63, step: 0, ox: 420, oy: 180, z0: 1.0, z1: 1.18 }, // pick RW Aurigae, "1. Search archive"
+  { from: 19.0, len: 52, step: 1, ox: 900, oy: 420, z0: 1.08, z1: 1.16 }, // archive answer
+  { from: 24.6, len: 70, step: 2, ox: 960, oy: 520, z0: 1.0, z1: 1.1 }, // quality checks + timeline playback
+  { from: 30.4, len: 55, step: 3, ox: 640, oy: 640, z0: 1.12, z1: 1.2 }, // comparison: blink, difference, significance
 ];
 const STEPS = ["Search", "Archive answer", "Quality checks · timeline", "Comparison"];
 const WX = 320, WY = 146, WW = 1280, WH = 720;
@@ -337,7 +337,7 @@ export const SceneFrontier: React.FC<{ frontier: Frontier }> = ({ frontier }) =>
 // because the mark in the team logo is small at this size.
 export const SceneIdentity: React.FC = () => {
   const f = useCurrentFrame();
-  const a = ramp(f, 0, 14), b = ramp(f, 12, 26), out = 1 - ramp(f, 56, 72);
+  const a = ramp(f, 0, 14), b = ramp(f, 12, 26), out = 1 - ramp(f, 86, 102);
   const line: React.CSSProperties = { position: "absolute", left: 0, right: 0, textAlign: "center", fontFamily: FONT, letterSpacing: "0.14em", color: C.fg };
   return (
     <AbsoluteFill style={{ background: "#000", opacity: out }}>
