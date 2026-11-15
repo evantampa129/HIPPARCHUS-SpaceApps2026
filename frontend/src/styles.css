@@ -64,3 +64,9 @@ figcaption { color: var(--muted); font-size: 0.82rem; margin-top: 4px; }
 .verdict p { margin: 4px 0; }
 .big { font-size: 1.15rem; font-weight: 600; }
 footer { color: var(--muted); font-size: 0.78rem; margin: 24px 0; }
+
+.heat { border-collapse: collapse; margin: 8px 0; font-size: 14px; }
+.heat th, .heat td { border: 1px solid #2a3550; padding: 6px 10px; text-align: center; }
+.heat td.ok { background: #1f5c3a; }
+.heat td.no { background: #6b2430; }
+.heat td.na { background: #3a3f4b; color: #aab; }

@@ -26,7 +26,7 @@ data/         archive listings (manifests); downloaded FITS go to data/cache (no
 
 ```bash
 cd backend && python3 -m venv .venv && . .venv/bin/activate && pip install -e ".[dev]"
-pytest                                              # 27 tests, on real SPHEREx cutouts
+pytest                                              # 35 tests, on real SPHEREx cutouts
 cd ../frontend && npm install && npm run build      # builds frontend/dist
 cd ../backend && uvicorn hipparchus.serve:app --port 8080   # app + API on http://localhost:8080
 ```
@@ -49,6 +49,15 @@ The first analysis of a target downloads its cutouts and takes 1–4 minutes. Af
   WISE 0855 aperture a G = 16.3 field star 6.8″ away. The main CDS servers were offline after a cybersecurity incident
   (notice on cds.unistra.fr, 9 Nov 2026), so the script uses the mirrors CDS recommends and IRSA's copy of Gaia DR3.
 
+- **Robustness:** each conclusion is rechecked with other aperture radii (1.5–3 px), sky annuli, grown masks, a
+  calibration on all clean field stars, each pair left out in turn, a 12.5% calibration floor and stricter or looser
+  wavelength rules. "RW Aur brightened ×1.5 or more at ≥5σ" and "WISE 0855 shows no ≥5σ change" hold in every check
+  (robust); "RW Aur is brighter in every pair" fails with a 1.5 px aperture (sensitive). These labels follow a fixed
+  rule and are not probabilities. The app shows them as a heatmap, read from `submission/evidence/robustness.json`.
+- **Audit fixes:** the photometry now refuses a pair if a flagged pixel is in the aperture or the sky annulus is
+  empty (before, the sky silently became zero), and the per-pixel significance map uses the right variance after
+  bilinear reprojection. Neither changed a published number.
+
 Not done: any machine-learning ranking. With three targets and no labelled examples there is nothing to train or
 test one on fairly.
 
@@ -58,6 +67,7 @@ test one on fairly.
 cd backend && python scripts/reproduce_evidence.py   # rewrites submission/evidence/*.json and the manifest
 python scripts/reproduce_validation.py              # null test, injection-recovery, spectra, evidence graphs, timings
 python scripts/reproduce_catalogs.py                # SIMBAD + Gaia DR3 match of the targets (needs network)
+python scripts/reproduce_robustness.py              # audit and stability checks on the cached cutouts (~30 s)
 cd ../report && ./reproduce_report.sh               # figures + hipparchus_scientific_report.pdf
 ```
 

@@ -88,7 +88,7 @@ text(s, [("1. Search: IRSA SIA v2, SPHEREx DR1 (doi:10.26131/IRSA678) + QR3 (doi
          ("4. Pair only if same detector and Δλ ≤ ½ channel; otherwise refuse with a reason", TXT),
          ("5. Compare: reprojection, aperture photometry with errors, significance map, centroid shift, control star", TXT),
          ("6. Evidence file: every identifier, checksum, setting and output, reproducible with one script", TXT),
-         ("Stack: Python · FastAPI · Astropy · reproject · React/TypeScript. 27 tests on real SPHEREx cutouts. MIT licence.", MUTED, 16)],
+         ("Stack: Python · FastAPI · Astropy · reproject · React/TypeScript. 35 tests on real SPHEREx cutouts. MIT licence.", MUTED, 16)],
      0.6, 1.4, 12.1, 5.5, 19)
 
 # 4. Demo
@@ -120,7 +120,7 @@ text(s, [("Barnard's Star: 58 epochs, 0 usable: saturation flags on the star in 
 s = slide("Impact and next steps")
 text(s, [("Impact: anyone can ask 'has this star changed?' of SPHEREx data and get an answer that respects the instrument, or a clear refusal.", TXT),
          ("Creativity: a variability tool whose main feature is refusing invalid comparisons; LVF-aware wavelength matching; built-in control star.", TXT),
-         ("Validity: real DR1/QR3 data, checksums, 27 tests, control stars, blank-sky null test (spread 0.91, ideal 1), SIMULATED injection-recovery (44% at S/N 5, 99% at 7), evidence graph to DOIs, SIMBAD + Gaia DR3 match, 7-page report.", TXT),
+         ("Validity: real DR1/QR3 data, checksums, 35 tests, control stars, blank-sky null test (spread 0.91, ideal 1), SIMULATED injection-recovery (44% at S/N 5, 99% at 7), evidence graph to DOIs, SIMBAD + Gaia DR3 match, stability checks (main claims robust in 24/24 and 34/34 checks), 8-page report.", TXT),
          ("AI use: logos (watermarked) and video assembly, reference cross-checks, coding assistant. All code run and tested by me; all results from real SPHEREx images.", MUTED, 15),
          ("Next: proper-motion search for Planet X-like movers across fields, PSF photometry to separate blended stars (RW Aur is a 1.6″ binary), all-sky cube.", ACC),
          ],

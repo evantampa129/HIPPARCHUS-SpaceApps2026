@@ -87,6 +87,28 @@ def targets() -> list[dict]:
     return TARGETS
 
 
+ROBUSTNESS = archive.DATA_DIR.parent / "submission" / "evidence" / "robustness.json"
+
+
+@app.get("/robustness/{target_id}")
+def robustness(target_id: str) -> dict:
+    """Stability checks for a preset, precomputed by scripts/reproduce_robustness.py.
+
+    Served from the saved file (real SPHEREx cutouts, archive listing from the
+    cache), so it answers instantly and says so; it is not a live query.
+    """
+    if not ROBUSTNESS.exists():
+        raise HTTPException(404, "No stability report has been computed yet.")
+    d = json.loads(ROBUSTNESS.read_text())
+    if target_id not in d["targets"]:
+        raise HTTPException(404, f"No stability report for {target_id}.")
+    e = d["targets"][target_id]
+    return {"source": "precomputed from cached real SPHEREx cutouts (not a live archive query)",
+            "settings": d["settings"], "verdict": e["verdict"], "claims": e.get("claims", []),
+            "stability": e.get("stability", []), "systematic_floor": e.get("systematic_floor"),
+            "trials": e.get("trials")}
+
+
 @app.get("/observations")
 def observations(ra: float = Query(..., ge=0, lt=360), dec: float = Query(..., ge=-90, le=90)) -> dict:
     """Every SPHEREx exposure covering the position, grouped later by the UI."""

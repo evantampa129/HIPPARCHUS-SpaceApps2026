@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { API, Analysis, Epoch, Observations, Pair, Target, get } from "./api";
+import { API, Analysis, Epoch, Observations, Pair, Robustness, Target, get } from "./api";
 
 // Plain-language meaning of every refusal code the backend can return. Shown
 // next to the counts, so a refusal is an explanation and not just a number.
@@ -34,6 +34,9 @@ export default function App() {
 
   // Presets come from the backend, so the list and its explanations live in one place.
   useEffect(() => { get<Target[]>("/targets", {}).then(setTargets).catch(() => setTargets([])); }, []);
+
+  // The stability report exists only for the presets (it is precomputed).
+  const preset = targets.find((t) => String(t.ra) === ra && String(t.dec) === dec && t.detector === detector);
 
   const pick = (t: Target) => {
     setRa(String(t.ra)); setDec(String(t.dec)); setDetector(t.detector);
@@ -103,6 +106,7 @@ export default function App() {
           <Playback r={res} selected={epochSel} onSelect={setEpochSel} />
           <Pairs r={res} selected={pairSel} onSelect={setPairSel} />
           {pairSel && <PairView r={res} p={pairSel} />}
+          {preset && <Stability id={preset.id} />}
         </>
       )}
 
@@ -301,6 +305,60 @@ function PairView({ r, p }: { r: Analysis; p: Pair }) {
           <p className="hint">A measured change is not a discovery. It needs independent confirmation, e.g. from other surveys or follow-up observations.</p>
         </div>
       </div>
+    </section>
+  );
+}
+
+// Heatmap of the result under other reasonable analysis settings (mask as
+// flagged, no extra calibration). Green: the claim still holds; red: it does
+// not; grey: some pairs could not be measured with that setting.
+function Stability({ id }: { id: string }) {
+  const [d, setD] = useState<Robustness | null>(null);
+  useEffect(() => { setD(null); get<Robustness>(`/robustness/${id}`, {}).then(setD).catch(() => setD(null)); }, [id]);
+  if (!d) return null;
+  const first = d.claims[0]?.claim;
+  const cells = d.stability.filter((c) => c.mask === "as_flagged" && c.calibration === "none");
+  const cell = (r: number, an: [number, number]) =>
+    cells.find((c) => c.r_ap === r && c.annulus[0] === an[0] && c.annulus[1] === an[1]);
+  return (
+    <section className="card">
+      <h2>How stable is the conclusion?</h2>
+      <p className="hint">{d.source}. Rule: {d.settings.rule}</p>
+      <ul>
+        {d.claims.map((c) => (
+          <li key={c.claim}><b>{c.verdict}</b>: {c.claim} (holds in {c.n_holding} of {c.n_checks} checks)</li>
+        ))}
+        {d.claims.length === 0 && <li>{d.verdict}</li>}
+      </ul>
+      {cells.length > 0 && first && (
+        <table className="heat">
+          <thead>
+            <tr><th>aperture radius (px) \ sky annulus (px)</th>
+              {d.settings.annuli_px.map((an) => <th key={an.join("-")}>{an[0]}–{an[1]}</th>)}</tr>
+          </thead>
+          <tbody>
+            {d.settings.apertures_px.map((r) => (
+              <tr key={r}><th>{r}{r === 2 ? " (used)" : ""}</th>
+                {d.settings.annuli_px.map((an) => {
+                  const c = cell(r, an);
+                  const ok = c?.claim_holds ? c.claim_holds[first] : null;
+                  return (
+                    <td key={an.join("-")} className={ok === null || ok === undefined ? "na" : ok ? "ok" : "no"}
+                        title={c ? `${c.n_pairs} pairs; strongest ratio ${c.strongest_ratio?.toFixed(2)}; max |sigma| ${c.max_abs_sig?.toFixed(1)}` : ""}>
+                      {c?.strongest_ratio != null ? `×${c.strongest_ratio.toFixed(2)}` : "–"}
+                      <br /><small>{c?.max_abs_sig != null ? `${c.max_abs_sig.toFixed(1)}σ` : ""}</small>
+                    </td>);
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+      {first && <p className="hint">Cells test: “{first}”. Value: strongest flux ratio and largest |significance| over the pairs.</p>}
+      {d.systematic_floor != null && (
+        <p className="hint">Field stars scatter by {(100 * d.systematic_floor).toFixed(1)}% between epochs; this is added as a
+          calibration error in the stability checks. These labels follow a fixed rule and are not probabilities.</p>
+      )}
     </section>
   );
 }

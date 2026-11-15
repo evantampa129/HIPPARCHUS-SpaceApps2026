@@ -54,3 +54,17 @@ export async function get<T>(path: string, params: Record<string, string | numbe
   }
   return r.json();
 }
+
+export interface StabilityCell {
+  r_ap: number; annulus: [number, number]; mask: string; calibration: string;
+  n_pairs: number; complete: boolean; strongest_ratio: number | null; max_abs_sig: number | null;
+  claim_holds: Record<string, boolean> | null;
+}
+
+export interface Robustness {
+  source: string; verdict: string; systematic_floor: number | null;
+  settings: { apertures_px: number[]; annuli_px: [number, number][]; rule: string };
+  claims: { claim: string; verdict: string; n_checks: number; n_holding: number }[];
+  stability: StabilityCell[];
+  trials: { n_tests: number; p_any_false_alarm: number; sigma_bonferroni: number } | null;
+}

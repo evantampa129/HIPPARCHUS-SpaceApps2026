@@ -95,7 +95,7 @@ the target is measured the same way in the same two images (\emph{control star})
 
 \section{Validation}\label{sec:val}
 \begin{itemize}\setlength\itemsep{1pt}
-\item \textbf{Unit tests} (27, \texttt{pytest}) run on real SPHEREx cutouts committed as fixtures, with their source
+\item \textbf{Unit tests} (35, \texttt{pytest}) run on real SPHEREx cutouts committed as fixtures, with their source
 URL and checksum recorded. They cover cache integrity, flag decoding from headers, refusal of files that lack a
 required extension, targets near RA~$0^\circ$, wavelength at the target, refusal of wavelength mismatches and flagged
 epochs, the classification of same-visit pairs, a self-comparison that must show no change ($|\sigma|<0.5$ after
@@ -111,8 +111,7 @@ photometry at a grid of positions away from the target in every valid pair (posi
 pixels). Sky and ordinary stars should not change, so with correct errors the significances spread with standard
 deviation 1. We find 1.08 for WISE~0855 ($n=55$), 0.55 for RW~Aur ($n=38$) and 0.91 overall ($n=93$), with no value
 beyond $3\sigma$ (Figure~\ref{fig:val}, left). The errors are therefore right or conservative. For RW~Aur they are
-too large by about a factor of two, probably because bilinear reprojection smooths the pixel noise while we keep the
-original variance.
+too large by about a factor of two; Section~\ref{sec:rob} shows this is not caused by the reprojection.
 \item \textbf{Injection-recovery (SIMULATED).} We add artificial Gaussian stars (FWHM from the image header) to the
 later epoch at the same blank positions, with known $S/N$ inside the aperture, and rerun the comparison. These
 sources are simulated, are kept in a separate section of \texttt{validation.json}, and are never mixed with real
@@ -214,14 +213,69 @@ pair comparisons; the first analysis of a new target also downloads 45--58 cutou
 the analysis the app's requests are fast: epoch and pair images $p_{50}=30$\,ms, $p_{95}=42$\,ms; the evidence file
 $p_{50}=14$\,ms, $p_{95}=20$\,ms (90 requests each, one laptop CPU).
 
+\section{How robust are the conclusions?}\label{sec:rob}
+After the results above were fixed, we audited the measurement for nine possible problems and repeated it under
+other reasonable analysis choices (code in \texttt{robustness.py}, results in
+\texttt{robustness.json}). The production numbers did not move: the same pairs, ratios and significances as the
+published evidence files, to the last digit.
+\begin{itemize}\setlength\itemsep{1pt}
+\item \textbf{Bad pixels and missing sky.} The photometry used to fall back silently to a sky of zero when the annulus
+was empty, and did not refuse a flagged pixel inside the aperture. Neither happened in our data, but both now return
+no flux and the pair is refused (two new tests).
+\item \textbf{Errors after reprojection.} A simulation of pure noise rotated by $37^\circ$ and shifted onto another
+grid, as in our comparison, gives a scatter of the aperture flux of 0.99 times the predicted error, so aperture
+errors are right. Single pixels were not: the per-pixel significance map used $\sum w\sigma^2$ instead of
+$\sum w^2\sigma^2$ and its scatter was 0.56 of the prediction. With the correction it is 0.94. This changes only the
+significance map, not any result. The excess spread for RW~Aur in the null test is therefore not caused by
+reprojection; we do not yet know its origin.
+\item \textbf{PSF width.} A star whose FWHM grows from 1.5 to 2.0\,px loses 7\% inside our 2\,px aperture (0.4\% at
+3\,px). Within each of our pairs the header FWHM is the same (1.22\,px for RW~Aur, 1.47\,px for WISE~0855).
+\item \textbf{Wavelength.} Our pairs differ by 0.5--6.8\,nm, against half-channel limits of 8.5--11\,nm, which the
+band-centre accuracy of \textcite{hui2026} supports. With the rule tightened to 0.25 or loosened to 0.75 of a channel
+(2, 8, 12 RW~Aur pairs; 11, 27, 38 WISE~0855 pairs) every conclusion still holds.
+\item \textbf{Calibration between epochs.} Instead of one control star we also use every clean, isolated field star at
+$S/N\ge10$ in the cutout. Our $29\times29$\,px cutouts hold only 0--2 such stars, so this ensemble is small. Its scatter
+gives a calibration floor of 12.5\% for RW~Aur. Added to the formal errors, the RW~Aur significances become 0.7--12.4$\sigma$
+instead of up to $175\sigma$, and the target still changes by 1.5--3.0 times relative to the field stars.
+\item \textbf{Many tests.} With 8 (RW~Aur) or 27 (WISE~0855) pairs, the chance of at least one false $5\sigma$ event
+is $5\times10^{-6}$ or $1.5\times10^{-5}$; keeping the single-test rate would need $5.4\sigma$ or $5.6\sigma$.
+The RW~Aur detection passes both.
+\end{itemize}
+
+\textbf{Stability.} Each claim was rechecked with aperture radii 1.5--3\,px, three sky annuli, the flags as given or
+grown by one pixel, with and without ensemble calibration, dropping each pair in turn, with the calibration floor
+and with the three wavelength rules. We call a claim \emph{robust} if it holds in every check, \emph{sensitive} if in
+at least half and \emph{inconclusive} otherwise. This is a fixed rule, not a probability.
+\begin{table}[h]\centering\small
+\begin{tabular}{lcc}\toprule
+Claim & Holds & Label\\\midrule
+RW~Aur brightened $\ge\times1.5$ at $\ge5\sigma$ in some pair & 24/24 & robust\\
+RW~Aur brighter in \emph{every} pair, one at $\ge5\sigma$ & 18/24 & sensitive\\
+WISE~0855: no pair changes by $\ge5\sigma$ & 34/34 & robust\\
+Barnard's Star & -- & refused (saturated)\\\bottomrule
+\end{tabular}
+\caption{Stability of each claim. The second RW~Aur claim fails only with a 1.5\,px aperture, where one pair
+(ratio 1.09) falls just below 1. For WISE~0855 only 4 settings keep every pair measurable.}
+\label{tab:rob}
+\end{table}
+The app shows the same checks as a heatmap for each preset. The full analysis of the three targets from cached data
+takes 29\,s with 215\,MB of memory.
+
+\textbf{What we did not do, and why.} The SPHEREx images carry an empirical PSF per detector zone (HDU \texttt{EPSF}),
+so forced PSF photometry, or proper image subtraction \parencite{zackay2016}, is possible; we did not have time to
+validate it. A real zero-point fit across epochs \parencite[ubercalibration,][]{padmanabhan2008} needs many stars per
+image and larger cutouts. Learned real/bogus classifiers \parencite{duev2019,mahabal2019} and conformal $p$-values
+\parencite{bates2023} need a large labelled or null set that three targets do not provide.
+
 \section{Limitations}
 \begin{itemize}\setlength\itemsep{1pt}
 \item Fluxes are relative (aperture sums of surface brightness). They are adequate for ratios at matched wavelength
 but are not calibrated flux densities.
 \item The SPHEREx PSF is undersampled; aperture photometry after bilinear reprojection carries a systematic error that
-the formal $\sigma$ does not include. The control star bounds it to roughly 15\% in our pairs. The 175$\sigma$ figure is
-therefore a formal value; the size of the change ($\times2.5$) is the robust result.
-\item Only one control star is used, and not every pair has one. Target positions are approximate priors checked
+the formal $\sigma$ does not include. The control star bounds it to roughly 15\% and the field stars to 12.5\%
+(Section~\ref{sec:rob}). The 175$\sigma$ figure is therefore a formal value; the size of the change ($\times2.5$) is
+the robust result.
+\item The result uses one control star, and not every pair has one; the field-star check has only 0--2 stars per cutout. Target positions are approximate priors checked
 against catalogues only after the analysis. SPHEREx pixels are $6.15''$, so the RW~Aur measurement is of both
 components of the binary together, not of one star.
 \item Injection-recovery inserts stars after reprojection and without their own photon noise; it measures the
@@ -245,7 +299,8 @@ Code: repository \texttt{HIPPARCHUS} (MIT licence), evidence produced at commit 
 \texttt{python backend/scripts/reproduce\_evidence.py} to rebuild \texttt{submission/evidence/*.json} (identifiers,
 archive query URLs with SHA-256 of each answer, cutout URLs and checksums, settings, software versions, outputs),
 \texttt{python backend/scripts/reproduce\_validation.py} for the null test, injection-recovery, spectra, evidence
-graphs and timings, \texttt{python backend/scripts/reproduce\_catalogs.py} for the catalogue match, then \texttt{report/reproduce\_report.sh} to rebuild the figures and this PDF.
+graphs and timings, \texttt{python backend/scripts/reproduce\_catalogs.py} for the catalogue match,
+\texttt{python backend/scripts/reproduce\_robustness.py} for the audit and stability checks, then \texttt{report/reproduce\_report.sh} to rebuild the figures and this PDF.
 
 \section*{Use of AI tools}
 AI tools were used mainly for the graphics: the logos, which carry a visible ``AI-generated'' watermark, and

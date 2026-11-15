@@ -63,33 +63,48 @@ def compatibility(a: Epoch, b: Epoch) -> Verdict:
     return Verdict(True, "comparison", [], [])
 
 
-def _rings(shape, x, y):
+# Fewer clean sky pixels than this and the local sky level is not trusted.
+MIN_SKY_PIX = 8
+
+
+def _rings(shape, x, y, r_ap=APERTURE_PX, r_in=SKY_INNER, r_out=SKY_OUTER):
     ny, nx = shape
     yy, xx = np.mgrid[0:ny, 0:nx]
     d2 = (xx - x) ** 2 + (yy - y) ** 2
-    ap = d2 <= APERTURE_PX ** 2
-    sky = (d2 >= SKY_INNER ** 2) & (d2 <= SKY_OUTER ** 2)
+    ap = d2 <= r_ap ** 2
+    sky = (d2 >= r_in ** 2) & (d2 <= r_out ** 2)
     return ap, sky
 
 
-def photometry(img, var, bad, x, y) -> dict:
+def photometry(img, var, bad, x, y, r_ap=APERTURE_PX, r_in=SKY_INNER, r_out=SKY_OUTER) -> dict:
     """Aperture sum minus the local sky, with its 1-sigma uncertainty.
 
     Values are in MJy/sr summed over pixels. That is enough to compare two
     epochs of the same detector and wavelength; converting to an absolute flux
     density would also need the pixel solid angle, which cancels in a ratio.
     """
-    ap, sky = _rings(img.shape, x, y)
+    ap, sky = _rings(img.shape, x, y, r_ap, r_in, r_out)
     sky_ok = sky & ~bad & np.isfinite(img)
-    # The median ignores stars that fall inside the annulus.
-    bkg = float(np.median(img[sky_ok])) if sky_ok.sum() >= 8 else 0.0
+    n_sky = int(sky_ok.sum())
+    # Pixels in the aperture that are flagged, missing, or (after reprojection)
+    # touched by a flagged pixel of the other epoch. Summing them would put bad
+    # data into the flux without anyone knowing, so the flux becomes NaN and
+    # the comparison is refused instead.
+    n_bad = int((ap & (bad | ~np.isfinite(img) | ~np.isfinite(var))).sum())
     n = int(ap.sum())
+    if n_sky < MIN_SKY_PIX or n_bad:
+        # Earlier versions used a sky of 0 here, which silently biases the flux.
+        # On the three demonstration targets this branch is never taken.
+        return {"flux": float("nan"), "flux_err": float("nan"), "sky": float("nan"), "n_pix": n,
+                "n_sky": n_sky, "n_bad": n_bad}
+    # The median ignores stars that fall inside the annulus.
+    bkg = float(np.median(img[sky_ok]))
     flux = float(np.sum(img[ap] - bkg))
     # Uncertainty: pixel variances in the aperture, plus the error of the sky
     # level estimate, which is subtracted from every one of the n pixels.
-    sky_err2 = float(np.var(img[sky_ok]) / max(sky_ok.sum(), 1)) if sky_ok.sum() >= 8 else 0.0
+    sky_err2 = float(np.var(img[sky_ok]) / n_sky)
     err = float(np.sqrt(np.sum(var[ap]) + n ** 2 * sky_err2))
-    return {"flux": flux, "flux_err": err, "sky": bkg, "n_pix": n}
+    return {"flux": flux, "flux_err": err, "sky": bkg, "n_pix": n, "n_sky": n_sky, "n_bad": n_bad}
 
 
 def centroid(img, bad, x0, y0, half=3) -> tuple[float, float]:
@@ -137,6 +152,23 @@ def control_star(img, bad, x, y, min_sep=APERTURE_PX + SKY_OUTER, edge=APERTURE_
     return float(xx.flat[j]), float(yy.flat[j])
 
 
+def bilinear_var_factor(wcs_out, wcs_in, shape) -> np.ndarray:
+    """Per-pixel factor sum(w_i**2) of the bilinear weights used by reproject.
+
+    Reprojecting the variance map with the image's own weights gives
+    sum(w_i * var_i), but the variance of an interpolated pixel is
+    sum(w_i**2 * var_i): between 1/4 and 1 of that. Aperture sums do not need
+    this (each input pixel's weights add up to about 1 over the aperture,
+    checked in robustness.reprojection_noise_mc), but single-pixel
+    significances do, or the significance map is too timid.
+    """
+    ny, nx = shape
+    yy, xx = np.mgrid[0:ny, 0:nx]
+    bx, by = wcs_in.world_to_pixel_values(*wcs_out.pixel_to_world_values(xx, yy))
+    fx, fy = bx - np.floor(bx), by - np.floor(by)
+    return ((1 - fx) ** 2 + fx ** 2) * ((1 - fy) ** 2 + fy ** 2)
+
+
 def compare(a: Epoch, b: Epoch) -> dict:
     """Full comparison of epoch b against epoch a, on a's pixel grid."""
     verdict = compatibility(a, b)
@@ -160,6 +192,13 @@ def compare(a: Epoch, b: Epoch) -> dict:
 
     pa = photometry(a.image, a.variance, a.bad, a.x, a.y)
     pb = photometry(b_img, b_var, bad, a.x, a.y)
+    if not (np.isfinite(pa["flux"]) and np.isfinite(pb["flux"])):
+        # Refuse rather than report a number built on bad pixels or no sky.
+        out["verdict"] = asdict(Verdict(False, "refused",
+            ["After aligning the two images, the aperture has flagged/missing pixels or too little clean sky."],
+            ["aperture_invalid"]))
+        out.update({"flux_a": pa, "flux_b": pb})
+        return out
     dflux = pb["flux"] - pa["flux"]
     dflux_err = float(np.hypot(pa["flux_err"], pb["flux_err"]))
     sig = dflux / dflux_err if dflux_err > 0 else float("nan")
@@ -173,8 +212,9 @@ def compare(a: Epoch, b: Epoch) -> dict:
         ca_ = photometry(a.image, a.variance, a.bad, *pos)
         cb_ = photometry(b_img, b_var, bad, *pos)
         e = float(np.hypot(ca_["flux_err"], cb_["flux_err"]))
-        # Only meaningful if the control star is clearly detected in epoch a.
-        if ca_["flux"] > 10 * ca_["flux_err"]:
+        # Only meaningful if the control star is clearly detected in epoch a
+        # (a NaN flux, from bad pixels or no sky, fails this test).
+        if ca_["flux"] > 10 * ca_["flux_err"] and np.isfinite(cb_["flux"]):
             ctrl = {"x": pos[0], "y": pos[1], "flux_a": ca_["flux"], "flux_b": cb_["flux"],
                     "ratio": cb_["flux"] / ca_["flux"], "significance": (cb_["flux"] - ca_["flux"]) / e if e > 0 else None}
 
@@ -189,7 +229,8 @@ def compare(a: Epoch, b: Epoch) -> dict:
 
     # Significance map: the difference divided by its own noise, pixel by pixel.
     diff = (b_img - pb["sky"]) - (a.image - pa["sky"])
-    z = diff / np.sqrt(a.variance + b_var)
+    # b's variance per pixel is corrected for the interpolation (see above).
+    z = diff / np.sqrt(a.variance + b_var * bilinear_var_factor(a.wcs, b.wcs, a.image.shape))
     z[bad] = np.nan
 
     out.update({

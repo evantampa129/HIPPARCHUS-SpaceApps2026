@@ -48,7 +48,12 @@ def analyze(ra: float, dec: float, detector: str, limit: int | None = None) -> d
             # on wavelength and how many on flagged pixels (a pair can have both).
             refusals.update(set(v.codes))
             continue
-        (nulls if v.kind == "null_test" else comparisons).append(compare(a, b))
+        c = compare(a, b)
+        if not c["verdict"]["comparable"]:
+            # Refused only once the pixels were aligned (bad aperture or no sky).
+            refusals.update(set(c["verdict"]["codes"]))
+            continue
+        (nulls if v.kind == "null_test" else comparisons).append(c)
 
     return {
         "ra": ra, "dec": dec, "detector": detector,
