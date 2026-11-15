@@ -138,6 +138,39 @@ def capsule(d: dict, rob: dict, cat: dict, graph: dict) -> dict:
     }
 
 
+def epsf_section() -> str:
+    """EXPERIMENTAL second measurement (ePSF fit), read from epsf_check.json; empty if absent."""
+    f = EVID / "epsf_check.json"
+    if not f.exists():
+        return ""
+    d = json.loads(f.read_text())
+    rw, wi = d["targets"]["rw_aur"], d["targets"]["wise0855"]
+    dev = max(abs(r["ratio_epsf"] / r["ratio_aperture"] - 1) for r in rw["pairs"])
+    sim = d["simulated_injection"]["summary"]
+    # Same guard as the result cards: the text must match the evidence file.
+    assert rw["agreement_counts"]["compatible"] == 8 and dev < 0.02, "ePSF card out of date"
+    assert wi["claims_with_epsf"]["n_pairs_ge_5sigma_epsf"] == 0
+    shutil.copy(ROOT / "report" / "figures" / "epsf_residuals.png", OUT / "img" / "epsf_residuals.png")
+    return f"""
+<section class='case'>
+ <h2>Second, independent measurement <small>(EXPERIMENTAL, not used for the results above)</small></h2>
+ <p>The SPHEREx effective PSF stored in each cutout is fitted to the star's own pixels, with no reprojection.</p>
+ <ul>
+  <li><b>RW Aur</b>: {rw["agreement_counts"]["compatible"]}/{rw["n_pairs"]} pairs agree with the aperture ratios
+   (largest difference {100 * dev:.1f}%); every pair still &ge;5&sigma;. Label: <b>{rw["label"]}</b>.</li>
+  <li><b>WISE 0855</b>: too faint to compare ratios; no pair reaches 5&sigma; with the ePSF either
+   (largest {wi["claims_with_epsf"]["max_abs_sig_epsf"]:.1f}&sigma;). Label: <b>{wi["label"]}</b>.</li>
+  <li><b>Barnard's Star</b>: not fitted, no usable epoch. Label: <b>{d["targets"]["barnard"]["label"]}</b>.</li>
+  <li>SIMULATED stars on {sim["n_noise_only"]} blank spots of real cutouts: error bars right to
+   {100 * abs(sim["noise_only_pull_std"] - 1):.0f}%, {sim["noise_only_false_ge5"]} false &ge;5&sigma; detections.</li>
+ </ul>
+ <p class='small'>Limits: the fit leaves residuals at the core of bright stars (&chi;&sup2;<sub>&nu;</sub> 4&ndash;18), and both
+ methods read the same photons, so "agree" is a lenient test. Labels follow a fixed rule; they are not probabilities.</p>
+ <img src='img/epsf_residuals.png' alt='RW Aur data, ePSF model and residuals for two epochs' style='max-width:min(100%,720px)'>
+</section>
+"""
+
+
 def heatmap(rob: dict, settings: dict, show_ratio: bool = True) -> str:
     claims = rob.get("claims", [])
     if not claims:
@@ -336,6 +369,7 @@ so nothing here waits for a live archive download.</p>
  </ol>
 </section>
 
+{epsf_section()}
 <section class='case'>
  <h2>Why this matters for “Planet X and SPHEREx”</h2>
  <p>SPHEREx sees every part of the sky many times, each time at a slightly different wavelength. A distant moving

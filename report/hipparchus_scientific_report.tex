@@ -262,10 +262,55 @@ The app shows the same checks as a heatmap for each preset. The full analysis of
 takes 29\,s with 215\,MB of memory.
 
 \textbf{What we did not do, and why.} The SPHEREx images carry an empirical PSF per detector zone (HDU \texttt{EPSF}),
-so forced PSF photometry, or proper image subtraction \parencite{zackay2016}, is possible; we did not have time to
-validate it. A real zero-point fit across epochs \parencite[ubercalibration,][]{padmanabhan2008} needs many stars per
+so forced PSF photometry is possible; Section~\ref{sec:epsf} tests it as a second measurement. Proper image
+subtraction \parencite{zackay2016} we did not try. A real zero-point fit across epochs \parencite[ubercalibration,][]{padmanabhan2008} needs many stars per
 image and larger cutouts. Learned real/bogus classifiers \parencite{duev2019,mahabal2019} and conformal $p$-values
 \parencite{bates2023} need a large labelled or null set that three targets do not provide.
+
+\section{Independent ePSF-based photometric verification}\label{sec:epsf}
+\textbf{Status: IMPLEMENTED and EXPERIMENTAL.} Nothing in Sections~\ref{sec:val}--\ref{sec:rob} uses it; it lives on a
+separate branch (\texttt{psf\_photometry.py}, \texttt{reproduce\_epsf.py}, results in \texttt{epsf\_check.json}).
+
+\textbf{Method.} Each cutout carries the SPHEREx effective PSF as a $21\times21$ grid of zones, each a $33\times33$ table
+oversampled $\times5$. We take the zone nearest the star in parent-detector pixels (cutout pixel $+1-$\texttt{CRPIX1A},
+as in the IRSA tutorial), record its SHA-256, and fit amplitude $\times$ ePSF $+$ constant background to the $9\times9$
+native pixels by weighted least squares ($1/\mathrm{VARIANCE}$). Nothing is reprojected. A flagged pixel within 1.5\,px
+of the star refuses the fit, as in the aperture photometry. For stars with S/N $\ge20$ the position may move by up to
+1\,px; fainter stars stay at the WCS position. When $\chi^2_\nu>1$ the error is scaled by $\sqrt{\chi^2_\nu}$.
+The ePSF as stored fits RW~Aur better than the same table flipped in $x$ in 4 of 5 epochs tried.
+
+\textbf{RW Aur (fitted as one unresolved source; the two stars are 1.4$''$ apart).} All 8 pairs are
+\emph{compatible} under the rule fixed beforehand ($|z|<3$, discrepant at $|z|\ge5$, $z$ the difference of the
+log-ratios over their combined error): the ePSF ratios are within 0--2\% of the aperture ratios ($|z|\le1.3$),
+all 8 pairs are brighter later and every pair is $\ge5\sigma$ with the ePSF alone ($10$--$66\sigma$, lower than the
+aperture values because of the $\chi^2$ scaling). The $r=2$\,px aperture holds a steady 96--98\% of the ePSF flux.
+The fit is not perfect: $\chi^2_\nu=4$--18 at S/N $\approx300$, with residuals at the core
+(Fig.~\ref{fig:epsf}), and the best position is 0.12--0.21\,px from the WCS position in every epoch.
+Both methods read the same photons, so their errors are correlated and our $z$ is too small; ``compatible'' is
+therefore a lenient statement and ``discrepant'' a conservative one.
+
+\textbf{WISE 0855.} Fluxes are below S/N~5, so ratios are not compared (all 27 pairs \emph{inconclusive} by the rule).
+The published claim is still checked: no pair reaches $5\sigma$ with the ePSF either (largest $3.1\sigma$; aperture
+$1.9\sigma$). \textbf{Barnard's Star} is not fitted: no epoch is usable.
+
+\textbf{SIMULATED tests on real backgrounds.} At 104 blank spots in the 37 usable WISE~0855 cutouts the fit with no star
+gives amplitude/error with standard deviation 1.07 and no $|z|\ge3$, so the errors are about right and there were no
+false detections. Stars injected at S/N~10 are recovered exactly on top of the blank fit (the model is linear); a
+0.3\,px position error loses 7\% of the flux, which is why bright stars fit their position.
+
+\textbf{Combined label (fixed rule).} SUPPORTED VARIABILITY needs a robust aperture claim of change, every pair
+compatible and $\ge5\sigma$ with the ePSF; LIKELY ARTIFACT a $\ge5\sigma$ aperture change the ePSF contradicts;
+INSUFFICIENT DATA no usable epoch; INCONCLUSIVE anything else. RW~Aur: \textbf{supported variability}. WISE~0855:
+\textbf{inconclusive} (no change seen, at S/N too low to prove constancy). Barnard's Star: \textbf{insufficient data}.
+These are labels from a rule, not probabilities.
+
+\textbf{Not validated / future work.} Only one ePSF per epoch (no PSF variation inside the $9\times9$ box), a constant
+background, no wavelength dependence within the channel, and no correlated-error model between the two methods.
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.85\linewidth]{figures/epsf_residuals.png}
+\caption{ePSF fit to two RW~Aur epochs on the native pixels (EXPERIMENTAL): data, model, residual/rms.}\label{fig:epsf}
+\end{figure}
 
 \section{Limitations}
 \begin{itemize}\setlength\itemsep{1pt}
@@ -300,7 +345,7 @@ Code: repository \texttt{HIPPARCHUS} (MIT licence), evidence produced at commit 
 archive query URLs with SHA-256 of each answer, cutout URLs and checksums, settings, software versions, outputs),
 \texttt{python backend/scripts/reproduce\_validation.py} for the null test, injection-recovery, spectra, evidence
 graphs and timings, \texttt{python backend/scripts/reproduce\_catalogs.py} for the catalogue match,
-\texttt{python backend/scripts/reproduce\_robustness.py} for the audit and stability checks, then \texttt{report/reproduce\_report.sh} to rebuild the figures and this PDF.
+\texttt{python backend/scripts/reproduce\_robustness.py} for the audit and stability checks, \texttt{python backend/scripts/reproduce\_epsf.py} for the experimental ePSF check (12\,s, 170\,MB), then \texttt{report/reproduce\_report.sh} to rebuild the figures and this PDF.
 
 \section*{Use of AI tools}
 AI tools were used mainly for the graphics: the logos, which carry a visible ``AI-generated'' watermark, and

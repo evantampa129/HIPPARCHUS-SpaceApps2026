@@ -66,6 +66,24 @@ so nothing here waits for a live archive download.</p>
  </ol>
 </section>
 
+
+<section class='case'>
+ <h2>Second, independent measurement <small>(EXPERIMENTAL, not used for the results above)</small></h2>
+ <p>The SPHEREx effective PSF stored in each cutout is fitted to the star's own pixels, with no reprojection.</p>
+ <ul>
+  <li><b>RW Aur</b>: 8/8 pairs agree with the aperture ratios
+   (largest difference 1.8%); every pair still &ge;5&sigma;. Label: <b>SUPPORTED VARIABILITY</b>.</li>
+  <li><b>WISE 0855</b>: too faint to compare ratios; no pair reaches 5&sigma; with the ePSF either
+   (largest 3.1&sigma;). Label: <b>INCONCLUSIVE</b>.</li>
+  <li><b>Barnard's Star</b>: not fitted, no usable epoch. Label: <b>INSUFFICIENT DATA</b>.</li>
+  <li>SIMULATED stars on 104 blank spots of real cutouts: error bars right to
+   7%, 0 false &ge;5&sigma; detections.</li>
+ </ul>
+ <p class='small'>Limits: the fit leaves residuals at the core of bright stars (&chi;&sup2;<sub>&nu;</sub> 4&ndash;18), and both
+ methods read the same photons, so "agree" is a lenient test. Labels follow a fixed rule; they are not probabilities.</p>
+ <img src='img/epsf_residuals.png' alt='RW Aur data, ePSF model and residuals for two epochs' style='max-width:min(100%,720px)'>
+</section>
+
 <section class='case'>
  <h2>Why this matters for “Planet X and SPHEREx”</h2>
  <p>SPHEREx sees every part of the sky many times, each time at a slightly different wavelength. A distant moving
@@ -148,5 +166,5 @@ so nothing here waits for a live archive download.</p>
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
 data; no simulated value appears on this page (the SIMULATED injection-recovery test is only in the report).
 AI tools were used for the graphics, the demo video, cross-checking NASA/IRSA references and as a coding assistant;
-all code was run and tested by the author. Built by <code>backend/scripts/make_judge_site.py</code> at commit 742ff77.</footer>
+all code was run and tested by the author. Built by <code>backend/scripts/make_judge_site.py</code> at commit ff32a77.</footer>
 </main></body></html>

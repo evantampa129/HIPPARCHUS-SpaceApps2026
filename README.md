@@ -31,7 +31,7 @@ data/         archive listings (manifests); downloaded FITS go to data/cache (no
 
 ```bash
 cd backend && python3 -m venv .venv && . .venv/bin/activate && pip install -e ".[dev]"
-pytest                                              # 35 tests, on real SPHEREx cutouts
+pytest                                              # 38 tests, on real SPHEREx cutouts
 cd ../frontend && npm install && npm run build      # builds frontend/dist
 cd ../backend && uvicorn hipparchus.serve:app --port 8080   # app + API on http://localhost:8080
 ```
@@ -62,6 +62,10 @@ The first analysis of a target downloads its cutouts and takes 1–4 minutes. Af
 - **Audit fixes:** the photometry now refuses a pair if a flagged pixel is in the aperture or the sky annulus is
   empty (before, the sky silently became zero), and the per-pixel significance map uses the right variance after
   bilinear reprojection. Neither changed a published number.
+- **Second measurement (experimental):** `psf_photometry.py` fits the SPHEREx ePSF stored in each cutout to the
+  native pixels, with no reprojection. For RW Aur all 8 ratios agree with the aperture ones within 2%, and every pair
+  is still above 5σ. For WISE 0855 no pair reaches 5σ (largest 3.1σ). Tests on blank sky in the real cutouts
+  (SIMULATED stars) give error bars that are about right. This is not used for any published number yet.
 
 Not done: any machine-learning ranking. With three targets and no labelled examples there is nothing to train or
 test one on fairly.
@@ -73,6 +77,7 @@ cd backend && python scripts/reproduce_evidence.py   # rewrites submission/evide
 python scripts/reproduce_validation.py              # null test, injection-recovery, spectra, evidence graphs, timings
 python scripts/reproduce_catalogs.py                # SIMBAD + Gaia DR3 match of the targets (needs network)
 python scripts/reproduce_robustness.py              # audit and stability checks on the cached cutouts (~30 s)
+python scripts/reproduce_epsf.py                    # experimental ePSF check against the aperture fluxes (~12 s)
 cd ../report && ./reproduce_report.sh               # figures + hipparchus_scientific_report.pdf
 ```
 
