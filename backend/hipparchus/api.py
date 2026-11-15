@@ -196,3 +196,7 @@ def evidence(aid: str) -> Response:
     body = json.dumps(_public(r), indent=1)
     return Response(body, media_type="application/json",
                     headers={"Content-Disposition": f'attachment; filename="hipparchus_{aid}.json"'})
+
+# We keep the explorer endpoints (sky, spectrum, native pixels) in their own router.
+from hipparchus.api_explore import router as explore_router  # noqa: E402
+app.include_router(explore_router)

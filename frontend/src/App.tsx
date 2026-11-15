@@ -1,5 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
-import { API, Analysis, Epoch, Observations, Pair, Robustness, Target, get } from "./api";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { API, Analysis, Epoch, EpochPixels, ExploreMeta, Observations, Pair, PairPixels, Robustness, Target, get } from "./api";
+import PixelViewer, { View } from "./PixelViewer";
+import SkyExplorer from "./SkyExplorer";
+import SpectralExplorer from "./SpectralExplorer";
 
 // Plain-language meaning of every refusal code the backend can return. We show
 // it next to the counts, so a refusal is an explanation and not just a number.
@@ -17,6 +20,16 @@ const REFUSAL_TEXT: Record<string, string> = {
 
 const DETECTORS = ["SPHEREx-D1", "SPHEREx-D2", "SPHEREx-D3", "SPHEREx-D4", "SPHEREx-D5", "SPHEREx-D6"];
 
+// The three views of the page. We keep the choice in the URL hash, so a view can be linked to.
+const VIEWS = [
+  { id: "analysis", label: "Analysis" },
+  { id: "sky", label: "All-Sky Explorer" },
+  { id: "spectral", label: "Spectral Explorer" },
+] as const;
+type ViewId = (typeof VIEWS)[number]["id"];
+const viewFromHash = (): ViewId => (VIEWS.find((v) => `#${v.id}` === window.location.hash)?.id ?? "analysis");
+const JUDGE_MODE = "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/";
+
 const fmt = (x: number | null | undefined, d = 2) => (x == null || !isFinite(x) ? "n/a" : x.toFixed(d));
 const doiUrl = (doi: string) => `https://doi.org/${doi}`;
 
@@ -31,9 +44,31 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [epochSel, setEpochSel] = useState<string | null>(null);
   const [pairSel, setPairSel] = useState<Pair | null>(null);
+  const [view, setView] = useState<ViewId>(viewFromHash);
+  const [meta, setMeta] = useState<ExploreMeta | null>(null);
+  const [frame, setFrame] = useState(26); // D2 channel 10, ~1.32 µm: a bright, clean frame to start on
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    const on = () => setView(viewFromHash());
+    window.addEventListener("hashchange", on);
+    return () => window.removeEventListener("hashchange", on);
+  }, []);
+  const go = useCallback((v: ViewId) => {
+    setView(v);
+    history.replaceState(null, "", v === "analysis" ? window.location.pathname + window.location.search : `#${v}`);
+  }, []);
+  // Tabs follow the WAI-ARIA pattern: arrow keys move between them, Home/End jump.
+  const onTabKey = (e: React.KeyboardEvent, i: number) => {
+    const n = VIEWS.length;
+    const j = e.key === "ArrowRight" ? (i + 1) % n : e.key === "ArrowLeft" ? (i + n - 1) % n : e.key === "Home" ? 0 : e.key === "End" ? n - 1 : -1;
+    if (j < 0) return;
+    e.preventDefault(); go(VIEWS[j].id); tabs.current[j]?.focus();
+  };
 
   // We take the presets from the backend, so the list and its explanations live in one place.
   useEffect(() => { get<Target[]>("/targets", {}).then(setTargets).catch(() => setTargets([])); }, []);
+  useEffect(() => { get<ExploreMeta>("/explore/meta", {}).then(setMeta).catch(() => setMeta(null)); }, []);
 
   // The stability report exists only for the presets (it is precomputed).
   const preset = targets.find((t) => String(t.ra) === ra && String(t.dec) === dec && t.detector === detector);
@@ -43,19 +78,19 @@ export default function App() {
     setObs(null); setRes(null); setPairSel(null); setEpochSel(null); setError(null);
   };
 
-  const search = async () => {
+  const search = async (pos?: { ra: string; dec: string }) => {
     setBusy("Asking the IRSA archive which SPHEREx exposures cover this position..."); setError(null);
     setObs(null); setRes(null); setPairSel(null); setEpochSel(null);
-    try { setObs(await get<Observations>("/observations", { ra, dec })); }
+    try { setObs(await get<Observations>("/observations", pos ?? { ra, dec })); }
     catch (e) { setError(String((e as Error).message)); }
     finally { setBusy(null); }
   };
 
-  const analyze = async () => {
+  const analyze = async (args?: { ra: string; dec: string; detector: string }) => {
     setBusy("Downloading cutouts, checking quality and comparing epochs. The first run of a target can take a few minutes.");
     setError(null); setPairSel(null); setEpochSel(null);
     try {
-      const r = await get<Analysis>("/analyze", { ra, dec, detector });
+      const r = await get<Analysis>("/analyze", args ?? { ra, dec, detector });
       setRes(r);
       // We open the strongest comparison first, if there is one.
       const best = [...r.comparisons].sort((a, b) => Math.abs(b.significance ?? 0) - Math.abs(a.significance ?? 0))[0];
@@ -64,8 +99,21 @@ export default function App() {
     finally { setBusy(null); }
   };
 
+  // From the sky map: we hand the position to the same real archive search as the form.
+  const exploreHere = (r: number, d: number) => {
+    const pos = { ra: String(r), dec: String(d) };
+    setRa(pos.ra); setDec(pos.dec);
+    go("analysis");
+    search(pos);
+  };
+  const analyzeTarget = (t: Target) => {
+    pick(t);
+    analyze({ ra: String(t.ra), dec: String(t.dec), detector: t.detector });
+  };
+
   return (
     <div className="page">
+      <a className="skip" href="#main">Skip to content</a>
       <header>
         {/* Text-only header on purpose: the HIPPARCHUS logo is AI-generated, and at
             header size its required "AI-generated" watermark would be unreadable. */}
@@ -76,6 +124,25 @@ export default function App() {
         </div>
       </header>
 
+      <nav className="tabs" role="tablist" aria-label="Views">
+        {VIEWS.map((v, i) => (
+          <button key={v.id} role="tab" id={`tab-${v.id}`} aria-selected={view === v.id} aria-controls="main"
+            tabIndex={view === v.id ? 0 : -1} ref={(el) => { tabs.current[i] = el; }}
+            onClick={() => go(v.id)} onKeyDown={(e) => onTabKey(e, i)}>{v.label}</button>
+        ))}
+      </nav>
+
+      <main id="main" role="tabpanel" aria-labelledby={`tab-${view}`} tabIndex={-1}>
+      {view === "sky" && <SkyExplorer meta={meta} frame={frame} onFrame={setFrame} onExplore={exploreHere} />}
+      {view === "spectral" && (
+        <>
+          {busy && <div className="card busy" role="status">{busy}</div>}
+          {error && <ErrorCard msg={error} />}
+          <SpectralExplorer res={res} targets={targets} busy={!!busy} onAnalyzeTarget={analyzeTarget}
+            onOpenChannel={(f) => { setFrame(f); go("sky"); }} />
+        </>
+      )}
+      {view === "analysis" && <>
       <section className="card controls">
         <div className="presets">
           {targets.map((t) => (
@@ -90,16 +157,16 @@ export default function App() {
               {DETECTORS.map((d) => <option key={d}>{d}</option>)}
             </select>
           </label>
-          <button onClick={search} disabled={!!busy}>1. Search archive</button>
-          <button onClick={analyze} disabled={!!busy} className="primary">2. Analyze epochs</button>
+          <button onClick={() => search()} disabled={!!busy}>1. Search archive</button>
+          <button onClick={() => analyze()} disabled={!!busy} className="primary">2. Analyze epochs</button>
         </div>
         <p className="hint">Preset positions are approximate and only centre the cutout; the star is measured in the images.</p>
       </section>
 
-      {busy && <div className="card busy">{busy}</div>}
-      {error && <div className="card err">{error}</div>}
+      {busy && <div className="card busy" role="status">{busy}</div>}
+      {error && <ErrorCard msg={error} />}
 
-      {obs && <ObsPanel obs={obs} />}
+      {obs && <ObsPanel obs={obs} detector={detector} onDetector={setDetector} />}
       {res && (
         <>
           <Summary r={res} />
@@ -110,6 +177,8 @@ export default function App() {
           {preset && <Stability id={preset.id} />}
         </>
       )}
+      </>}
+      </main>
 
       <footer>
         Team AETHENOVA. Data: NASA SPHEREx via NASA/IPAC Infrared Science Archive (IRSA). Independent student project for the NASA Space Apps
@@ -125,14 +194,30 @@ function Badge({ status }: { status: string }) {
   return <span className={`badge ${status}`}>{status === "live" ? "LIVE archive" : status === "cached" ? "CACHED listing (archive offline)" : status.toUpperCase()}</span>;
 }
 
-function ObsPanel({ obs }: { obs: Observations }) {
+// Errors are shown as the backend wrote them. When the archive is the problem we
+// also point to the static Judge Mode page, which needs neither IRSA nor our server.
+function ErrorCard({ msg }: { msg: string }) {
+  const archive = /IRSA|archive|50[234]|Bad Gateway|timed? ?out|Failed to fetch|NetworkError/i.test(msg);
+  return (
+    <div className="card err" role="alert">
+      {msg}
+      {archive && <p className="hint">This looks like an archive or network outage, not a problem with the data. The static{" "}
+        <a href={JUDGE_MODE} target="_blank" rel="noreferrer">Judge Mode</a> page shows every result and image without live services.</p>}
+    </div>
+  );
+}
+
+function ObsPanel({ obs, detector, onDetector }: { obs: Observations; detector: string; onDetector: (d: string) => void }) {
   return (
     <section className="card">
       <h2>Archive search <Badge status={obs.archive_status} /></h2>
       <p>{obs.observations.length} SPHEREx science exposures cover this position{obs.queried_at ? ` (queried ${obs.queried_at})` : ""}.</p>
       <div className="dets">
-        {Object.entries(obs.per_detector).sort().map(([d, n]) => <span key={d} className="det">{d}: {n}</span>)}
+        {Object.entries(obs.per_detector).sort().map(([d, n]) => (
+          <button key={d} className="det" aria-pressed={d === detector} onClick={() => onDetector(d)}>{d}: {n}</button>
+        ))}
       </div>
+      <p className="hint">Pick a detector, then “2. Analyze epochs”. Each detector covers its own wavelength range.</p>
       <ul className="src">
         {obs.sources.map((s) => (
           <li key={s.release}>
@@ -187,7 +272,9 @@ function Timeline({ r, selected, onSelect }: { r: Analysis; selected: string | n
         <line x1={pad} x2={W - pad} y1={35} y2={35} className="axis" />
         {r.epochs.map((e, i) => (
           <circle key={e.obs_id} cx={x(e.mjd)} cy={35 + ((i % 3) - 1) * 8} r={selected === e.obs_id ? 7 : 5}
-            className={e.usable ? "ok" : "bad"} onClick={() => onSelect(e.obs_id)}>
+            className={e.usable ? "ok" : "bad"} onClick={() => onSelect(e.obs_id)}
+            tabIndex={0} role="button" aria-label={`Epoch ${e.obs_id}, ${e.date_obs}, ${e.usable ? "usable" : "rejected"}`}
+            onKeyDown={(k) => { if (k.key === "Enter" || k.key === " ") { k.preventDefault(); onSelect(e.obs_id); } }}>
             <title>{`${e.obs_id}  ${e.date_obs}  λ=${fmt(e.wavelength_um, 3)} µm  ${e.usable ? "usable" : "rejected"}`}</title>
           </circle>
         ))}
@@ -202,6 +289,9 @@ function Timeline({ r, selected, onSelect }: { r: Analysis; selected: string | n
 function Playback({ r, selected, onSelect }: { r: Analysis; selected: string | null; onSelect: (id: string) => void }) {
   const usable = useMemo(() => r.epochs.filter((e) => e.usable), [r]);
   const [playing, setPlaying] = useState(false);
+  const [inspect, setInspect] = useState(false);
+  const [px, setPx] = useState<EpochPixels | null>(null);
+  const [pxErr, setPxErr] = useState<string | null>(null);
   const ep: Epoch | undefined = r.epochs.find((e) => e.obs_id === selected) ?? usable[0] ?? r.epochs[0];
 
   // Chronological playback steps through usable epochs only: a rejected frame
@@ -215,14 +305,34 @@ function Playback({ r, selected, onSelect }: { r: Analysis; selected: string | n
     return () => clearInterval(id);
   }, [playing, usable, ep, onSelect]);
 
+  // Native pixels for the inspector; fetched only when it is open.
+  useEffect(() => {
+    setPx(null); setPxErr(null);
+    if (!inspect || !ep) return;
+    get<EpochPixels>(`/explore/pixels/${r.analysis_id}/epoch/${ep.obs_id}`, {}).then(setPx).catch((e) => setPxErr(String((e as Error).message)));
+  }, [inspect, ep?.obs_id, r.analysis_id]);
+
   if (!ep) return null;
   return (
     <section className="card epoch">
       <h2>Epoch {ep.obs_id}</h2>
       <div className="split">
-        <img src={`${API}/analysis/${r.analysis_id}/epoch/${ep.obs_id}.png`} alt={`SPHEREx cutout ${ep.obs_id}`} className="sky" />
         <div>
-          <button onClick={() => setPlaying(!playing)} disabled={usable.length < 2}>{playing ? "Pause" : "Play usable epochs in time order"}</button>
+          {inspect && px ? (
+            <PixelViewer key={ep.obs_id} title={`SPHEREx ${px.meta.detector} ${ep.obs_id}`} frames={[{ label: ep.obs_id, data: px.image }]}
+              masked={px.masked} kind="flux" unit={px.unit} x={px.x} y={px.y} rAp={px.aperture_radius_px}
+              annulus={px.sky_annulus_px} pixelArcsec={px.pixel_arcsec} fileStem={`hipparchus_${ep.obs_id}`}
+              meta={epochMetaLines(px.meta)} />
+          ) : (
+            // The PNG keeps one brightness scale for all epochs, which is what playback needs.
+            <img src={`${API}/analysis/${r.analysis_id}/epoch/${ep.obs_id}.png`} alt={`SPHEREx cutout ${ep.obs_id}, ${ep.date_obs}, ${ep.usable ? "usable" : "rejected"}`} className="sky" />
+          )}
+          {inspect && !px && !pxErr && <p className="hint" role="status">Loading native pixels…</p>}
+          {pxErr && <p className="err-inline" role="alert">Pixel inspector unavailable ({pxErr}); showing the rendered image.</p>}
+        </div>
+        <div>
+          <button onClick={() => { setPlaying(!playing); setInspect(false); }} disabled={usable.length < 2}>{playing ? "Pause" : "Play usable epochs in time order"}</button>{" "}
+          <button aria-pressed={inspect} onClick={() => { setInspect(!inspect); setPlaying(false); }}>{inspect ? "Back to playback image" : "Inspect native pixels"}</button>
           <table className="kv"><tbody>
             <tr><td>Observed (UTC)</td><td>{ep.date_obs}</td></tr>
             <tr><td>MJD</td><td>{fmt(ep.mjd, 5)}</td></tr>
@@ -250,7 +360,9 @@ function Pairs({ r, selected, onSelect }: { r: Analysis; selected: Pair | null; 
         <thead><tr><th>Earlier</th><th>Later</th><th>Δt (days)</th><th>λ (µm)</th><th>Flux change</th><th>Significance</th><th>Centroid shift</th><th>Control star</th></tr></thead>
         <tbody>
           {[...rows, ...r.null_tests].map((p) => (
-            <tr key={p.pair_id} onClick={() => onSelect(p)} className={selected?.pair_id === p.pair_id ? "sel" : ""}>
+            <tr key={p.pair_id} onClick={() => onSelect(p)} className={selected?.pair_id === p.pair_id ? "sel" : ""}
+              tabIndex={0} aria-selected={selected?.pair_id === p.pair_id}
+              onKeyDown={(k) => { if (k.key === "Enter" || k.key === " ") { k.preventDefault(); onSelect(p); } }}>
               <td className="mono">{p.a}</td><td className="mono">{p.b}</td>
               <td>{fmt(p.dt_days, 1)}{p.dt_days < 0.5 ? " (null test)" : ""}</td>
               <td>{fmt(p.lambda_a_um, 3)} / {fmt(p.lambda_b_um, 3)}</td>
@@ -267,33 +379,70 @@ function Pairs({ r, selected, onSelect }: { r: Analysis; selected: Pair | null; 
   );
 }
 
+function epochMetaLines(m: EpochPixels["meta"]): Record<string, string> {
+  return {
+    Exposure: `${m.obs_id} (${m.detector}, ${m.release ?? "?"}${m.doi ? `, doi:${m.doi}` : ""})`,
+    "Observed (UTC)": m.date_obs,
+    "Wavelength at star": `${m.wavelength_um?.toFixed(4)} µm, channel width ${m.bandwidth_um?.toFixed(4)} µm`,
+    "Cutout sha256": m.cutout_sha256 ?? "n/a",
+  };
+}
+
 function PairView({ r, p }: { r: Analysis; p: Pair }) {
-  const [showB, setShowB] = useState(false);
-  const [blink, setBlink] = useState(true);
-  // Blink: we alternate the two epochs at the same place on screen. The eye picks
-  // up a change in brightness or position far better than in a side-by-side view.
+  const [px, setPx] = useState<PairPixels | null>(null);
+  const [pxErr, setPxErr] = useState<string | null>(null);
+  // One zoom and pan for the three panels, so the same pixel stays under the eye.
+  const [shared, setShared] = useState<View | null>(null);
   useEffect(() => {
-    if (!blink) return;
-    const id = setInterval(() => setShowB((s) => !s), 600);
-    return () => clearInterval(id);
-  }, [blink]);
+    setPx(null); setPxErr(null); setShared(null);
+    get<PairPixels>(`/explore/pixels/${r.analysis_id}/pair/${p.pair_id}`, {}).then(setPx).catch((e) => setPxErr(String((e as Error).message)));
+  }, [r.analysis_id, p.pair_id]);
   const base = `${API}/analysis/${r.analysis_id}/pair/${p.pair_id}`;
+  const h = px?.shape[0] ?? 0, w = px?.shape[1] ?? 0;
+  const v = shared ?? { zoom: 1, cx: (w - 1) / 2, cy: (h - 1) / 2 };
+  const common = px && {
+    masked: px.masked, x: px.x, y: px.y, rAp: px.aperture_radius_px, annulus: px.sky_annulus_px,
+    pixelArcsec: px.pixel_arcsec, view: v, onView: setShared,
+  };
+  const pairMeta = px && {
+    Earlier: `${px.meta_a.obs_id}, ${px.meta_a.date_obs}, ${px.meta_a.wavelength_um?.toFixed(4)} µm (${px.meta_a.release ?? "?"}${px.meta_a.doi ? `, doi:${px.meta_a.doi}` : ""})`,
+    Later: `${px.meta_b.obs_id}, ${px.meta_b.date_obs}, ${px.meta_b.wavelength_um?.toFixed(4)} µm (${px.meta_b.release ?? "?"}${px.meta_b.doi ? `, doi:${px.meta_b.doi}` : ""})`,
+    Detector: px.meta_a.detector,
+    Grid: "later epoch resampled onto the earlier epoch's pixels",
+  };
   return (
     <section className="card">
       <h2>Comparison {p.a} → {p.b}</h2>
+      {pxErr && <p className="err-inline" role="alert">Pixel explorer unavailable ({pxErr}); showing the rendered images.</p>}
       <div className="grid4">
-        <figure>
-          <img src={`${base}/${showB ? "b" : "a"}.png`} alt="blink" className="sky" />
-          <figcaption>
-            Blink: <b>{showB ? p.b : p.a}</b>{" "}
-            <button onClick={() => setBlink(!blink)}>{blink ? "Stop" : "Blink"}</button>
-          </figcaption>
-        </figure>
-        <figure><img src={`${base}/diff.png`} alt="difference" className="sky" /><figcaption>Difference (later − earlier), red = brighter</figcaption></figure>
-        <figure><img src={`${base}/z.png`} alt="significance" className="sky" /><figcaption>Significance map, scale ±5σ</figcaption></figure>
+        {px && common && pairMeta ? (
+          <>
+            <figure>
+              <PixelViewer title="Blink, shared colour scale" frames={[{ label: p.a, data: px.a }, { label: p.b, data: px.b }]}
+                kind="flux" unit={px.unit} meta={pairMeta} fileStem={`hipparchus_pair${p.pair_id}`} {...common} />
+              <figcaption>Blink: both epochs on one colour scale, so only real changes flicker.</figcaption>
+            </figure>
+            <figure>
+              <PixelViewer title="Difference (later − earlier)" frames={[{ label: "difference", data: px.diff }]}
+                kind="diff" unit={px.unit} meta={pairMeta} fileStem={`hipparchus_pair${p.pair_id}`} {...common} />
+              <figcaption>Difference after each epoch's local sky is removed; warm = brighter later.</figcaption>
+            </figure>
+            <figure>
+              <PixelViewer title="Significance map" frames={[{ label: "significance", data: px.z }]}
+                kind="z" unit="σ" meta={pairMeta} fileStem={`hipparchus_pair${p.pair_id}`} {...common} />
+              <figcaption>Difference divided by its own noise, pixel by pixel.</figcaption>
+            </figure>
+          </>
+        ) : (
+          <>
+            <figure><img src={`${base}/a.png`} alt={`Earlier epoch ${p.a}`} className="sky" /><figcaption>Earlier: {p.a}</figcaption></figure>
+            <figure><img src={`${base}/diff.png`} alt="Difference image" className="sky" /><figcaption>Difference (later − earlier), red = brighter</figcaption></figure>
+            <figure><img src={`${base}/z.png`} alt="Significance map" className="sky" /><figcaption>Significance map, scale ±5σ</figcaption></figure>
+          </>
+        )}
         <div className="verdict">
           <p className={p.changed ? "badt big" : "okt big"}>{p.changed ? `Brightness changed at ${fmt(p.significance, 1)}σ` : `No significant change (${fmt(p.significance, 1)}σ)`}</p>
-          <p>Flux {fmt(p.flux_a.flux, 1)} ± {fmt(p.flux_a.flux_err, 1)} → {fmt(p.flux_b.flux, 1)} ± {fmt(p.flux_b.flux_err, 1)}</p>
+          <p>Flux {fmt(p.flux_a.flux, 1)} ± {fmt(p.flux_a.flux_err, 1)} → {fmt(p.flux_b.flux, 1)} ± {fmt(p.flux_b.flux_err, 1)} (MJy/sr summed over aperture pixels)</p>
           <p>Ratio later / earlier: ×{fmt(p.flux_ratio, 2)}</p>
           <p>Time between epochs: {fmt(p.dt_days, 1)} days</p>
           {p.control_star ? (
@@ -303,6 +452,7 @@ function PairView({ r, p }: { r: Analysis; p: Pair }) {
             </p>
           ) : <p className="warn">No control star in the cutout: this result rests on the formal errors only.</p>}
           <p>Centroid shift: ΔRA {fmt(p.centroid_shift_arcsec.dra, 2)}″, ΔDec {fmt(p.centroid_shift_arcsec.ddec, 2)}″ (pixel = 6.15″)</p>
+          {px && <p className="hint">{px.note}</p>}
           <p className="hint">A measured change is not a discovery. It needs independent confirmation, e.g. from other surveys or follow-up observations.</p>
         </div>
       </div>

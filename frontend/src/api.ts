@@ -68,3 +68,62 @@ export interface Robustness {
   stability: StabilityCell[];
   trials: { n_tests: number; p_any_false_alarm: number; sigma_bonferroni: number } | null;
 }
+
+// ---- Explorer endpoints (backend/hipparchus/api_explore.py) ----
+
+export interface HipsLayer {
+  id: string; kind: "spherex" | "context"; label: string; url: string; credit: string;
+  status: { ok: boolean; http_status: number | null; message: string };
+  hips_pixel_arcsec?: number | null;
+  properties?: Record<string, string | null>;
+}
+
+export interface HipsStatus {
+  checked_at: string; layers: HipsLayer[]; spherex_available: boolean;
+  channels_um: number[]; channels_source: string; native_pixel_arcsec: number;
+  judge_mode_url: string; cached: boolean;
+}
+
+export interface ExploreMeta {
+  targets: Target[]; cutout_size_deg: number; native_pixel_arcsec: number;
+  aperture_radius_px: number; sky_annulus_px: [number, number];
+  max_dlambda_fraction: number; judge_mode_url: string;
+}
+
+export interface Resolved {
+  query: string; oname: string | null; otype: string | null; resolver: string;
+  ra: number; dec: number; ra_j2000: number; dec_j2000: number; epoch: number;
+  pm_ra_masyr: number | null; pm_dec_masyr: number | null; note: string; cached: boolean;
+}
+
+export interface SpecPoint {
+  obs_id: string; detector: string; mjd: number; date_obs: string;
+  wavelength_um: number; bandwidth_um: number; usable: boolean; measured: boolean; reasons: string[];
+  flux: number | null; flux_err: number | null; flux_mjy: number | null; flux_err_mjy: number | null;
+  n_pix: number; release: string | null; doi: string | null;
+}
+
+export interface Spectrum {
+  analysis_id: string; detector: string; ra: number; dec: number; points: SpecPoint[];
+  units: { native: string; converted: string };
+  aperture_radius_px: number; sky_annulus_px: [number, number]; max_dlambda_fraction: number;
+  comparisons: { a: string; b: string }[]; refused_pairs: Record<string, number>; coadded: false;
+}
+
+export type Grid = (number | null)[][];
+
+export interface EpochMeta {
+  obs_id: string; date_obs: string; mjd: number; detector: string; wavelength_um: number;
+  bandwidth_um: number; usable: boolean; release: string | null; doi: string | null; cutout_sha256: string | null;
+}
+
+interface PixelGeometry {
+  unit: string; shape: [number, number]; masked: number[][];
+  x: number; y: number; aperture_radius_px: number; sky_annulus_px: [number, number]; pixel_arcsec: number;
+}
+
+export interface EpochPixels extends PixelGeometry { kind: "epoch"; image: Grid; meta: EpochMeta }
+export interface PairPixels extends PixelGeometry {
+  kind: "pair"; a: Grid; b: Grid; diff: Grid; z: Grid; meta_a: EpochMeta; meta_b: EpochMeta;
+  significance: number | null; dt_days: number | null; note: string;
+}
