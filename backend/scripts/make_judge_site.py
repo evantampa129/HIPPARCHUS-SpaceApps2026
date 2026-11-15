@@ -452,7 +452,7 @@ so nothing here waits for a live archive download.</p>
 <a href='{REPO}/blob/main/report/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Report (PDF)</a>
 <a href='{REPO}/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Slides (PDF)</a>
 <a href='#film'>Video</a><a href='{REPO}'>Code</a>
-<a href='{REPO}/blob/main/docs/DATA_PROVENANCE.md'>Data provenance</a><a href='{REPO}/blob/main/docs/SCIENTIFIC_REFERENCES.md'>References</a><a href='{REPO}/blob/main/docs/AI_USAGE_DISCLOSURE.md'>AI use</a><a href='{REPO}/blob/main/FINAL_IMPLEMENTATION_CHECKLIST.md'>Checklist</a></nav>
+<a href='{REPO}#data-credits-and-ai-use'>Data, credits &amp; AI use</a><a href='{REPO}/blob/main/FINAL_IMPLEMENTATION_CHECKLIST.md'>Checklist</a></nav>
 </header>
 <section id='film' class='case media' aria-label='Film, slides and report'>
  <video controls preload='metadata' poster='img/film_poster.png'><source src='media/{film.name}' type='video/mp4'>
@@ -512,7 +512,7 @@ so nothing here waits for a live archive download.</p>
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
 data; no simulated value appears on this page (the SIMULATED injection-recovery test is only in the report).
 AI tools helped with the logos, the video edit, code, method review and writing; they produced no measurement and did not
-validate the science (<a href='{REPO}/blob/main/docs/AI_USAGE_DISCLOSURE.md'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit {esc(commit)}.</footer>
+validate the science (<a href='{REPO}#data-credits-and-ai-use'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit {esc(commit)}.</footer>
 </main></body></html>
 """
     (OUT / "index.html").write_text(page)

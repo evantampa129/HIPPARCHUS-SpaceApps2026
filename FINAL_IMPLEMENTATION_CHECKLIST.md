@@ -25,7 +25,7 @@ Status as of 16 Nov 2026. Filled in from the commands we actually ran; this file
 | IRSA tools comparison (Spectrophotometry Tool, MOST, Source Discovery) | NOT IMPLEMENTED | — | — | Out of time |
 | Spectral-response overlap diagnostic | NOT IMPLEMENTED | — | — | Pairing uses the |Δλ| ≤ half-channel rule instead |
 | Observation compatibility graph | NOT IMPLEMENTED | — | — | Refusal reasons are listed per pair instead |
-| `submission/` resource registry files (RESOURCE_INVENTORY.csv etc.) | NOT IMPLEMENTED | — | — | Covered in prose by `docs/RESOURCES_AND_CREDITS.md` and `docs/DATA_PROVENANCE.md` |
+| `submission/` resource registry files (RESOURCE_INVENTORY.csv etc.) | NOT IMPLEMENTED | — | — | Covered by the "Data, credits and AI use" section of the README and `video/credits.txt` |
 | Machine-learning ranking | NOT IMPLEMENTED | — | — | No labelled data to train or test on fairly |
 
 ## Public Release Verification

@@ -10,7 +10,7 @@ Team **AETHENOVA** · NASA Space Apps Challenge 2026, *Planet X and SPHEREx* (At
 [6-slide presentation](presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf) ·
 [Research report](report/HIPPARCHUS_AETHENOVA_FINAL.pdf) ·
 [Reproduce](#reproduce-the-results) ·
-[Sources & licences](docs/RESOURCES_AND_CREDITS.md)
+[Data, credits & AI use](#data-credits-and-ai-use)
 
 ![Comparison view of the app on RW Aur](presentation/screens/04_comparison.png)
 
@@ -117,7 +117,7 @@ cd .. && backend/.venv/bin/python presentation/build_deck.py   # six-slide deck
 ```
 backend/       Python: archive search, cutouts, quality checks, comparison, ePSF photometry, tests, scripts
 frontend/      React/TypeScript app: timeline, playback, blink, difference and significance maps
-docs/          Judge Mode page (GitHub Pages), its images, provenance, references, AI use, credits
+docs/          Judge Mode page (GitHub Pages) and its images and media
 submission/    evidence files with checksums
 report/        research report (LaTeX + PDF), figures, bibliography
 presentation/  six-slide deck (PPTX + PDF) and the script that builds it, screenshots, logos
@@ -126,13 +126,32 @@ video/         29 s film (MP4 + captions), its editable Remotion source, credits
 
 ## Data, credits and AI use
 
-- Images: SPHEREx DR1 (doi:10.26131/IRSA678) and QR3 (doi:10.26131/IRSA662) from the NASA/IPAC Infrared Science
-  Archive. How we fetch and record them: [docs/DATA_PROVENANCE.md](docs/DATA_PROVENANCE.md).
-- References: [docs/SCIENTIFIC_REFERENCES.md](docs/SCIENTIFIC_REFERENCES.md). Software and assets:
-  [docs/RESOURCES_AND_CREDITS.md](docs/RESOURCES_AND_CREDITS.md).
-- AI tools helped with the logos (marked "AI-generated"), the video edit, code, method review and writing. They did not
-  produce any measurement or validate the science. Details: [docs/AI_USAGE_DISCLOSURE.md](docs/AI_USAGE_DISCLOSURE.md).
-- What is finished and what is experimental: [FINAL_IMPLEMENTATION_CHECKLIST.md](FINAL_IMPLEMENTATION_CHECKLIST.md).
-- Independent work by team AETHENOVA. NASA has not endorsed it, and it uses no NASA logos or insignia.
+**Data.** SPHEREx Level-2 spectral images, DR1 (doi:10.26131/IRSA678) and QR3 (doi:10.26131/IRSA662), from the
+NASA/IPAC Infrared Science Archive. We find them with IRSA SIA v2 and download 0.05° server-side cutouts. Every archive
+answer is kept in `data/manifests/` with its SHA-256; every epoch's observation ID, release, DOI, detector, cutout URL
+and cutout SHA-256 is in `submission/evidence/*.json`, and `graph_*.json` links each result back to the DOI (a test
+fails if a link breaks). The FITS cutouts stay in a local cache, since anyone can download them again from IRSA; only
+three small test fixtures are in the repo. SIMBAD and Gaia DR3 are used only to check target positions, and JPL
+Horizons only for the asteroid check. Anything synthetic is labelled SIMULATED and never enters a result.
+
+**References.** Full bibliography with DOIs in [`report/HIPPARCHUS_AETHENOVA_REFERENCES.bib`](report/HIPPARCHUS_AETHENOVA_REFERENCES.bib)
+and at the end of the [report](report/HIPPARCHUS_AETHENOVA_FINAL.pdf).
+
+**Software and assets.** Astropy, NumPy, SciPy, Matplotlib, reproject, astroquery (BSD-3); FastAPI, Uvicorn
+(MIT/BSD-3); React, Vite, TypeScript (MIT/Apache-2.0); python-pptx, qrcode, Pillow (deck); Remotion (video, free licence
+for teams of up to 3) and FFmpeg; DejaVu fonts. Per-asset sources for the film are in
+[`video/credits.txt`](video/credits.txt).
+
+**AI use.** We used generative AI tools during the hackathon:
+- the HIPPARCHUS and AETHENOVA logos are AI-generated, and every published copy carries a visible "AI-generated" mark;
+- an AI coding assistant helped write and refactor code, tests and build scripts, and helped assemble the video;
+- AI helped review the methods, check references and draft text for the README, report and slides.
+
+AI did not produce any measurement and did not validate the science: every number comes from running our code on real
+SPHEREx images, and validation is the test suite, the null tests, the SIMULATED injection-recovery tests and the
+stability checks. We reviewed and ran all code before using it and are responsible for every claim.
+
+What is finished and what is experimental: [FINAL_IMPLEMENTATION_CHECKLIST.md](FINAL_IMPLEMENTATION_CHECKLIST.md).
+Independent work by team AETHENOVA. NASA has not endorsed it, and it uses no NASA logos or insignia.
 
 MIT licence (see `LICENSE`).
