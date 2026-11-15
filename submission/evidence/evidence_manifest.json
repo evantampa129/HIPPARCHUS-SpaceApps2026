@@ -1,0 +1,145 @@
+{
+ "generated_at": "2026-11-15T16:21:20+00:00",
+ "code_commit": "ffdb56513eaa400e4ee52f3ae49cbefd60219c7c",
+ "config": {
+  "collections": [
+   "spherex_dr1",
+   "spherex_qr3"
+  ],
+  "cutout_size_deg": 0.05,
+  "aperture_radius_px": 2.0,
+  "sky_annulus_px": [
+   4.0,
+   7.0
+  ],
+  "bad_flag_planes": [
+   "BLOOM",
+   "COLD",
+   "CROSSTALK",
+   "GHOST",
+   "GHOST_EXT",
+   "GHOST_FPA",
+   "HALO",
+   "HOT",
+   "MISSING_DATA",
+   "NONFUNC",
+   "NONLINEAR",
+   "OUTLIER",
+   "OVERFLOW",
+   "PERSIST",
+   "SNOWBALL",
+   "STREAK",
+   "SUR_ERROR",
+   "TRANSIENT"
+  ],
+  "warning_flag_planes": [
+   "DICHROIC",
+   "PHANMISS"
+  ],
+  "max_wavelength_shift_fraction_of_bandwidth": 0.5,
+  "same_visit_days": 0.5,
+  "detection_sigma": 5.0,
+  "zodi_subtracted": true,
+  "software": {
+   "hipparchus": "0.1.0",
+   "python": "3.12.3",
+   "astropy": "8.0.2",
+   "numpy": "2.5.4",
+   "reproject": "0.21.0"
+  }
+ },
+ "cases": [
+  {
+   "target": "RW Aurigae",
+   "ra": 76.956,
+   "dec": 30.401,
+   "detector": "SPHEREx-D1",
+   "archive_status": "live",
+   "archive_queries": [
+    {
+     "release": "spherex_dr1",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+76.956+30.401+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "834b363072d7aa859211a3fbed758f93d774f0d4c47fc12414e8d6268d953886"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+76.956+30.401+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "2231193d531ff01278e2d56ee4c58aa9f41a13ec023ca9640c16cf3544083f4e"
+    }
+   ],
+   "epochs": 56,
+   "usable_epochs": 18,
+   "valid_comparisons": 8,
+   "changes_over_5_sigma": 8,
+   "refused_pairs": {
+    "wavelength_mismatch": 1480,
+    "flagged_pixels": 1387
+   },
+   "failed_downloads": 0,
+   "file": "submission/evidence/rw_aur_spherex-d1.json",
+   "file_sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad"
+  },
+  {
+   "target": "Barnard's Star",
+   "ra": 269.4463,
+   "dec": 4.7667,
+   "detector": "SPHEREx-D6",
+   "archive_status": "live",
+   "archive_queries": [
+    {
+     "release": "spherex_dr1",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+269.4463+4.7667+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "23cc26bfc22962c6c12802e3bfec6d84c096efc368a1cd93a2a93d7457171c17"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+269.4463+4.7667+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "9e5a4e0988c3b5011cd71e5d04211b649a8733b8574ffecd42ebc5e53adfb9f5"
+    }
+   ],
+   "epochs": 58,
+   "usable_epochs": 0,
+   "valid_comparisons": 0,
+   "changes_over_5_sigma": 0,
+   "refused_pairs": {
+    "wavelength_mismatch": 1579,
+    "flagged_pixels": 1653,
+    "bad_variance": 57,
+    "nan_pixels": 57
+   },
+   "failed_downloads": 0,
+   "file": "submission/evidence/barnard_spherex-d6.json",
+   "file_sha256": "f7fdc32c09ce0c78011e26c98863d7d85d50b423e1ac7b6dfa72b6bb8e2c130f"
+  },
+  {
+   "target": "WISE 0855-0714",
+   "ra": 133.76,
+   "dec": -7.2424,
+   "detector": "SPHEREx-D6",
+   "archive_status": "live",
+   "archive_queries": [
+    {
+     "release": "spherex_dr1",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+133.76+-7.2424+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "a0fe4ffce0576783a82dbd50a49012902253cb93f6d1e22a5ad9c80a8edcd949"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+133.76+-7.2424+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "96a415e87dde6c014b3726bf060f9d284a759b7738cb03d263854f1b0a307ad2"
+    }
+   ],
+   "epochs": 45,
+   "usable_epochs": 37,
+   "valid_comparisons": 27,
+   "changes_over_5_sigma": 0,
+   "refused_pairs": {
+    "wavelength_mismatch": 952,
+    "flagged_pixels": 324
+   },
+   "failed_downloads": 0,
+   "file": "submission/evidence/wise0855_spherex-d6.json",
+   "file_sha256": "71d8e2b813eb58e213676c51aaceae3461255fbd3aab6e97bb9bd67561aff691"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+[project]
+name = "hipparchus"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "astropy>=6.0",     # FITS, WCS and units: the core of every quality check
+    "numpy>=1.26",
+    "pyvo>=1.5",        # IVOA helpers (SIA queries themselves go through httpx, see archive.py)
+    "httpx>=0.27",
+    "reproject>=0.13",  # puts one epoch on the pixel grid of another before subtracting
+    "scipy>=1.11",      # needed by reproject's interpolation
+    "matplotlib>=3.8",  # renders the blink, difference and significance images
+]
+
+[project.optional-dependencies]
+# Test-only tools, installed with: pip install -e ".[dev]"
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["hipparchus*"]

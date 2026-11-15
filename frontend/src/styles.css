@@ -1,0 +1,66 @@
+/* Dark, high-contrast theme: astronomers look at images on dark backgrounds,
+   and a dark page keeps the eye on the sky cutouts. */
+:root {
+  --bg: #0b1020; --card: #131a2e; --line: #26304d; --text: #e6ebf5; --muted: #93a0bd;
+  --accent: #7fd4ff; --ok: #4fd18b; --bad: #ff6b6b; --warn: #ffc857;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent); }
+.page { max-width: 1200px; margin: 0 auto; padding: 16px; }
+header { display: flex; gap: 16px; align-items: center; margin-bottom: 12px; }
+.logo { height: 72px; width: auto; border-radius: 8px; }  /* wide logo: keep its aspect ratio */
+h1 { margin: 0; letter-spacing: 0.08em; }
+h2 { margin: 0 0 10px; font-size: 1.1rem; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.sub { margin: 2px 0 0; color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 12px 0; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+label { display: flex; flex-direction: column; font-size: 0.8rem; color: var(--muted); gap: 4px; }
+input, select { background: #0e1426; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; width: 130px; }
+button, .btn { background: #1d2742; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; cursor: pointer; text-decoration: none; display: inline-block; }
+button:disabled { opacity: 0.5; cursor: wait; }
+button.primary { background: #1f5f8b; border-color: #2b7bb3; }
+.presets { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.preset { border-radius: 20px; }
+.hint { color: var(--muted); font-size: 0.85rem; }
+.busy { border-color: var(--accent); }
+.err { border-color: var(--bad); color: var(--bad); }
+.warn { color: var(--warn); }
+.badge { font-size: 0.72rem; padding: 2px 8px; border-radius: 10px; border: 1px solid; letter-spacing: 0.04em; }
+.badge.live { color: var(--ok); }
+.badge.cached, .badge.partial { color: var(--warn); }
+.dets { display: flex; gap: 8px; flex-wrap: wrap; }
+.det { background: #0e1426; border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; }
+.src { padding-left: 18px; }
+.mono { font-family: ui-monospace, Menlo, monospace; font-size: 0.82rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 10px; }
+.stats div { background: #0e1426; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; }
+.stats b { font-size: 1.6rem; }
+.stats span { color: var(--muted); font-size: 0.8rem; }
+.refuse { border-left: 3px solid var(--warn); padding-left: 10px; }
+.refusals li { margin-bottom: 6px; }
+.timeline { width: 100%; height: auto; }
+.timeline .axis { stroke: var(--line); stroke-width: 2; }
+.timeline circle { cursor: pointer; stroke: #0b1020; stroke-width: 1; }
+.timeline .ok, .dot.ok { fill: var(--ok); background: var(--ok); }
+.timeline .bad, .dot.bad { fill: var(--bad); background: var(--bad); }
+.tick { fill: var(--muted); font-size: 11px; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 4px 0 10px; }
+.split { display: flex; gap: 16px; flex-wrap: wrap; }
+.sky { width: 320px; max-width: 100%; height: auto; image-rendering: pixelated; border-radius: 6px; border: 1px solid var(--line); }
+.kv td { padding: 3px 10px 3px 0; vertical-align: top; }
+.kv td:first-child { color: var(--muted); white-space: nowrap; }
+.okt { color: var(--ok); } .badt { color: var(--bad); }
+.issues { padding-left: 0; list-style: none; }
+.issues .reject { color: var(--bad); } .issues .warn { color: var(--warn); }
+.pairs { width: 100%; border-collapse: collapse; font-size: 0.86rem; display: block; overflow-x: auto; }
+.pairs th, .pairs td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+.pairs tbody tr { cursor: pointer; }
+.pairs tbody tr:hover, .pairs tr.sel { background: #1a2340; }
+.grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+figure { margin: 0; }
+figcaption { color: var(--muted); font-size: 0.82rem; margin-top: 4px; }
+.verdict p { margin: 4px 0; }
+.big { font-size: 1.15rem; font-weight: 600; }
+footer { color: var(--muted); font-size: 0.78rem; margin: 24px 0; }

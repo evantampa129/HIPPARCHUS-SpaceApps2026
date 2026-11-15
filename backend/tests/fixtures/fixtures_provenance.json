@@ -1,0 +1,23 @@
+{
+ "barnard_d6": {
+  "obs_id": "2025W33_2C_0321_1",
+  "source_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W33_2C/l2b-v27-2026-228/6/level2_2025W33_2C_0321_1D6_spx_l2b-v27-2026-228.fits?center=269.4463%2C4.7667&size=0.05",
+  "source_sha256": "9e8f145c8f2a306f207add2702eb15231b40ee093f82eff5aca57a53caea932b",
+  "note": "EPSF extension removed to keep the repo small; all other HDUs unchanged",
+  "fixture_sha256": "d4277673382e496e545178e0e5037b1ea786d0f08d834b5deb8667869e1854d9"
+ },
+ "rwaur_d1_2025": {
+  "obs_id": "2025W36_1A_0233_3",
+  "source_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W36_1A/l2b-v27-2026-232/1/level2_2025W36_1A_0233_3D1_spx_l2b-v27-2026-232.fits?center=76.956%2C30.401&size=0.05",
+  "source_sha256": "e2c7f211100976db1723eea2d4af7a0fade1af0620a4f5cfa3d109be2ff56c62",
+  "note": "EPSF extension removed to keep the repo small; all other HDUs unchanged",
+  "fixture_sha256": "be66de0b94a175a9b24dcfbfe18ab57d38af4b8a990583df3c5475ada89c080c"
+ },
+ "rwaur_d1_2026": {
+  "obs_id": "2026W37_1A_0234_3",
+  "source_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr3/level2/2026W37_1A/l2b-v27-2026-255/1/level2_2026W37_1A_0234_3D1_spx_l2b-v27-2026-255.fits?center=76.956%2C30.401&size=0.05",
+  "source_sha256": "1035648d217eb0f1b42e5c409b3853ee1c87679e7c0f270d93fa874e0ba0d773",
+  "note": "EPSF extension removed to keep the repo small; all other HDUs unchanged",
+  "fixture_sha256": "7fcb554b46a4854b5392bb4a2053fcd371166eb2695d7c3ab6f0675f9364a75f"
+ }
+}
