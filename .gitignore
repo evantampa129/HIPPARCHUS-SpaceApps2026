@@ -41,3 +41,15 @@ video/remotion/.remotion/
 .env.*
 *.pem
 *.key
+# notebooks, linters, coverage
+.ipynb_checkpoints/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+# Manim render caches (final clips and stills are kept under visualizations/manim/renders and docs/media/manim)
+visualizations/manim/.venv/
+visualizations/manim/media/
+# intermediate video frames and audio
+video/**/frames/
+*.wav.tmp
