@@ -558,12 +558,34 @@ only in a few short-wavelength exposures less than 4\,h apart, shorter than our 
 photometry over 19 exposures stacks to S/N $\approx15$ at each. The third is a single 4.9\,$\mu$m exposure, 4.5$\times$
 sharper than a point source and absent from the other exposures of the same visit: most likely an unflagged detector
 hit. JPL's small-body identification from SPHEREx finds no known object within 100$''$ (positive control: Kleopatra
-at 0.017$''$). We added a degenerate-track check that flags this case and passes Kleopatra; it is not yet part of
-the published run (\path{submission/evidence/motion_followup.json}). Further known-object cases ((2052)~Tamriko, (433)~Eros)
-were identified but not run because IRSA returned HTTP 502 during the downloads.
+at 0.017$''$). We then added a vetting step to the linker that rejects tracks whose detections fall on a few fixed
+positions or on single-exposure hits. Re-running the blind search on the same cached cutouts with vetting switched
+on returns one track instead of two: Kleopatra, unchanged (\path{submission/evidence/motion_followup.json}).
 
-One object, one 3.3-day window and slow motion only: this shows the method works on a real case, not survey-level
-completeness. HIPPARCHUS has not found Planet X.
+\subsection{Two more known asteroids: a fainter and a faster case}\label{sec:motion-more}
+We ran the same blind search, with vetting, on two other known objects chosen to stress the method
+(Fig.~\ref{fig:motion-more}). Both were linked without using their ephemerides; Horizons from SPHEREx was used only
+afterwards to check them.
+\begin{itemize}
+\item \textbf{(2052) Tamriko}, fainter ($V\approx16.2$, near the single-exposure limit), 0.4$^\circ$ from Kleopatra in
+the same 3.3-day window: 23 detections in 6 visits, rms $0.54''$ (RA\,cos\,Dec) and $0.56''$ (Dec) against Horizons.
+This matches the scatter of field stars at the same S/N (median $0.71''$ per axis at S/N 5--10), so it is the
+measurement floor, not a tracking error. Fitted rate $6.079''$/h against $6.082''$/h from Horizons (within $0.4\sigma$).
+\item \textbf{(433) Eros}, faster (near-Earth, $\approx72''$/h, 17\,h span): 19 detections in 3 visits, rms $0.15''$ and
+$0.20''$ against Horizons; fitted rate $72.435''$/h against $72.433''$/h. Over these 17\,h an order-2 polynomial does
+not describe the apparent path well ($\chi^2_\nu=63$), while the Horizons residuals stay small, so the linking works
+but the polynomial model is too simple for fast movers.
+\end{itemize}
+As with Kleopatra, the SPHEREx pipeline flags the asteroid as OUTLIER in most exposures (30 of 34 for Tamriko, 20 of 20
+for Eros). Three known objects, all within days: the method works on real cases of different brightness and speed,
+which is still not survey-level completeness. HIPPARCHUS has not found Planet X.
+
+\begin{figure}[p]\centering
+\includegraphics[width=0.82\linewidth]{figures/motion_followup_2052tamriko.png}\\[4pt]
+\includegraphics[width=0.82\linewidth]{figures/motion_followup_433eros.png}
+\caption{Blind detections of (2052)~Tamriko (top) and (433)~Eros (bottom) in real SPHEREx cutouts, with the JPL
+Horizons prediction computed at SPHEREx and the residuals against it.}\label{fig:motion-more}
+\end{figure}
 
 \begin{figure}[h]\centering
 \includegraphics[width=\linewidth]{figures/motion_check.png}
@@ -611,7 +633,8 @@ Catalogue match & validated & SIMBAD and Gaia DR3: $2.1''$, $5.4''$, $1.1''$ fro
 ePSF photometry & experimental & 8/8 RW~Aur pairs compatible with the aperture ratios, $\chi^2_\nu=4$--18; not used by any published number (\texttt{epsf\_check.json}, Section~\ref{sec:epsf})\\\midrule
 Agreement with IRSA tools & validated & SDT/ours 0.9998 per exposure, 8/8 RW~Aur verdicts; MOST image list 36/36 (\texttt{irsa\_tools\_check.json})\\
 Pair rule vs spectral overlap & validated & rule equals top-hat overlap $\ge0.5$; graph rebuilds 8/27/0 published pairs (\texttt{compat\_check.json})\\
-Moving-object search & validated on one asteroid & (216) Kleopatra: $0.15''$/$0.18''$ rms vs JPL Horizons from SPHEREx (\texttt{motion\_check.json}, Section~\ref{sec:motion-check})\\\midrule
+Moving-object search & validated on three known asteroids & (216) Kleopatra: $0.15''$/$0.18''$ rms vs JPL Horizons from SPHEREx (\texttt{motion\_check.json}); (2052) Tamriko $0.54''$/$0.56''$, (433) Eros $0.15''$/$0.20''$ (\texttt{motion\_followup.json}, Sections~\ref{sec:motion-check}, \ref{sec:motion-more})\\
+Track vetting & validated on one field & rejects the static-star/detector-hit track, keeps Kleopatra unchanged (\texttt{motion\_followup.json})\\\midrule
 Discovery of unknown movers & not demonstrated & no wide search; Planet X not found (Sections~\ref{sec:planetx}, \ref{sec:motion})\\
 PSF-matched / ZOGY subtraction & experimental, not adopted & failed the pre-set rule in the RW~Aur field; published conclusions unchanged (\texttt{psfsub\_check.json}, Section~\ref{sec:psfsub})\\
 Resolved RW~Aur components & not demonstrated & joint fit: A--B flux correlation $-0.92$ to $-0.997$; B fraction set by assumed positions (\texttt{jointpsf\_check.json})\\
