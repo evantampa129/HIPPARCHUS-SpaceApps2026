@@ -282,13 +282,19 @@ def visits(t, gap_hours=0.5) -> np.ndarray:
 
 def link(t, xi, eta, err, *, v_min, v_max, tol_arcsec, epoch=None, min_visits=3,
          min_dt_hours=1.0, order=1, visit_gap_hours=0.5, max_tracks=10, max_seeds=25,
-         exclude=None) -> list[Track]:
+         exclude=None, vet=None, rejected=None) -> list[Track]:
     """Group detections into tracks of one source moving at v_min..v_max arcsec/hour.
 
     t in MJD, positions in arcsec on one tangent plane, `epoch` the cutout each
     detection came from (default: one epoch per distinct time). `exclude` marks
     detections (e.g. static sources) that may not take part. A detection is
     used by at most one track; tracks are taken greedily, longest first.
+
+    `vet` (opt-in, default None = no vetting, as in motion_check.json) is a dict
+    {"radius_arcsec": r, "min_dt_hours": dt}: every candidate is then passed
+    through degenerate_track() before it can win, and a degenerate one is
+    dropped. If `rejected` is a list, each dropped candidate is appended to it
+    as {"members": indices, "check": degenerate_track() result}.
     """
     t, xi, eta, err = (np.asarray(v, float) for v in (t, xi, eta, err))
     epoch = np.unique(t, return_inverse=True)[1] if epoch is None else np.asarray(epoch)
@@ -336,6 +342,17 @@ def link(t, xi, eta, err, *, v_min, v_max, tol_arcsec, epoch=None, min_visits=3,
             if g is None:
                 continue
             members, f = g
+            if vet is not None:
+                # We vet each candidate here, before the ranking, and not the
+                # winner afterwards: a degenerate candidate must not take the
+                # detections away from a real track that ranks below it.
+                d = degenerate_track(t[members], xi[members], eta[members], f.coef_xi.size - 1,
+                                     vet["radius_arcsec"], vet["min_dt_hours"],
+                                     err=err[members], rate=f.rate_arcsec_per_hour[:2])
+                if d is not None:
+                    if rejected is not None and not any(np.array_equal(members, r["members"]) for r in rejected):
+                        rejected.append({"members": members, "check": d})
+                    continue
             nv = len(np.unique(vis[members]))
             key = (nv, len(members), -f.rms_arcsec)
             if best is None or key > best[0]:
@@ -448,23 +465,44 @@ def position_groups(xi, eta, radius_arcsec):
     return lab
 
 
-def degenerate_track(t, xi, eta, order, radius_arcsec, min_dt_hours):
+def degenerate_track(t, xi, eta, order, radius_arcsec, min_dt_hours, err=None, rate=None, nsigma=5.0):
     """Why a linked track may be an artefact of the fit, or None if it looks fine.
 
     Returns a dict when the members fall into at most `order + 1` position
     groups and no group spans `min_dt_hours`: a polynomial of that order passes
     exactly through order + 1 points, so such a "track" is guaranteed to fit and
     says nothing about motion. Each group is then reported with its time span.
+
+    With `err` (arcsec per point) and `rate` ((d xi/dt, d eta/dt) in arcsec/h,
+    the track's own fitted rate) a group also has to LOOK static: if its points
+    are fitted better by the track's motion than by a fixed position, by more
+    than nsigma^2 in chi2, the group shows motion and the track is not
+    degenerate. Without this, a fast mover seen in three short visits, e.g.
+    (433) Eros at 72"/h, is rejected: each visit is one tight group, yet the
+    object visibly moves inside it.
     """
     t = np.asarray(t, float)
+    xi, eta = np.asarray(xi, float), np.asarray(eta, float)
     lab = position_groups(xi, eta, radius_arcsec)
     groups = []
     for g in np.unique(lab):
         m = lab == g
-        groups.append({"n": int(m.sum()), "mjd_min": float(t[m].min()), "mjd_max": float(t[m].max()),
-                       "span_hours": float((t[m].max() - t[m].min()) * 24.0),
-                       "xi": float(np.mean(np.asarray(xi)[m])), "eta": float(np.mean(np.asarray(eta)[m]))})
-    if len(groups) <= order + 1 and all(g["span_hours"] < min_dt_hours for g in groups):
+        row = {"n": int(m.sum()), "mjd_min": float(t[m].min()), "mjd_max": float(t[m].max()),
+               "span_hours": float((t[m].max() - t[m].min()) * 24.0),
+               "xi": float(np.mean(xi[m])), "eta": float(np.mean(eta[m]))}
+        if err is not None and rate is not None and m.sum() >= 2:
+            w = 1.0 / np.asarray(err, float)[m] ** 2
+            h = (t[m] - np.average(t[m], weights=w)) * 24.0
+            # We compare two models with the same number of free parameters (a
+            # mean position each): fixed, or moving at the track's rate. No new
+            # rate is fitted, so a few noisy points cannot invent motion.
+            def chi2(vx, vy):
+                rx, ry = xi[m] - vx * h, eta[m] - vy * h
+                return float(np.sum(w * ((rx - np.average(rx, weights=w)) ** 2 + (ry - np.average(ry, weights=w)) ** 2)))
+            row["chi2_static_minus_moving"] = chi2(0.0, 0.0) - chi2(*rate)
+        groups.append(row)
+    moving = [g for g in groups if g.get("chi2_static_minus_moving", 0.0) > nsigma ** 2]
+    if len(groups) <= order + 1 and all(g["span_hours"] < min_dt_hours for g in groups) and not moving:
         return {"n_position_groups": len(groups), "fit_order": order, "groups": groups}
     return None
 
