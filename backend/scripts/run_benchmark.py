@@ -36,7 +36,9 @@ MANIFEST = ROOT / "submission" / "benchmark" / "manifest.json"
 OUT_DIR = ROOT / "submission" / "benchmark"
 CACHE = archive.DATA_DIR / "cache" / "benchmark"
 BLOCKED = "BLOCKED_BY_EXTERNAL_SERVICE"
-SESAME = "https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV"
+# CDS Sesame and its official Harvard mirror; we try them in order and record which one answered.
+SESAME_MIRRORS = ["https://cds.unistra.fr/cgi-bin/nph-sesame/-oxp/SNV",
+                  "https://vizier.cfa.harvard.edu/cgi-bin/nph-sesame/-oxp/SNV"]
 EPOCH = 2026.0  # middle of the SPHEREx data we use (DR1 + QR3)
 
 # IRSA SIA was answering 502 for hours at a time while we worked, so we wait
@@ -155,9 +157,17 @@ def sia_query(ra: float, dec: float, budget: Budget, online: bool, cache: Path =
 
 def resolve(name: str, epoch: float = EPOCH) -> dict:
     from urllib.parse import quote
-    url = SESAME + "?" + quote(name)  # Sesame takes the bare name as the query string
-    r = httpx.get(url, timeout=180, follow_redirects=True)
-    r.raise_for_status()
+    errors = []
+    for base in SESAME_MIRRORS:
+        url = base + "?" + quote(name)  # Sesame takes the bare name as the query string
+        try:
+            r = httpx.get(url, timeout=60, follow_redirects=True)
+            r.raise_for_status()
+            break
+        except httpx.HTTPError as e:
+            errors.append(f"{base}: {e}")
+    else:
+        raise ConnectionError("; ".join(errors))
     root = ET.fromstring(r.content)
     res = root.find(".//Resolver")
     if res is None or res.find("jradeg") is None:

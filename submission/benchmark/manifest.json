@@ -595,10 +595,24 @@
    "detector": "SPHEREx-D6",
    "source": "archive",
    "split": "held_out",
-   "ra": null,
-   "dec": null,
-   "simbad_query": "WISEPA J182831.08+265037.8",
-   "resolve_error": "2026-11-16T09:25:43+00:00 Sesame did not resolve 'WISEPA J182831.08+265037.8'"
+   "ra": 277.134515,
+   "dec": 26.844577,
+   "simbad_query": "WISE J182831.08+265037.7",
+   "simbad_query_original": "WISEPA J182831.08+265037.8",
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://vizier.cfa.harvard.edu/cgi-bin/nph-sesame/-oxp/SNV?WISE%20J182831.08%2B265037.7",
+    "utc": "2026-11-17T07:13:59+00:00",
+    "simbad_name": "WISE J182831.08+265037.7",
+    "j2000": [
+     277.12628737,
+     26.84335419
+    ],
+    "pm_mas_yr": [
+     1016.5,
+     169.3
+    ]
+   }
   },
   {
    "id": "wise0350",
@@ -631,10 +645,24 @@
    "detector": "SPHEREx-D6",
    "source": "archive",
    "split": "calibration",
-   "ra": null,
-   "dec": null,
-   "simbad_query": "WISEPC J140518.40+553421.5",
-   "resolve_error": "2026-11-16T09:25:51+00:00 Sesame did not resolve 'WISEPC J140518.40+553421.5'"
+   "ra": 211.308714,
+   "dec": 55.573549,
+   "simbad_query": "WISE J140518.39+553421.3",
+   "simbad_query_original": "WISEPC J140518.40+553421.5",
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://vizier.cfa.harvard.edu/cgi-bin/nph-sesame/-oxp/SNV?WISE%20J140518.39%2B553421.3",
+    "utc": "2026-11-17T07:15:02+00:00",
+    "simbad_name": "WISE J140518.39+553421.3",
+    "j2000": [
+     211.33853904,
+     55.57191069
+    ],
+    "pm_mas_yr": [
+     -2334.8,
+     226.8
+    ]
+   }
   },
   {
    "id": "wise2056",
@@ -643,10 +671,24 @@
    "detector": "SPHEREx-D6",
    "source": "archive",
    "split": "held_out",
-   "ra": null,
-   "dec": null,
-   "simbad_query": "WISEPC J205628.90+145953.3",
-   "resolve_error": "2026-11-16T09:26:00+00:00 Sesame did not resolve 'WISEPC J205628.90+145953.3'"
+   "ra": 314.124135,
+   "dec": 15.000431,
+   "simbad_query": "WISE J205628.91+145953.2",
+   "simbad_query_original": "WISEPC J205628.90+145953.3",
+   "epoch": 2026.0,
+   "resolver": {
+    "url": "https://vizier.cfa.harvard.edu/cgi-bin/nph-sesame/-oxp/SNV?WISE%20J205628.91%2B145953.2",
+    "utc": "2026-11-17T07:16:03+00:00",
+    "simbad_name": "WISE J205628.91+145953.2",
+    "j2000": [
+     314.11796087,
+     14.99661139
+    ],
+    "pm_mas_yr": [
+     825.8,
+     528.8
+    ]
+   }
   },
   {
    "id": "tamriko",
@@ -665,6 +707,12 @@
    "evidence": "submission/evidence/motion_followup.json",
    "evidence_index": 1,
    "split": "held_out"
+  }
+ ],
+ "corrections": [
+  {
+   "utc": "2026-11-17",
+   "what": "simbad_query of wise1828, wise1405, wise2056 set to their SIMBAD main identifiers; the discovery names were not found by Sesame. Same objects (brown dwarfs, BD*), no change to the list, categories or split."
   }
  ]
 }
