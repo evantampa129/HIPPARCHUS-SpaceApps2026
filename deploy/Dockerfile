@@ -22,7 +22,9 @@ COPY backend/pyproject.toml backend/pyproject.toml
 COPY backend/hipparchus backend/hipparchus
 RUN pip install -c /tmp/constraints.txt -e backend
 COPY data/manifests data/manifests
-COPY submission/evidence/robustness.json submission/evidence/robustness.json
+# The evidence and prebuilt bundles: read by the reproduction and mini-report routes.
+COPY submission/evidence submission/evidence
+COPY submission/bundles submission/bundles
 COPY --from=web /src/frontend/dist frontend/dist
 RUN mkdir -p data/cache && chown -R app:app data
 USER app

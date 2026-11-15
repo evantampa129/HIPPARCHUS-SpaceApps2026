@@ -8,7 +8,8 @@
 # --push needs the `hf` CLI logged in (`hf auth login`, a write token). The Space
 # is created public on free CPU hardware ("cpu-basic"), which costs nothing.
 # Only an explicit allowlist is copied: no cutout cache, no slides, no report,
-# no video, no .env, and nothing that is not already in the public repository.
+# no video, no .env, and nothing that is not already in the public repository. The evidence
+# and the prebuilt bundles are copied whole: the reproduction and mini-report routes read them.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/deploy/.space"
@@ -16,7 +17,7 @@ rm -rf "$OUT" && mkdir -p "$OUT"
 
 copy() { mkdir -p "$OUT/$(dirname "$1")" && cp -r "$ROOT/$1" "$OUT/$1"; }
 for f in LICENSE backend/pyproject.toml backend/hipparchus data/manifests \
-         submission/evidence/robustness.json \
+         submission/evidence submission/bundles \
          frontend/index.html frontend/package.json frontend/package-lock.json \
          frontend/tsconfig.json frontend/vite.config.ts frontend/src \
          deploy/constraints.txt; do
