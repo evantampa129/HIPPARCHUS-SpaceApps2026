@@ -3189,7 +3189,8 @@
       "mjd_max": 60844.113082358,
       "span_hours": 3.3733455600449815,
       "xi": -124.31825927912016,
-      "eta": 169.414427519375
+      "eta": 169.414427519375,
+      "chi2_static_minus_moving": -20.61953387618023
      },
      {
       "n": 3,
@@ -3197,63 +3198,8 @@
       "mjd_max": 60845.94414833,
       "span_hours": 1.6708980480325408,
       "xi": -183.4545676719922,
-      "eta": 211.99426046613442
-     }
-    ]
-   },
-   {
-    "n_detections": 13,
-    "n_visits": 3,
-    "n_position_groups": 3,
-    "fit_order": 2,
-    "groups": [
-     {
-      "n": 2,
-      "mjd_min": 60845.874527578,
-      "mjd_max": 60845.874527578,
-      "span_hours": 0.0,
-      "xi": 29.597266281763034,
-      "eta": 91.57629692463182
-     },
-     {
-      "n": 3,
-      "mjd_min": 60845.942638296,
-      "mjd_max": 60845.944148319,
-      "span_hours": 0.03624055202817544,
-      "xi": 34.246360705596764,
-      "eta": 98.5140636155997
-     },
-     {
-      "n": 8,
-      "mjd_min": 60846.62369208,
-      "mjd_max": 60846.628168851,
-      "span_hours": 0.10744250396965072,
-      "xi": 84.39478371896405,
-      "eta": 162.605996905955
-     }
-    ]
-   },
-   {
-    "n_detections": 9,
-    "n_visits": 2,
-    "n_position_groups": 2,
-    "fit_order": 2,
-    "groups": [
-     {
-      "n": 7,
-      "mjd_min": 60843.49784759,
-      "mjd_max": 60843.502324349,
-      "span_hours": 0.10744221601635218,
-      "xi": -83.83693311412317,
-      "eta": -155.66244753314686
-     },
-     {
-      "n": 2,
-      "mjd_min": 60845.942638296,
-      "mjd_max": 60845.94414833,
-      "span_hours": 0.03624081605812535,
-      "xi": -183.20316965888497,
-      "eta": 212.51373110009644
+      "eta": 211.99426046613442,
+      "chi2_static_minus_moving": -4.19688212270895
      }
     ]
    },
@@ -3277,7 +3223,8 @@
       "mjd_max": 60845.94414833,
       "span_hours": 1.6708980480325408,
       "xi": -183.4545676719922,
-      "eta": 211.99426046613442
+      "eta": 211.99426046613442,
+      "chi2_static_minus_moving": -102.86148638072638
      }
     ]
    },
@@ -3301,7 +3248,8 @@
       "mjd_max": 60845.94414833,
       "span_hours": 1.6708980480325408,
       "xi": -183.4545676719922,
-      "eta": 211.99426046613442
+      "eta": 211.99426046613442,
+      "chi2_static_minus_moving": -90.70219892442859
      }
     ]
    },
@@ -3325,7 +3273,8 @@
       "mjd_max": 60845.94414833,
       "span_hours": 1.6708980480325408,
       "xi": -183.4545676719922,
-      "eta": 211.99426046613442
+      "eta": 211.99426046613442,
+      "chi2_static_minus_moving": -16.00910571861631
      }
     ]
    },
@@ -3349,7 +3298,8 @@
       "mjd_max": 60845.94414833,
       "span_hours": 1.6708980480325408,
       "xi": -183.4545676719922,
-      "eta": 211.99426046613442
+      "eta": 211.99426046613442,
+      "chi2_static_minus_moving": -15.563792263602815
      }
     ]
    },
@@ -3381,7 +3331,8 @@
       "mjd_max": 60846.628168851,
       "span_hours": 0.10744221601635218,
       "xi": -219.35506135882613,
-      "eta": -244.01113068948882
+      "eta": -244.01113068948882,
+      "chi2_static_minus_moving": -0.8377900041070889
      }
     ]
    },
@@ -3397,7 +3348,8 @@
       "mjd_max": 60844.113082358,
       "span_hours": 3.3733455600449815,
       "xi": -124.31825927912016,
-      "eta": 169.414427519375
+      "eta": 169.414427519375,
+      "chi2_static_minus_moving": -56.97298533302573
      },
      {
       "n": 1,
@@ -3421,7 +3373,8 @@
       "mjd_max": 60844.113082358,
       "span_hours": 3.3733455600449815,
       "xi": -124.31825927912016,
-      "eta": 169.414427519375
+      "eta": 169.414427519375,
+      "chi2_static_minus_moving": -50.14185291432062
      },
      {
       "n": 1,
@@ -3445,7 +3398,8 @@
       "mjd_max": 60844.113082358,
       "span_hours": 3.3733455600449815,
       "xi": -124.31825927912016,
-      "eta": 169.414427519375
+      "eta": 169.414427519375,
+      "chi2_static_minus_moving": -63.02109987392767
      },
      {
       "n": 1,
@@ -3477,7 +3431,8 @@
       "mjd_max": 60845.94414833,
       "span_hours": 1.6708980480325408,
       "xi": -183.4545676719922,
-      "eta": 211.99426046613442
+      "eta": 211.99426046613442,
+      "chi2_static_minus_moving": -10.186015539082456
      }
     ]
    },
@@ -3501,7 +3456,8 @@
       "mjd_max": 60845.94414833,
       "span_hours": 1.6708980480325408,
       "xi": -183.4545676719922,
-      "eta": 211.99426046613442
+      "eta": 211.99426046613442,
+      "chi2_static_minus_moving": -30.982577358731504
      }
     ]
    }
@@ -3614,7 +3570,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-19_09%3A19%3A19&xobs=-3.182593006E%2B03%2C-6.986892345E%2B02%2C6.229117596E%2B03%2C-6.699733862E%2B00%2C8.279947376E-01%2C-3.325711961E%2B00&fov-ra-center=13-25-30.26&fov-dec-center=M07-48-23.5&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 13,
        "objects": [
         {
@@ -3801,7 +3757,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-18_23%3A11%3A55&xobs=5.240773438E%2B03%2C-9.638062859E%2B02%2C4.585508156E%2B03%2C-4.999710714E%2B00%2C-4.763608478E-01%2C5.608872593E%2B00&fov-ra-center=13-25-28.76&fov-dec-center=M07-47-51.2&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 9,
        "objects": [
         {
@@ -3944,7 +3900,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-19_14%3A57%3A36&xobs=1.436077192E%2B03%2C8.825248308E%2B02%2C-6.825661699E%2B03%2C7.354934252E%2B00%2C-5.750475656E-01%2C1.472790270E%2B00&fov-ra-center=13-25-25.83&fov-dec-center=M07-42-28.0&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 6,
        "objects": [
         {
@@ -4024,7 +3980,35 @@
      },
      "n_tracks": 2,
      "n_matching_horizons": 1,
-     "n_rejected_degenerate": 16
+     "n_rejected_degenerate": 15,
+     "tracks": [
+      {
+       "n_detections": 23,
+       "n_visits": 6,
+       "fit_order": 2,
+       "fit_rms_arcsec": 0.6482587638825212,
+       "fit_chi2_red": 4.8260165619327315,
+       "rate_arcsec_h": [
+        5.702287418711086,
+        2.107174588999201
+       ],
+       "median_offset_from_horizons_arcsec": 0.4321467834516928,
+       "matches_horizons": true
+      },
+      {
+       "n_detections": 3,
+       "n_visits": 3,
+       "fit_order": 1,
+       "fit_rms_arcsec": 4.679969754422291,
+       "fit_chi2_red": 5.303615903107062,
+       "rate_arcsec_h": [
+        9.294549240772994,
+        4.103543975496421
+       ],
+       "median_offset_from_horizons_arcsec": 92.85739468906542,
+       "matches_horizons": false
+      }
+     ]
     }
    },
    "linked": true,
@@ -5083,7 +5067,7 @@
     "n_with_outlier_at_prediction": 30,
     "n_exposures": 34
    },
-   "runtime_s": 533.4,
+   "runtime_s": 140.1,
    "figure": "report/figures/motion_followup_2052tamriko.png"
   },
   {
@@ -5107,13 +5091,13 @@
       "release": "spherex_dr1",
       "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+12.083570531820712+13.500246753832329+0.001&RESPONSEFORMAT=VOTABLE",
       "sha256": "7ad7f65d48443c02a6d0d46181716076b37238853ae9b8982f0260b8c158fcda",
-      "status": "live"
+      "status": "cached"
      },
      {
       "release": "spherex_qr3",
       "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+12.083570531820712+13.500246753832329+0.001&RESPONSEFORMAT=VOTABLE",
       "sha256": "90aee128e9cf27a11ee086d083a0c76795dbe6c0b25baf7057f5b537a1f027bb",
-      "status": "live"
+      "status": "cached"
      }
     ],
     "n_exposures_in_window": 20,
@@ -5193,7 +5177,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_21%3A18%3A33&xobs=6.038510535E%2B03%2C1.950516044E%2B03%2C-3.045818483E%2B03%2C3.418047265E%2B00%2C-1.139367186E-01%2C6.699393482E%2B00&fov-ra-center=00-48-31.65&fov-dec-center=13-29-37.4&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 6,
        "objects": [
         {
@@ -5303,7 +5287,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_23%3A19%3A15&xobs=3.796409020E%2B03%2C9.814106576E%2B01%2C5.916481718E%2B03%2C-6.073187441E%2B00%2C-2.094383067E%2B00%2C3.919622419E%2B00&fov-ra-center=00-48-19.21&fov-dec-center=13-19-23.5&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 3,
        "objects": [
         {
@@ -5380,7 +5364,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-07_03%3A30%3A06&xobs=-1.239748485E%2B03%2C6.825694780E%2B02%2C-6.888635238E%2B03%2C7.170199863E%2B00%2C1.985340774E%2B00%2C-1.099534645E%2B00&fov-ra-center=00-49-09.56&fov-dec-center=13-19-52.0&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 0,
        "objects": []
       }
@@ -5423,7 +5407,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-07_05%3A30%3A32&xobs=6.511352315E%2B03%2C1.935780731E%2B03%2C-1.844835404E%2B03%2C2.178278872E%2B00%2C-4.820875420E-01%2C7.184344341E%2B00&fov-ra-center=00-48-23.51&fov-dec-center=13-26-18.0&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 3,
        "objects": [
         {
@@ -5500,7 +5484,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-07_07%3A09%3A51&xobs=6.674546656E%2B03%2C1.891366089E%2B03%2C-1.191814920E%2B03%2C1.500730389E%2B00%2C-6.768146081E-01%2C7.340919722E%2B00&fov-ra-center=00-48-32.94&fov-dec-center=13-36-35.4&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 3,
        "objects": [
         {
@@ -5577,7 +5561,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_21%3A38%3A20&xobs=4.844015534E%2B03%2C4.774708961E%2B02%2C5.075602080E%2B03%2C-5.154029284E%2B00%2C-2.026388868E%2B00%2C5.095148547E%2B00&fov-ra-center=00-49-17.94&fov-dec-center=13-22-58.2&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 0,
        "objects": []
       }
@@ -5620,7 +5604,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_22%3A27%3A38&xobs=-4.698126276E%2B03%2C-4.239825538E%2B02%2C-5.212271044E%2B03%2C5.295459222E%2B00%2C2.043414146E%2B00%2C-4.944515234E%2B00&fov-ra-center=00-49-00.05&fov-dec-center=13-39-36.3&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 3,
        "objects": [
         {
@@ -5705,7 +5689,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-07_02%3A31%3A41&xobs=4.875060810E%2B03%2C5.073408807E%2B02%2C5.042947033E%2B03%2C-5.111531352E%2B00%2C-2.040732441E%2B00%2C5.132123121E%2B00&fov-ra-center=00-48-22.31&fov-dec-center=13-27-29.1&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 4,
        "objects": [
         {
@@ -5793,7 +5777,7 @@
       },
       "sb_ident_from_spherex": {
        "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_21%3A25%3A06&xobs=6.816754005E%2B03%2C1.737899884E%2B03%2C-2.289761293E%2B02%2C4.898387791E-01%2C-9.540731303E-01%2C7.447182357E%2B00&fov-ra-center=00-49-06.04&fov-dec-center=13-25-09.1&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
-       "status": "live",
+       "status": "cached",
        "n_objects": 3,
        "objects": [
         {
@@ -5838,9 +5822,89 @@
       "radius_arcsec": 6.0,
       "min_dt_hours": 4.0
      },
-     "n_tracks": 3,
-     "n_matching_horizons": 0,
-     "n_rejected_degenerate": 29
+     "n_tracks": 6,
+     "n_matching_horizons": 1,
+     "n_rejected_degenerate": 36,
+     "tracks": [
+      {
+       "n_detections": 19,
+       "n_visits": 3,
+       "fit_order": 2,
+       "fit_rms_arcsec": 0.734780481350873,
+       "fit_chi2_red": 62.54716424947773,
+       "rate_arcsec_h": [
+        56.50158975555615,
+        45.324876051335494
+       ],
+       "median_offset_from_horizons_arcsec": 0.7065164821161347,
+       "matches_horizons": true
+      },
+      {
+       "n_detections": 4,
+       "n_visits": 3,
+       "fit_order": 1,
+       "fit_rms_arcsec": 3.4928468423961943,
+       "fit_chi2_red": 16.88972789891105,
+       "rate_arcsec_h": [
+        -14.351135468577862,
+        17.979787222334743
+       ],
+       "median_offset_from_horizons_arcsec": 885.056549301979,
+       "matches_horizons": false
+      },
+      {
+       "n_detections": 4,
+       "n_visits": 3,
+       "fit_order": 1,
+       "fit_rms_arcsec": 3.940015993861014,
+       "fit_chi2_red": 95.7399499483949,
+       "rate_arcsec_h": [
+        -76.37986073617999,
+        34.40730235649595
+       ],
+       "median_offset_from_horizons_arcsec": 1135.5972546162347,
+       "matches_horizons": false
+      },
+      {
+       "n_detections": 3,
+       "n_visits": 3,
+       "fit_order": 1,
+       "fit_rms_arcsec": 1.4828673760324562,
+       "fit_chi2_red": 2.094690622189727,
+       "rate_arcsec_h": [
+        -32.193530688428105,
+        8.682176427557778
+       ],
+       "median_offset_from_horizons_arcsec": 619.9101306540049,
+       "matches_horizons": false
+      },
+      {
+       "n_detections": 4,
+       "n_visits": 3,
+       "fit_order": 1,
+       "fit_rms_arcsec": 1.9651718957142497,
+       "fit_chi2_red": 4.406928904852023,
+       "rate_arcsec_h": [
+        7.161849440231078,
+        -9.203734331639257
+       ],
+       "median_offset_from_horizons_arcsec": 670.5810509041042,
+       "matches_horizons": false
+      },
+      {
+       "n_detections": 4,
+       "n_visits": 3,
+       "fit_order": 1,
+       "fit_rms_arcsec": 3.9663896038646915,
+       "fit_chi2_red": 1.1852882414185593,
+       "rate_arcsec_h": [
+        30.762418894557833,
+        16.784927469045375
+       ],
+       "median_offset_from_horizons_arcsec": 335.9680811814043,
+       "matches_horizons": false
+      }
+     ]
     }
    },
    "linked": true,
@@ -6577,13 +6641,13 @@
     "n_with_outlier_at_prediction": 20,
     "n_exposures": 20
    },
-   "runtime_s": 2989.7,
+   "runtime_s": 1368.7,
    "figure": "report/figures/motion_followup_433eros.png"
   }
  ],
  "run": {
-  "started_utc": "2026-11-16T07:50:04+00:00",
-  "runtime_s": 3620.3,
+  "started_utc": "2026-11-16T10:07:24+00:00",
+  "runtime_s": 1762.9,
   "python": "3.12.3",
   "numpy": "2.5.4"
  }

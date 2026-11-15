@@ -568,7 +568,15 @@ def run_case(case):
         "blind_search": {"n_detections": len(dets), "n_static": int(static.sum()), "tracks": rows,
                          "with_vetting": {"vet_settings": VET, "n_tracks": len(tracks_v),
                                           "n_matching_horizons": sum(1 for tr in tracks_v if offset(tr) < R.MATCH_RADIUS),
-                                          "n_rejected_degenerate": len(rejected_v)}},
+                                          "n_rejected_degenerate": len(rejected_v),
+                                          # We list the survivors so a reader can see what vetting does NOT
+                                          # remove: chance alignments of 3-4 single detections, one per visit.
+                                          "tracks": [{"n_detections": int(len(tr.members)), "n_visits": int(tr.n_visits),
+                                                      "fit_order": int(tr.fit.coef_xi.size - 1),
+                                                      "fit_rms_arcsec": tr.fit.rms_arcsec, "fit_chi2_red": tr.fit.chi2_red,
+                                                      "rate_arcsec_h": list(tr.fit.rate_arcsec_per_hour[:2]),
+                                                      "median_offset_from_horizons_arcsec": offset(tr),
+                                                      "matches_horizons": offset(tr) < R.MATCH_RADIUS} for tr in tracks_v]}},
         "linked": target is not None,
         "exposures": exposures,
         "residuals_vs_horizons_spherex_arcsec": {"all_detections_near_prediction": stats(m_rows),
