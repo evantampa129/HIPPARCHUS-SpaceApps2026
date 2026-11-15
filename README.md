@@ -6,7 +6,7 @@ different times, and tells you whether the change is real, or why the comparison
 Team **AETHENOVA** · NASA Space Apps Challenge 2026, *Planet X and SPHEREx* (Athens) · *Ancient curiosity. Infinite discovery.*
 
 [**Live demo (Judge Mode)**](https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/) ·
-[29 s film](video/hipparchus_aethenova_29s.mp4) ·
+[29 s film](video/hipparchus_aethenova_29s.mp4) ([80 s scientific](video/hipparchus_aethenova_extended.mp4), [18 s vertical](video/hipparchus_aethenova_vertical.mp4)) ·
 [6-slide presentation](presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf) ·
 [Research report](report/HIPPARCHUS_AETHENOVA_FINAL.pdf) ·
 [Reproduce](#reproduce-the-results) ·
@@ -93,6 +93,14 @@ NASA/IPAC IRSA, processed by HIPPARCHUS.*
 - **Catalogue match.** SIMBAD and Gaia DR3 put all three target positions on the right star.
 - **Evidence graph.** Every number links back to its cutout checksum, the archive answer and the dataset DOI. A test
   fails if any link breaks.
+- **Held-out benchmark (32 objects, real SPHEREx DR1).** We fixed the object list, the split and the 5σ rule before
+  running it, and changed nothing afterwards. On the 15 held-out objects: 3/3 known variables detected, 2/2 asteroids
+  recovered, 0/3 faint Y dwarfs flagged, but **2 of 4 stable stars flagged** (5 of 248 pairs, 2.0%; 95% 0–4.1% when
+  we resample whole objects). Those false alarms are 6.5–8.7% changes at 5–7σ, the size of the calibration
+  systematic the formal errors leave out; with the 12.5% floor measured earlier they vanish, at the cost of one
+  variable (secondary check, not the rule). Stable stars show a −1.0% ± 0.2% median offset. No saturated star fell in
+  the held-out split; all 5 in the other splits were refused. Details in `submission/benchmark/stats.json` and the
+  report.
 
 What we did not do: no machine-learning ranking. With three targets and no labelled examples there is nothing to train
 or test one on fairly.
@@ -115,8 +123,11 @@ deploy/deploy_space.sh --build                    # stages an allowlist of publi
 docker run --rm -p 7860:7860 hipparchus-space     # then open http://localhost:7860
 ```
 
-We do not host it: Hugging Face now asks for a paid plan for Docker Spaces, and we kept the project at zero cost.
-The public results live on the Judge Mode page instead.
+We do not host it. Hugging Face now asks for a paid plan for Docker Spaces, and we kept the project at zero cost.
+We measured the image under a 512 MB limit (Render's and Koyeb's free size): 187 MiB idle, about 350 MiB with two
+analyses done, 17 s to start. It fits, but both free tiers sleep when idle and lose the disk, so the first analysis
+after a pause downloads everything from IRSA again (about 7 minutes for RW Aur). The public results live on the
+Judge Mode page instead, which answers instantly.
 
 The app has three explorers besides the comparison view: an **All-Sky Explorer** on the official SPHEREx DR1 HiPS
 (Aladin Lite, loaded from jsDelivr at runtime), a **Spectral Explorer** that shows the wavelength and flux of every
@@ -148,9 +159,9 @@ More reproduction tools:
   `submission/bundles/reports/`, notebooks in `notebooks/`. The app serves them at `/reproduce` and `/report/<case>.html`.
 - `python scripts/reproduce_motion_followup.py`: Tamriko, Eros and the track vetting (~1 h, needs network).
 - `python scripts/reproduce_psfsub.py`, `reproduce_jointpsf.py`: the experimental subtraction and A/B fit.
-- `python scripts/run_benchmark.py --online`: the 32-object benchmark in `submission/benchmark/`. Its archive runs
-  are blocked for now (IRSA answered HTTP 502 for the whole run), so it has no held-out star metrics yet.
-- `visualizations/manim/`: ten short scenes whose on-screen numbers come from the evidence files (`./render.sh`).
+- `python scripts/run_benchmark.py --online` then `python scripts/benchmark_stats.py`: the 32-object benchmark in
+  `submission/benchmark/` (results below).
+- `visualizations/manim/`: fifteen short scenes whose on-screen numbers come from the evidence files (`./render.sh`).
 
 ## Repository layout
 
@@ -163,7 +174,7 @@ notebooks/     reproduction notebooks (offline / online)
 visualizations/manim/  scene library: ten short animations built from the evidence files
 report/        research report (LaTeX + PDF), figures, bibliography
 presentation/  six-slide deck (PPTX + PDF) and the script that builds it, screenshots, logos
-video/         29 s film (MP4 + captions), its editable Remotion source, credits and QC frames
+video/         three film cuts (29 s, 80 s, 18 s vertical; MP4 + captions), Remotion source, credits and QC
 ```
 
 ## Data, credits and AI use
