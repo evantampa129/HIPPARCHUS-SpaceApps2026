@@ -372,7 +372,7 @@ interpreted (same detector, same wavelength, clean pixels), challenges the resul
 choices, and keeps the evidence back to the NASA archive. Three real cases, precomputed from cached SPHEREx cutouts,
 so nothing here waits for a live archive download.</p>
 <nav><a href='#rw_aur'>RW Aurigae</a><a href='#barnard'>Barnard's Star</a><a href='#wise0855'>WISE 0855</a>
-<a href='{REPO}/blob/main/report/hipparchus_scientific_report.pdf'>Report (PDF)</a>
+<a href='{REPO}/blob/main/report/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Report (PDF)</a>
 <a href='{REPO}/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Slides (PDF)</a>
 <a href='#film'>Video</a><a href='{REPO}'>Code</a>
 <a href='{REPO}/blob/main/docs/DATA_PROVENANCE.md'>Data provenance</a><a href='{REPO}/blob/main/docs/SCIENTIFIC_REFERENCES.md'>References</a><a href='{REPO}/blob/main/docs/AI_USAGE_DISCLOSURE.md'>AI use</a><a href='{REPO}/blob/main/FINAL_IMPLEMENTATION_CHECKLIST.md'>Checklist</a></nav>
@@ -383,7 +383,7 @@ so nothing here waits for a live archive download.</p>
  <div><h2>See it in 30 seconds</h2><p>The film uses real screen recordings of the app and real SPHEREx images. English captions.</p>
  <p><a href='{REPO}/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Six-slide presentation (PDF)</a> ·
  <a href='{REPO}/raw/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pptx'>PPTX</a><br>
- <a href='{REPO}/blob/main/report/hipparchus_scientific_report.pdf'>Research report (PDF)</a><br>
+ <a href='{REPO}/blob/main/report/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Research report (PDF)</a><br>
  <a href='{REPO}#reproduce-the-results'>Reproduce every number</a></p></div>
 </section>
 <section class='cards' aria-label='Results at a glance'>

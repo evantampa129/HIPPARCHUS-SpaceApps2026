@@ -8,7 +8,7 @@ Team **AETHENOVA** · NASA Space Apps Challenge 2026, *Planet X and SPHEREx* (At
 [**Live demo (Judge Mode)**](https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/) ·
 [30 s film](video/hipparchus_demo_30s.mp4) ·
 [6-slide presentation](presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf) ·
-[Research report](report/hipparchus_scientific_report.pdf) ·
+[Research report](report/HIPPARCHUS_AETHENOVA_FINAL.pdf) ·
 [Reproduce](#reproduce-the-results) ·
 [Sources & licences](docs/RESOURCES_AND_CREDITS.md)
 
