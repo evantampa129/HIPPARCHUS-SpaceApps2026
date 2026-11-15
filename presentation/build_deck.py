@@ -144,7 +144,7 @@ claims = {c["claim"]: c for c in rob["rw_aur"]["claims"]}
 c15 = next(v for k, v in claims.items() if "1.5" in k)
 call = next(v for k, v in claims.items() if "every" in k)
 cw = rob["wise0855"]["claims"][0]
-n_tests = 106
+n_tests = 183  # 159 backend + 24 Manim (pytest, 16 Nov 2026)
 
 # 1. Identity
 s = slide()
@@ -235,8 +235,9 @@ text(s, "Green: claim holds. Grey: not evaluated (a pair was refused). Numbers: 
 s = slide("From changing stars to moving worlds", "IMPACT, NEXT STEPS AND LIVE DEMO")
 if motion:
     mr = motion["residuals_vs_horizons_spherex_arcsec"]["all_detections_near_prediction"]
-    mline = (f"Moving objects (validated): our blind search linked the known asteroid (216) Kleopatra across "
-             f"7 SPHEREx visits; positions match JPL Horizons to {mr['rms_ra_cosdec']:.2f}″/{mr['rms_dec']:.2f}″ rms.", OK, 15)
+    mline = (f"Moving objects (validated on known asteroids): our blind search linked (216) Kleopatra across "
+             f"7 SPHEREx visits; positions match JPL Horizons to {mr['rms_ra_cosdec']:.2f}″/{mr['rms_dec']:.2f}″ rms. "
+             f"It also linked the fainter (2052) Tamriko and the fast (433) Eros.", OK, 15)
 else:
     mline = ("Moving objects: linking detections across epochs is the next step toward a Planet X search; "
              "not yet validated on real data. FUTURE WORK.", WARN, 15)
@@ -245,7 +246,7 @@ text(s, [("Impact: anyone can ask SPHEREx whether a star changed, and get an ans
          mline,
          ("Planet X: a distant planet would move only arcseconds per day and be faint. SPHEREx can constrain bright "
           "candidates; not seeing one does not rule Planet X out. HIPPARCHUS has not found Planet X.", TXT, 15),
-         ("Next: science-grade wavelength calibration everywhere, joint multi-epoch fits, larger fields for "
+         ("Next: science-grade wavelength calibration everywhere, wide searches for unknown movers, larger fields for "
           "calibration stars.", MUTED, 14),
          ("AI use: logos (watermarked), video assembly, and help with coding, method review and literature. "
           "All measurements come from real NASA SPHEREx images and are checked by reproducible tests.", MUTED, 12)],
