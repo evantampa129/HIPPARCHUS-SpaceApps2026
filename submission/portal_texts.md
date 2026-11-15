@@ -76,7 +76,7 @@ only the instrument. HIPPARCHUS checks first, measures second, and then challeng
 control stars stay within ×0.86–1.07; SIMBAD and Gaia DR3 position matches. IRSA's own Source Discovery Tool, run
 unmodified on the same exposures, gives RW Aur fluxes within 0.02% of ours and the same verdict on all 8 pairs, and
 IRSA's Moving Object Search Tool lists the same 36 Kleopatra images we measured. Our pairing rule was also checked
-against the spectral response it stands for. 106 automated tests on real SPHEREx cutouts.
+against the spectral response it stands for. 183 automated tests (159 for the pipeline, most on real SPHEREx cutouts, and 24 for the animated scenes).
 
 **What we found about the data.** Our audit against the official SPHEREx CWAVE/CBAND calibration showed that astropy
 applies the celestial SIP distortion to the spectral lookup table, shifting wavelengths by up to 18 nm. We proved the
