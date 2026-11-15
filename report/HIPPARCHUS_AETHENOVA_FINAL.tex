@@ -214,6 +214,58 @@ error bars. Right: fraction of SIMULATED injected stars recovered at $5\sigma$ a
 \label{fig:val}
 \end{figure}
 
+\section{Benchmark on 32 objects with a held-out split}\label{sec:bench}
+Before running anything we wrote a manifest of 32 objects (\texttt{submission/benchmark/manifest.json}) in five
+groups, with a split fixed in advance: \emph{dev} (the three published targets and Kleopatra), \emph{calibration}
+(13 objects we were allowed to look at) and \emph{held-out} (15 objects, scored once). The detection rule was fixed
+too: a pair is ``changed'' when its formal $|\sigma|\ge5$. No threshold was changed after seeing held-out results.
+The run used live SPHEREx DR1 data from IRSA (\texttt{run\_benchmark.py --online}, final run 17~November~2026,
+10:14--10:55~UTC). Intervals are Wilson 95\%; because pairs of one object share exposures, pair-level rates also get
+a 95\% interval from a bootstrap that resamples objects (5000 draws, \texttt{benchmark\_stats.py}).
+
+\begin{table}[h]\centering\small
+\caption{Held-out results (REAL SPHEREx data, rule $|\sigma|\ge5$ fixed in advance).}\label{tab:bench}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.33\linewidth}>{\raggedright\arraybackslash}p{0.33\linewidth}>{\raggedright\arraybackslash}p{0.26\linewidth}}\toprule
+Quantity & Result & 95\% interval\\\midrule
+Known variables detected (recall) & 3/3 (AA~Tau, DG~Tau, V2492~Cyg) & 44--100\%\\
+Precision (objects) & 3/5 & 23--88\%\\
+Stable stars flagged (object FPR) & 2/4 (P177D, G191-B2B) & 15--85\%\\
+Stable stars without a valid pair & 3 (BD+17~4708, HD~116405, HD~180609) & ---\\
+Faint Y dwarfs flagged & 0/3 & 0--56\%\\
+Stable-star pairs flagged (pair FPR) & 5/248 = 2.0\% & Wilson 0.9--4.6\%; object bootstrap 0--4.1\%\\
+Variable-star pairs flagged & 135/216 = 62.5\% & object bootstrap 54--95\%\\
+Photometric bias, stable pairs & $-1.04\%\pm0.22\%$ (median, $n=248$) & bootstrap $-1.50$ to $-0.39\%$\\
+Bias of in-field control stars & $-2.38\%\pm0.45\%$ ($n=195$) & ---\\
+Spread of $\sigma$ on stable pairs & 1.83 (1 if errors were complete) & ---\\
+Known asteroids recovered & 2/2 (Tamriko, Eros) & 34--100\%\\\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{False positives.} All five flagged stable pairs are 6.5--8.7\% changes at $|\sigma|=5.0$--$7.0$: the size of
+the calibration systematic measured earlier on RW~Aur field stars (12.5\%, Section~\ref{sec:rob}), not of a real
+variation. Both P177D pairs share one exposure (\texttt{2026W02\_2A\_0150\_4}), which points to that exposure rather
+than to the star. Two of the three G191-B2B pairs compare the same two visits (exposures \texttt{2025W36\_2B\_0012}
+and \texttt{2026W36\_2A\_0657/0658}) and both drop by 7--9\%, again a visit-level offset. Their wavelength offsets
+(9--12~nm) are typical for that star (median 9.4~nm over its 56 pairs), so the wavelength rule does not explain them. The spread of 1.83 instead of 1 on stable pairs says the same thing: the formal errors miss a
+systematic term of a few per cent.
+
+\textbf{Saturated stars.} No saturated star happened to fall in the held-out split. In the calibration and dev
+splits HIPPARCHUS refused all five (Procyon, Arcturus, Vega, 61~Cyg~A and Barnard's Star; 57--100\%), with no
+usable exposure.
+
+\textbf{Secondary check (not the benchmark rule).} Judged with the 12.5\% calibration floor, which was measured before
+this benchmark existed, no stable star is flagged (0/248 pairs) and two of three variables are still detected
+(DG~Tau is lost). This is a second reading of the same pairs, reported next to the primary result and not instead of it.
+
+\textbf{Outside the held-out split.} In the calibration split one pair of the Y dwarf WISE~1405 shows a $\times18$
+change at $23\sigma$ (1 of 128 pairs). A Y dwarf does not do that; a contaminant in the aperture is more likely, but
+we have not established the cause. Two calibration variables (GM~Aur, V1647~Ori) were not flagged; they may simply
+not have changed between the SPHEREx visits, so recall is a lower bound.
+
+\textbf{External failures.} An earlier run (17~November, 08:32--08:45~UTC) could not fetch 10 objects: eight SIA
+queries returned HTTP~503 and two failed in DNS resolution. Each attempt is logged with its URL and time. The final
+run queried IRSA again for those ten (the rest came from the cache) and fetched all of them; no object is left blocked.
+
 \section{Results}
 \paragraph{A. Valid comparison: RW Aurigae.} RW Aur is a young star with a history of deep dimming events caused by
 its disk \parencite{rodriguez2013}. Of 1540 possible pairs, 1480 fail the wavelength test and 1387 involve a flagged
@@ -608,6 +660,7 @@ the robust result.
 \item The result uses one control star, and not every pair has one; the field-star check has only 0--2 stars per cutout. Target positions are approximate priors checked
 against catalogues only after the analysis. SPHEREx pixels are $6.15''$, so the RW~Aur measurement is of both
 components of the binary together, not of one star.
+\item On the held-out benchmark the $5\sigma$ formal rule flags 2 of 4 stable stars at the 7\% level: formal errors alone do not include the calibration systematic. The calibration floor removes these false alarms in a secondary check but costs one of three variables (Section~\ref{sec:bench}).
 \item Injection-recovery inserts stars after reprojection and without their own photon noise; it measures the
 detection threshold of the comparison step, not of the full pipeline.
 \item We did not build a machine-learning ranker or a Bayesian model of candidates: with three targets and no
@@ -642,6 +695,7 @@ Discovery of unknown movers & not demonstrated & no wide search; Planet X not fo
 PSF-matched / ZOGY subtraction & experimental, not adopted & failed the pre-set rule in the RW~Aur field; published conclusions unchanged (\texttt{psfsub\_check.json}, Section~\ref{sec:psfsub})\\
 Resolved RW~Aur components & not demonstrated & joint fit: A--B flux correlation $-0.92$ to $-0.997$; B fraction set by assumed positions (\texttt{jointpsf\_check.json})\\
 Barnard's Star photometry & not demonstrated & every epoch saturated; no flux is reported\\
+Held-out benchmark (32 objects) & measured & recall 3/3, stable stars flagged 2/4, pair FPR 2.0\%; false alarms at the calibration-systematic level (Section~\ref{sec:bench})\\
 Calibrated probabilities & not demonstrated & labels come from fixed rules, not probabilities\\
 Machine-learning ranking & not demonstrated & no labelled set of real and false changes to train or test on\\\bottomrule
 \end{tabular}
