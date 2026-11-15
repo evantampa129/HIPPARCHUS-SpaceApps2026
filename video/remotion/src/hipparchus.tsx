@@ -23,8 +23,8 @@
  *   scripts/capture_judge.mjs crops of the real Judge Mode page -> public/judge/*.png
  *
  * STORYBOARD (frames at 30 fps; scenes overlap by 10 frames for cross-fades)
- *   0.0– 4.0 s  ANCIENT CURIOSITY   turning celestial sphere drawn line by line ("illustration")
- *                                   text: 2,000 YEARS OF LOOKING UP
+ *   0.0– 4.0 s  ANCIENT CURIOSITY   Manim scene M01 (CONCEPTUAL / HISTORICAL ILLUSTRATION):
+ *                                   celestial sphere -> RA/Dec grid; text: 2,000 YEARS OF LOOKING UP
  *   4.0– 8.0 s  A NEW WINDOW        sphere -> flat RA/Dec chart, zoom onto RW Aur (RA 76.956°,
  *                                   Dec +30.401°), cross-fade into real SPHEREx cutouts of RW Aur,
  *                                   WISE 0855-0714, Barnard's Star; text: THE INFRARED UNIVERSE
@@ -34,8 +34,8 @@
  *                                   timeline, comparison (four 1x cuts)
  *  18.0–24.0 s  THE EVIDENCE        Judge Mode page: RW Aur card, robustness heatmap (24/24), Barnard
  *                                   card (refused); OBSERVE. VERIFY. CHALLENGE. EXPLAIN.
- *  24.0–27.0 s  THE NEXT FRONTIER   from public/frontier.json; now "CONCEPT — FUTURE RESEARCH" with a
- *                                   programmatic illustration of a moving dot over five epochs
+ *  24.0–27.0 s  MOVING WORLDS       Manim scene M06 (DATA-DRIVEN): (216) Kleopatra's real SPHEREx
+ *                                   detections vs JPL Horizons; tagged KNOWN ASTEROID, NOT PLANET X
  *  27.0–29.4 s  FINAL IDENTITY      HIPPARCHUS logo, THE UNIVERSE IS NEVER STILL., AETHENOVA logo,
  *                                   ANCIENT CURIOSITY. INFINITE DISCOVERY., fade to black
  * Captions: src/captions.ts (burned in + .srt). Audio: synthesised ambient bed, no voice, no music.
@@ -43,7 +43,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { Captions, SceneFade } from "./ui";
-import { Frontier, SceneAction, SceneAncient, SceneChallenge, SceneEvidence, SceneFrontier, SceneIdentity, SceneWindow } from "./scenes";
+import { Frontier, SceneAction, SceneChallenge, SceneEvidence, SceneIdentity, SceneManim, SceneWindow } from "./scenes";
 
 export const FPS = 30;
 export const DURATION = 882; // 29.4 s
@@ -54,10 +54,10 @@ const T = { ancient: 0, window: 120, challenge: 240, action: 360, evidence: 540,
 
 export type Props = { frontier: Frontier };
 
-export const Hipparchus: React.FC<Props> = ({ frontier }) => (
+export const Hipparchus: React.FC<Props> = () => (
   <AbsoluteFill style={{ background: "#000" }}>
     <Sequence name="1 Ancient curiosity" from={T.ancient} durationInFrames={T.window - T.ancient + OVERLAP}>
-      <SceneFade><SceneAncient /></SceneFade>
+      <SceneFade><SceneManim src="manim/m01_ancient_sky.mp4" headline="2,000 YEARS OF LOOKING UP" /></SceneFade>
     </Sequence>
     <Sequence name="2 A new window" from={T.window} durationInFrames={T.challenge - T.window + OVERLAP}>
       <SceneFade><SceneWindow /></SceneFade>
@@ -71,8 +71,8 @@ export const Hipparchus: React.FC<Props> = ({ frontier }) => (
     <Sequence name="5 The evidence" from={T.evidence} durationInFrames={T.frontier - T.evidence + OVERLAP}>
       <SceneFade><SceneEvidence /></SceneFade>
     </Sequence>
-    <Sequence name="6 The next frontier" from={T.frontier} durationInFrames={T.identity - T.frontier + OVERLAP}>
-      <SceneFade><SceneFrontier frontier={frontier} /></SceneFade>
+    <Sequence name="6 Moving worlds" from={T.frontier} durationInFrames={T.identity - T.frontier + OVERLAP}>
+      <SceneFade><SceneManim src="manim/m06_kleopatra.mp4" headline="FROM CHANGING STARS TO MOVING WORLDS" startFrom={114} tag="KNOWN ASTEROID, NOT PLANET X" /></SceneFade>
     </Sequence>
     <Sequence name="7 Final identity" from={T.identity} durationInFrames={DURATION - T.identity}>
       <SceneFade outF={1}><SceneIdentity /></SceneFade>

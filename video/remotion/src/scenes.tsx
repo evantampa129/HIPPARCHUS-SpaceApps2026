@@ -352,3 +352,22 @@ export const SceneIdentity: React.FC = () => {
     </AbsoluteFill>
   );
 };
+
+// ---------------------------------------------------------------- MANIM CLIPS (scenes 1 and 6)
+// We show a Manim scene from visualizations/manim/renders as it was rendered, scaled into a
+// frame under a headline. The clip carries its own label (CONCEPTUAL / DATA-DRIVEN) and source
+// line, so nothing is added on top of it; startFrom picks the part of the clip we have room for.
+const MW = 1344, MH = 756;
+export const SceneManim: React.FC<{ src: string; headline: string; startFrom?: number; tag?: string }> = ({ src, headline, startFrom = 0, tag }) => {
+  const f = useCurrentFrame();
+  return (
+    <AbsoluteFill style={{ background: C.bg }}>
+      <Headline text={headline} at={2} top={34} size={60} />
+      <div style={{ position: "absolute", left: (1920 - MW) / 2, top: 130, width: MW, height: MH, opacity: ramp(f, 0, 10),
+        border: `1px solid ${C.line}` }}>
+        <OffthreadVideo src={staticFile(src)} startFrom={startFrom} muted style={{ width: MW, height: MH }} />
+      </div>
+      {tag ? <Tag color={C.warm} style={{ left: (1920 - MW) / 2, top: 130 + MH + 12, fontSize: 22 }}>{tag}</Tag> : null}
+    </AbsoluteFill>
+  );
+};

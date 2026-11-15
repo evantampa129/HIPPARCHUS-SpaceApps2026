@@ -10,5 +10,5 @@ export const CUES: Cue[] = [
   { startMs: 12200, endMs: 17900, text: "HIPPARCHUS searches the archive, checks each epoch, compares like with like." },
   { startMs: 18100, endMs: 21300, text: "RW Aur: 2.56× brighter. The change holds in 24 of 24 analysis settings." },
   { startMs: 21400, endMs: 23900, text: "Barnard’s Star is saturated: comparison refused." },
-  { startMs: 24100, endMs: 26950, text: "Next: moving objects across many epochs. Planet X has not been found." },
+  { startMs: 24100, endMs: 26950, text: "Asteroid Kleopatra, tracked in real SPHEREx images, matches JPL Horizons. No Planet X." },
 ];

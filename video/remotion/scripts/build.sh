@@ -5,7 +5,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 OUT=../hipparchus_aethenova_29s.mp4
 ./scripts/make_ambient.sh
-npx remotion render Hipparchus29 out/raw.mp4 --codec=h264 --crf=16 --audio-codec=aac --audio-bitrate=192k
+npx remotion render Hipparchus29 out/raw.mp4 --concurrency=4 --timeout=120000 --codec=h264 --crf=16 --audio-codec=aac --audio-bitrate=192k
 # Pass 1 measures, pass 2 applies the measured values (linear mode); the picture is copied untouched.
 M=$(ffmpeg -hide_banner -i out/raw.mp4 -af loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p')
 g(){ echo "$M" | sed -n "s/.*\"$1\" : \"\([^\"]*\)\".*/\1/p"; }
