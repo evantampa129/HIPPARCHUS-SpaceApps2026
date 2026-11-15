@@ -3,7 +3,8 @@
     backend/.venv/bin/python report/figures/make_figures.py
 
 Inputs: the real SPHEREx cutouts in backend/tests/fixtures and the evidence
-JSON files in submission/evidence. Nothing here is simulated.
+JSON files in submission/evidence. Only the injection-recovery panel of
+Figure 5 uses SIMULATED stars, and it says so on the figure itself.
 """
 
 import json
@@ -85,4 +86,43 @@ for i, (f, name) in enumerate(cases):
 ax.set_yticks(range(len(cases)), [c[1] for c in cases]); ax.set_xlabel("epoch pairs")
 ax.set_xlim(0, ax.get_xlim()[1] * 1.35)
 fig.savefig(OUT / "pair_outcomes.pdf"); plt.close(fig)
+# Figure 5: is the error model right, and what can be detected?
+val = json.loads((EV / "validation.json").read_text())
+fig, axs = plt.subplots(1, 2, figsize=(7.2, 2.5), constrained_layout=True)
+# Left: spread of the blank-aperture significances per target, against the
+# value of 1 that correct error bars would give.
+names = {"rw_aur": "RW Aur", "wise0855": "WISE 0855", "barnard": "Barnard"}
+rows = [(names[t["id"]], t["null_test"]) for t in val["targets"] if t["null_test"]["n"]]
+rows.append(("all", val["all_targets"]["null_test"]))
+ys = range(len(rows))
+axs[0].barh(ys, [r["std"] for _, r in rows], color="#2c7fb8", height=0.55)
+for i, (_, r) in enumerate(rows):
+    axs[0].text(r["std"] + 0.03, i, f"{r['std']:.2f}  (n={r['n']})", va="center", fontsize=8)
+axs[0].axvline(1, color="k", lw=0.8, ls=":")
+axs[0].set_yticks(list(ys), [n for n, _ in rows]); axs[0].set_xlim(0, 1.6)
+axs[0].set_xlabel(r"spread of blank-aperture significances (ideal 1)")
+axs[0].set_title("null test, real images")
+cur = val["all_targets"]["injection_SIMULATED"]
+axs[1].plot([c["snr_injected"] for c in cur], [c["recovered_fraction"] for c in cur], "o-", color="#c0392b")
+axs[1].axvline(compare.DETECTION_SIGMA, color="k", lw=0.6, ls=":"); axs[1].axhline(0.5, color="k", lw=0.6, ls=":")
+axs[1].set_xlabel("injected S/N in the aperture"); axs[1].set_ylabel(r"fraction recovered at 5$\sigma$")
+axs[1].set_title("injection-recovery: SIMULATED stars", color="#c0392b")
+axs[1].text(0.97, 0.05, "SIMULATED", transform=axs[1].transAxes, ha="right", color="#c0392b", fontsize=12, alpha=0.6,
+            weight="bold")
+fig.savefig(OUT / "validation.pdf"); plt.close(fig)
+
+# Figure 6: brightness against wavelength, coloured by date (real data).
+fig, axs = plt.subplots(1, 2, figsize=(7.2, 2.5), constrained_layout=True)
+for ax, tid in zip(axs, ("rw_aur", "wise0855")):
+    t = next(t for t in val["targets"] if t["id"] == tid)
+    sp = t["spectrum"]
+    from datetime import date
+    days = np.array([(date.fromisoformat(p["date_obs"][:10]) - date(2025, 1, 1)).days for p in sp])
+    sc = ax.scatter([p["wavelength_um"] for p in sp], [p["flux"] for p in sp], c=days, cmap="viridis", s=14, zorder=3)
+    ax.errorbar([p["wavelength_um"] for p in sp], [p["flux"] for p in sp], yerr=[p["flux_err"] for p in sp],
+                fmt="none", ecolor="#999999", lw=0.6, zorder=2)
+    ax.set_xlabel(r"wavelength at the target ($\mu$m)"); ax.set_ylabel("aperture flux (MJy/sr summed)")
+    ax.set_title(f"{t['name']} ({t['detector'][-2:]}), {len(sp)} usable epochs")
+cb = fig.colorbar(sc, ax=axs[1], shrink=0.85); cb.set_label("days since 2025-01-01")
+fig.savefig(OUT / "spectra.pdf"); plt.close(fig)
 print("figures written to", OUT)

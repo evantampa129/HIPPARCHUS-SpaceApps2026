@@ -1,0 +1,1853 @@
+{
+ "nodes": [
+  {
+   "id": "dataset:spherex_dr1",
+   "kind": "dataset",
+   "release": "spherex_dr1",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "query:a0fe4ffce0576783",
+   "kind": "archive_query",
+   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+133.76+-7.2424+0.001&RESPONSEFORMAT=VOTABLE",
+   "sha256": "a0fe4ffce0576783a82dbd50a49012902253cb93f6d1e22a5ad9c80a8edcd949"
+  },
+  {
+   "id": "dataset:spherex_qr3",
+   "kind": "dataset",
+   "release": "spherex_qr3"
+  },
+  {
+   "id": "query:96a415e87dde6c01",
+   "kind": "archive_query",
+   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+133.76+-7.2424+0.001&RESPONSEFORMAT=VOTABLE",
+   "sha256": "96a415e87dde6c014b3726bf060f9d284a759b7738cb03d263854f1b0a307ad2"
+  },
+  {
+   "id": "obs:2025W19_1B_0116_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W19_1B/l2b-v27-2026-197/6/level2_2025W19_1B_0116_1D6_spx_l2b-v27-2026-197.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:760630f919f88914",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W19_1B/l2b-v27-2026-197/6/level2_2025W19_1B_0116_1D6_spx_l2b-v27-2026-197.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "760630f919f88914a67f4561d88b09de7ebf179ecbc1e56a82c277cbab724c96"
+  },
+  {
+   "id": "epoch:2025W19_1B_0116_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.9674101229120895
+  },
+  {
+   "id": "obs:2025W19_1B_0116_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W19_1B/l2b-v27-2026-197/6/level2_2025W19_1B_0116_2D6_spx_l2b-v27-2026-197.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:a286f5f9ece53820",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W19_1B/l2b-v27-2026-197/6/level2_2025W19_1B_0116_2D6_spx_l2b-v27-2026-197.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "a286f5f9ece53820a5d2bccbf035f6215c0de7f93a9f1eb445410df645e89913"
+  },
+  {
+   "id": "epoch:2025W19_1B_0116_2",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 5.00341271476707
+  },
+  {
+   "id": "obs:2025W19_1B_0138_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W19_1B/l2b-v27-2026-197/6/level2_2025W19_1B_0138_1D6_spx_l2b-v27-2026-197.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:eb0a30d3055ef415",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W19_1B/l2b-v27-2026-197/6/level2_2025W19_1B_0138_1D6_spx_l2b-v27-2026-197.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "eb0a30d3055ef4153f18b7dcc7912377d5158ccdf9db5bf88ee26262e322c9ea"
+  },
+  {
+   "id": "epoch:2025W19_1B_0138_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.859533400605324
+  },
+  {
+   "id": "obs:2025W46_1A_0075_4",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0075_4D6_spx_l2b-v27-2026-206.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:f04ae60459cc012f",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0075_4D6_spx_l2b-v27-2026-206.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "f04ae60459cc012f18a86d1a93ddd7723931c64de5b7be1508b0050f0fccee43"
+  },
+  {
+   "id": "epoch:2025W46_1A_0075_4",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.412408323102822
+  },
+  {
+   "id": "obs:2025W46_1A_0076_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0076_1D6_spx_l2b-v27-2026-206.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:126e88b83dc0647e",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0076_1D6_spx_l2b-v27-2026-206.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "126e88b83dc0647e5c45c1a17f0ff96a8b4426db39f054df91ffea70b8c57722"
+  },
+  {
+   "id": "epoch:2025W46_1A_0076_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.444203611210475
+  },
+  {
+   "id": "obs:2025W46_1A_0076_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0076_2D6_spx_l2b-v27-2026-206.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:87c9663777f26a05",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0076_2D6_spx_l2b-v27-2026-206.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "87c9663777f26a054b9d266d4621efc58b9e861513880d2bd0b37a30770f72fc"
+  },
+  {
+   "id": "epoch:2025W46_1A_0076_2",
+   "kind": "epoch",
+   "usable": false,
+   "issues": [
+    "flagged_pixels"
+   ],
+   "wavelength_um": 4.476846787384221
+  },
+  {
+   "id": "obs:2025W46_1A_0076_3",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0076_3D6_spx_l2b-v27-2026-206.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:23652fad86a4137e",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0076_3D6_spx_l2b-v27-2026-206.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "23652fad86a4137eea5c3d0b9a01495bad32a39a4835a6ddad4a488e74ecd6bd"
+  },
+  {
+   "id": "epoch:2025W46_1A_0076_3",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.50969010261948
+  },
+  {
+   "id": "obs:2025W46_1A_0090_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b_retry-v27-2026-207/6/level2_2025W46_1A_0090_1D6_spx_l2b_retry-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:437bcb9365dfded5",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b_retry-v27-2026-207/6/level2_2025W46_1A_0090_1D6_spx_l2b_retry-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "437bcb9365dfded533f360ef9a68e6ead9746c1dae14394bddac425d4d5c2100"
+  },
+  {
+   "id": "epoch:2025W46_1A_0090_1",
+   "kind": "epoch",
+   "usable": false,
+   "issues": [
+    "flagged_pixels"
+   ],
+   "wavelength_um": 4.542038610456494
+  },
+  {
+   "id": "obs:2025W46_1A_0090_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0090_2D6_spx_l2b-v27-2026-206.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:5a9e311c43ceea6d",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0090_2D6_spx_l2b-v27-2026-206.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "5a9e311c43ceea6dd4519d3cf51f768145116a15308eded614979eb5dbe0255a"
+  },
+  {
+   "id": "epoch:2025W46_1A_0090_2",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.576185969849565
+  },
+  {
+   "id": "obs:2025W46_1A_0090_3",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0090_3D6_spx_l2b-v27-2026-206.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:0c810cde9d4e5df7",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0090_3D6_spx_l2b-v27-2026-206.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "0c810cde9d4e5df7abdcdde098c68ce2405c9649691450cc8ef30b15f924ebf4"
+  },
+  {
+   "id": "epoch:2025W46_1A_0090_3",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.610756256854229
+  },
+  {
+   "id": "obs:2025W46_1A_0238_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0238_1D6_spx_l2b-v27-2026-206.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:4d40a17aba58bd3e",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0238_1D6_spx_l2b-v27-2026-206.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "4d40a17aba58bd3e4b0b1e7541d433523c081025397540939ccb9a43d0188421"
+  },
+  {
+   "id": "epoch:2025W46_1A_0238_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.628626996513315
+  },
+  {
+   "id": "obs:2025W46_1A_0238_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0238_2D6_spx_l2b-v27-2026-206.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:575fa69bd4279535",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_1A/l2b-v27-2026-206/6/level2_2025W46_1A_0238_2D6_spx_l2b-v27-2026-206.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "575fa69bd42795358a54fc95934659dd46248a5a1811eca7f56ec337955749f2"
+  },
+  {
+   "id": "epoch:2025W46_1A_0238_2",
+   "kind": "epoch",
+   "usable": false,
+   "issues": [
+    "flagged_pixels"
+   ],
+   "wavelength_um": 4.6632022879479935
+  },
+  {
+   "id": "obs:2025W46_2A_0214_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0214_1D6_spx_l2b-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:0e3ba240bd3fd7a5",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0214_1D6_spx_l2b-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "0e3ba240bd3fd7a559aa01e3fd503932a6ddecf185bb5638249d3f16f966ca4d"
+  },
+  {
+   "id": "epoch:2025W46_2A_0214_1",
+   "kind": "epoch",
+   "usable": false,
+   "issues": [
+    "flagged_pixels"
+   ],
+   "wavelength_um": 4.697672845304095
+  },
+  {
+   "id": "obs:2025W46_2A_0214_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0214_2D6_spx_l2b-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:dec8e45b9b09a56c",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0214_2D6_spx_l2b-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "dec8e45b9b09a56cdffcbb3bcd20fe1d3fb2d560d32804c7ee5d73d104d1ebce"
+  },
+  {
+   "id": "epoch:2025W46_2A_0214_2",
+   "kind": "epoch",
+   "usable": false,
+   "issues": [
+    "flagged_pixels"
+   ],
+   "wavelength_um": 4.7320644857111205
+  },
+  {
+   "id": "obs:2025W46_2A_0214_3",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0214_3D6_spx_l2b-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:5695547399d88a60",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0214_3D6_spx_l2b-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "5695547399d88a602731be3ec666f7271ad64630f0ae8cd7da3ae236969ac851"
+  },
+  {
+   "id": "epoch:2025W46_2A_0214_3",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.766544341751372
+  },
+  {
+   "id": "obs:2025W46_2A_0214_4",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0214_4D6_spx_l2b-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:082191f83fb7fb9e",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0214_4D6_spx_l2b-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "082191f83fb7fb9ecbc22a2580dde6bb8e46b8c8c862891f4a2b9e3a880526da"
+  },
+  {
+   "id": "epoch:2025W46_2A_0214_4",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.801248011508153
+  },
+  {
+   "id": "obs:2025W46_2A_0226_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0226_1D6_spx_l2b-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:2995f854e32d7f57",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0226_1D6_spx_l2b-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "2995f854e32d7f578d1336e0467568340cde3d3e64defeab9e20495053af257f"
+  },
+  {
+   "id": "epoch:2025W46_2A_0226_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.835572494503612
+  },
+  {
+   "id": "obs:2025W46_2A_0226_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b_retry-v27-2026-207/6/level2_2025W46_2A_0226_2D6_spx_l2b_retry-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:946f07f5a2709e74",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b_retry-v27-2026-207/6/level2_2025W46_2A_0226_2D6_spx_l2b_retry-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "946f07f5a2709e7449c1da1e60ec7e67bf0dbde410a519f92f834ff85213f150"
+  },
+  {
+   "id": "epoch:2025W46_2A_0226_2",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.871407726816899
+  },
+  {
+   "id": "obs:2025W46_2A_0226_3",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0226_3D6_spx_l2b-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:cd9cfb79cc61f6fd",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0226_3D6_spx_l2b-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "cd9cfb79cc61f6fdfc95e0e7b0573abcf841170a98f18ef31177b075b06b7b73"
+  },
+  {
+   "id": "epoch:2025W46_2A_0226_3",
+   "kind": "epoch",
+   "usable": false,
+   "issues": [
+    "flagged_pixels"
+   ],
+   "wavelength_um": 4.90733727388756
+  },
+  {
+   "id": "obs:2025W46_2A_0226_4",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0226_4D6_spx_l2b-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:84a82a8584ba30b2",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0226_4D6_spx_l2b-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "84a82a8584ba30b2a39b6b2dfebb54bbc0a3e454862800cd5f83041c8341c420"
+  },
+  {
+   "id": "epoch:2025W46_2A_0226_4",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.943366090217366
+  },
+  {
+   "id": "obs:2025W46_2A_0289_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0289_1D6_spx_l2b-v27-2026-207.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:759e834a436acea0",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W46_2A/l2b-v27-2026-207/6/level2_2025W46_2A_0289_1D6_spx_l2b-v27-2026-207.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "759e834a436acea055c92eb063ee32862b7dbec73f1bbf096805fea5a8d0d611"
+  },
+  {
+   "id": "epoch:2025W46_2A_0289_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.97902118935529
+  },
+  {
+   "id": "obs:2025W50_2A_0232_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W50_2A/l2b-v27-2026-210/6/level2_2025W50_2A_0232_1D6_spx_l2b-v27-2026-210.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:f1ad05cdea34de18",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W50_2A/l2b-v27-2026-210/6/level2_2025W50_2A_0232_1D6_spx_l2b-v27-2026-210.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "f1ad05cdea34de18a2ea68a3f3b5c76105a0a4a2e82744a602d8c655c65572b0"
+  },
+  {
+   "id": "epoch:2025W50_2A_0232_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.628813630418623
+  },
+  {
+   "id": "obs:2025W50_2A_0254_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W50_2A/l2b-v27-2026-210/6/level2_2025W50_2A_0254_1D6_spx_l2b-v27-2026-210.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:e96542ed6196c3c7",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W50_2A/l2b-v27-2026-210/6/level2_2025W50_2A_0254_1D6_spx_l2b-v27-2026-210.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "e96542ed6196c3c7c3ccc71a46cd4f4919ad8c21f532c2f46fb52b7f01bda674"
+  },
+  {
+   "id": "epoch:2025W50_2A_0254_1",
+   "kind": "epoch",
+   "usable": false,
+   "issues": [
+    "flagged_pixels"
+   ],
+   "wavelength_um": 4.6974463759836915
+  },
+  {
+   "id": "obs:2025W50_2A_0428_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W50_2A/l2b-v27-2026-210/6/level2_2025W50_2A_0428_1D6_spx_l2b-v27-2026-210.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:06f3ec811fa97d47",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W50_2A/l2b-v27-2026-210/6/level2_2025W50_2A_0428_1D6_spx_l2b-v27-2026-210.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "06f3ec811fa97d476c6586fab4cebe61e874b8b0a976543ef00a3dfd8d99151f"
+  },
+  {
+   "id": "epoch:2025W50_2A_0428_1",
+   "kind": "epoch",
+   "usable": false,
+   "issues": [
+    "flagged_pixels"
+   ],
+   "wavelength_um": 4.732007556599594
+  },
+  {
+   "id": "obs:2026W17_1B_0227_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0227_2D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:70fe2086ae21c693",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0227_2D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "70fe2086ae21c693943b0d7ccba877f4018631f23f3c66bd96562f234a0222a5"
+  },
+  {
+   "id": "epoch:2026W17_1B_0227_2",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.413959913372187
+  },
+  {
+   "id": "obs:2026W17_1B_0227_3",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0227_3D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:723b058922b29bf6",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0227_3D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "723b058922b29bf619780b320c014a7be9b1b0850b2f2e7826cca83dab3c0ce7"
+  },
+  {
+   "id": "epoch:2026W17_1B_0227_3",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.446614096772146
+  },
+  {
+   "id": "obs:2026W17_1B_0227_4",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0227_4D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:90c42e6da021d25b",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0227_4D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "90c42e6da021d25b498eb568ed3057f51756bad1c84b2fa099ed3639d5f13ec4"
+  },
+  {
+   "id": "epoch:2026W17_1B_0227_4",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.4778179247199335
+  },
+  {
+   "id": "obs:2026W17_1B_0507_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0507_1D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:47aa97d2c19ba96a",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0507_1D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "47aa97d2c19ba96a17e4c57b7055b963ed421718cb3581bfe8896f00997e635d"
+  },
+  {
+   "id": "epoch:2026W17_1B_0507_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.509517090621312
+  },
+  {
+   "id": "obs:2026W17_1B_0507_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0507_2D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:0ac48d1f40364792",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0507_2D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "0ac48d1f40364792a65d40d582e8090ee5dc01e28d7d9c1569192e8b190a9315"
+  },
+  {
+   "id": "epoch:2026W17_1B_0507_2",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.542364578143493
+  },
+  {
+   "id": "obs:2026W17_1B_0507_3",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0507_3D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:55f80b8366fdeeae",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0507_3D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "55f80b8366fdeeae8b8b2f44ac423aefc9312602f581b11fa327c785101af89f"
+  },
+  {
+   "id": "epoch:2026W17_1B_0507_3",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.577915915613172
+  },
+  {
+   "id": "obs:2026W17_1B_0634_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0634_1D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:6a9410b8820af57c",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0634_1D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "6a9410b8820af57cfd913084508f65d97d17bd21d3fc163a7f8588da730c7e15"
+  },
+  {
+   "id": "epoch:2026W17_1B_0634_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.609109414570835
+  },
+  {
+   "id": "obs:2026W17_1B_0634_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0634_2D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:eccaf71f50e69c09",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0634_2D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "eccaf71f50e69c092d258ea6e6616b0ae925cdbf554200c649d211ca616b9cb9"
+  },
+  {
+   "id": "epoch:2026W17_1B_0634_2",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.643595450123955
+  },
+  {
+   "id": "obs:2026W17_1B_0634_3",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0634_3D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:ce612aec0d019005",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0634_3D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "ce612aec0d019005e3bd7fd7198ec9f9b86d04e227b8a612e141a3b0e63afb20"
+  },
+  {
+   "id": "epoch:2026W17_1B_0634_3",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.667201171473046
+  },
+  {
+   "id": "obs:2026W17_1B_0634_4",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0634_4D6_spx_l2b-v27-2026-242.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:50191d1222f8d445",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_1B/l2b-v27-2026-242/6/level2_2026W17_1B_0634_4D6_spx_l2b-v27-2026-242.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "50191d1222f8d445cc805b57e11e1dd0516ce7ab5e8ef884fb908ef143c594cf"
+  },
+  {
+   "id": "epoch:2026W17_1B_0634_4",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.71044772421729
+  },
+  {
+   "id": "obs:2026W17_2A_0591_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0591_1D6_spx_l2b-v27-2026-243.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:1a37fd870c8fadd5",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0591_1D6_spx_l2b-v27-2026-243.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "1a37fd870c8fadd56343a8de1e09ce61b07bcd6a910b2e9204381c7b1c1c4c47"
+  },
+  {
+   "id": "epoch:2026W17_2A_0591_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.814794895791296
+  },
+  {
+   "id": "obs:2026W17_2A_0609_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0609_1D6_spx_l2b-v27-2026-243.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:fe3ef2f86b3e120d",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0609_1D6_spx_l2b-v27-2026-243.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "fe3ef2f86b3e120dcded6625619a34c4622b1e2ba4dbf76e1d809868cdabbba8"
+  },
+  {
+   "id": "epoch:2026W17_2A_0609_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.74413578223196
+  },
+  {
+   "id": "obs:2026W17_2A_0609_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0609_2D6_spx_l2b-v27-2026-243.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:4c85ae78f9300ff4",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0609_2D6_spx_l2b-v27-2026-243.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "4c85ae78f9300ff4c0535da108550101e3d6c1223aa9ec35d5dc16242a88d763"
+  },
+  {
+   "id": "epoch:2026W17_2A_0609_2",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.780100860476677
+  },
+  {
+   "id": "obs:2026W17_2A_0692_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0692_1D6_spx_l2b-v27-2026-243.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:8b09be4e55a745e0",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0692_1D6_spx_l2b-v27-2026-243.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "8b09be4e55a745e0d633c48c818052795d97c92d2de93f170215e3a4587ed5ed"
+  },
+  {
+   "id": "epoch:2026W17_2A_0692_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.894957248714554
+  },
+  {
+   "id": "obs:2026W17_2A_0692_2",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0692_2D6_spx_l2b-v27-2026-243.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:3d852324114245c1",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W17_2A/l2b-v27-2026-243/6/level2_2026W17_2A_0692_2D6_spx_l2b-v27-2026-243.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "3d852324114245c1fa4d97d8653094a94ab7e57b06441c57132ee1c3033fdcbe"
+  },
+  {
+   "id": "epoch:2026W17_2A_0692_2",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.93153367498146
+  },
+  {
+   "id": "obs:2026W18_2A_0065_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W18_2A/l2b-v27-2026-244/6/level2_2026W18_2A_0065_1D6_spx_l2b-v27-2026-244.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:efb266416e9735dc",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W18_2A/l2b-v27-2026-244/6/level2_2026W18_2A_0065_1D6_spx_l2b-v27-2026-244.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "efb266416e9735dc58dd0d9bb1c806493d75adc0827f86eec29d6e7ee4b1a472"
+  },
+  {
+   "id": "epoch:2026W18_2A_0065_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.824697947614325
+  },
+  {
+   "id": "obs:2026W19_2A_0568_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W19_2A/l2b-v27-2026-245/6/level2_2026W19_2A_0568_1D6_spx_l2b-v27-2026-245.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:bf2fc19021cfe0c1",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W19_2A/l2b-v27-2026-245/6/level2_2026W19_2A_0568_1D6_spx_l2b-v27-2026-245.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "bf2fc19021cfe0c17d7e53ad629f0595e916b871ebd5ee1d3ff820ed9a01506b"
+  },
+  {
+   "id": "epoch:2026W19_2A_0568_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.824640098062018
+  },
+  {
+   "id": "obs:2026W19_2A_0651_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W19_2A/l2b-v27-2026-245/6/level2_2026W19_2A_0651_1D6_spx_l2b-v27-2026-245.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:412c1722d8e19d0d",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W19_2A/l2b-v27-2026-245/6/level2_2026W19_2A_0651_1D6_spx_l2b-v27-2026-245.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "412c1722d8e19d0de6f0db187dedc2041195feda5f81efe119cdf30db76f62b3"
+  },
+  {
+   "id": "epoch:2026W19_2A_0651_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.859536971525825
+  },
+  {
+   "id": "obs:2026W19_2A_0782_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W19_2A/l2b-v27-2026-245/6/level2_2026W19_2A_0782_1D6_spx_l2b-v27-2026-245.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:f6107f48e82ddf41",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W19_2A/l2b-v27-2026-245/6/level2_2026W19_2A_0782_1D6_spx_l2b-v27-2026-245.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "f6107f48e82ddf417c8e2314f759debc7b029b32ee797207c601eb22e01d08d3"
+  },
+  {
+   "id": "epoch:2026W19_2A_0782_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.895079328927339
+  },
+  {
+   "id": "obs:2026W19_2A_0952_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W19_2A/l2b-v27-2026-245/6/level2_2026W19_2A_0952_1D6_spx_l2b-v27-2026-245.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:b70f5873b8c9c487",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W19_2A/l2b-v27-2026-245/6/level2_2026W19_2A_0952_1D6_spx_l2b-v27-2026-245.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "b70f5873b8c9c487127ee7911e7ce954b2afd0d6cfc7e10e0ae561e1f34da69c"
+  },
+  {
+   "id": "epoch:2026W19_2A_0952_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.931247033198039
+  },
+  {
+   "id": "obs:2026W20_1A_0033_1",
+   "kind": "observation",
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W20_1A/l2b-v27-2026-246/6/level2_2026W20_1A_0033_1D6_spx_l2b-v27-2026-246.fits",
+   "doi": "10.26131/IRSA678"
+  },
+  {
+   "id": "cutout:256f93c041b72790",
+   "kind": "cutout",
+   "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W20_1A/l2b-v27-2026-246/6/level2_2026W20_1A_0033_1D6_spx_l2b-v27-2026-246.fits?center=133.76%2C-7.2424&size=0.05",
+   "sha256": "256f93c041b72790ceb7a109e152f540010d269ae5eb8c1f8e859a0d322951ba"
+  },
+  {
+   "id": "epoch:2026W20_1A_0033_1",
+   "kind": "epoch",
+   "usable": true,
+   "issues": [],
+   "wavelength_um": 4.967352092718526
+  },
+  {
+   "id": "pair:2025W19_1B_0116_1>2025W46_2A_0289_1",
+   "kind": "comparison",
+   "significance": 1.3261205845944548,
+   "flux_ratio": 2.92000301084374,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W19_1B_0116_1>2026W20_1A_0033_1",
+   "kind": "comparison",
+   "significance": 0.5058442718368649,
+   "flux_ratio": 1.6963508819248854,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W19_1B_0138_1>2025W46_2A_0226_2",
+   "kind": "comparison",
+   "significance": 0.9914902389893581,
+   "flux_ratio": 1.74565197399684,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W19_1B_0138_1>2026W19_2A_0651_1",
+   "kind": "comparison",
+   "significance": 0.8429699072523965,
+   "flux_ratio": 1.6439049240384618,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_1A_0075_4>2026W17_1B_0227_2",
+   "kind": "comparison",
+   "significance": 0.06635147110170374,
+   "flux_ratio": 1.0266772420803378,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_1A_0076_1>2026W17_1B_0227_3",
+   "kind": "comparison",
+   "significance": -0.8912619074434643,
+   "flux_ratio": 0.694599967896315,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_1A_0076_3>2026W17_1B_0507_1",
+   "kind": "comparison",
+   "significance": 1.4462096785873728,
+   "flux_ratio": 1.9350243892958496,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_1A_0090_2>2026W17_1B_0507_3",
+   "kind": "comparison",
+   "significance": 0.5619503129465175,
+   "flux_ratio": 1.2107535311549376,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_1A_0090_3>2025W46_1A_0238_1",
+   "kind": "comparison",
+   "significance": 0.8233088812222725,
+   "flux_ratio": 1.3196322330132941,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_1A_0090_3>2025W50_2A_0232_1",
+   "kind": "comparison",
+   "significance": 0.3362778436020419,
+   "flux_ratio": 1.1215083528807304,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_1A_0090_3>2026W17_1B_0634_1",
+   "kind": "comparison",
+   "significance": -0.04573497888836918,
+   "flux_ratio": 0.9833779647953448,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_1A_0238_1>2025W50_2A_0232_1",
+   "kind": "comparison",
+   "significance": -1.0423389981129738,
+   "flux_ratio": 0.7385154712474395,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_1A_0238_1>2026W17_1B_0634_2",
+   "kind": "comparison",
+   "significance": -1.930004820195549,
+   "flux_ratio": 0.509953518081368,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_2A_0214_3>2026W17_2A_0609_2",
+   "kind": "comparison",
+   "significance": 0.30961635667164267,
+   "flux_ratio": 1.3117887465341524,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_2A_0214_4>2026W17_2A_0591_1",
+   "kind": "comparison",
+   "significance": -0.5744051869279045,
+   "flux_ratio": 0.7611527355373541,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_2A_0226_1>2026W18_2A_0065_1",
+   "kind": "comparison",
+   "significance": -0.15256527416633656,
+   "flux_ratio": 0.9263234526832279,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_2A_0226_1>2026W19_2A_0568_1",
+   "kind": "comparison",
+   "significance": -0.9941523965294929,
+   "flux_ratio": 0.5134045228494157,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_2A_0226_2>2026W19_2A_0651_1",
+   "kind": "comparison",
+   "significance": -0.2322804352742031,
+   "flux_ratio": 0.9039805234305173,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_2A_0226_4>2026W17_2A_0692_2",
+   "kind": "comparison",
+   "significance": -0.43492203261601714,
+   "flux_ratio": 0.706390964941763,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_2A_0226_4>2026W19_2A_0952_1",
+   "kind": "comparison",
+   "significance": -0.00620152657414052,
+   "flux_ratio": 0.9956340653169732,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W46_2A_0289_1>2026W20_1A_0033_1",
+   "kind": "comparison",
+   "significance": -1.167852852508729,
+   "flux_ratio": 0.4735216988521986,
+   "changed": false
+  },
+  {
+   "id": "pair:2025W50_2A_0232_1>2026W17_1B_0634_2",
+   "kind": "comparison",
+   "significance": -1.0581977137337104,
+   "flux_ratio": 0.675636560472253,
+   "changed": false
+  },
+  {
+   "id": "pair:2026W17_2A_0591_1>2026W18_2A_0065_1",
+   "kind": "comparison",
+   "significance": -0.07530872953432806,
+   "flux_ratio": 0.9578813911430054,
+   "changed": false
+  },
+  {
+   "id": "pair:2026W17_2A_0591_1>2026W19_2A_0568_1",
+   "kind": "comparison",
+   "significance": -1.0279016051923588,
+   "flux_ratio": 0.4155090869543372,
+   "changed": false
+  },
+  {
+   "id": "pair:2026W17_2A_0692_1>2026W19_2A_0782_1",
+   "kind": "comparison",
+   "significance": -0.2778378552949517,
+   "flux_ratio": -2.121515834928338,
+   "changed": false
+  },
+  {
+   "id": "pair:2026W17_2A_0692_2>2026W19_2A_0952_1",
+   "kind": "comparison",
+   "significance": 0.4746003724790559,
+   "flux_ratio": 1.515038082715384,
+   "changed": false
+  },
+  {
+   "id": "pair:2026W18_2A_0065_1>2026W19_2A_0568_1",
+   "kind": "comparison",
+   "significance": -0.980278433442182,
+   "flux_ratio": 0.602741066491284,
+   "changed": false
+  }
+ ],
+ "edges": [
+  {
+   "from": "query:a0fe4ffce0576783",
+   "to": "dataset:spherex_dr1"
+  },
+  {
+   "from": "query:96a415e87dde6c01",
+   "to": "dataset:spherex_qr3"
+  },
+  {
+   "from": "obs:2025W19_1B_0116_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:760630f919f88914",
+   "to": "obs:2025W19_1B_0116_1"
+  },
+  {
+   "from": "epoch:2025W19_1B_0116_1",
+   "to": "cutout:760630f919f88914"
+  },
+  {
+   "from": "obs:2025W19_1B_0116_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:a286f5f9ece53820",
+   "to": "obs:2025W19_1B_0116_2"
+  },
+  {
+   "from": "epoch:2025W19_1B_0116_2",
+   "to": "cutout:a286f5f9ece53820"
+  },
+  {
+   "from": "obs:2025W19_1B_0138_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:eb0a30d3055ef415",
+   "to": "obs:2025W19_1B_0138_1"
+  },
+  {
+   "from": "epoch:2025W19_1B_0138_1",
+   "to": "cutout:eb0a30d3055ef415"
+  },
+  {
+   "from": "obs:2025W46_1A_0075_4",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:f04ae60459cc012f",
+   "to": "obs:2025W46_1A_0075_4"
+  },
+  {
+   "from": "epoch:2025W46_1A_0075_4",
+   "to": "cutout:f04ae60459cc012f"
+  },
+  {
+   "from": "obs:2025W46_1A_0076_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:126e88b83dc0647e",
+   "to": "obs:2025W46_1A_0076_1"
+  },
+  {
+   "from": "epoch:2025W46_1A_0076_1",
+   "to": "cutout:126e88b83dc0647e"
+  },
+  {
+   "from": "obs:2025W46_1A_0076_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:87c9663777f26a05",
+   "to": "obs:2025W46_1A_0076_2"
+  },
+  {
+   "from": "epoch:2025W46_1A_0076_2",
+   "to": "cutout:87c9663777f26a05"
+  },
+  {
+   "from": "obs:2025W46_1A_0076_3",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:23652fad86a4137e",
+   "to": "obs:2025W46_1A_0076_3"
+  },
+  {
+   "from": "epoch:2025W46_1A_0076_3",
+   "to": "cutout:23652fad86a4137e"
+  },
+  {
+   "from": "obs:2025W46_1A_0090_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:437bcb9365dfded5",
+   "to": "obs:2025W46_1A_0090_1"
+  },
+  {
+   "from": "epoch:2025W46_1A_0090_1",
+   "to": "cutout:437bcb9365dfded5"
+  },
+  {
+   "from": "obs:2025W46_1A_0090_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:5a9e311c43ceea6d",
+   "to": "obs:2025W46_1A_0090_2"
+  },
+  {
+   "from": "epoch:2025W46_1A_0090_2",
+   "to": "cutout:5a9e311c43ceea6d"
+  },
+  {
+   "from": "obs:2025W46_1A_0090_3",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:0c810cde9d4e5df7",
+   "to": "obs:2025W46_1A_0090_3"
+  },
+  {
+   "from": "epoch:2025W46_1A_0090_3",
+   "to": "cutout:0c810cde9d4e5df7"
+  },
+  {
+   "from": "obs:2025W46_1A_0238_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:4d40a17aba58bd3e",
+   "to": "obs:2025W46_1A_0238_1"
+  },
+  {
+   "from": "epoch:2025W46_1A_0238_1",
+   "to": "cutout:4d40a17aba58bd3e"
+  },
+  {
+   "from": "obs:2025W46_1A_0238_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:575fa69bd4279535",
+   "to": "obs:2025W46_1A_0238_2"
+  },
+  {
+   "from": "epoch:2025W46_1A_0238_2",
+   "to": "cutout:575fa69bd4279535"
+  },
+  {
+   "from": "obs:2025W46_2A_0214_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:0e3ba240bd3fd7a5",
+   "to": "obs:2025W46_2A_0214_1"
+  },
+  {
+   "from": "epoch:2025W46_2A_0214_1",
+   "to": "cutout:0e3ba240bd3fd7a5"
+  },
+  {
+   "from": "obs:2025W46_2A_0214_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:dec8e45b9b09a56c",
+   "to": "obs:2025W46_2A_0214_2"
+  },
+  {
+   "from": "epoch:2025W46_2A_0214_2",
+   "to": "cutout:dec8e45b9b09a56c"
+  },
+  {
+   "from": "obs:2025W46_2A_0214_3",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:5695547399d88a60",
+   "to": "obs:2025W46_2A_0214_3"
+  },
+  {
+   "from": "epoch:2025W46_2A_0214_3",
+   "to": "cutout:5695547399d88a60"
+  },
+  {
+   "from": "obs:2025W46_2A_0214_4",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:082191f83fb7fb9e",
+   "to": "obs:2025W46_2A_0214_4"
+  },
+  {
+   "from": "epoch:2025W46_2A_0214_4",
+   "to": "cutout:082191f83fb7fb9e"
+  },
+  {
+   "from": "obs:2025W46_2A_0226_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:2995f854e32d7f57",
+   "to": "obs:2025W46_2A_0226_1"
+  },
+  {
+   "from": "epoch:2025W46_2A_0226_1",
+   "to": "cutout:2995f854e32d7f57"
+  },
+  {
+   "from": "obs:2025W46_2A_0226_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:946f07f5a2709e74",
+   "to": "obs:2025W46_2A_0226_2"
+  },
+  {
+   "from": "epoch:2025W46_2A_0226_2",
+   "to": "cutout:946f07f5a2709e74"
+  },
+  {
+   "from": "obs:2025W46_2A_0226_3",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:cd9cfb79cc61f6fd",
+   "to": "obs:2025W46_2A_0226_3"
+  },
+  {
+   "from": "epoch:2025W46_2A_0226_3",
+   "to": "cutout:cd9cfb79cc61f6fd"
+  },
+  {
+   "from": "obs:2025W46_2A_0226_4",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:84a82a8584ba30b2",
+   "to": "obs:2025W46_2A_0226_4"
+  },
+  {
+   "from": "epoch:2025W46_2A_0226_4",
+   "to": "cutout:84a82a8584ba30b2"
+  },
+  {
+   "from": "obs:2025W46_2A_0289_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:759e834a436acea0",
+   "to": "obs:2025W46_2A_0289_1"
+  },
+  {
+   "from": "epoch:2025W46_2A_0289_1",
+   "to": "cutout:759e834a436acea0"
+  },
+  {
+   "from": "obs:2025W50_2A_0232_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:f1ad05cdea34de18",
+   "to": "obs:2025W50_2A_0232_1"
+  },
+  {
+   "from": "epoch:2025W50_2A_0232_1",
+   "to": "cutout:f1ad05cdea34de18"
+  },
+  {
+   "from": "obs:2025W50_2A_0254_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:e96542ed6196c3c7",
+   "to": "obs:2025W50_2A_0254_1"
+  },
+  {
+   "from": "epoch:2025W50_2A_0254_1",
+   "to": "cutout:e96542ed6196c3c7"
+  },
+  {
+   "from": "obs:2025W50_2A_0428_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:06f3ec811fa97d47",
+   "to": "obs:2025W50_2A_0428_1"
+  },
+  {
+   "from": "epoch:2025W50_2A_0428_1",
+   "to": "cutout:06f3ec811fa97d47"
+  },
+  {
+   "from": "obs:2026W17_1B_0227_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:70fe2086ae21c693",
+   "to": "obs:2026W17_1B_0227_2"
+  },
+  {
+   "from": "epoch:2026W17_1B_0227_2",
+   "to": "cutout:70fe2086ae21c693"
+  },
+  {
+   "from": "obs:2026W17_1B_0227_3",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:723b058922b29bf6",
+   "to": "obs:2026W17_1B_0227_3"
+  },
+  {
+   "from": "epoch:2026W17_1B_0227_3",
+   "to": "cutout:723b058922b29bf6"
+  },
+  {
+   "from": "obs:2026W17_1B_0227_4",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:90c42e6da021d25b",
+   "to": "obs:2026W17_1B_0227_4"
+  },
+  {
+   "from": "epoch:2026W17_1B_0227_4",
+   "to": "cutout:90c42e6da021d25b"
+  },
+  {
+   "from": "obs:2026W17_1B_0507_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:47aa97d2c19ba96a",
+   "to": "obs:2026W17_1B_0507_1"
+  },
+  {
+   "from": "epoch:2026W17_1B_0507_1",
+   "to": "cutout:47aa97d2c19ba96a"
+  },
+  {
+   "from": "obs:2026W17_1B_0507_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:0ac48d1f40364792",
+   "to": "obs:2026W17_1B_0507_2"
+  },
+  {
+   "from": "epoch:2026W17_1B_0507_2",
+   "to": "cutout:0ac48d1f40364792"
+  },
+  {
+   "from": "obs:2026W17_1B_0507_3",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:55f80b8366fdeeae",
+   "to": "obs:2026W17_1B_0507_3"
+  },
+  {
+   "from": "epoch:2026W17_1B_0507_3",
+   "to": "cutout:55f80b8366fdeeae"
+  },
+  {
+   "from": "obs:2026W17_1B_0634_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:6a9410b8820af57c",
+   "to": "obs:2026W17_1B_0634_1"
+  },
+  {
+   "from": "epoch:2026W17_1B_0634_1",
+   "to": "cutout:6a9410b8820af57c"
+  },
+  {
+   "from": "obs:2026W17_1B_0634_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:eccaf71f50e69c09",
+   "to": "obs:2026W17_1B_0634_2"
+  },
+  {
+   "from": "epoch:2026W17_1B_0634_2",
+   "to": "cutout:eccaf71f50e69c09"
+  },
+  {
+   "from": "obs:2026W17_1B_0634_3",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:ce612aec0d019005",
+   "to": "obs:2026W17_1B_0634_3"
+  },
+  {
+   "from": "epoch:2026W17_1B_0634_3",
+   "to": "cutout:ce612aec0d019005"
+  },
+  {
+   "from": "obs:2026W17_1B_0634_4",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:50191d1222f8d445",
+   "to": "obs:2026W17_1B_0634_4"
+  },
+  {
+   "from": "epoch:2026W17_1B_0634_4",
+   "to": "cutout:50191d1222f8d445"
+  },
+  {
+   "from": "obs:2026W17_2A_0591_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:1a37fd870c8fadd5",
+   "to": "obs:2026W17_2A_0591_1"
+  },
+  {
+   "from": "epoch:2026W17_2A_0591_1",
+   "to": "cutout:1a37fd870c8fadd5"
+  },
+  {
+   "from": "obs:2026W17_2A_0609_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:fe3ef2f86b3e120d",
+   "to": "obs:2026W17_2A_0609_1"
+  },
+  {
+   "from": "epoch:2026W17_2A_0609_1",
+   "to": "cutout:fe3ef2f86b3e120d"
+  },
+  {
+   "from": "obs:2026W17_2A_0609_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:4c85ae78f9300ff4",
+   "to": "obs:2026W17_2A_0609_2"
+  },
+  {
+   "from": "epoch:2026W17_2A_0609_2",
+   "to": "cutout:4c85ae78f9300ff4"
+  },
+  {
+   "from": "obs:2026W17_2A_0692_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:8b09be4e55a745e0",
+   "to": "obs:2026W17_2A_0692_1"
+  },
+  {
+   "from": "epoch:2026W17_2A_0692_1",
+   "to": "cutout:8b09be4e55a745e0"
+  },
+  {
+   "from": "obs:2026W17_2A_0692_2",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:3d852324114245c1",
+   "to": "obs:2026W17_2A_0692_2"
+  },
+  {
+   "from": "epoch:2026W17_2A_0692_2",
+   "to": "cutout:3d852324114245c1"
+  },
+  {
+   "from": "obs:2026W18_2A_0065_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:efb266416e9735dc",
+   "to": "obs:2026W18_2A_0065_1"
+  },
+  {
+   "from": "epoch:2026W18_2A_0065_1",
+   "to": "cutout:efb266416e9735dc"
+  },
+  {
+   "from": "obs:2026W19_2A_0568_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:bf2fc19021cfe0c1",
+   "to": "obs:2026W19_2A_0568_1"
+  },
+  {
+   "from": "epoch:2026W19_2A_0568_1",
+   "to": "cutout:bf2fc19021cfe0c1"
+  },
+  {
+   "from": "obs:2026W19_2A_0651_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:412c1722d8e19d0d",
+   "to": "obs:2026W19_2A_0651_1"
+  },
+  {
+   "from": "epoch:2026W19_2A_0651_1",
+   "to": "cutout:412c1722d8e19d0d"
+  },
+  {
+   "from": "obs:2026W19_2A_0782_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:f6107f48e82ddf41",
+   "to": "obs:2026W19_2A_0782_1"
+  },
+  {
+   "from": "epoch:2026W19_2A_0782_1",
+   "to": "cutout:f6107f48e82ddf41"
+  },
+  {
+   "from": "obs:2026W19_2A_0952_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:b70f5873b8c9c487",
+   "to": "obs:2026W19_2A_0952_1"
+  },
+  {
+   "from": "epoch:2026W19_2A_0952_1",
+   "to": "cutout:b70f5873b8c9c487"
+  },
+  {
+   "from": "obs:2026W20_1A_0033_1",
+   "to": "query:a0fe4ffce0576783"
+  },
+  {
+   "from": "cutout:256f93c041b72790",
+   "to": "obs:2026W20_1A_0033_1"
+  },
+  {
+   "from": "epoch:2026W20_1A_0033_1",
+   "to": "cutout:256f93c041b72790"
+  },
+  {
+   "from": "pair:2025W19_1B_0116_1>2025W46_2A_0289_1",
+   "to": "epoch:2025W19_1B_0116_1"
+  },
+  {
+   "from": "pair:2025W19_1B_0116_1>2025W46_2A_0289_1",
+   "to": "epoch:2025W46_2A_0289_1"
+  },
+  {
+   "from": "pair:2025W19_1B_0116_1>2026W20_1A_0033_1",
+   "to": "epoch:2025W19_1B_0116_1"
+  },
+  {
+   "from": "pair:2025W19_1B_0116_1>2026W20_1A_0033_1",
+   "to": "epoch:2026W20_1A_0033_1"
+  },
+  {
+   "from": "pair:2025W19_1B_0138_1>2025W46_2A_0226_2",
+   "to": "epoch:2025W19_1B_0138_1"
+  },
+  {
+   "from": "pair:2025W19_1B_0138_1>2025W46_2A_0226_2",
+   "to": "epoch:2025W46_2A_0226_2"
+  },
+  {
+   "from": "pair:2025W19_1B_0138_1>2026W19_2A_0651_1",
+   "to": "epoch:2025W19_1B_0138_1"
+  },
+  {
+   "from": "pair:2025W19_1B_0138_1>2026W19_2A_0651_1",
+   "to": "epoch:2026W19_2A_0651_1"
+  },
+  {
+   "from": "pair:2025W46_1A_0075_4>2026W17_1B_0227_2",
+   "to": "epoch:2025W46_1A_0075_4"
+  },
+  {
+   "from": "pair:2025W46_1A_0075_4>2026W17_1B_0227_2",
+   "to": "epoch:2026W17_1B_0227_2"
+  },
+  {
+   "from": "pair:2025W46_1A_0076_1>2026W17_1B_0227_3",
+   "to": "epoch:2025W46_1A_0076_1"
+  },
+  {
+   "from": "pair:2025W46_1A_0076_1>2026W17_1B_0227_3",
+   "to": "epoch:2026W17_1B_0227_3"
+  },
+  {
+   "from": "pair:2025W46_1A_0076_3>2026W17_1B_0507_1",
+   "to": "epoch:2025W46_1A_0076_3"
+  },
+  {
+   "from": "pair:2025W46_1A_0076_3>2026W17_1B_0507_1",
+   "to": "epoch:2026W17_1B_0507_1"
+  },
+  {
+   "from": "pair:2025W46_1A_0090_2>2026W17_1B_0507_3",
+   "to": "epoch:2025W46_1A_0090_2"
+  },
+  {
+   "from": "pair:2025W46_1A_0090_2>2026W17_1B_0507_3",
+   "to": "epoch:2026W17_1B_0507_3"
+  },
+  {
+   "from": "pair:2025W46_1A_0090_3>2025W46_1A_0238_1",
+   "to": "epoch:2025W46_1A_0090_3"
+  },
+  {
+   "from": "pair:2025W46_1A_0090_3>2025W46_1A_0238_1",
+   "to": "epoch:2025W46_1A_0238_1"
+  },
+  {
+   "from": "pair:2025W46_1A_0090_3>2025W50_2A_0232_1",
+   "to": "epoch:2025W46_1A_0090_3"
+  },
+  {
+   "from": "pair:2025W46_1A_0090_3>2025W50_2A_0232_1",
+   "to": "epoch:2025W50_2A_0232_1"
+  },
+  {
+   "from": "pair:2025W46_1A_0090_3>2026W17_1B_0634_1",
+   "to": "epoch:2025W46_1A_0090_3"
+  },
+  {
+   "from": "pair:2025W46_1A_0090_3>2026W17_1B_0634_1",
+   "to": "epoch:2026W17_1B_0634_1"
+  },
+  {
+   "from": "pair:2025W46_1A_0238_1>2025W50_2A_0232_1",
+   "to": "epoch:2025W46_1A_0238_1"
+  },
+  {
+   "from": "pair:2025W46_1A_0238_1>2025W50_2A_0232_1",
+   "to": "epoch:2025W50_2A_0232_1"
+  },
+  {
+   "from": "pair:2025W46_1A_0238_1>2026W17_1B_0634_2",
+   "to": "epoch:2025W46_1A_0238_1"
+  },
+  {
+   "from": "pair:2025W46_1A_0238_1>2026W17_1B_0634_2",
+   "to": "epoch:2026W17_1B_0634_2"
+  },
+  {
+   "from": "pair:2025W46_2A_0214_3>2026W17_2A_0609_2",
+   "to": "epoch:2025W46_2A_0214_3"
+  },
+  {
+   "from": "pair:2025W46_2A_0214_3>2026W17_2A_0609_2",
+   "to": "epoch:2026W17_2A_0609_2"
+  },
+  {
+   "from": "pair:2025W46_2A_0214_4>2026W17_2A_0591_1",
+   "to": "epoch:2025W46_2A_0214_4"
+  },
+  {
+   "from": "pair:2025W46_2A_0214_4>2026W17_2A_0591_1",
+   "to": "epoch:2026W17_2A_0591_1"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_1>2026W18_2A_0065_1",
+   "to": "epoch:2025W46_2A_0226_1"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_1>2026W18_2A_0065_1",
+   "to": "epoch:2026W18_2A_0065_1"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_1>2026W19_2A_0568_1",
+   "to": "epoch:2025W46_2A_0226_1"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_1>2026W19_2A_0568_1",
+   "to": "epoch:2026W19_2A_0568_1"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_2>2026W19_2A_0651_1",
+   "to": "epoch:2025W46_2A_0226_2"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_2>2026W19_2A_0651_1",
+   "to": "epoch:2026W19_2A_0651_1"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_4>2026W17_2A_0692_2",
+   "to": "epoch:2025W46_2A_0226_4"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_4>2026W17_2A_0692_2",
+   "to": "epoch:2026W17_2A_0692_2"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_4>2026W19_2A_0952_1",
+   "to": "epoch:2025W46_2A_0226_4"
+  },
+  {
+   "from": "pair:2025W46_2A_0226_4>2026W19_2A_0952_1",
+   "to": "epoch:2026W19_2A_0952_1"
+  },
+  {
+   "from": "pair:2025W46_2A_0289_1>2026W20_1A_0033_1",
+   "to": "epoch:2025W46_2A_0289_1"
+  },
+  {
+   "from": "pair:2025W46_2A_0289_1>2026W20_1A_0033_1",
+   "to": "epoch:2026W20_1A_0033_1"
+  },
+  {
+   "from": "pair:2025W50_2A_0232_1>2026W17_1B_0634_2",
+   "to": "epoch:2025W50_2A_0232_1"
+  },
+  {
+   "from": "pair:2025W50_2A_0232_1>2026W17_1B_0634_2",
+   "to": "epoch:2026W17_1B_0634_2"
+  },
+  {
+   "from": "pair:2026W17_2A_0591_1>2026W18_2A_0065_1",
+   "to": "epoch:2026W17_2A_0591_1"
+  },
+  {
+   "from": "pair:2026W17_2A_0591_1>2026W18_2A_0065_1",
+   "to": "epoch:2026W18_2A_0065_1"
+  },
+  {
+   "from": "pair:2026W17_2A_0591_1>2026W19_2A_0568_1",
+   "to": "epoch:2026W17_2A_0591_1"
+  },
+  {
+   "from": "pair:2026W17_2A_0591_1>2026W19_2A_0568_1",
+   "to": "epoch:2026W19_2A_0568_1"
+  },
+  {
+   "from": "pair:2026W17_2A_0692_1>2026W19_2A_0782_1",
+   "to": "epoch:2026W17_2A_0692_1"
+  },
+  {
+   "from": "pair:2026W17_2A_0692_1>2026W19_2A_0782_1",
+   "to": "epoch:2026W19_2A_0782_1"
+  },
+  {
+   "from": "pair:2026W17_2A_0692_2>2026W19_2A_0952_1",
+   "to": "epoch:2026W17_2A_0692_2"
+  },
+  {
+   "from": "pair:2026W17_2A_0692_2>2026W19_2A_0952_1",
+   "to": "epoch:2026W19_2A_0952_1"
+  },
+  {
+   "from": "pair:2026W18_2A_0065_1>2026W19_2A_0568_1",
+   "to": "epoch:2026W18_2A_0065_1"
+  },
+  {
+   "from": "pair:2026W18_2A_0065_1>2026W19_2A_0568_1",
+   "to": "epoch:2026W19_2A_0568_1"
+  }
+ ]
+}

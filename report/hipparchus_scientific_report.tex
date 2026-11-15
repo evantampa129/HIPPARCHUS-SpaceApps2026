@@ -24,7 +24,7 @@
 \noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep}{\small
 This is an independent report by Team AITHENOVA, written during the NASA Space Apps Challenge 2026.
 It is not a NASA publication and has not been reviewed or endorsed by NASA. SPHEREx data are provided by
-NASA/IPAC IRSA. The use of AI tools in this project is disclosed in Section~\ref{sec:ai}.}}
+NASA/IPAC IRSA.}}
 
 \begin{abstract}
 SPHEREx images the entire sky repeatedly, so any star can in principle be compared across epochs. Doing this
@@ -94,17 +94,41 @@ the target is measured the same way in the same two images (\emph{control star})
 
 \section{Validation}
 \begin{itemize}\setlength\itemsep{1pt}
-\item \textbf{Unit tests} (19, \texttt{pytest}) run on real SPHEREx cutouts committed as fixtures, with their source
-URL and checksum recorded. They cover cache integrity, flag decoding from headers, wavelength at the target, refusal
-of wavelength mismatches and flagged epochs, null tests, a self-comparison that must show no change
-($|\sigma|<0.5$ after reprojection), the control-star check, and that a partial archive answer never replaces a
+\item \textbf{Unit tests} (23, \texttt{pytest}) run on real SPHEREx cutouts committed as fixtures, with their source
+URL and checksum recorded. They cover cache integrity, flag decoding from headers, refusal of files that lack a
+required extension, targets near RA~$0^\circ$, wavelength at the target, refusal of wavelength mismatches and flagged
+epochs, the classification of same-visit pairs, a self-comparison that must show no change ($|\sigma|<0.5$ after
+reprojection), the control-star check, the evidence graph, and that a partial archive answer never replaces a
 complete saved listing.
 \item \textbf{Control stars.} For the six RW~Aur pairs with a control star, its ratio lies between 0.86 and 1.07 and
 its significance between $-2.2\sigma$ and $+0.7\sigma$ (Table~\ref{tab:rw}).
 \item \textbf{Error model.} For WISE~0855, where the target is barely detected (median $S/N\approx2.7$ per epoch), the
 27 pair significances have a standard deviation of 0.83 and a maximum of $|1.9|\sigma$. They behave like noise, so
 the formal errors are not underestimated at low flux.
+\item \textbf{Null test with blank apertures.} No same-visit pairs exist for these targets, so we run the same
+photometry at a grid of positions away from the target in every valid pair (positions $5$\,px apart, clear of masked
+pixels). Sky and ordinary stars should not change, so with correct errors the significances spread with standard
+deviation 1. We find 1.08 for WISE~0855 ($n=55$), 0.55 for RW~Aur ($n=38$) and 0.91 overall ($n=93$), with no value
+beyond $3\sigma$ (Figure~\ref{fig:val}, left). The errors are therefore right or conservative. For RW~Aur they are
+too large by about a factor of two, probably because bilinear reprojection smooths the pixel noise while we keep the
+original variance.
+\item \textbf{Injection-recovery (SIMULATED).} We add artificial Gaussian stars (FWHM from the image header) to the
+later epoch at the same blank positions, with known $S/N$ inside the aperture, and rerun the comparison. These
+sources are simulated, are kept in a separate section of \texttt{validation.json}, and are never mixed with real
+measurements. The method recovers 44\% at $S/N=5$, 87\% at 6 and 99\% at 7 (Figure~\ref{fig:val}, right), as
+expected for a $5\sigma$ threshold; nothing is recovered below $S/N=3$. The photon noise of the injected star is not
+added, which makes bright injections slightly easier than real ones.
+\item \textbf{Evidence graph.} Each result is linked to its epochs, cutouts (SHA-256), observations, archive queries
+(SHA-256 of the raw answer) and the dataset DOI. For all three targets the graph has no broken links and no result
+without a DOI (\texttt{submission/evidence/graph\_*.json}); a test checks that a broken link is detected.
 \end{itemize}
+
+\begin{figure}[h]\centering
+\includegraphics[width=\linewidth]{figures/validation.pdf}
+\caption{Left: spread of the significance of ``change'' at blank positions in the real image pairs; 1 means correct
+error bars. Right: fraction of SIMULATED injected stars recovered at $5\sigma$ against their injected $S/N$.}
+\label{fig:val}
+\end{figure}
 
 \section{Results}
 \paragraph{A. Valid comparison: RW Aurigae.} RW Aur is a young star with a history of deep dimming events caused by
@@ -163,6 +187,23 @@ only weakly in D6. HIPPARCHUS finds 27 valid pairs and no change above $1.9\sigm
 is constant; it shows SPHEREx single-epoch cutouts cannot constrain its variability at this level. Centroid shifts for
 this target are dominated by noise and are not interpreted as proper motion.
 
+\paragraph{D. Spectral context.} Because of the linear variable filters, each visit samples the star at a different
+wavelength. Plotting the brightness of every usable epoch against its wavelength, coloured by date
+(Figure~\ref{fig:spec}), gives a coarse spectrum and shows directly why we only compare matched wavelengths. For
+RW~Aur the 2026 points lie above the 2025 points at the same wavelength, the same brightening seen in the pairs.
+For WISE~0855 the points scatter within their errors.
+
+\begin{figure}[h]\centering
+\includegraphics[width=\linewidth]{figures/spectra.pdf}
+\caption{Aperture flux against wavelength at the target for every usable epoch, coloured by date. Real data.}
+\label{fig:spec}
+\end{figure}
+
+\paragraph{E. Speed.} With cutouts cached, one target takes 49--60\,s, including the live archive query and all
+pair comparisons; the first analysis of a new target also downloads 45--58 cutouts and takes 1--4 minutes. After
+the analysis the app's requests are fast: epoch and pair images $p_{50}=30$\,ms, $p_{95}=42$\,ms; the evidence file
+$p_{50}=14$\,ms, $p_{95}=20$\,ms (90 requests each, one laptop CPU).
+
 \section{Limitations}
 \begin{itemize}\setlength\itemsep{1pt}
 \item Fluxes are relative (aperture sums of surface brightness). They are adequate for ratios at matched wavelength
@@ -171,7 +212,13 @@ but are not calibrated flux densities.
 the formal $\sigma$ does not include. The control star bounds it to roughly 15\% in our pairs. The 175$\sigma$ figure is
 therefore a formal value; the size of the change ($\times2.5$) is the robust result.
 \item Only one control star is used, and not every pair has one. Target positions are approximate priors, not
-catalogue positions. No same-visit null tests were available for these targets.
+catalogue positions: SIMBAD and the Gaia archive were unreachable on 15~November~2026 (SIMBAD answered ``Page
+unavailable'', Gaia timed out), so no epoch-aware catalogue match was made.
+\item Injection-recovery inserts stars after reprojection and without their own photon noise; it measures the
+detection threshold of the comparison step, not of the full pipeline.
+\item We did not build a machine-learning ranker or a Bayesian model of candidates: with three targets and no
+labelled set of real and false changes there is nothing to train or test such a model on honestly. A simple
+$5\sigma$ threshold with a control star is the baseline any such model would have to beat.
 \item The brightening of RW Aur is consistent with its known variability. It is a measurement from SPHEREx data, not a
 discovery, and should be confirmed independently, for example against other surveys.
 \end{itemize}
@@ -184,17 +231,17 @@ RW~Aur, refuses saturated Barnard's Star, and reports no detectable change for f
 
 \section{Reproducibility}
 \sloppy % long file paths below would otherwise run into the margin
-Code: repository \texttt{HIPPARCHUS} (MIT licence), evidence produced at commit \texttt{ffdb565}. Run
+Code: repository \texttt{HIPPARCHUS} (MIT licence), evidence produced at commit \texttt{ffdb565}, validation at \texttt{fe7cba1}. Run
 \texttt{python backend/scripts/reproduce\_evidence.py} to rebuild \texttt{submission/evidence/*.json} (identifiers,
-archive query URLs with SHA-256 of each answer, cutout URLs and checksums, settings, software versions, outputs), then
-\texttt{report/reproduce\_report.sh} to rebuild the figures and this PDF.
+archive query URLs with SHA-256 of each answer, cutout URLs and checksums, settings, software versions, outputs),
+\texttt{python backend/scripts/reproduce\_validation.py} for the null test, injection-recovery, spectra, evidence
+graphs and timings, then \texttt{report/reproduce\_report.sh} to rebuild the figures and this PDF.
 
-\section{Use of AI tools}\label{sec:ai}
-As the Space Apps rules require, we state where AI tools were used. An AI coding assistant (a large language model)
-helped write and review code, tests and documentation drafts, and the team checked and ran all of it. The HIPPARCHUS and
-AITHENOVA logos were made with AI image generation and carry a visible ``AI-generated'' watermark wherever they
-appear. No data, measurements or results were generated by AI: every number above comes from SPHEREx images processed
-by the code in the repository. The project idea and challenge solution are the team's own.
+\section*{Use of AI tools}
+AI tools were used mainly for the graphics: the logos, which carry a visible ``AI-generated'' watermark, and
+putting together the demo video. They were also used to cross-check the NASA/IRSA dataset references and as a coding
+assistant. All code was run and tested by the author. The data, measurements and results all come from real SPHEREx
+images; nothing in the Results section or the evidence files was generated by AI.
 
 \section*{Acknowledgments}
 This work is based on data from SPHEREx, a NASA mission, obtained from the NASA/IPAC Infrared Science Archive, which is

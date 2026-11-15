@@ -81,8 +81,23 @@ def _plane_masks(header) -> dict[str, int]:
     return out
 
 
+# Extensions the checks below cannot work without. A file that lacks one is
+# refused with its name, instead of failing later with an unclear KeyError.
+REQUIRED_HDUS = ("IMAGE", "FLAGS", "VARIANCE", "ZODI")
+
+
+def target_pixel(wcs: WCS, ra: float, dec: float) -> tuple[float, float]:
+    """Pixel position of (ra, dec). RA is taken modulo 360, so a target at
+    RA 359.999 and an image centred at RA 0.001 still line up."""
+    x, y = wcs.world_to_pixel_values(ra % 360.0, dec)
+    return float(x), float(y)
+
+
 def load(path: str, obs_id: str, ra: float, dec: float) -> Epoch:
     with warnings.catch_warnings(), fits.open(path) as h:
+        missing = [n for n in REQUIRED_HDUS if n not in h]
+        if missing:
+            raise ValueError(f"{obs_id}: FITS file lacks the {', '.join(missing)} extension(s)")
         # The spectral WCS uses SIP-style keywords that astropy warns about. The
         # celestial solution is unaffected, so these warnings are only noise.
         warnings.simplefilter("ignore", FITSFixedWarning)
@@ -101,7 +116,7 @@ def load(path: str, obs_id: str, ra: float, dec: float) -> Epoch:
         warn_bits = sum(b for name, b in planes.items() if name in WARN_PLANES)
 
         wcs = WCS(hdr)  # celestial WCS (RA---TAN-SIP / DEC--TAN-SIP)
-        x, y = (float(v) for v in wcs.world_to_pixel_values(ra, dec))
+        x, y = target_pixel(wcs, ra, dec)
 
         # SPHEREx uses linear variable filters: the wavelength changes across the
         # detector. The alternate WCS "W" is a lookup table that gives the

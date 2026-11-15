@@ -26,7 +26,7 @@ data/         archive listings (manifests); downloaded FITS go to data/cache (no
 
 ```bash
 cd backend && python3 -m venv .venv && . .venv/bin/activate && pip install -e ".[dev]"
-pytest                                              # 19 tests, on real SPHEREx cutouts
+pytest                                              # 23 tests, on real SPHEREx cutouts
 cd ../frontend && npm install && npm run build      # builds frontend/dist
 cd ../backend && uvicorn hipparchus.serve:app --port 8080   # app + API on http://localhost:8080
 ```
@@ -34,21 +34,36 @@ cd ../backend && uvicorn hipparchus.serve:app --port 8080   # app + API on http:
 For development, run `uvicorn hipparchus.api:app --port 8077` and `npm run dev` (Vite proxies `/api` to 8077).
 The first analysis of a target downloads its cutouts and takes 1–4 minutes. After that it reads from the cache.
 
+## How we know the method works
+
+- **Null test:** the same photometry is run at blank positions in every valid image pair. The significances spread
+  0.91 (1 means exact error bars, n = 93) and none goes beyond 3σ, so the error bars are right or a little too large.
+- **Injection-recovery (simulated):** fake stars of known brightness are added to the later image. 44% are found
+  at S/N 5, 87% at 6 and 99% at 7, as a 5σ threshold should give. These fake stars are only used in
+  `validation.json` and are always labelled SIMULATED.
+- **Evidence graph:** `submission/evidence/graph_*.json` links every result to its cutout checksum, the archive
+  answer and the dataset DOI. A test fails if any link is broken.
+- **Control stars** in the same images stay within 0.86–1.07 while RW Aur changes by ×2.5.
+
+Not done: catalogue cross-match (SIMBAD and Gaia were down on 15 Nov 2026), and any machine-learning ranking. With
+three targets and no labelled examples there is nothing to train or test one on fairly.
+
 ## Reproducing the results
 
 ```bash
 cd backend && python scripts/reproduce_evidence.py   # rewrites submission/evidence/*.json and the manifest
+python scripts/reproduce_validation.py              # null test, injection-recovery, spectra, evidence graphs, timings
 cd ../report && ./reproduce_report.sh               # figures + hipparchus_scientific_report.pdf
 ```
 
-## Data, credits and use of AI
+## Data and credits
 
 - Images: SPHEREx DR1 (doi:10.26131/IRSA678) and QR3 (doi:10.26131/IRSA662), NASA/IPAC Infrared Science Archive.
   Full citations are in `report/references.bib`.
 - Software: Astropy, NumPy, SciPy, reproject, Matplotlib, FastAPI, React.
-- An AI coding assistant helped write and review code, tests and documentation drafts. The team ran and checked
-  everything. The logos are AI-generated and carry a visible "AI-generated" label. No data or results were generated
-  by AI.
+- AI tools were used mainly for the graphics (the logos, watermarked "AI-generated", and putting together the
+  demo video), to cross-check the NASA/IRSA dataset references, and as a coding assistant. All code was run and
+  tested by me; every measurement comes from real SPHEREx images.
 - This is independent work by team AITHENOVA. It is not a NASA publication, NASA has not endorsed it, and it uses no
   NASA branding.
 

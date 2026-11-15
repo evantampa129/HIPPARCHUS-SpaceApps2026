@@ -200,6 +200,8 @@ def compare(a: Epoch, b: Epoch) -> dict:
         "control_star": ctrl,
         "centroid_shift_arcsec": {"dra": dra, "ddec": ddec, "total": float(np.hypot(dra, ddec))},
         "max_abs_z": float(np.nanmax(np.abs(z))) if np.isfinite(z).any() else None,
-        "_arrays": {"a": a.image, "b": b_img, "diff": diff, "z": z},  # for images; not serialised
+        # Kept in memory for the images and the validation checks; not serialised.
+        "_arrays": {"a": a.image, "b": b_img, "diff": diff, "z": z,
+                    "a_var": a.variance, "b_var": b_var, "a_bad": a.bad, "bad": bad},
     })
     return out

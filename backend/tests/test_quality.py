@@ -44,3 +44,27 @@ def test_plane_names_come_from_the_file_header():
     assert planes["OVERFLOW"] == 2
     assert planes["SOURCE"] == 2097152
     assert "SOURCE" not in quality.BAD_PLANES
+
+
+def test_missing_extension_is_refused_by_name(tmp_path):
+    import pytest
+    from astropy.io import fits
+    with fits.open(FX / "rwaur_d1_2025.fits") as h:
+        fits.HDUList([hdu for hdu in h if hdu.name != "VARIANCE"]).writeto(tmp_path / "novar.fits")
+    with pytest.raises(ValueError, match="VARIANCE"):
+        quality.load(str(tmp_path / "novar.fits"), "x", *RW_AUR)
+
+
+def test_ra_wraps_around_zero():
+    from astropy.wcs import WCS
+    # A small TAN image centred just east of RA 0.
+    w = WCS(naxis=2)
+    w.wcs.ctype = ["RA---TAN", "DEC--TAN"]
+    w.wcs.crval = [0.001, 10.0]
+    w.wcs.crpix = [16, 16]
+    w.wcs.cdelt = [-6.2 / 3600, 6.2 / 3600]
+    # A target at RA 359.999 (also written -0.001) is 0.002 deg west of the
+    # centre: about 1.1 pixel away (RA offset times cos(dec)), not 360 degrees.
+    for ra in (359.999, -0.001):
+        x, y = quality.target_pixel(w, ra, 10.0)
+        assert abs(x - 15 - 2 * 0.001 * 3600 * 0.985 / 6.2) < 0.2 and abs(y - 15) < 0.1
