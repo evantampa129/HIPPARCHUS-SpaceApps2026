@@ -51,7 +51,13 @@ measures second, and then tries to break its own result.
 
 **Moving objects (validation).** A blind search over 38 real SPHEREx exposures found and linked the known asteroid
 (216) Kleopatra across 7 visits. Its positions agree with JPL Horizons, computed as seen from SPHEREx, to 0.15″ and
-0.18″ rms, and the fitted rates match within 0.8σ. SIMULATED movers at S/N ≥ 7 are recovered in 75–100% of trials.
+0.18″ rms, and the fitted rates match within 0.8σ. The same search also linked two more known asteroids: the fainter
+(2052) Tamriko (0.54″/0.56″ rms, the field-star floor at that S/N) and the fast near-Earth asteroid (433) Eros
+(≈72″/h, 0.15″/0.20″ rms). SIMULATED movers at S/N ≥ 7 are recovered in 75–100% of trials.
+
+**Tried and not adopted.** PSF-matched and ZOGY image subtraction did not pass the rule we fixed before running them,
+and a joint PSF fit shows SPHEREx cannot separate RW Aur A and B (report Section 8.1). The published numbers use the
+direct comparison.
 
 RW Aur is a known variable young binary. At 6.15″ pixels both stars (1.6″ apart) fall in our aperture, so this is a
 measurement of the pair, not a discovery. **HIPPARCHUS has not found Planet X**, and we don't claim it has.
@@ -102,6 +108,10 @@ cd ../backend && uvicorn hipparchus.serve:app --port 8080  # app + API on http:/
 
 The first analysis of a target downloads its cutouts (1–4 minutes); after that it reads from the cache.
 
+The app has three explorers besides the comparison view: an **All-Sky Explorer** on the official SPHEREx DR1 HiPS
+(Aladin Lite, loaded from jsDelivr at runtime), a **Spectral Explorer** that shows the wavelength and flux of every
+exposure (never a coadd), and a **native-pixel viewer** for each epoch and pair.
+
 ## Reproduce the results
 
 ```bash
@@ -120,13 +130,27 @@ cd ../report && ./reproduce_report.sh    # report PDF
 cd .. && backend/.venv/bin/python presentation/build_deck.py   # six-slide deck
 ```
 
+More reproduction tools:
+
+- `submission/bundles/<case>.zip`: one bundle per published case (RW Aur, Barnard, WISE 0855, Kleopatra) with the
+  evidence, every cutout URL and SHA-256, settings and environment. Unzip and run `python tools/bundle.py verify`
+  (add `--network` to download the cutouts again and check for archive drift). One-page reports are in
+  `submission/bundles/reports/`, notebooks in `notebooks/`. The app serves them at `/reproduce` and `/report/<case>.html`.
+- `python scripts/reproduce_motion_followup.py`: Tamriko, Eros and the track vetting (~1 h, needs network).
+- `python scripts/reproduce_psfsub.py`, `reproduce_jointpsf.py`: the experimental subtraction and A/B fit.
+- `python scripts/run_benchmark.py --online`: the 32-object benchmark in `submission/benchmark/`. Its archive runs
+  are blocked for now (IRSA answered HTTP 502 for the whole run), so it has no held-out star metrics yet.
+- `visualizations/manim/`: ten short scenes whose on-screen numbers come from the evidence files (`./render.sh`).
+
 ## Repository layout
 
 ```
 backend/       Python: archive search, cutouts, quality checks, comparison, ePSF photometry, tests, scripts
 frontend/      React/TypeScript app: timeline, playback, blink, difference and significance maps
-docs/          Judge Mode page (GitHub Pages) and its images and media
-submission/    evidence files with checksums
+docs/          Judge Mode page (GitHub Pages) and its images and media (incl. the Manim web clips)
+submission/    evidence files with checksums, reproduction bundles, benchmark manifest, claims registry
+notebooks/     reproduction notebooks (offline / online)
+visualizations/manim/  scene library: ten short animations built from the evidence files
 report/        research report (LaTeX + PDF), figures, bibliography
 presentation/  six-slide deck (PPTX + PDF) and the script that builds it, screenshots, logos
 video/         29 s film (MP4 + captions), its editable Remotion source, credits and QC frames
@@ -146,7 +170,8 @@ Horizons only for the asteroid check. Anything synthetic is labelled SIMULATED a
 and at the end of the [report](report/HIPPARCHUS_AETHENOVA_FINAL.pdf).
 
 **Software and assets.** Astropy, NumPy, SciPy, Matplotlib, reproject, astroquery (BSD-3); FastAPI, Uvicorn
-(MIT/BSD-3); React, Vite, TypeScript (MIT/Apache-2.0); python-pptx, qrcode, Pillow (deck); Remotion (video, free licence
+(MIT/BSD-3); React, Vite, TypeScript (MIT/Apache-2.0); Aladin Lite 3.8.2 (GPL-3.0, loaded from jsDelivr at
+runtime, not bundled) and the SPHEREx DR1 HiPS from IRSA; Manim Community (MIT) for the scenes; python-pptx, qrcode, Pillow (deck); Remotion (video, free licence
 for teams of up to 3) and FFmpeg; DejaVu fonts. Per-asset sources for the film are in
 [`video/credits.txt`](video/credits.txt).
 
