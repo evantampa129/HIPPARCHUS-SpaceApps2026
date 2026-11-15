@@ -1,5 +1,37 @@
 {
- "status": "AUDIT - side by side; production code and published evidence unchanged",
+ "status": "wavelength source is selectable (quality.WAVELENGTH_SOURCES); the default and every published number stay on legacy 'wcs'. This file says what would change on a switch.",
+ "explanation": {
+  "cause": "The cutout header holds two WCS. The celestial one is RA---TAN-SIP/DEC--TAN-SIP with SIP coefficients A_i_j, B_i_j, AP_i_j, BP_i_j. The SIP convention (Shupe et al. 2005) has no alternate-WCS letter for these keywords and ties them to a CTYPE ending in -SIP. The spectral WCS 'W' is CTYPEjW = WAVE-TAB (FITS Paper III -TAB, bilinear lookup) on raw 1-based parent pixel coordinates (CRPIXjW = CRPIXjA, CDELTjW = CRVALjW = 1); it has no -SIP. astropy.wcs.WCS(header, key='W') nevertheless calls _read_sip_kw(header, wcskey='W'), which reads the unsuffixed A_/B_ keywords and builds Sip(..., crpix=(CRPIX1W, CRPIX2W)); the CTYPE check only logs an INFO note (which quality.py silenced). pixel_to_world then looks the table up at p + SIP(p + 1 - CRPIXW): the celestial polynomial (incl. A_0_0, B_0_0 ~ -0.3/-1.1 px), evaluated around the wrong reference pixel (the parent origin instead of the celestial CRPIX), so the shift reaches tens of pixels near the detector edge.",
+  "proof": "sip_proof below, all cached cutouts, 5x5 points each: nosip - table and legacy - table@sip agree to ~1e-12 um on every detector, i.e. astropy's -TAB read is exact and the SIP shift alone is the legacy offset.",
+  "is_wcs_nosip_equal_to_cwave": "No. wcs_nosip is the 9x9 control-point table, which IRSA says is accurate to ~1 nm and meant for visualization; CWAVE/CBAND are the per-pixel maps. See sip_proof.*.cwave_minus_nosip_nm.",
+  "sources": [
+   {
+    "what": "IRSA tutorial 'Introduction to SPHEREx Spectral Images', section 8b Spectral WCS",
+    "url": "https://caltech-ipac.github.io/irsa-tutorials/spherex-intro/",
+    "quote": "SIP distortions must be turned off for the spectral WCS. spectral_wcs.sip = None"
+   },
+   {
+    "what": "IRSA tutorial 'SPHEREx Source Discovery Tool IRSA Demo', process_cutout",
+    "url": "https://caltech-ipac.github.io/irsa-tutorials/spherex-source-discovery-tool-demo/",
+    "quote": "spectral_wcs.sip = None  # disable SIP distortions"
+   },
+   {
+    "what": "SPHEREx archive documentation, data products: WCS-WAVE and Spectral WCS",
+    "url": "https://caltech-ipac.github.io/spherex-archive-documentation/spherex-data-products/",
+    "quote": "bilinear interpolation ... yields values accurate to within approximately 1 nm. The fidelity of the WCS-WAVE lookup table is intended for visualization purposes. For science analysis, use the CWAVE and CBAND extensions in the Spectral WCS calibration product."
+   },
+   {
+    "what": "astropy source, astropy/wcs/wcs.py WCS.__init__ and _read_sip_kw (version below)",
+    "quote": "sip = self._read_sip_kw(header, wcskey=key) ... return Sip(a, b, ap, bp, (crpix1, crpix2))"
+   }
+  ]
+ },
+ "astropy_version": "8.0.2",
+ "modes": {
+  "wcs": "astropy WCS(key='W') with the celestial SIP attached (legacy, published)",
+  "wcs_nosip": "WCS(key='W') with .sip = None; = documented bilinear read of WCS-WAVE",
+  "cwave": "CWAVE/CBAND of the Spectral WCS product at the parent pixel (IRSA: for science); falls back to wcs_nosip with a 'wavelength_fallback' warning if the map is missing"
+ },
  "rule": "|dlambda| <= 0.5 x min(bandwidth) (compare.MAX_DLAMBDA_FRACTION)",
  "calibration_product": {
   "name": "SPHEREx Spectral WCS (CWAVE, CBAND, WCS-WAVE), one file per detector",
@@ -50,6 +82,130 @@
      0.03119003213942051
     ]
    },
+   "D2": {
+    "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/spectral_wcs/cal-swcs-v5-2026-191/2/spectral_wcs_D2_spx_cal-swcs-v5-2026-191.fits",
+    "sha256": "0eb4e27f351e6161e21372818f9e811480a7ab8bab9295722f180791e151a463",
+    "sha256_matches_recorded": true,
+    "detcoord": "sky",
+    "history": [
+     "Version 2.2"
+    ],
+    "comment": [
+     "CWAVE is Central wavelength from SpecCal 20250901",
+     "CBAND is Central bandwidth from SpecCal 20250901"
+    ],
+    "header_error_estimates_um": {
+     "wl_err_max_um": 0.162886,
+     "bw_err_max_um": 0.012884,
+     "wl_err_p99_um": 0.000726,
+     "bw_err_p99_um": 0.000928
+    },
+    "shape": [
+     2040,
+     2040
+    ],
+    "cwave_range_um": [
+     1.0853115320205688,
+     1.6678379774093628
+    ],
+    "cband_range_um": [
+     0.023701533675193787,
+     0.040797777473926544
+    ]
+   },
+   "D3": {
+    "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/spectral_wcs/cal-swcs-v5-2026-191/3/spectral_wcs_D3_spx_cal-swcs-v5-2026-191.fits",
+    "sha256": "51750c8f948a30541d391e54930279aa067c62c398a7cc2679e592bc6044427a",
+    "sha256_matches_recorded": true,
+    "detcoord": "sky",
+    "history": [
+     "Version 2.2"
+    ],
+    "comment": [
+     "CWAVE is Central wavelength from SpecCal 20250901",
+     "CBAND is Central bandwidth from SpecCal 20250901"
+    ],
+    "header_error_estimates_um": {
+     "wl_err_max_um": 0.655422,
+     "bw_err_max_um": 0.029171,
+     "wl_err_p99_um": 0.001161,
+     "bw_err_p99_um": 0.001719
+    },
+    "shape": [
+     2040,
+     2040
+    ],
+    "cwave_range_um": [
+     1.6162030696868896,
+     2.439518451690674
+    ],
+    "cband_range_um": [
+     0.02485998533666134,
+     0.06119242310523987
+    ]
+   },
+   "D4": {
+    "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/spectral_wcs/cal-swcs-v5-2026-191/4/spectral_wcs_D4_spx_cal-swcs-v5-2026-191.fits",
+    "sha256": "dbdcb8addb4ffe817f31786c8cb359b1f47df3528173e9d4602b94c84f7d7c1a",
+    "sha256_matches_recorded": true,
+    "detcoord": "sky",
+    "history": [
+     "Version 2.2"
+    ],
+    "comment": [
+     "CWAVE is Central wavelength from SpecCal 20250901",
+     "CBAND is Central bandwidth from SpecCal 20250901"
+    ],
+    "header_error_estimates_um": {
+     "wl_err_max_um": 1.385266,
+     "bw_err_max_um": 0.072331,
+     "wl_err_p99_um": 0.002599,
+     "bw_err_p99_um": 0.005869
+    },
+    "shape": [
+     2040,
+     2040
+    ],
+    "cwave_range_um": [
+     2.394757032394409,
+     3.8672842979431152
+    ],
+    "cband_range_um": [
+     0.031140122562646866,
+     0.11390069127082825
+    ]
+   },
+   "D5": {
+    "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/spectral_wcs/cal-swcs-v5-2026-191/5/spectral_wcs_D5_spx_cal-swcs-v5-2026-191.fits",
+    "sha256": "3361428284bddad1dcdce42081ebfbd225acb0b19f6caa94fba3e133bbabfc1c",
+    "sha256_matches_recorded": true,
+    "detcoord": "sky",
+    "history": [
+     "Version 3.0"
+    ],
+    "comment": [
+     "CWAVE is Central wavelength from SpecCal 20260604",
+     "CBAND is Central bandwidth from SpecCal 20260604"
+    ],
+    "header_error_estimates_um": {
+     "wl_err_max_um": 0.012048,
+     "bw_err_max_um": 0.003692,
+     "wl_err_p99_um": 0.000844,
+     "bw_err_p99_um": 0.00114
+    },
+    "shape": [
+     2040,
+     2040
+    ],
+    "cwave_range_um": [
+     3.798266649246216,
+     4.445885181427002
+    ],
+    "cband_range_um": [
+     0.0344000943005085,
+     0.03951917961239815
+    ]
+   },
    "D6": {
     "url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/spectral_wcs/cal-swcs-v5-2026-191/6/spectral_wcs_D6_spx_cal-swcs-v5-2026-191.fits",
     "sha256": "19195d253892883586aa2183cb66238b32f6032ade62d490b36b85b0dd18f212",
@@ -87,7 +243,7 @@
    "https://irsa.ipac.caltech.edu/data/SPHEREx/docs/spherex_spectral_calibrations.html"
   ]
  },
- "finding_sip": "astropy applies the celestial SIP polynomial (A_*/B_* keywords, no alternate letter) to WCS(key='W'), so quality.py reads the WCS-WAVE table at a distorted pixel. 'table' below reads the same table without SIP; the difference table - production is that effect alone.",
+ "finding_sip_previous_wording": "astropy applies the celestial SIP polynomial (A_*/B_* keywords, no alternate letter) to WCS(key='W'), so quality.py reads the WCS-WAVE table at a distorted pixel. 'table' below reads the same table without SIP; the difference table - production is that effect alone.",
  "targets": {
   "rw_aur": {
    "detector": "SPHEREx-D1",
@@ -1619,9 +1775,49 @@
       "wavelength_mismatch": 1480,
       "flagged_pixels": 1387
      }
+    },
+    "cwave_lambda_table_band": {
+     "n_valid_pairs": 8,
+     "n_null_tests": 0,
+     "max_ratio": 2.558575455811674,
+     "max_abs_sig": 175.07751792388433,
+     "refusal_codes": {
+      "wavelength_mismatch": 1480,
+      "flagged_pixels": 1387
+     }
     }
    },
    "changed_pairs_production_vs_calibrated": [],
+   "pairs_entering_leaving_vs_production": {
+    "table": {
+     "entered": [],
+     "left": []
+    },
+    "calibrated": {
+     "entered": [],
+     "left": []
+    },
+    "cwave_lambda_table_band": {
+     "entered": [],
+     "left": []
+    }
+   },
+   "pipeline_mode_check": {
+    "wcs_nosip": {
+     "max_abs_dlambda_um": 2.220446049250313e-16,
+     "max_abs_dband_um": 6.938893903907228e-18,
+     "sources": {
+      "wcs_nosip": 56
+     }
+    },
+    "cwave": {
+     "max_abs_dlambda_um": 0.0,
+     "max_abs_dband_um": 0.0,
+     "sources": {
+      "cwave": 56
+     }
+    }
+   },
    "n_changed_pairs_production_vs_table": 0,
    "claims": {
     "production": {
@@ -1633,6 +1829,10 @@
      "every valid pair brighter later, at least one >= 5 sigma": true
     },
     "calibrated": {
+     "brightened by at least x1.5 at >= 5 sigma in some pair": true,
+     "every valid pair brighter later, at least one >= 5 sigma": true
+    },
+    "cwave_lambda_table_band": {
      "brightened by at least x1.5 at >= 5 sigma in some pair": true,
      "every valid pair brighter later, at least one >= 5 sigma": true
     }
@@ -3206,14 +3406,57 @@
       "bad_variance": 57,
       "nan_pixels": 57
      }
+    },
+    "cwave_lambda_table_band": {
+     "n_valid_pairs": 0,
+     "n_null_tests": 0,
+     "max_ratio": null,
+     "max_abs_sig": null,
+     "refusal_codes": {
+      "flagged_pixels": 1653,
+      "wavelength_mismatch": 1581,
+      "bad_variance": 57,
+      "nan_pixels": 57
+     }
     }
    },
    "changed_pairs_production_vs_calibrated": [],
+   "pairs_entering_leaving_vs_production": {
+    "table": {
+     "entered": [],
+     "left": []
+    },
+    "calibrated": {
+     "entered": [],
+     "left": []
+    },
+    "cwave_lambda_table_band": {
+     "entered": [],
+     "left": []
+    }
+   },
+   "pipeline_mode_check": {
+    "wcs_nosip": {
+     "max_abs_dlambda_um": 1.7763568394002505e-15,
+     "max_abs_dband_um": 1.3877787807814457e-17,
+     "sources": {
+      "wcs_nosip": 58
+     }
+    },
+    "cwave": {
+     "max_abs_dlambda_um": 0.0,
+     "max_abs_dband_um": 0.0,
+     "sources": {
+      "cwave": 58
+     }
+    }
+   },
    "n_changed_pairs_production_vs_table": 0,
    "claims": {
     "production": {},
     "table": {},
-    "calibrated": {}
+    "calibrated": {},
+    "cwave_lambda_table_band": {}
    }
   },
   "wise0855": {
@@ -4462,6 +4705,17 @@
       "flagged_pixels": 324,
       "aperture_invalid": 1
      }
+    },
+    "cwave_lambda_table_band": {
+     "n_valid_pairs": 29,
+     "n_null_tests": 0,
+     "max_ratio": 3.0468222839524675,
+     "max_abs_sig": 2.05232737671118,
+     "refusal_codes": {
+      "wavelength_mismatch": 944,
+      "flagged_pixels": 324,
+      "aperture_invalid": 1
+     }
     }
    },
    "changed_pairs_production_vs_calibrated": [
@@ -4608,6 +4862,229 @@
      }
     }
    ],
+   "pairs_entering_leaving_vs_production": {
+    "table": {
+     "entered": [
+      {
+       "a": "2025W46_1A_0238_1",
+       "b": "2026W17_1B_0634_1",
+       "ratio": 0.6052348134730967,
+       "sig": -1.565562521150526,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.016401538719457598,
+       "half_channel_um": 0.018102978667718095
+      },
+      {
+       "a": "2025W46_2A_0214_3",
+       "b": "2026W17_2A_0609_1",
+       "ratio": 3.0468222839524675,
+       "sig": 2.05232737671118,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.017227048979830073,
+       "half_channel_um": 0.018210108594603324
+      },
+      {
+       "a": "2025W46_2A_0214_4",
+       "b": "2026W17_2A_0609_2",
+       "ratio": 0.46935342118215845,
+       "sig": -1.320961316467936,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.017794503741788148,
+       "half_channel_um": 0.0183503105554544
+      },
+      {
+       "a": "2025W50_2A_0232_1",
+       "b": "2026W17_1B_0634_1",
+       "ratio": 0.7366191916868632,
+       "sig": -0.870236186694815,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.016344467938984586,
+       "half_channel_um": 0.018102978667718095
+      }
+     ],
+     "left": [
+      {
+       "a": "2025W46_1A_0090_3",
+       "b": "2025W46_1A_0238_1",
+       "ratio": 1.3196322330132941,
+       "sig": 0.8233088812222725,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.020623612797535884,
+       "half_channel_um": 0.01816389676683465
+      },
+      {
+       "a": "2025W46_1A_0090_3",
+       "b": "2025W50_2A_0232_1",
+       "ratio": 1.1215083528807304,
+       "sig": 0.3362778436020419,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.020566542017062872,
+       "half_channel_um": 0.01816389676683465
+      }
+     ]
+    },
+    "calibrated": {
+     "entered": [
+      {
+       "a": "2025W46_1A_0238_1",
+       "b": "2026W17_1B_0634_1",
+       "ratio": 0.6052348134730967,
+       "sig": -1.565562521150526,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.016452652698793813,
+       "half_channel_um": 0.018370277450884372
+      },
+      {
+       "a": "2025W46_2A_0214_3",
+       "b": "2026W17_2A_0609_1",
+       "ratio": 3.0468222839524675,
+       "sig": 2.05232737671118,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.017168708863853688,
+       "half_channel_um": 0.017713650224577496
+      },
+      {
+       "a": "2025W50_2A_0232_1",
+       "b": "2026W17_1B_0634_1",
+       "ratio": 0.7366191916868632,
+       "sig": -0.870236186694815,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.016264810727721013,
+       "half_channel_um": 0.018220958038968428
+      }
+     ],
+     "left": [
+      {
+       "a": "2025W46_1A_0090_3",
+       "b": "2025W46_1A_0238_1",
+       "ratio": 1.3196322330132941,
+       "sig": 0.8233088812222725,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.021024411986626745,
+       "half_channel_um": 0.018272616932511688
+      },
+      {
+       "a": "2025W46_1A_0090_3",
+       "b": "2025W50_2A_0232_1",
+       "ratio": 1.1215083528807304,
+       "sig": 0.3362778436020419,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.020836570015553946,
+       "half_channel_um": 0.018220958038968428
+      }
+     ]
+    },
+    "cwave_lambda_table_band": {
+     "entered": [
+      {
+       "a": "2025W46_1A_0238_1",
+       "b": "2026W17_1B_0634_1",
+       "ratio": 0.6052348134730967,
+       "sig": -1.565562521150526,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.016452652698793813,
+       "half_channel_um": 0.018102978667718095
+      },
+      {
+       "a": "2025W46_2A_0214_3",
+       "b": "2026W17_2A_0609_1",
+       "ratio": 3.0468222839524675,
+       "sig": 2.05232737671118,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.017168708863853688,
+       "half_channel_um": 0.018210108594603324
+      },
+      {
+       "a": "2025W46_2A_0214_4",
+       "b": "2026W17_2A_0609_2",
+       "ratio": 0.46935342118215845,
+       "sig": -1.320961316467936,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.01776897175937986,
+       "half_channel_um": 0.0183503105554544
+      },
+      {
+       "a": "2025W50_2A_0232_1",
+       "b": "2026W17_1B_0634_1",
+       "ratio": 0.7366191916868632,
+       "sig": -0.870236186694815,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.016264810727721013,
+       "half_channel_um": 0.018102978667718095
+      }
+     ],
+     "left": [
+      {
+       "a": "2025W46_1A_0090_3",
+       "b": "2025W46_1A_0238_1",
+       "ratio": 1.3196322330132941,
+       "sig": 0.8233088812222725,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.021024411986626745,
+       "half_channel_um": 0.01816389676683465
+      },
+      {
+       "a": "2025W46_1A_0090_3",
+       "b": "2025W50_2A_0232_1",
+       "ratio": 1.1215083528807304,
+       "sig": 0.3362778436020419,
+       "codes_when_refused": [
+        "wavelength_mismatch"
+       ],
+       "dlambda_um": 0.020836570015553946,
+       "half_channel_um": 0.01816389676683465
+      }
+     ]
+    }
+   },
+   "pipeline_mode_check": {
+    "wcs_nosip": {
+     "max_abs_dlambda_um": 8.881784197001252e-16,
+     "max_abs_dband_um": 6.938893903907228e-18,
+     "sources": {
+      "wcs_nosip": 45
+     }
+    },
+    "cwave": {
+     "max_abs_dlambda_um": 0.0,
+     "max_abs_dband_um": 0.0,
+     "sources": {
+      "cwave": 45
+     }
+    }
+   },
    "n_changed_pairs_production_vs_table": 6,
    "claims": {
     "production": {
@@ -4618,6 +5095,9 @@
     },
     "calibrated": {
      "no pair changes by >= 5 sigma": true
+    },
+    "cwave_lambda_table_band": {
+     "no pair changes by >= 5 sigma": true
     }
    }
   }
@@ -4626,6 +5106,427 @@
   "rw_aur": "8 valid pairs, max flux ratio 2.56, every pair brighter later, max sig >= 5",
   "wise0855": "27 valid pairs, none changes by >= 5 sigma",
   "barnard": "refused: no usable epoch"
+ },
+ "sip_proof": {
+  "D1": {
+   "n_cutouts": 70,
+   "n_points": 1750,
+   "ctype_W": [
+    "WAVE-TAB/WAVE-TAB"
+   ],
+   "ctype_celestial": [
+    "RA---TAN-SIP/DEC--TAN-SIP"
+   ],
+   "sip_attached_to_W": 70,
+   "sip_crpix_is_W_crpix": 70,
+   "nosip_minus_table_nm": {
+    "n": 3500,
+    "median_abs": 0.0,
+    "max_abs": 4.440892098500626e-13
+   },
+   "legacy_minus_table_at_sip_nm": {
+    "n": 3500,
+    "median_abs": 0.0,
+    "max_abs": 4.440892098500626e-13
+   },
+   "sip_shift_px": {
+    "n": 1750,
+    "median_abs": 3.455687901640588,
+    "max_abs": 27.97567314097285
+   },
+   "legacy_minus_nosip_lam_nm": {
+    "n": 1750,
+    "median_abs": 0.582975057555335,
+    "max_abs": 4.0178493088358636
+   },
+   "legacy_minus_nosip_band_nm": {
+    "n": 1750,
+    "median_abs": 0.016618626200132908,
+    "max_abs": 0.22083985068000606
+   },
+   "cwave_minus_nosip_nm": {
+    "n": 1750,
+    "median_abs": 0.28305320453758664,
+    "max_abs": 0.8137666972863888
+   },
+   "cwave_minus_legacy_nm": {
+    "n": 1750,
+    "median_abs": 0.49660900551679044,
+    "max_abs": 3.980460969055577
+   },
+   "cband_minus_nosip_nm": {
+    "n": 1750,
+    "median_abs": 0.299827954884058,
+    "max_abs": 1.7883687160453743
+   },
+   "cband_minus_legacy_nm": {
+    "n": 1750,
+    "median_abs": 0.29768123275962854,
+    "max_abs": 1.735622045597518
+   },
+   "nosip_minus_cwave_over_cband": {
+    "n": 1750,
+    "median_abs": 0.012238386630782099,
+    "max_abs": 0.04673181661478724
+   },
+   "legacy_minus_cwave_over_cband": {
+    "n": 1750,
+    "median_abs": 0.020383443344759368,
+    "max_abs": 0.20293747271226087
+   }
+  },
+  "D2": {
+   "n_cutouts": 17,
+   "n_points": 425,
+   "ctype_W": [
+    "WAVE-TAB/WAVE-TAB"
+   ],
+   "ctype_celestial": [
+    "RA---TAN-SIP/DEC--TAN-SIP"
+   ],
+   "sip_attached_to_W": 17,
+   "sip_crpix_is_W_crpix": 17,
+   "nosip_minus_table_nm": {
+    "n": 850,
+    "median_abs": 0.0,
+    "max_abs": 4.440892098500626e-13
+   },
+   "legacy_minus_table_at_sip_nm": {
+    "n": 850,
+    "median_abs": 0.0,
+    "max_abs": 6.661338147750939e-13
+   },
+   "sip_shift_px": {
+    "n": 425,
+    "median_abs": 5.523473746743959,
+    "max_abs": 25.025332405208623
+   },
+   "legacy_minus_nosip_lam_nm": {
+    "n": 425,
+    "median_abs": 1.3364736002654531,
+    "max_abs": 6.345814667704008
+   },
+   "legacy_minus_nosip_band_nm": {
+    "n": 425,
+    "median_abs": 0.03726505073531339,
+    "max_abs": 0.2900608403757533
+   },
+   "cwave_minus_nosip_nm": {
+    "n": 425,
+    "median_abs": 0.35643831943810156,
+    "max_abs": 0.8839419178210406
+   },
+   "cwave_minus_legacy_nm": {
+    "n": 425,
+    "median_abs": 1.0294176327168003,
+    "max_abs": 6.071820426903685
+   },
+   "cband_minus_nosip_nm": {
+    "n": 425,
+    "median_abs": 0.2008941467108033,
+    "max_abs": 1.1724978214525845
+   },
+   "cband_minus_legacy_nm": {
+    "n": 425,
+    "median_abs": 0.22105193008273294,
+    "max_abs": 1.1543800531468584
+   },
+   "nosip_minus_cwave_over_cband": {
+    "n": 425,
+    "median_abs": 0.010880571570551311,
+    "max_abs": 0.02589706627330216
+   },
+   "legacy_minus_cwave_over_cband": {
+    "n": 425,
+    "median_abs": 0.03047481516374745,
+    "max_abs": 0.17735260842993628
+   }
+  },
+  "D3": {
+   "n_cutouts": 31,
+   "n_points": 775,
+   "ctype_W": [
+    "WAVE-TAB/WAVE-TAB"
+   ],
+   "ctype_celestial": [
+    "RA---TAN-SIP/DEC--TAN-SIP"
+   ],
+   "sip_attached_to_W": 31,
+   "sip_crpix_is_W_crpix": 31,
+   "nosip_minus_table_nm": {
+    "n": 1550,
+    "median_abs": 0.0,
+    "max_abs": 8.881784197001252e-13
+   },
+   "legacy_minus_table_at_sip_nm": {
+    "n": 1518,
+    "median_abs": 0.0,
+    "max_abs": 8.881784197001252e-13
+   },
+   "sip_shift_px": {
+    "n": 775,
+    "median_abs": 10.281786861458599,
+    "max_abs": 51.6250538610895
+   },
+   "legacy_minus_nosip_lam_nm": {
+    "n": 775,
+    "median_abs": 3.349053761600551,
+    "max_abs": 11.8400519965014
+   },
+   "legacy_minus_nosip_band_nm": {
+    "n": 775,
+    "median_abs": 0.06790110457025739,
+    "max_abs": 0.3527658426777658
+   },
+   "cwave_minus_nosip_nm": {
+    "n": 775,
+    "median_abs": 0.7001681311322727,
+    "max_abs": 1.3626610531525252
+   },
+   "cwave_minus_legacy_nm": {
+    "n": 775,
+    "median_abs": 2.6694671559974736,
+    "max_abs": 10.839946728393723
+   },
+   "cband_minus_nosip_nm": {
+    "n": 775,
+    "median_abs": 0.3226661212186177,
+    "max_abs": 2.0619782477112185
+   },
+   "cband_minus_legacy_nm": {
+    "n": 775,
+    "median_abs": 0.3159139569642727,
+    "max_abs": 2.0736719410961166
+   },
+   "nosip_minus_cwave_over_cband": {
+    "n": 775,
+    "median_abs": 0.014305268820344394,
+    "max_abs": 0.027878615679620463
+   },
+   "legacy_minus_cwave_over_cband": {
+    "n": 775,
+    "median_abs": 0.06626481092972436,
+    "max_abs": 0.2728910467584164
+   }
+  },
+  "D4": {
+   "n_cutouts": 17,
+   "n_points": 425,
+   "ctype_W": [
+    "WAVE-TAB/WAVE-TAB"
+   ],
+   "ctype_celestial": [
+    "RA---TAN-SIP/DEC--TAN-SIP"
+   ],
+   "sip_attached_to_W": 17,
+   "sip_crpix_is_W_crpix": 17,
+   "nosip_minus_table_nm": {
+    "n": 850,
+    "median_abs": 1.3877787807814457e-14,
+    "max_abs": 8.881784197001252e-13
+   },
+   "legacy_minus_table_at_sip_nm": {
+    "n": 850,
+    "median_abs": 0.0,
+    "max_abs": 1.3322676295501878e-12
+   },
+   "sip_shift_px": {
+    "n": 425,
+    "median_abs": 10.124089651723157,
+    "max_abs": 27.00692629596733
+   },
+   "legacy_minus_nosip_lam_nm": {
+    "n": 425,
+    "median_abs": 6.4573760525497015,
+    "max_abs": 15.016946001707776
+   },
+   "legacy_minus_nosip_band_nm": {
+    "n": 425,
+    "median_abs": 0.19364184735858048,
+    "max_abs": 9.981338794319782
+   },
+   "cwave_minus_nosip_nm": {
+    "n": 425,
+    "median_abs": 0.5569375730032355,
+    "max_abs": 2.1175054381874503
+   },
+   "cwave_minus_legacy_nm": {
+    "n": 425,
+    "median_abs": 5.815567510770947,
+    "max_abs": 15.008316400192623
+   },
+   "cband_minus_nosip_nm": {
+    "n": 425,
+    "median_abs": 0.9874750060193671,
+    "max_abs": 4.811616989035233
+   },
+   "cband_minus_legacy_nm": {
+    "n": 425,
+    "median_abs": 1.3806374094213618,
+    "max_abs": 9.969695152538545
+   },
+   "nosip_minus_cwave_over_cband": {
+    "n": 425,
+    "median_abs": 0.00682421813035107,
+    "max_abs": 0.02401251746934686
+   },
+   "legacy_minus_cwave_over_cband": {
+    "n": 425,
+    "median_abs": 0.07135682247036389,
+    "max_abs": 0.19793546762462683
+   }
+  },
+  "D5": {
+   "n_cutouts": 17,
+   "n_points": 425,
+   "ctype_W": [
+    "WAVE-TAB/WAVE-TAB"
+   ],
+   "ctype_celestial": [
+    "RA---TAN-SIP/DEC--TAN-SIP"
+   ],
+   "sip_attached_to_W": 17,
+   "sip_crpix_is_W_crpix": 17,
+   "nosip_minus_table_nm": {
+    "n": 850,
+    "median_abs": 0.0,
+    "max_abs": 1.7763568394002505e-12
+   },
+   "legacy_minus_table_at_sip_nm": {
+    "n": 850,
+    "median_abs": 0.0,
+    "max_abs": 1.7763568394002505e-12
+   },
+   "sip_shift_px": {
+    "n": 425,
+    "median_abs": 5.109762234089159,
+    "max_abs": 25.56159893137011
+   },
+   "legacy_minus_nosip_lam_nm": {
+    "n": 425,
+    "median_abs": 1.3754845379558844,
+    "max_abs": 6.935694591629904
+   },
+   "legacy_minus_nosip_band_nm": {
+    "n": 425,
+    "median_abs": 0.001857974601136847,
+    "max_abs": 0.08272675718005995
+   },
+   "cwave_minus_nosip_nm": {
+    "n": 425,
+    "median_abs": 0.21477361588928545,
+    "max_abs": 0.8791380206334409
+   },
+   "cwave_minus_legacy_nm": {
+    "n": 425,
+    "median_abs": 1.2646323267198056,
+    "max_abs": 6.777313492526638
+   },
+   "cband_minus_nosip_nm": {
+    "n": 425,
+    "median_abs": 0.22829491759678022,
+    "max_abs": 1.5204123170134767
+   },
+   "cband_minus_legacy_nm": {
+    "n": 425,
+    "median_abs": 0.22504299861069582,
+    "max_abs": 1.44810826061232
+   },
+   "nosip_minus_cwave_over_cband": {
+    "n": 425,
+    "median_abs": 0.005866709614283615,
+    "max_abs": 0.02347397838704453
+   },
+   "legacy_minus_cwave_over_cband": {
+    "n": 425,
+    "median_abs": 0.034404015178496554,
+    "max_abs": 0.1833628179743093
+   }
+  },
+  "D6": {
+   "n_cutouts": 128,
+   "n_points": 3200,
+   "ctype_W": [
+    "WAVE-TAB/WAVE-TAB"
+   ],
+   "ctype_celestial": [
+    "RA---TAN-SIP/DEC--TAN-SIP"
+   ],
+   "sip_attached_to_W": 128,
+   "sip_crpix_is_W_crpix": 128,
+   "nosip_minus_table_nm": {
+    "n": 6400,
+    "median_abs": 0.0,
+    "max_abs": 1.7763568394002505e-12
+   },
+   "legacy_minus_table_at_sip_nm": {
+    "n": 6298,
+    "median_abs": 0.0,
+    "max_abs": 2.6645352591003757e-12
+   },
+   "sip_shift_px": {
+    "n": 3200,
+    "median_abs": 12.012151565072058,
+    "max_abs": 70.96936023083022
+   },
+   "legacy_minus_nosip_lam_nm": {
+    "n": 3200,
+    "median_abs": 2.9343722767900537,
+    "max_abs": 18.10728767057146
+   },
+   "legacy_minus_nosip_band_nm": {
+    "n": 3200,
+    "median_abs": 0.015245789623585804,
+    "max_abs": 0.36502719013406515
+   },
+   "cwave_minus_nosip_nm": {
+    "n": 3200,
+    "median_abs": 0.37750115810730733,
+    "max_abs": 1.688779943129326
+   },
+   "cwave_minus_legacy_nm": {
+    "n": 3200,
+    "median_abs": 2.516665789112693,
+    "max_abs": 17.972241417779422
+   },
+   "cband_minus_nosip_nm": {
+    "n": 3200,
+    "median_abs": 0.5335647694516208,
+    "max_abs": 4.166657217061783
+   },
+   "cband_minus_legacy_nm": {
+    "n": 3200,
+    "median_abs": 0.5378600819200309,
+    "max_abs": 4.164235912997083
+   },
+   "nosip_minus_cwave_over_cband": {
+    "n": 3200,
+    "median_abs": 0.01037843705695466,
+    "max_abs": 0.04498283116399806
+   },
+   "legacy_minus_cwave_over_cband": {
+    "n": 3200,
+    "median_abs": 0.06960862219236161,
+    "max_abs": 0.49145692654002454
+   }
+  }
+ },
+ "exposures_restored_from_published_evidence": {
+  "rw_aur": {
+   "manifest_file_status": "partial",
+   "n_in_manifest": 226,
+   "n_added_from_published": 18
+  },
+  "barnard": {
+   "manifest_file_status": "live",
+   "n_in_manifest": 358,
+   "n_added_from_published": 0
+  },
+  "wise0855": {
+   "manifest_file_status": "live",
+   "n_in_manifest": 258,
+   "n_added_from_published": 0
+  }
  },
  "orientation_check": {
   "1": {
@@ -4696,6 +5597,10 @@
     "calibrated": {
      "brightened by at least x1.5 at >= 5 sigma in some pair": true,
      "every valid pair brighter later, at least one >= 5 sigma": true
+    },
+    "cwave_lambda_table_band": {
+     "brightened by at least x1.5 at >= 5 sigma in some pair": true,
+     "every valid pair brighter later, at least one >= 5 sigma": true
     }
    }
   },
@@ -4728,7 +5633,8 @@
    "claims": {
     "production": {},
     "table": {},
-    "calibrated": {}
+    "calibrated": {},
+    "cwave_lambda_table_band": {}
    }
   },
   "wise0855": {
@@ -4763,16 +5669,619 @@
     },
     "calibrated": {
      "no pair changes by >= 5 sigma": true
+    },
+    "cwave_lambda_table_band": {
+     "no pair changes by >= 5 sigma": true
     }
    }
   }
  },
+ "regression_table": {
+  "rw_aur": {
+   "wcs": {
+    "n_valid_pairs": 8,
+    "n_null_tests": 0,
+    "max_ratio": 2.558575455811674,
+    "max_abs_sig": 175.07751792388433,
+    "refusal_codes": {
+     "wavelength_mismatch": 1480,
+     "flagged_pixels": 1387
+    }
+   },
+   "wcs_nosip": {
+    "n_valid_pairs": 8,
+    "n_null_tests": 0,
+    "max_ratio": 2.558575455811674,
+    "max_abs_sig": 175.07751792388433,
+    "refusal_codes": {
+     "wavelength_mismatch": 1480,
+     "flagged_pixels": 1387
+    }
+   },
+   "cwave": {
+    "n_valid_pairs": 8,
+    "n_null_tests": 0,
+    "max_ratio": 2.558575455811674,
+    "max_abs_sig": 175.07751792388433,
+    "refusal_codes": {
+     "wavelength_mismatch": 1480,
+     "flagged_pixels": 1387
+    }
+   },
+   "cwave_lambda_table_band": {
+    "n_valid_pairs": 8,
+    "n_null_tests": 0,
+    "max_ratio": 2.558575455811674,
+    "max_abs_sig": 175.07751792388433,
+    "refusal_codes": {
+     "wavelength_mismatch": 1480,
+     "flagged_pixels": 1387
+    }
+   }
+  },
+  "barnard": {
+   "wcs": {
+    "n_valid_pairs": 0,
+    "n_null_tests": 0,
+    "max_ratio": null,
+    "max_abs_sig": null,
+    "refusal_codes": {
+     "flagged_pixels": 1653,
+     "wavelength_mismatch": 1579,
+     "bad_variance": 57,
+     "nan_pixels": 57
+    }
+   },
+   "wcs_nosip": {
+    "n_valid_pairs": 0,
+    "n_null_tests": 0,
+    "max_ratio": null,
+    "max_abs_sig": null,
+    "refusal_codes": {
+     "flagged_pixels": 1653,
+     "wavelength_mismatch": 1579,
+     "bad_variance": 57,
+     "nan_pixels": 57
+    }
+   },
+   "cwave": {
+    "n_valid_pairs": 0,
+    "n_null_tests": 0,
+    "max_ratio": null,
+    "max_abs_sig": null,
+    "refusal_codes": {
+     "flagged_pixels": 1653,
+     "wavelength_mismatch": 1583,
+     "bad_variance": 57,
+     "nan_pixels": 57
+    }
+   },
+   "cwave_lambda_table_band": {
+    "n_valid_pairs": 0,
+    "n_null_tests": 0,
+    "max_ratio": null,
+    "max_abs_sig": null,
+    "refusal_codes": {
+     "flagged_pixels": 1653,
+     "wavelength_mismatch": 1581,
+     "bad_variance": 57,
+     "nan_pixels": 57
+    }
+   }
+  },
+  "wise0855": {
+   "wcs": {
+    "n_valid_pairs": 27,
+    "n_null_tests": 0,
+    "max_ratio": 2.92000301084374,
+    "max_abs_sig": 1.930004820195549,
+    "refusal_codes": {
+     "wavelength_mismatch": 952,
+     "flagged_pixels": 324
+    }
+   },
+   "wcs_nosip": {
+    "n_valid_pairs": 29,
+    "n_null_tests": 0,
+    "max_ratio": 3.0468222839524675,
+    "max_abs_sig": 2.05232737671118,
+    "refusal_codes": {
+     "wavelength_mismatch": 944,
+     "flagged_pixels": 324,
+     "aperture_invalid": 1
+    }
+   },
+   "cwave": {
+    "n_valid_pairs": 28,
+    "n_null_tests": 0,
+    "max_ratio": 3.0468222839524675,
+    "max_abs_sig": 2.05232737671118,
+    "refusal_codes": {
+     "wavelength_mismatch": 945,
+     "flagged_pixels": 324,
+     "aperture_invalid": 1
+    }
+   },
+   "cwave_lambda_table_band": {
+    "n_valid_pairs": 29,
+    "n_null_tests": 0,
+    "max_ratio": 3.0468222839524675,
+    "max_abs_sig": 2.05232737671118,
+    "refusal_codes": {
+     "wavelength_mismatch": 944,
+     "flagged_pixels": 324,
+     "aperture_invalid": 1
+    }
+   }
+  }
+ },
+ "robustness_by_mode": {
+  "published": {
+   "rw_aur": {
+    "verdict": "brightened by at least x1.5 at >= 5 sigma in some pair: robust; every valid pair brighter later, at least one >= 5 sigma: sensitive",
+    "systematic_floor": 0.12517501805145284,
+    "n_pairs": 8,
+    "max_ratio": 2.558575455811674,
+    "max_abs_sig": 175.07751792388433,
+    "claims": [
+     {
+      "claim": "brightened by at least x1.5 at >= 5 sigma in some pair",
+      "verdict": "robust",
+      "n_holding": 24,
+      "n_checks": 24,
+      "settings_grid": [
+       12,
+       12
+      ],
+      "leave_one_pair_out": [
+       8,
+       8
+      ],
+      "with_systematic_floor": true,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     },
+     {
+      "claim": "every valid pair brighter later, at least one >= 5 sigma",
+      "verdict": "sensitive",
+      "n_holding": 18,
+      "n_checks": 24,
+      "settings_grid": [
+       6,
+       12
+      ],
+      "leave_one_pair_out": [
+       8,
+       8
+      ],
+      "with_systematic_floor": true,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     }
+    ],
+    "wavelength_rule_variants": {
+     "0.25": {
+      "n_pairs": 2,
+      "max_abs_sig": 84.75979833186769
+     },
+     "0.5": {
+      "n_pairs": 8,
+      "max_abs_sig": 175.07751792388433
+     },
+     "0.75": {
+      "n_pairs": 12,
+      "max_abs_sig": 175.07751792388433
+     }
+    }
+   },
+   "barnard": {
+    "verdict": "refused (no usable epoch; not a choice of analysis settings)",
+    "systematic_floor": null,
+    "n_pairs": 0,
+    "max_ratio": null,
+    "max_abs_sig": null,
+    "claims": [],
+    "wavelength_rule_variants": {}
+   },
+   "wise0855": {
+    "verdict": "no pair changes by >= 5 sigma: robust",
+    "systematic_floor": null,
+    "n_pairs": 27,
+    "max_ratio": 2.92000301084374,
+    "max_abs_sig": 1.930004820195549,
+    "claims": [
+     {
+      "claim": "no pair changes by >= 5 sigma",
+      "verdict": "robust",
+      "n_holding": 34,
+      "n_checks": 34,
+      "settings_grid": [
+       4,
+       4
+      ],
+      "leave_one_pair_out": [
+       27,
+       27
+      ],
+      "with_systematic_floor": null,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     }
+    ],
+    "wavelength_rule_variants": {
+     "0.25": {
+      "n_pairs": 11,
+      "max_abs_sig": 1.4462096785873728
+     },
+     "0.5": {
+      "n_pairs": 27,
+      "max_abs_sig": 1.930004820195549
+     },
+     "0.75": {
+      "n_pairs": 38,
+      "max_abs_sig": 3.130746834867179
+     }
+    }
+   }
+  },
+  "wcs": {
+   "rw_aur": {
+    "verdict": "brightened by at least x1.5 at >= 5 sigma in some pair: robust; every valid pair brighter later, at least one >= 5 sigma: sensitive",
+    "systematic_floor": 0.12517501805145284,
+    "n_pairs": 8,
+    "max_ratio": 2.558575455811674,
+    "max_abs_sig": 175.07751792388433,
+    "claims": [
+     {
+      "claim": "brightened by at least x1.5 at >= 5 sigma in some pair",
+      "verdict": "robust",
+      "n_holding": 24,
+      "n_checks": 24,
+      "settings_grid": [
+       12,
+       12
+      ],
+      "leave_one_pair_out": [
+       8,
+       8
+      ],
+      "with_systematic_floor": true,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     },
+     {
+      "claim": "every valid pair brighter later, at least one >= 5 sigma",
+      "verdict": "sensitive",
+      "n_holding": 18,
+      "n_checks": 24,
+      "settings_grid": [
+       6,
+       12
+      ],
+      "leave_one_pair_out": [
+       8,
+       8
+      ],
+      "with_systematic_floor": true,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     }
+    ],
+    "wavelength_rule_variants": {
+     "0.25": {
+      "n_pairs": 2,
+      "max_abs_sig": 84.75979833186769
+     },
+     "0.5": {
+      "n_pairs": 8,
+      "max_abs_sig": 175.07751792388433
+     },
+     "0.75": {
+      "n_pairs": 12,
+      "max_abs_sig": 175.07751792388433
+     }
+    }
+   },
+   "barnard": {
+    "verdict": "refused (no usable epoch; not a choice of analysis settings)",
+    "systematic_floor": null,
+    "n_pairs": 0,
+    "max_ratio": null,
+    "max_abs_sig": null,
+    "claims": [],
+    "wavelength_rule_variants": {}
+   },
+   "wise0855": {
+    "verdict": "no pair changes by >= 5 sigma: robust",
+    "systematic_floor": null,
+    "n_pairs": 27,
+    "max_ratio": 2.92000301084374,
+    "max_abs_sig": 1.930004820195549,
+    "claims": [
+     {
+      "claim": "no pair changes by >= 5 sigma",
+      "verdict": "robust",
+      "n_holding": 34,
+      "n_checks": 34,
+      "settings_grid": [
+       4,
+       4
+      ],
+      "leave_one_pair_out": [
+       27,
+       27
+      ],
+      "with_systematic_floor": null,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     }
+    ],
+    "wavelength_rule_variants": {
+     "0.25": {
+      "n_pairs": 11,
+      "max_abs_sig": 1.4462096785873728
+     },
+     "0.5": {
+      "n_pairs": 27,
+      "max_abs_sig": 1.930004820195549
+     },
+     "0.75": {
+      "n_pairs": 38,
+      "max_abs_sig": 3.130746834867179
+     }
+    }
+   }
+  },
+  "wcs_nosip": {
+   "rw_aur": {
+    "verdict": "brightened by at least x1.5 at >= 5 sigma in some pair: robust; every valid pair brighter later, at least one >= 5 sigma: sensitive",
+    "systematic_floor": 0.12517501805145284,
+    "n_pairs": 8,
+    "max_ratio": 2.558575455811674,
+    "max_abs_sig": 175.07751792388433,
+    "claims": [
+     {
+      "claim": "brightened by at least x1.5 at >= 5 sigma in some pair",
+      "verdict": "robust",
+      "n_holding": 24,
+      "n_checks": 24,
+      "settings_grid": [
+       12,
+       12
+      ],
+      "leave_one_pair_out": [
+       8,
+       8
+      ],
+      "with_systematic_floor": true,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     },
+     {
+      "claim": "every valid pair brighter later, at least one >= 5 sigma",
+      "verdict": "sensitive",
+      "n_holding": 18,
+      "n_checks": 24,
+      "settings_grid": [
+       6,
+       12
+      ],
+      "leave_one_pair_out": [
+       8,
+       8
+      ],
+      "with_systematic_floor": true,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     }
+    ],
+    "wavelength_rule_variants": {
+     "0.25": {
+      "n_pairs": 2,
+      "max_abs_sig": 84.75979833186769
+     },
+     "0.5": {
+      "n_pairs": 8,
+      "max_abs_sig": 175.07751792388433
+     },
+     "0.75": {
+      "n_pairs": 13,
+      "max_abs_sig": 175.07751792388433
+     }
+    }
+   },
+   "barnard": {
+    "verdict": "refused (no usable epoch; not a choice of analysis settings)",
+    "systematic_floor": null,
+    "n_pairs": 0,
+    "max_ratio": null,
+    "max_abs_sig": null,
+    "claims": [],
+    "wavelength_rule_variants": {}
+   },
+   "wise0855": {
+    "verdict": "no pair changes by >= 5 sigma: robust",
+    "systematic_floor": null,
+    "n_pairs": 29,
+    "max_ratio": 3.0468222839524675,
+    "max_abs_sig": 2.05232737671118,
+    "claims": [
+     {
+      "claim": "no pair changes by >= 5 sigma",
+      "verdict": "robust",
+      "n_holding": 36,
+      "n_checks": 36,
+      "settings_grid": [
+       4,
+       4
+      ],
+      "leave_one_pair_out": [
+       29,
+       29
+      ],
+      "with_systematic_floor": null,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     }
+    ],
+    "wavelength_rule_variants": {
+     "0.25": {
+      "n_pairs": 13,
+      "max_abs_sig": 1.4462096785873728
+     },
+     "0.5": {
+      "n_pairs": 29,
+      "max_abs_sig": 2.05232737671118
+     },
+     "0.75": {
+      "n_pairs": 39,
+      "max_abs_sig": 3.130746834867179
+     }
+    }
+   },
+   "file": "submission/evidence/wavecal_robustness_wcs_nosip.json"
+  },
+  "cwave": {
+   "rw_aur": {
+    "verdict": "brightened by at least x1.5 at >= 5 sigma in some pair: robust; every valid pair brighter later, at least one >= 5 sigma: sensitive",
+    "systematic_floor": 0.12517501805145284,
+    "n_pairs": 8,
+    "max_ratio": 2.558575455811674,
+    "max_abs_sig": 175.07751792388433,
+    "claims": [
+     {
+      "claim": "brightened by at least x1.5 at >= 5 sigma in some pair",
+      "verdict": "robust",
+      "n_holding": 24,
+      "n_checks": 24,
+      "settings_grid": [
+       12,
+       12
+      ],
+      "leave_one_pair_out": [
+       8,
+       8
+      ],
+      "with_systematic_floor": true,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     },
+     {
+      "claim": "every valid pair brighter later, at least one >= 5 sigma",
+      "verdict": "sensitive",
+      "n_holding": 18,
+      "n_checks": 24,
+      "settings_grid": [
+       6,
+       12
+      ],
+      "leave_one_pair_out": [
+       8,
+       8
+      ],
+      "with_systematic_floor": true,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     }
+    ],
+    "wavelength_rule_variants": {
+     "0.25": {
+      "n_pairs": 2,
+      "max_abs_sig": 84.75979833186769
+     },
+     "0.5": {
+      "n_pairs": 8,
+      "max_abs_sig": 175.07751792388433
+     },
+     "0.75": {
+      "n_pairs": 14,
+      "max_abs_sig": 175.07751792388433
+     }
+    }
+   },
+   "barnard": {
+    "verdict": "refused (no usable epoch; not a choice of analysis settings)",
+    "systematic_floor": null,
+    "n_pairs": 0,
+    "max_ratio": null,
+    "max_abs_sig": null,
+    "claims": [],
+    "wavelength_rule_variants": {}
+   },
+   "wise0855": {
+    "verdict": "no pair changes by >= 5 sigma: robust",
+    "systematic_floor": null,
+    "n_pairs": 28,
+    "max_ratio": 3.0468222839524675,
+    "max_abs_sig": 2.05232737671118,
+    "claims": [
+     {
+      "claim": "no pair changes by >= 5 sigma",
+      "verdict": "robust",
+      "n_holding": 35,
+      "n_checks": 35,
+      "settings_grid": [
+       4,
+       4
+      ],
+      "leave_one_pair_out": [
+       28,
+       28
+      ],
+      "with_systematic_floor": null,
+      "wavelength_rule": [
+       3,
+       3
+      ]
+     }
+    ],
+    "wavelength_rule_variants": {
+     "0.25": {
+      "n_pairs": 13,
+      "max_abs_sig": 1.4462096785873728
+     },
+     "0.5": {
+      "n_pairs": 28,
+      "max_abs_sig": 2.05232737671118
+     },
+     "0.75": {
+      "n_pairs": 38,
+      "max_abs_sig": 3.130746834867179
+     }
+    }
+   },
+   "file": "submission/evidence/wavecal_robustness_cwave.json"
+  },
+  "wcs_reproduces_published": true
+ },
  "epsf_layout": {
   "6": {
-   "n_cutouts": 106,
+   "n_cutouts": 128,
    "tables": [
     {
-     "n_cutouts": 106,
+     "n_cutouts": 128,
      "rows": 441,
      "n_xcenter": 21,
      "n_ycenter": 21,
@@ -4811,14 +6320,14 @@
      "random_positions_wrong_zone": 0
     }
    ],
-   "zone_checks": 106,
+   "zone_checks": 128,
    "zone_failures": []
   },
   "1": {
-   "n_cutouts": 62,
+   "n_cutouts": 70,
    "tables": [
     {
-     "n_cutouts": 62,
+     "n_cutouts": 70,
      "rows": 441,
      "n_xcenter": 21,
      "n_ycenter": 21,
@@ -4857,14 +6366,14 @@
      "random_positions_wrong_zone": 0
     }
    ],
-   "zone_checks": 62,
+   "zone_checks": 70,
    "zone_failures": []
   },
   "3": {
-   "n_cutouts": 9,
+   "n_cutouts": 31,
    "tables": [
     {
-     "n_cutouts": 9,
+     "n_cutouts": 31,
      "rows": 451,
      "n_xcenter": 11,
      "n_ycenter": 41,
@@ -4903,60 +6412,14 @@
      "random_positions_wrong_zone": 0
     }
    ],
-   "zone_checks": 9,
-   "zone_failures": []
-  },
-  "2": {
-   "n_cutouts": 9,
-   "tables": [
-    {
-     "n_cutouts": 9,
-     "rows": 441,
-     "n_xcenter": 21,
-     "n_ycenter": 21,
-     "binx_range": [
-      0,
-      20
-     ],
-     "biny_range": [
-      0,
-      20
-     ],
-     "xwidth": [
-      97.14299774169922
-     ],
-     "ywidth": [
-      97.14299774169922
-     ],
-     "xcenter_range": [
-      48.07143020629883,
-      1990.9285888671875
-     ],
-     "ycenter_range": [
-      48.07143020629883,
-      1990.9285888671875
-     ],
-     "ovsmpx": 5,
-     "ovsmpy": 5,
-     "detcoord": "sky",
-     "ordering": "x-fast then y",
-     "epsf_shape": [
-      33,
-      33
-     ],
-     "source": "Calibration source file: epsf_2_20260507.fits",
-     "random_positions_checked": 2000,
-     "random_positions_wrong_zone": 0
-    }
-   ],
-   "zone_checks": 9,
+   "zone_checks": 31,
    "zone_failures": []
   },
   "4": {
-   "n_cutouts": 9,
+   "n_cutouts": 17,
    "tables": [
     {
-     "n_cutouts": 9,
+     "n_cutouts": 17,
      "rows": 441,
      "n_xcenter": 21,
      "n_ycenter": 21,
@@ -4995,14 +6458,60 @@
      "random_positions_wrong_zone": 0
     }
    ],
-   "zone_checks": 9,
+   "zone_checks": 17,
+   "zone_failures": []
+  },
+  "2": {
+   "n_cutouts": 17,
+   "tables": [
+    {
+     "n_cutouts": 17,
+     "rows": 441,
+     "n_xcenter": 21,
+     "n_ycenter": 21,
+     "binx_range": [
+      0,
+      20
+     ],
+     "biny_range": [
+      0,
+      20
+     ],
+     "xwidth": [
+      97.14299774169922
+     ],
+     "ywidth": [
+      97.14299774169922
+     ],
+     "xcenter_range": [
+      48.07143020629883,
+      1990.9285888671875
+     ],
+     "ycenter_range": [
+      48.07143020629883,
+      1990.9285888671875
+     ],
+     "ovsmpx": 5,
+     "ovsmpy": 5,
+     "detcoord": "sky",
+     "ordering": "x-fast then y",
+     "epsf_shape": [
+      33,
+      33
+     ],
+     "source": "Calibration source file: epsf_2_20260507.fits",
+     "random_positions_checked": 2000,
+     "random_positions_wrong_zone": 0
+    }
+   ],
+   "zone_checks": 17,
    "zone_failures": []
   },
   "5": {
-   "n_cutouts": 9,
+   "n_cutouts": 17,
    "tables": [
     {
-     "n_cutouts": 9,
+     "n_cutouts": 17,
      "rows": 441,
      "n_xcenter": 21,
      "n_ycenter": 21,
@@ -5041,7 +6550,7 @@
      "random_positions_wrong_zone": 0
     }
    ],
-   "zone_checks": 9,
+   "zone_checks": 17,
    "zone_failures": []
   }
  }

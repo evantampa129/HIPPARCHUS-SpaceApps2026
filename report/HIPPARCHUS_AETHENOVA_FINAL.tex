@@ -338,6 +338,26 @@ all 8 pairs are brighter later and every pair is $\ge5\sigma$ with the ePSF alon
 aperture values because of the $\chi^2$ scaling). The $r=2$\,px aperture holds a steady 96--98\% of the ePSF flux.
 The fit is not perfect: $\chi^2_\nu=4$--18 at S/N $\approx300$, with residuals at the core
 (Fig.~\ref{fig:epsf}), and the best position is 0.12--0.21\,px from the WCS position in every epoch.
+\textbf{Why $\chi^2_\nu$ is high.} We checked each possible cause on the real pixels (Fig.~\ref{fig:epsfdiag}).
+The ePSF normalisation is correct (fine-grid sum 1.000), its orientation is right (the best of all eight flips and
+transposes; the next is $4.3\times$ worse in $\chi^2$), and neither the zone choice nor a sloped background matters
+(median $\chi^2_\nu$ 7.37 vs 7.53 and 7.31). Two causes are identified: Gaia field stars ($G=15$--19) at the edge of the
+box, and real extra sky structure in the RW~Aur field (blank-sky scatter 1.30$\times$ the VARIANCE plane, against
+0.998 in the WISE~0855 field, so the plane itself is right). Fitting the Gaia stars and scaling the sky noise brings the
+median to 3.2 (1.6--8.5). The rest is a core mismatch that changes sign between epochs and that we could not attribute;
+the RW~Aur binary (0.27\,px) cannot be split. None of these fixes moves the 8 RW~Aur ratios by more than 2\% from the
+aperture values, and the $\chi^2$-scaled errors (0.86\%) agree with a bootstrap (0.86\%) and with the measured
+aperture-vs-ePSF scatter (0.75\%). Down-weighting the core with a model-error term lowers $\chi^2_\nu$ but biases the
+ratios by up to 18\%, so we do not use it. We keep the ePSF fit as an experimental cross-check, not a production
+measurement.
+
+\begin{figure}[h]\centering
+\includegraphics[width=\linewidth]{figures/epsf_diagnostics.png}
+\caption{Why $\chi^2_\nu$ is high (EXPERIMENTAL ePSF check). Left: per-epoch $\chi^2_\nu$ as published, with Gaia
+field stars fitted, and with the measured sky scale. Middle: residuals of one epoch without and with the field stars.
+Right: radial residual profile; the dashed line marks the edge of the ePSF table.}\label{fig:epsfdiag}
+\end{figure}
+
 Both methods read the same photons, so their errors could be correlated. We measured this with SIMULATED stars
 injected into the real WISE~0855 cutouts: the scatter of $\ln(F_\mathrm{ap}/F_\mathrm{ePSF})$ is 0.95 and 0.99 times
 the quadrature error at S/N 10 and 50 (weak correlation), and 1.72 times at S/N 200, where an extra scatter appears,
@@ -391,7 +411,21 @@ With calibrated wavelengths, no RW~Aur or Barnard decision changes: RW~Aur keeps
 $\times2.56$ and $175\sigma$, and both stability claims hold. For WISE~0855, two pairs become ineligible and three become
 eligible, giving 28 valid pairs instead of 27; the largest change is $2.05\sigma$ instead of $1.93\sigma$, so ``no
 $\ge5\sigma$ change'' still holds. No published conclusion changes. We keep the published numbers as they are, for
-reproducibility, and will switch the pipeline to \texttt{CWAVE}/\texttt{CBAND} in the next version. Details:
+reproducibility.
+
+\textbf{Why SIP leaks into the wavelength.} The spectral WCS is \texttt{WAVE-TAB}, a $9\times9$ lookup table on parent
+pixel coordinates. The SIP keywords (\texttt{A\_}, \texttt{B\_}) carry no alternate-WCS letter and belong to the
+celestial \texttt{TAN-SIP} solution, but astropy attaches them to any WCS key it reads, including \texttt{W}, and
+evaluates the polynomial around \texttt{CRPIXW}. On all 280 cached cutouts, the \texttt{W} WCS with SIP removed matches
+the documented bilinear table read to $2\times10^{-12}$\,nm, and the legacy value equals that read at the SIP-shifted
+pixel (shifts of 3--71\,px), so SIP explains the whole offset. IRSA's SPHEREx tutorials turn SIP off for the spectral
+WCS, and the archive documentation recommends \texttt{CWAVE}/\texttt{CBAND} for science.
+
+\textbf{Corrected mode.} The pipeline now takes a wavelength source: \texttt{wcs} (legacy, the published numbers,
+reproduced bit for bit), \texttt{wcs\_nosip} (table without SIP; median 0.2--0.7\,nm from \texttt{CWAVE}) and
+\texttt{cwave} (official maps at the parent pixel, with \texttt{CBAND} for the half-channel rule), which is the
+scientifically correct choice. In \texttt{cwave} mode the stability audit gives RW~Aur 24/24 and 18/24, as published,
+and WISE~0855 35/35. Details:
 \path{submission/evidence/wavecal_check.json}, \path{backend/scripts/reproduce_wavecal.py}.
 
 The same audit checked the ePSF tables in all 204 cached cutouts: detectors 1, 2, 4, 5 and 6 use a $21\times21$ zone
@@ -430,10 +464,19 @@ at least one 3-visit track in 14/20 runs (18/20 without Kleopatra), none with 5 
 is therefore not evidence of a real mover.
 \end{itemize}
 
-The second track (6 detections, 5 visits, $\approx$1.6$''$/h, fit rms 1.4$''$) matches no known object in the JPL
-small-body identification service; we report it without interpretation (a blended source whose centroid shifts with
-wavelength would do the same). One object, one 3.3-day window and slow motion only: this shows the method works on
-a real case, not survey-level completeness. HIPPARCHUS has not found Planet X.
+The second track (6 detections, 5 visits) is not a moving object. Its six detections sit at only three fixed sky
+positions, which an order-2 fit passes through exactly (a straight line gives rms 4.0$''$, $\chi^2_\nu=28.8$). Two
+positions are faint static stars, Gaia DR3 $G=18.4$ and 19.4 (also in AllWISE, within 1.3$''$), seen above 5$\sigma$
+only in a few short-wavelength exposures less than 4\,h apart, shorter than our static-source time span; forced
+photometry over 19 exposures stacks to S/N $\approx15$ at each. The third is a single 4.9\,$\mu$m exposure, 4.5$\times$
+sharper than a point source and absent from the other exposures of the same visit: most likely an unflagged detector
+hit. JPL's small-body identification from SPHEREx finds no known object within 100$''$ (positive control: Kleopatra
+at 0.017$''$). We added a degenerate-track check that flags this case and passes Kleopatra; it is not yet part of
+the published run (\path{submission/evidence/motion_followup.json}). Further known-object cases ((2052)~Tamriko, (433)~Eros)
+were identified but not run because IRSA returned HTTP 502 during the downloads.
+
+One object, one 3.3-day window and slow motion only: this shows the method works on a real case, not survey-level
+completeness. HIPPARCHUS has not found Planet X.
 
 \begin{figure}[h]\centering
 \includegraphics[width=\linewidth]{figures/motion_check.png}

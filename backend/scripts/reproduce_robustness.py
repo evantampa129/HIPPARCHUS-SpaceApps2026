@@ -6,6 +6,7 @@ production numbers with the published evidence files, so any change in a
 measurement shows up here.
 """
 
+import argparse
 import json
 import resource
 import sys
@@ -109,9 +110,10 @@ def dlambda_variants(epochs, claims):
     return out
 
 
-def main():
+def main(wavelength_source: str | None = None, out: Path = OUT):
     t_all = time.perf_counter()
-    report = {"settings": {"apertures_px": R.APERTURES, "annuli_px": R.ANNULI, "masks": R.MASKS,
+    report = {"settings": {"wavelength_source": wavelength_source or "wcs",
+                           "apertures_px": R.APERTURES, "annuli_px": R.ANNULI, "masks": R.MASKS,
                            "calibrations": R.CALIBRATIONS, "detection_sigma": C.DETECTION_SIGMA,
                            "ensemble": {"min_snr": R.ENSEMBLE_MIN_SNR, "min_sep_px": R.ENSEMBLE_MIN_SEP,
                                         "isolation_px": R.ISOLATION_PX},
@@ -123,7 +125,7 @@ def main():
               "targets": {}}
     for t in api.TARGETS:
         t0 = time.perf_counter()
-        res = pipeline.analyze(t["ra"], t["dec"], t["detector"])
+        res = pipeline.analyze(t["ra"], t["dec"], t["detector"], wavelength_source=wavelength_source)
         secs = time.perf_counter() - t0
         ep = {e.obs_id: e for e in res["_epochs"]}
         comps = res["comparisons"]
@@ -192,9 +194,17 @@ def main():
               agree["max_ratio_change"], agree["max_sig_change"], f"| {secs:.1f}s")
     report["benchmark"] = {"total_seconds": time.perf_counter() - t_all,
                            "peak_rss_mb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024}
-    OUT.write_text(json.dumps(report, indent=1, default=lambda o: None if o is None else float(o)) + "\n")
-    print("wrote", OUT, report["benchmark"])
+    out.write_text(json.dumps(report, indent=1, default=lambda o: None if o is None else float(o)) + "\n")
+    print("wrote", out, report["benchmark"])
 
 
 if __name__ == "__main__":
-    main()
+    ap = argparse.ArgumentParser()
+    # Default "wcs" rewrites the published robustness.json; another source must
+    # go to another file (--out), so a trial run never overwrites published evidence.
+    ap.add_argument("--wavelength-source", default="wcs", choices=("wcs", "wcs_nosip", "cwave"))
+    ap.add_argument("--out", type=Path, default=None)
+    a = ap.parse_args()
+    if a.wavelength_source != "wcs" and a.out is None:
+        ap.error("--out is required with a non-default --wavelength-source")
+    main(a.wavelength_source, a.out or OUT)

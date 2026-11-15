@@ -40,8 +40,13 @@ URL = ("https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/spectral_wcs/"
 
 # SHA-256 of the files we downloaded and checked. A detector without an entry
 # is still read, but its result is marked as unverified.
+# D2-D5 added 2026-11-16; their MD5 equals the S3 ETag listed in wavecal_check.json.
 SHA256 = {
     1: "44fb48b236e25a99d42c8986da0064cc58359527e1fc76e182eda52371a1ae23",
+    2: "0eb4e27f351e6161e21372818f9e811480a7ab8bab9295722f180791e151a463",
+    3: "51750c8f948a30541d391e54930279aa067c62c398a7cc2679e592bc6044427a",
+    4: "dbdcb8addb4ffe817f31786c8cb359b1f47df3528173e9d4602b94c84f7d7c1a",
+    5: "3361428284bddad1dcdce42081ebfbd225acb0b19f6caa94fba3e133bbabfc1c",
     6: "19195d253892883586aa2183cb66238b32f6032ade62d490b36b85b0dd18f212",
 }
 

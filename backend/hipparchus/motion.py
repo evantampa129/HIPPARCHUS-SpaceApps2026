@@ -416,3 +416,86 @@ def amplitude_for_snr(variance, bad, wcs, x, y, snr, fwhm_arcsec):
     ok = ~bad & np.isfinite(variance) & (variance > 0)
     # We invert the matched-filter S/N of a model a*p, which is a * sqrt(sum(p^2 / v)).
     return float(snr / np.sqrt(np.sum(p[ok] ** 2 / variance[ok])))
+
+
+# ---------------------------------------------------------------------------
+# Track vetting. These checks were added after the Kleopatra run produced a
+# second, unexplained 5-visit track. They do not change detect() or link();
+# they are applied to a track afterwards and say why it may not be a mover.
+# ---------------------------------------------------------------------------
+
+def position_groups(xi, eta, radius_arcsec):
+    """Label points that sit within `radius` of each other (friends-of-friends).
+
+    A real mover spreads its detections along a path. A false track built from
+    a few static sources, each detected only in a short burst of exposures,
+    collapses into a few tight groups instead.
+    """
+    pts = np.column_stack([xi, eta])
+    lab = -np.ones(len(pts), int)
+    tree = cKDTree(pts)
+    n = 0
+    for i in range(len(pts)):
+        if lab[i] >= 0:
+            continue
+        stack, lab[i] = [i], n
+        while stack:
+            for j in tree.query_ball_point(pts[stack.pop()], r=radius_arcsec):
+                if lab[j] < 0:
+                    lab[j] = n
+                    stack.append(j)
+        n += 1
+    return lab
+
+
+def degenerate_track(t, xi, eta, order, radius_arcsec, min_dt_hours):
+    """Why a linked track may be an artefact of the fit, or None if it looks fine.
+
+    Returns a dict when the members fall into at most `order + 1` position
+    groups and no group spans `min_dt_hours`: a polynomial of that order passes
+    exactly through order + 1 points, so such a "track" is guaranteed to fit and
+    says nothing about motion. Each group is then reported with its time span.
+    """
+    t = np.asarray(t, float)
+    lab = position_groups(xi, eta, radius_arcsec)
+    groups = []
+    for g in np.unique(lab):
+        m = lab == g
+        groups.append({"n": int(m.sum()), "mjd_min": float(t[m].min()), "mjd_max": float(t[m].max()),
+                       "span_hours": float((t[m].max() - t[m].min()) * 24.0),
+                       "xi": float(np.mean(np.asarray(xi)[m])), "eta": float(np.mean(np.asarray(eta)[m]))})
+    if len(groups) <= order + 1 and all(g["span_hours"] < min_dt_hours for g in groups):
+        return {"n_position_groups": len(groups), "fit_order": order, "groups": groups}
+    return None
+
+
+def forced_snr(image, variance, bad, x, y, sigma_px, bkg_box=15):
+    """Matched-filter S/N and PSF amplitude at a FIXED pixel position.
+
+    Used to ask "is there something at this sky position in this exposure?"
+    without a detection threshold: a static source shows a positive S/N in most
+    exposures at the wavelengths where it is bright, a mover does not.
+    """
+    img = image - background(image, bad, bkg_box)
+    snr, flux, _ = matched_filter(img, variance, bad, sigma_px)
+    xi_, yi_ = int(round(x)), int(round(y))
+    ny, nx = img.shape
+    if not (0 <= xi_ < nx and 0 <= yi_ < ny):
+        return None
+    return float(snr[yi_, xi_]), float(flux[yi_, xi_])
+
+
+def peak_sharpness(image, variance, x, y, sigma_px):
+    """Peak pixel S/N divided by the mean S/N of its 4 nearest neighbours.
+
+    For a point source sampled by the PSF this ratio is close to
+    1 / exp(-1 / (2 sigma_px^2)) (about 3.5 for SPHEREx's sigma ~0.62 px).
+    A single hot pixel or a cosmic-ray hit gives a much larger ratio because
+    its neighbours are at the noise level. Returns (ratio, expected_ratio).
+    """
+    xi_, yi_ = int(round(x)), int(round(y))
+    s = image / np.sqrt(np.where(variance > 0, variance, np.nan))
+    peak = s[yi_, xi_]
+    nb = np.nanmean([s[yi_ + 1, xi_], s[yi_ - 1, xi_], s[yi_, xi_ + 1], s[yi_, xi_ - 1]])
+    expected = float(np.exp(1.0 / (2.0 * sigma_px ** 2)))
+    return float(peak / nb) if nb > 0 else float("inf"), expected

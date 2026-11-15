@@ -11,8 +11,11 @@ from hipparchus.compare import compare, compatibility
 
 
 def load_epochs(ra: float, dec: float, detector: str, limit: int | None = None,
-                size: float = cutouts.DEFAULT_SIZE_DEG) -> dict:
-    """Download and check every exposure of one detector that covers (ra, dec)."""
+                size: float = cutouts.DEFAULT_SIZE_DEG, wavelength_source: str | None = None) -> dict:
+    """Download and check every exposure of one detector that covers (ra, dec).
+
+    wavelength_source: one of quality.WAVELENGTH_SOURCES; None = quality's default.
+    """
     manifest = archive.query(ra, dec)
     obs = [o for o in manifest["observations"] if o["detector"] == detector]
     if limit:
@@ -21,7 +24,7 @@ def load_epochs(ra: float, dec: float, detector: str, limit: int | None = None,
     def one(o):
         try:
             c = cutouts.fetch(o["access_url"], ra, dec, size)
-            ep = quality.load(c["path"], o["obs_id"], ra, dec)
+            ep = quality.load(c["path"], o["obs_id"], ra, dec, wavelength_source)
             return ep, {"obs": o, "cutout": {k: c[k] for k in ("url", "sha256", "cached")}}
         except Exception as e:  # one broken file must not stop the whole target
             return None, {"obs": o, "error": str(e)}
@@ -35,8 +38,10 @@ def load_epochs(ra: float, dec: float, detector: str, limit: int | None = None,
     return {"manifest": manifest, "epochs": epochs, "provenance": prov, "failed": failed}
 
 
-def analyze(ra: float, dec: float, detector: str, limit: int | None = None) -> dict:
-    loaded = load_epochs(ra, dec, detector, limit)
+def analyze(ra: float, dec: float, detector: str, limit: int | None = None,
+            wavelength_source: str | None = None) -> dict:
+    wavelength_source = wavelength_source or quality.DEFAULT_WAVELENGTH_SOURCE
+    loaded = load_epochs(ra, dec, detector, limit, wavelength_source=wavelength_source)
     epochs = sorted(loaded["epochs"], key=lambda e: e.mjd)
 
     refusals: Counter = Counter()
@@ -60,11 +65,13 @@ def analyze(ra: float, dec: float, detector: str, limit: int | None = None) -> d
         "archive_status": loaded["manifest"]["archive_status"],
         # The archive queries behind this result, with the checksum of each raw answer.
         "archive_queries": loaded["manifest"].get("sources", []),
+        "wavelength_source": wavelength_source,
         "n_epochs": len(epochs),
         "n_usable": sum(e.usable for e in epochs),
         "epochs": [
             {"obs_id": e.obs_id, "mjd": e.mjd, "date_obs": e.date_obs,
              "wavelength_um": e.wavelength_um, "bandwidth_um": e.bandwidth_um,
+             "wavelength_source": e.wavelength_source,
              "usable": e.usable, "issues": [i.__dict__ for i in e.issues],
              "provenance": loaded["provenance"][e.obs_id]}
             for e in epochs

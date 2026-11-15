@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import warnings
 from dataclasses import dataclass, field
 
@@ -10,8 +11,12 @@ from astropy import log
 from astropy.io import fits
 from astropy.wcs import WCS, FITSFixedWarning
 
-# Reading the spectral WCS makes astropy log a long INFO note about SIP keywords.
-# It does not affect the result, and in a web service it only floods the log.
+from hipparchus import spectral_cal
+
+# Reading the spectral WCS makes astropy log a long INFO note: the SIP keywords
+# would be applied to WCS(key="W"). That note is the cause of the legacy "wcs"
+# wavelength offset (see WAVELENGTH_SOURCES); the other sources switch SIP off,
+# so the note no longer applies. In a web service it would only flood the log.
 log.setLevel("WARNING")
 
 # Flag planes that make a pixel unusable for photometry or differencing. The
@@ -35,6 +40,25 @@ WARN_PLANES = {"DICHROIC", "PHANMISS"}
 # PSFs have a FWHM of about 1.5 pixels, so a 2-pixel radius contains most of
 # the light of a point source.
 APERTURE_PX = 2.0
+
+# Where the wavelength and bandwidth at the target come from.
+#   "wcs"        astropy WCS(key="W") as first published. Astropy attaches the
+#                celestial SIP polynomial (A_*/B_* keywords carry no alternate
+#                letter) to the W lookup table and evaluates it around CRPIXjW,
+#                so the table is read 3-70 px away from the target: up to 18 nm
+#                on D6. Kept bit for bit so the published numbers reproduce.
+#   "wcs_nosip"  the same WCS-WAVE table with SIP switched off, as the IRSA
+#                SPHEREx tutorial does (spectral_wcs.sip = None). Equals the
+#                documented 4-point bilinear read to 1e-12 nm; within ~1-2 nm of CWAVE.
+#   "cwave"      CWAVE/CBAND maps of the Spectral WCS calibration product at the
+#                star's parent pixel: what IRSA recommends for science. Falls back
+#                to "wcs_nosip" (with a warning issue) if the map is not on disk.
+# The default stays "wcs" until the lead decides to switch; see
+# scripts/reproduce_wavecal.py and submission/evidence/wavecal_check.json.
+WAVELENGTH_SOURCES = ("wcs", "wcs_nosip", "cwave")
+DEFAULT_WAVELENGTH_SOURCE = os.environ.get("HIPPARCHUS_WAVELENGTH_SOURCE", "wcs")
+if DEFAULT_WAVELENGTH_SOURCE not in WAVELENGTH_SOURCES:
+    raise ValueError(f"HIPPARCHUS_WAVELENGTH_SOURCE must be one of {WAVELENGTH_SOURCES}")
 
 
 @dataclass
@@ -63,6 +87,7 @@ class Epoch:
     psf_fwhm_arcsec: float
     flag_counts: dict = field(default_factory=dict)
     issues: list[Issue] = field(default_factory=list)
+    wavelength_source: str = "wcs"   # what actually gave wavelength_um (see WAVELENGTH_SOURCES)
 
     @property
     def usable(self) -> bool:
@@ -93,17 +118,39 @@ def target_pixel(wcs: WCS, ra: float, dec: float) -> tuple[float, float]:
     return float(x), float(y)
 
 
-def load(path: str, obs_id: str, ra: float, dec: float) -> Epoch:
+def wavelength_at(h: fits.HDUList, x: float, y: float, source: str) -> tuple[float, float, str, str | None]:
+    """(wavelength, bandwidth, source used, note) at cutout pixel (x, y), 0-based."""
+    if source == "wcs":
+        # Legacy: SIP is applied to the lookup (see WAVELENGTH_SOURCES). Unchanged on purpose.
+        wave = WCS(h["IMAGE"].header, fobj=h, key="W")
+        lam, dlam = (float(v) for v in wave.pixel_to_world_values(x, y))
+        return lam, dlam, "wcs", None
+    if source == "wcs_nosip":
+        wave = WCS(h["IMAGE"].header, fobj=h, key="W")
+        wave.sip = None   # SIP belongs to the celestial WCS only
+        lam, dlam = (float(v) for v in wave.pixel_to_world_values(x, y))
+        return lam, dlam, "wcs_nosip", None
+    if source == "cwave":
+        r = spectral_cal.at_target(h, x, y)
+        if r["source"] == "cwave/cband":
+            return r["wavelength_um"], r["bandwidth_um"], "cwave", None
+        # at_target's fallback is the bilinear table read, which equals wcs_nosip.
+        return r["wavelength_um"], r["bandwidth_um"], "wcs_nosip", r.get("note")
+    raise ValueError(f"wavelength source must be one of {WAVELENGTH_SOURCES}, not {source!r}")
+
+
+def load(path: str, obs_id: str, ra: float, dec: float, wavelength_source: str | None = None) -> Epoch:
+    source = wavelength_source or DEFAULT_WAVELENGTH_SOURCE
+    if source not in WAVELENGTH_SOURCES:
+        raise ValueError(f"wavelength source must be one of {WAVELENGTH_SOURCES}, not {source!r}")
     with warnings.catch_warnings(), fits.open(path) as h:
         missing = [n for n in REQUIRED_HDUS if n not in h]
         if missing:
             raise ValueError(f"{obs_id}: FITS file lacks the {', '.join(missing)} extension(s)")
-        # The spectral WCS uses SIP-style keywords that astropy warns about. The
-        # celestial solution is unaffected. We found later that astropy also applies
-        # the celestial SIP terms to WCS(key="W"), so the wavelength below is read at a
-        # slightly shifted pixel (up to ~18 nm on WISE 0855). We keep it unchanged so the
-        # published numbers stay reproducible; spectral_cal.py and reproduce_wavecal.py
-        # show that no published conclusion changes with the calibrated CWAVE/CBAND.
+        # The headers carry SIP keywords without an alternate letter. They belong
+        # to the celestial WCS (CTYPE ...-TAN-SIP), but astropy also attaches them
+        # to WCS(key="W"); the "wcs" source keeps that for reproducibility, the
+        # other sources do not (see WAVELENGTH_SOURCES and reproduce_wavecal.py).
         warnings.simplefilter("ignore", FITSFixedWarning)
 
         hdr = h["IMAGE"].header
@@ -123,10 +170,8 @@ def load(path: str, obs_id: str, ra: float, dec: float) -> Epoch:
         x, y = target_pixel(wcs, ra, dec)
 
         # SPHEREx uses linear variable filters: the wavelength changes across the
-        # detector. The alternate WCS "W" is a lookup table that gives the
-        # wavelength and bandwidth of each pixel, so we read it AT the target.
-        wave = WCS(hdr, fobj=h, key="W")
-        lam, dlam = (float(v) for v in wave.pixel_to_world_values(x, y))
+        # detector, so we read it AT the target (how: see WAVELENGTH_SOURCES).
+        lam, dlam, used, note = wavelength_at(h, x, y, source)
 
         ep = Epoch(
             obs_id=obs_id,
@@ -142,8 +187,12 @@ def load(path: str, obs_id: str, ra: float, dec: float) -> Epoch:
             wavelength_um=lam,
             bandwidth_um=dlam,
             psf_fwhm_arcsec=float(hdr.get("PSF_FWHM", np.nan)),
+            wavelength_source=used,
         )
         ep.issues = check(ep, flags, planes, warn_bits)
+        if used != source:
+            ep.issues.append(Issue("wavelength_fallback", "warn",
+                                   f"Calibrated wavelength map unavailable ({note}); used the WCS-WAVE table without SIP."))
         return ep
 
 

@@ -101,6 +101,10 @@ so nothing here waits for a live archive download.</p>
  <p class='small'>Limits: the fit leaves residuals at the core of bright stars (&chi;&sup2;<sub>&nu;</sub> 4&ndash;18), and both
  methods read the same photons; SIMULATED stars show their errors are only weakly correlated at S/N 10&ndash;50,
  and the agreement holds after that correction. Labels follow a fixed rule; they are not probabilities.</p>
+ <p class='small'><b>Why &chi;&sup2; is high:</b> we checked normalisation, all 8 orientations, zone choice, background
+ and pixel noise; they are fine. The causes are Gaia field stars at the box edge and extra real sky structure in the
+ RW Aur field (fitting them takes the median from 7.4 to 3.2), plus a core mismatch we could not attribute. No fix
+ moves the RW Aur ratios by more than 2%, so the ePSF stays an experimental cross-check.</p>
  <img src='img/epsf_residuals.png' alt='RW Aur data, ePSF model and residuals for two epochs' style='max-width:min(100%,720px)'>
 </section>
 
@@ -112,7 +116,12 @@ so nothing here waits for a live archive download.</p>
  wavelengths:</p>
  <table><thead><tr><th>Target</th><th>Published: pairs · largest |σ|</th><th>Calibrated: pairs · largest |σ|</th><th>Pairs that change</th></tr></thead>
  <tbody><tr><td>RW Aur</td><td>8 · 175.08σ</td><td>8 · 175.08σ</td><td>0</td></tr><tr><td>WISE 0855</td><td>27 · 1.93σ</td><td>28 · 2.05σ</td><td>5</td></tr><tr><td>Barnard's Star</td><td>0 · —</td><td>0 · —</td><td>0</td></tr></tbody></table>
- <p><b>No published conclusion changes.</b> We keep the published numbers for reproducibility and say so here. The same audit
+ <p><b>No published conclusion changes.</b> We keep the published numbers for reproducibility and say so here.</p>
+ <p><b>Cause, proven on 280 cutouts:</b> the SIP keywords belong to the sky (RA/Dec) solution, but astropy also attaches
+ them to the wavelength lookup table, which is then read 3–71 pixels away from the star. With SIP removed, the table
+ agrees with the official maps to under 1 nm (median), as IRSA's own tutorials recommend. The pipeline now offers a
+ <code>cwave</code> mode that reads the official <code>CWAVE</code>/<code>CBAND</code> maps; the legacy mode stays for
+ reproducibility. The same audit
  confirmed the ePSF zone layouts (21×21; detector 3: 11×41). <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/wavecal_check.json'>Evidence</a></p>
 </section>
 
@@ -137,8 +146,11 @@ so nothing here waits for a live archive download.</p>
  <p><b>Found along the way:</b> the SPHEREx pipeline flags the moving asteroid as OUTLIER in
  35 of 38 exposures, so a static-star mask erases it.
  The motion check keeps OUTLIER pixels; the star pipeline is unchanged.</p>
- <p><b>Limits:</b> one object, one 3.3-day window, slow motion only. A second track (6 detections, 5 visits) matches no
- known object and is reported without interpretation. 3-visit tracks can be chance alignments.
+ <p><b>The second track is not a mover:</b> its 6 detections sit at 3 fixed positions: two faint Gaia/AllWISE stars
+ (G 18.4 and 19.4) and one single-exposure detector hit. JPL finds no known object within 100″. A new degenerate-track
+ check flags it (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/motion_followup.json'>follow-up evidence</a>).</p>
+ <p><b>Limits:</b> one object, one 3.3-day window, slow motion only. Further known-asteroid cases (Tamriko, Eros) were
+ found but not run: IRSA returned HTTP 502. 3-visit tracks can be chance alignments.
  <b>HIPPARCHUS has not found Planet X.</b></p>
  <img src='img/motion_check.png' alt='Kleopatra in SPHEREx cutouts, linking, residuals and SIMULATED tests' style='width:100%;max-width:1000px'>
  <p class='small'>Evidence: <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/motion_check.json'>motion_check.json</a>
@@ -174,7 +186,7 @@ so nothing here waits for a live archive download.</p>
   <div><h3>Verified</h3><p>8 valid pairs (same detector, |Δλ| ≤ half a channel, clean pixels).<br>
    Refused: wavelength mismatch 1480, flagged pixels 1387.</p></div>
  </div>
- <h3>Comparison</h3><div class='imgs'><figure><img src='img/rw_aur_a.png' alt='earlier'><figcaption>earlier</figcaption></figure><figure><img src='img/rw_aur_b.png' alt='later'><figcaption>later</figcaption></figure><figure><img src='img/rw_aur_diff.png' alt='difference'><figcaption>difference</figcaption></figure><figure><img src='img/rw_aur_z.png' alt='significance map'><figcaption>significance map</figcaption></figure></div><p class='muted'>Pair shown: 2025W36_1A_0233_3 → 2026W10_2B_0591_4 (the largest |σ|). Real SPHEREx cutouts, later epoch reprojected onto the earlier one; crosshair = target.</p>
+ <h3>Comparison</h3><div class='imgs'><figure><img src='img/rw_aur_a.png' alt='earlier'><figcaption>earlier</figcaption></figure><figure><img src='img/rw_aur_b.png' alt='later'><figcaption>later</figcaption></figure><figure><img src='img/rw_aur_diff.png' alt='difference'><figcaption>difference</figcaption></figure><figure><img src='img/rw_aur_z.png' alt='significance map'><figcaption>significance map</figcaption></figure></div><p class='muted'>Pair shown: 2025W36_1A_0233_3 → 2026W37_1A_0234_3 (the largest |σ|). Real SPHEREx cutouts, later epoch reprojected onto the earlier one; crosshair = target.</p>
  <div class='scroll'><table class='pairs'><tr><th>dates (a → b)</th><th>λ µm</th><th>S/N a / b</th><th>flux ratio</th><th>σ formal</th><th>σ with calibration floor*</th><th>control star</th></tr><tr><td>2025-09-02 → 2026-09-08</td><td>0.763/0.770</td><td>178 / 370</td><td>×2.56</td><td>+175.1</td><td>+12.4</td><td>×0.86</td></tr><tr><td>2025-09-02 → 2026-09-08</td><td>0.745/0.752</td><td>200 / 354</td><td>×2.50</td><td>+173.5</td><td>+12.0</td><td>×1.07</td></tr><tr><td>2026-03-10 → 2026-09-08</td><td>0.774/0.770</td><td>246 / 351</td><td>×1.50</td><td>+84.8</td><td>+4.0</td><td>×0.89</td></tr><tr><td>2025-09-02 → 2026-03-08</td><td>0.763/0.757</td><td>178 / 299</td><td>×1.67</td><td>+84.4</td><td>+5.3</td><td>×0.90</td></tr><tr><td>2026-03-08 → 2026-09-08</td><td>0.757/0.752</td><td>282 / 363</td><td>×1.42</td><td>+80.3</td><td>+3.4</td><td>×0.97</td></tr><tr><td>2025-09-02 → 2026-03-08</td><td>0.745/0.739</td><td>200 / 275</td><td>×1.62</td><td>+80.3</td><td>+4.9</td><td>×0.95</td></tr><tr><td>2025-09-02 → 2026-03-10</td><td>0.781/0.774</td><td>200 / 260</td><td>×1.41</td><td>+55.0</td><td>+3.2</td><td></td></tr><tr><td>2025-09-03 → 2026-03-04</td><td>0.878/0.878</td><td>311 / 331</td><td>×1.09</td><td>+18.5</td><td>+0.7</td><td></td></tr></table></div><p class='muted'>* Formal error plus the field-star calibration floor; blank where no floor could be measured (fewer than 3 pairs with reference stars). Blank control star: none passed the criteria in that pair.</p>
  <h3>Uncertainty</h3><p>Each σ is the formal error from the SPHEREx variance planes, propagated through sky subtraction and reprojection (checked: blank-sky null test spread 0.91, ideal 1). A calibration floor of 12.5% from field stars is shown separately. With 8 pairs tested, the chance of any false 5σ event is 4.6e-06 if the tests were independent with Gaussian errors. They are not fully independent (pairs share epochs), so this is a rough guide; formal σ values also leave out calibration systematics.</p>
  <h3>Challenged: stability fingerprint</h3><ul class='claims'><li><b class='lab robust'>robust</b> brightened by at least x1.5 at &gt;= 5 sigma in some pair <span class='muted'>(24/24 checks)</span></li><li><b class='lab sensitive'>sensitive</b> every valid pair brighter later, at least one &gt;= 5 sigma <span class='muted'>(18/24 checks)</span></li></ul><table class='heat'><tr><th>aperture px \ sky annulus px</th><th>3.5–6.0</th><th>4.0–7.0</th><th>5.0–8.0</th></tr><tr><th>1.5</th><td class='ok'>×2.43<br><small>189.6σ</small></td><td class='ok'>×2.43<br><small>179.0σ</small></td><td class='ok'>×2.43<br><small>180.6σ</small></td></tr><tr><th>2.0 (used)</th><td class='ok'>×2.56<br><small>201.8σ</small></td><td class='ok'>×2.56<br><small>175.1σ</small></td><td class='ok'>×2.56<br><small>178.6σ</small></td></tr><tr><th>2.5</th><td class='ok'>×2.58<br><small>198.1σ</small></td><td class='ok'>×2.58<br><small>160.5σ</small></td><td class='ok'>×2.58<br><small>160.1σ</small></td></tr><tr><th>3.0</th><td class='na'>×2.58<br><small>191.4σ</small></td><td class='na'>×2.58<br><small>136.6σ</small></td><td class='na'>×2.58<br><small>136.1σ</small></td></tr></table><p class='muted'>Cells test “brightened by at least x1.5 at &gt;= 5 sigma in some pair”: green holds, red fails, grey = some pair not measurable. Value: strongest ratio and largest formal |σ| (no calibration floor). Labels follow a fixed rule (robust = all checks, sensitive = at least half); they are not probabilities.</p>
@@ -226,5 +238,5 @@ so nothing here waits for a live archive download.</p>
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
 data; no simulated value appears on this page (the SIMULATED injection-recovery test is only in the report).
 AI tools helped with the logos, the video edit, code, method review and writing; they produced no measurement and did not
-validate the science (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026#data-credits-and-ai-use'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit 95d32d5.</footer>
+validate the science (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026#data-credits-and-ai-use'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit 7bd3536.</footer>
 </main></body></html>

@@ -1,0 +1,3164 @@
+{
+ "experiment": "Track B follow-up: vetting of the unexplained second track, and further KNOWN-asteroid validation cases",
+ "claim": "none about new objects",
+ "settings_from": "reproduce_motion.py (unchanged)",
+ "second_track": {
+  "reproduced_from_cached_cutouts": true,
+  "n_detections": 6,
+  "n_visits": 5,
+  "published_fit": {
+   "order": 2,
+   "rms_arcsec": 1.4040989392308973,
+   "chi2_red": 3.9878609245461436,
+   "rate_arcsec_h": [
+    -1.3106041046027792,
+    0.9577457880098273
+   ]
+  },
+  "linear_fit_same_points": {
+   "rms_arcsec": 4.042830098300371,
+   "chi2_red": 28.802540285478127,
+   "rate_arcsec_h": [
+    -1.266509920544186,
+    0.7600285456284519
+   ]
+  },
+  "members": [
+   {
+    "obs_id": "2025W25_1B_0290_3",
+    "detector": "SPHEREx-D6",
+    "mjd": 60843.500832092,
+    "wavelength_um_at_detection": 4.9358,
+    "ra": 201.39256657613737,
+    "dec": -8.120675551188999,
+    "x": 26.9913562384502,
+    "y": 34.992936330201054,
+    "snr": 18.961397720752768,
+    "err_arcsec": 0.7613264428967482,
+    "xi_arcsec": -110.64622716130488,
+    "eta_arcsec": 173.87661774549463,
+    "resid_published_fit_arcsec": [
+     0.15224200723660886,
+     0.0817191406963218
+    ],
+    "resid_linear_fit_arcsec": [
+     -1.3226071309226057,
+     6.6949065882274965
+    ],
+    "peak_over_neighbours": 16.28515413641787,
+    "peak_over_neighbours_expected_for_psf": 3.6198922907005042,
+    "sb_ident_from_spherex": {
+     "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-17_12%3A01%3A11&xobs=-6.797122724E%2B03%2C8.158605548E%2B02%2C-1.618053012E%2B03%2C1.829777019E%2B00%2C8.561239063E-01%2C-7.251683913E%2B00&fov-ra-center=13-25-34.22&fov-dec-center=M08-07-14.4&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+     "status": "cached",
+     "n_objects": 7,
+     "objects": [
+      {
+       "Object name": "216 Kleopatra (A880 GB)",
+       "Astrometric RA (hh:mm:ss)": "13:25:36.03",
+       "Astrometric Dec (dd mm'ss\")": "-08 12'43.6\"",
+       "Dist. from center RA (\")": "26.9",
+       "Dist. from center Dec (\")": "-329.",
+       "Dist. from center Norm (\")": "330.3",
+       "Visual magnitude (V)": "12.8",
+       "RA rate (\"/h)": "1.426E+00",
+       "Dec rate (\"/h)": "1.743E+01"
+      },
+      {
+       "Object name": "32888 (1993 TD27)",
+       "Astrometric RA (hh:mm:ss)": "13:25:39.23",
+       "Astrometric Dec (dd mm'ss\")": "-08 13'10.7\"",
+       "Dist. from center RA (\")": "74.3",
+       "Dist. from center Dec (\")": "-356.",
+       "Dist. from center Norm (\")": "364.0",
+       "Visual magnitude (V)": "19.7",
+       "RA rate (\"/h)": "4.889E+00",
+       "Dec rate (\"/h)": "1.555E+01"
+      },
+      {
+       "Object name": "210278 (2007 TJ29)",
+       "Astrometric RA (hh:mm:ss)": "13:25:11.78",
+       "Astrometric Dec (dd mm'ss\")": "-08 08'51.1\"",
+       "Dist. from center RA (\")": "-333.",
+       "Dist. from center Dec (\")": "-96.7",
+       "Dist. from center Norm (\")": "346.9",
+       "Visual magnitude (V)": "22.1",
+       "RA rate (\"/h)": "3.985E+00",
+       "Dec rate (\"/h)": "1.210E+01"
+      },
+      {
+       "Object name": "362460 (2010 RV143)",
+       "Astrometric RA (hh:mm:ss)": "13:25:57.34",
+       "Astrometric Dec (dd mm'ss\")": "-08 05'00.5\"",
+       "Dist. from center RA (\")": "343.",
+       "Dist. from center Dec (\")": "134.",
+       "Dist. from center Norm (\")": "368.6",
+       "Visual magnitude (V)": "21.6",
+       "RA rate (\"/h)": "4.516E+00",
+       "Dec rate (\"/h)": "1.607E+01"
+      },
+      {
+       "Object name": "(2001 DT108)",
+       "Astrometric RA (hh:mm:ss)": "13:25:32.81",
+       "Astrometric Dec (dd mm'ss\")": "-08 01'51.1\"",
+       "Dist. from center RA (\")": "-20.9",
+       "Dist. from center Dec (\")": "323.",
+       "Dist. from center Norm (\")": "324.0",
+       "Visual magnitude (V)": "25.0",
+       "RA rate (\"/h)": "-1.072E+00",
+       "Dec rate (\"/h)": "1.502E+00"
+      },
+      {
+       "Object name": "(2015 XT196)",
+       "Astrometric RA (hh:mm:ss)": "13:25:32.35",
+       "Astrometric Dec (dd mm'ss\")": "-08 02'39.6\"",
+       "Dist. from center RA (\")": "-27.8",
+       "Dist. from center Dec (\")": "275.",
+       "Dist. from center Norm (\")": "276.2",
+       "Visual magnitude (V)": "23.9",
+       "RA rate (\"/h)": "3.698E+00",
+       "Dec rate (\"/h)": "1.572E+01"
+      },
+      {
+       "Object name": "(2019 AR151)",
+       "Astrometric RA (hh:mm:ss)": "13:25:17.36",
+       "Astrometric Dec (dd mm'ss\")": "-08 06'53.5\"",
+       "Dist. from center RA (\")": "-250.",
+       "Dist. from center Dec (\")": "20.9",
+       "Dist. from center Norm (\")": "251.3",
+       "Visual magnitude (V)": "22.9",
+       "RA rate (\"/h)": "1.626E+01",
+       "Dec rate (\"/h)": "1.052E+01"
+      }
+     ]
+    }
+   },
+   {
+    "obs_id": "2025W25_1B_0393_1",
+    "detector": "SPHEREx-D3",
+    "mjd": 60843.972526293,
+    "wavelength_um_at_detection": 1.6276,
+    "ra": 201.38852013056444,
+    "dec": -8.121924943810857,
+    "x": 24.85003804893751,
+    "y": 36.965479404697994,
+    "snr": 5.9188652783577105,
+    "err_arcsec": 1.0508449677274867,
+    "xi_arcsec": -125.066980544932,
+    "eta_arcsec": 169.37762461780335,
+    "resid_published_fit_arcsec": [
+     -2.781734681928839,
+     -0.2376979111905939
+    ],
+    "resid_linear_fit_arcsec": [
+     -1.4056312738933485,
+     -6.408111921048146
+    ],
+    "peak_over_neighbours": 2.8967833932768543,
+    "peak_over_neighbours_expected_for_psf": 6.681441718034578,
+    "sb_ident_from_spherex": {
+     "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-17_23%3A20%3A26&xobs=-6.971221392E%2B03%2C4.308828703E%2B02%2C8.337375090E%2B02%2C-8.195041596E-01%2C1.099688749E%2B00%2C-7.402693589E%2B00&fov-ra-center=13-25-33.24&fov-dec-center=M08-07-18.9&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+     "status": "cached",
+     "n_objects": 8,
+     "objects": [
+      {
+       "Object name": "216 Kleopatra (A880 GB)",
+       "Astrometric RA (hh:mm:ss)": "13:25:37.06",
+       "Astrometric Dec (dd mm'ss\")": "-08 11'52.0\"",
+       "Dist. from center RA (\")": "56.7",
+       "Dist. from center Dec (\")": "-273.",
+       "Dist. from center Norm (\")": "278.9",
+       "Visual magnitude (V)": "12.8",
+       "RA rate (\"/h)": "3.766E+00",
+       "Dec rate (\"/h)": "1.693E+01"
+      },
+      {
+       "Object name": "210278 (2007 TJ29)",
+       "Astrometric RA (hh:mm:ss)": "13:25:14.75",
+       "Astrometric Dec (dd mm'ss\")": "-08 09'10.5\"",
+       "Dist. from center RA (\")": "-275.",
+       "Dist. from center Dec (\")": "-112.",
+       "Dist. from center Norm (\")": "296.4",
+       "Visual magnitude (V)": "22.1",
+       "RA rate (\"/h)": "6.477E+00",
+       "Dec rate (\"/h)": "1.160E+01"
+      },
+      {
+       "Object name": "817287 (2012 HU100)",
+       "Astrometric RA (hh:mm:ss)": "13:25:14.37",
+       "Astrometric Dec (dd mm'ss\")": "-08 02'58.5\"",
+       "Dist. from center RA (\")": "-280.",
+       "Dist. from center Dec (\")": "260.",
+       "Dist. from center Norm (\")": "382.5",
+       "Visual magnitude (V)": "22.2",
+       "RA rate (\"/h)": "1.929E+01",
+       "Dec rate (\"/h)": "1.588E+01"
+      },
+      {
+       "Object name": "(2001 DT108)",
+       "Astrometric RA (hh:mm:ss)": "13:25:31.99",
+       "Astrometric Dec (dd mm'ss\")": "-08 01'46.8\"",
+       "Dist. from center RA (\")": "-18.5",
+       "Dist. from center Dec (\")": "332.",
+       "Dist. from center Norm (\")": "332.7",
+       "Visual magnitude (V)": "25.0",
+       "RA rate (\"/h)": "-8.659E-01",
+       "Dec rate (\"/h)": "1.463E+00"
+      },
+      {
+       "Object name": "(2015 KH431)",
+       "Astrometric RA (hh:mm:ss)": "13:25:20.63",
+       "Astrometric Dec (dd mm'ss\")": "-08 12'52.8\"",
+       "Dist. from center RA (\")": "-187.",
+       "Dist. from center Dec (\")": "-334.",
+       "Dist. from center Norm (\")": "382.8",
+       "Visual magnitude (V)": "23.9",
+       "RA rate (\"/h)": "2.145E+01",
+       "Dec rate (\"/h)": "2.172E+01"
+      },
+      {
+       "Object name": "(2015 XT196)",
+       "Astrometric RA (hh:mm:ss)": "13:25:35.08",
+       "Astrometric Dec (dd mm'ss\")": "-08 02'59.8\"",
+       "Dist. from center RA (\")": "27.3",
+       "Dist. from center Dec (\")": "259.",
+       "Dist. from center Norm (\")": "260.5",
+       "Visual magnitude (V)": "23.9",
+       "RA rate (\"/h)": "6.863E+00",
+       "Dec rate (\"/h)": "1.509E+01"
+      },
+      {
+       "Object name": "(2019 AR151)",
+       "Astrometric RA (hh:mm:ss)": "13:25:29.61",
+       "Astrometric Dec (dd mm'ss\")": "-08 08'42.7\"",
+       "Dist. from center RA (\")": "-53.9",
+       "Dist. from center Dec (\")": "-83.8",
+       "Dist. from center Norm (\")": "99.61",
+       "Visual magnitude (V)": "22.9",
+       "RA rate (\"/h)": "1.981E+01",
+       "Dec rate (\"/h)": "9.823E+00"
+      },
+      {
+       "Object name": "(2021 PY75)",
+       "Astrometric RA (hh:mm:ss)": "13:25:09.72",
+       "Astrometric Dec (dd mm'ss\")": "-08 01'43.1\"",
+       "Dist. from center RA (\")": "-349.",
+       "Dist. from center Dec (\")": "336.",
+       "Dist. from center Norm (\")": "484.6",
+       "Visual magnitude (V)": "24.4",
+       "RA rate (\"/h)": "4.227E+00",
+       "Dec rate (\"/h)": "1.266E+01"
+      }
+     ]
+    }
+   },
+   {
+    "obs_id": "2025W25_1B_0431_4",
+    "detector": "SPHEREx-D2",
+    "mjd": 60844.113082358,
+    "wavelength_um_at_detection": 1.4426,
+    "ra": 201.3889403027552,
+    "dec": -8.12190453354996,
+    "x": 25.221219583360728,
+    "y": 35.927151253050226,
+    "snr": 5.475714938847185,
+    "err_arcsec": 0.9843679330728329,
+    "xi_arcsec": -123.5695380133083,
+    "eta_arcsec": 169.4512304209467,
+    "resid_published_fit_arcsec": [
+     2.380411429513984,
+     -0.0031444813243410863
+    ],
+    "resid_linear_fit_arcsec": [
+     4.364186874950988,
+     -8.898345037807985
+    ],
+    "peak_over_neighbours": 3.0024223535010175,
+    "peak_over_neighbours_expected_for_psf": 6.536728855714583,
+    "sb_ident_from_spherex": {
+     "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-18_02%3A42%3A50&xobs=-6.648463184E%2B03%2C8.073846155E%2B02%2C-2.150825291E%2B03%2C2.393657280E%2B00%2C8.093244344E-01%2C-7.091005670E%2B00&fov-ra-center=13-25-33.35&fov-dec-center=M08-07-18.9&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+     "status": "cached",
+     "n_objects": 8,
+     "objects": [
+      {
+       "Object name": "216 Kleopatra (A880 GB)",
+       "Astrometric RA (hh:mm:ss)": "13:25:37.42",
+       "Astrometric Dec (dd mm'ss\")": "-08 11'35.2\"",
+       "Dist. from center RA (\")": "60.5",
+       "Dist. from center Dec (\")": "-256.",
+       "Dist. from center Norm (\")": "263.4",
+       "Visual magnitude (V)": "12.8",
+       "RA rate (\"/h)": "1.410E+00",
+       "Dec rate (\"/h)": "1.706E+01"
+      },
+      {
+       "Object name": "210278 (2007 TJ29)",
+       "Astrometric RA (hh:mm:ss)": "13:25:15.69",
+       "Astrometric Dec (dd mm'ss\")": "-08 09'14.7\"",
+       "Dist. from center RA (\")": "-262.",
+       "Dist. from center Dec (\")": "-116.",
+       "Dist. from center Norm (\")": "286.7",
+       "Visual magnitude (V)": "22.1",
+       "RA rate (\"/h)": "3.951E+00",
+       "Dec rate (\"/h)": "1.173E+01"
+      },
+      {
+       "Object name": "817287 (2012 HU100)",
+       "Astrometric RA (hh:mm:ss)": "13:25:17.94",
+       "Astrometric Dec (dd mm'ss\")": "-08 03'10.9\"",
+       "Dist. from center RA (\")": "-229.",
+       "Dist. from center Dec (\")": "248.",
+       "Dist. from center Norm (\")": "337.4",
+       "Visual magnitude (V)": "22.2",
+       "RA rate (\"/h)": "1.541E+01",
+       "Dec rate (\"/h)": "1.607E+01"
+      },
+      {
+       "Object name": "(2001 DT108)",
+       "Astrometric RA (hh:mm:ss)": "13:25:31.75",
+       "Astrometric Dec (dd mm'ss\")": "-08 01'45.4\"",
+       "Dist. from center RA (\")": "-23.7",
+       "Dist. from center Dec (\")": "334.",
+       "Dist. from center Norm (\")": "334.4",
+       "Visual magnitude (V)": "25.0",
+       "RA rate (\"/h)": "-1.071E+00",
+       "Dec rate (\"/h)": "1.474E+00"
+      },
+      {
+       "Object name": "(2015 KH431)",
+       "Astrometric RA (hh:mm:ss)": "13:25:24.62",
+       "Astrometric Dec (dd mm'ss\")": "-08 12'51.6\"",
+       "Dist. from center RA (\")": "-130.",
+       "Dist. from center Dec (\")": "-333.",
+       "Dist. from center Norm (\")": "357.1",
+       "Visual magnitude (V)": "23.9",
+       "RA rate (\"/h)": "1.720E+01",
+       "Dec rate (\"/h)": "2.195E+01"
+      },
+      {
+       "Object name": "(2015 XT196)",
+       "Astrometric RA (hh:mm:ss)": "13:25:35.97",
+       "Astrometric Dec (dd mm'ss\")": "-08 03'03.8\"",
+       "Dist. from center RA (\")": "38.9",
+       "Dist. from center Dec (\")": "255.",
+       "Dist. from center Norm (\")": "258.0",
+       "Visual magnitude (V)": "23.9",
+       "RA rate (\"/h)": "3.650E+00",
+       "Dec rate (\"/h)": "1.525E+01"
+      },
+      {
+       "Object name": "(2019 AR151)",
+       "Astrometric RA (hh:mm:ss)": "13:25:33.33",
+       "Astrometric Dec (dd mm'ss\")": "-08 09'12.7\"",
+       "Dist. from center RA (\")": "-.235",
+       "Dist. from center Dec (\")": "-114.",
+       "Dist. from center Norm (\")": "113.8",
+       "Visual magnitude (V)": "22.9",
+       "RA rate (\"/h)": "1.608E+01",
+       "Dec rate (\"/h)": "1.003E+01"
+      },
+      {
+       "Object name": "(2021 PY75)",
+       "Astrometric RA (hh:mm:ss)": "13:25:10.15",
+       "Astrometric Dec (dd mm'ss\")": "-08 01'44.0\"",
+       "Dist. from center RA (\")": "-345.",
+       "Dist. from center Dec (\")": "335.",
+       "Dist. from center Norm (\")": "480.5",
+       "Visual magnitude (V)": "24.4",
+       "RA rate (\"/h)": "1.687E+00",
+       "Dec rate (\"/h)": "1.278E+01"
+      }
+     ]
+    }
+   },
+   {
+    "obs_id": "2025W25_2A_0095_1",
+    "detector": "SPHEREx-D3",
+    "mjd": 60845.874527578,
+    "wavelength_um_at_detection": 1.7427,
+    "ra": 201.3719974562026,
+    "dec": -8.110373849958211,
+    "x": 13.109650141674955,
+    "y": 35.011410443433036,
+    "snr": 5.167219116460113,
+    "err_arcsec": 1.0270731022942217,
+    "xi_arcsec": -183.95736369820676,
+    "eta_arcsec": 210.9553191982104,
+    "resid_published_fit_arcsec": [
+     -2.665514368708955,
+     1.2971680871168303
+    ],
+    "resid_linear_fit_arcsec": [
+     -2.482330514956743,
+     0.4757761692043232
+    ],
+    "peak_over_neighbours": 10.241023755430334,
+    "peak_over_neighbours_expected_for_psf": 6.556164838158858,
+    "sb_ident_from_spherex": {
+     "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-19_20%3A59%3A19&xobs=-6.972972104E%2B03%2C1.945219750E%2B02%2C8.984217867E%2B02%2C-9.247518774E-01%2C1.075175187E%2B00%2C-7.394747441E%2B00&fov-ra-center=13-25-29.28&fov-dec-center=M08-06-37.3&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+     "status": "cached",
+     "n_objects": 11,
+     "objects": [
+      {
+       "Object name": "216 Kleopatra (A880 GB)",
+       "Astrometric RA (hh:mm:ss)": "13:25:43.67",
+       "Astrometric Dec (dd mm'ss\")": "-08 08'36.7\"",
+       "Dist. from center RA (\")": "214.",
+       "Dist. from center Dec (\")": "-119.",
+       "Dist. from center Norm (\")": "244.7",
+       "Visual magnitude (V)": "12.8",
+       "RA rate (\"/h)": "5.038E+00",
+       "Dec rate (\"/h)": "1.619E+01"
+      },
+      {
+       "Object name": "11957 (1994 DS)",
+       "Astrometric RA (hh:mm:ss)": "13:25:20.04",
+       "Astrometric Dec (dd mm'ss\")": "-08 09'51.7\"",
+       "Dist. from center RA (\")": "-137.",
+       "Dist. from center Dec (\")": "-194.",
+       "Dist. from center Norm (\")": "238.0",
+       "Visual magnitude (V)": "18.9",
+       "RA rate (\"/h)": "1.479E+01",
+       "Dec rate (\"/h)": "1.016E+01"
+      },
+      {
+       "Object name": "17080 (1999 HE9)",
+       "Astrometric RA (hh:mm:ss)": "13:25:16.44",
+       "Astrometric Dec (dd mm'ss\")": "-08 00'41.5\"",
+       "Dist. from center RA (\")": "-191.",
+       "Dist. from center Dec (\")": "356.",
+       "Dist. from center Norm (\")": "403.6",
+       "Visual magnitude (V)": "19.1",
+       "RA rate (\"/h)": "8.154E+00",
+       "Dec rate (\"/h)": "1.576E+01"
+      },
+      {
+       "Object name": "105401 (2000 QM144)",
+       "Astrometric RA (hh:mm:ss)": "13:25:30.68",
+       "Astrometric Dec (dd mm'ss\")": "-08 03'04.9\"",
+       "Dist. from center RA (\")": "20.8",
+       "Dist. from center Dec (\")": "212.",
+       "Dist. from center Norm (\")": "213.4",
+       "Visual magnitude (V)": "20.8",
+       "RA rate (\"/h)": "1.052E+01",
+       "Dec rate (\"/h)": "1.256E+01"
+      },
+      {
+       "Object name": "210278 (2007 TJ29)",
+       "Astrometric RA (hh:mm:ss)": "13:25:29.23",
+       "Astrometric Dec (dd mm'ss\")": "-08 10'38.8\"",
+       "Dist. from center RA (\")": "-.745",
+       "Dist. from center Dec (\")": "-241.",
+       "Dist. from center Norm (\")": "241.5",
+       "Visual magnitude (V)": "22.1",
+       "RA rate (\"/h)": "7.778E+00",
+       "Dec rate (\"/h)": "1.090E+01"
+      },
+      {
+       "Object name": "(2001 DT108)",
+       "Astrometric RA (hh:mm:ss)": "13:25:28.91",
+       "Astrometric Dec (dd mm'ss\")": "-08 01'30.3\"",
+       "Dist. from center RA (\")": "-5.51",
+       "Dist. from center Dec (\")": "307.",
+       "Dist. from center Norm (\")": "307.0",
+       "Visual magnitude (V)": "25.0",
+       "RA rate (\"/h)": "-7.451E-01",
+       "Dec rate (\"/h)": "1.411E+00"
+      },
+      {
+       "Object name": "(2014 SH19)",
+       "Astrometric RA (hh:mm:ss)": "13:25:19.32",
+       "Astrometric Dec (dd mm'ss\")": "-08 05'14.6\"",
+       "Dist. from center RA (\")": "-148.",
+       "Dist. from center Dec (\")": "82.7",
+       "Dist. from center Norm (\")": "169.4",
+       "Visual magnitude (V)": "24.1",
+       "RA rate (\"/h)": "8.098E+00",
+       "Dec rate (\"/h)": "1.349E+01"
+      },
+      {
+       "Object name": "(2015 XT196)",
+       "Astrometric RA (hh:mm:ss)": "13:25:49.28",
+       "Astrometric Dec (dd mm'ss\")": "-08 04'34.2\"",
+       "Dist. from center RA (\")": "297.",
+       "Dist. from center Dec (\")": "123.",
+       "Dist. from center Norm (\")": "321.5",
+       "Visual magnitude (V)": "23.9",
+       "RA rate (\"/h)": "8.506E+00",
+       "Dec rate (\"/h)": "1.422E+01"
+      },
+      {
+       "Object name": "(2021 PY75)",
+       "Astrometric RA (hh:mm:ss)": "13:25:17.33",
+       "Astrometric Dec (dd mm'ss\")": "-08 02'28.5\"",
+       "Dist. from center RA (\")": "-177.",
+       "Dist. from center Dec (\")": "249.",
+       "Dist. from center Norm (\")": "305.6",
+       "Visual magnitude (V)": "24.4",
+       "RA rate (\"/h)": "5.599E+00",
+       "Dec rate (\"/h)": "1.196E+01"
+      },
+      {
+       "Object name": "(2021 QH36)",
+       "Astrometric RA (hh:mm:ss)": "13:25:23.63",
+       "Astrometric Dec (dd mm'ss\")": "-08 09'37.5\"",
+       "Dist. from center RA (\")": "-83.8",
+       "Dist. from center Dec (\")": "-180.",
+       "Dist. from center Norm (\")": "198.8",
+       "Visual magnitude (V)": "22.9",
+       "RA rate (\"/h)": "8.927E+00",
+       "Dec rate (\"/h)": "1.248E+01"
+      },
+      {
+       "Object name": "(2022 UO59)",
+       "Astrometric RA (hh:mm:ss)": "13:25:26.39",
+       "Astrometric Dec (dd mm'ss\")": "-08 03'16.0\"",
+       "Dist. from center RA (\")": "-42.9",
+       "Dist. from center Dec (\")": "201.",
+       "Dist. from center Norm (\")": "205.8",
+       "Visual magnitude (V)": "22.9",
+       "RA rate (\"/h)": "7.950E+00",
+       "Dec rate (\"/h)": "5.245E+00"
+      }
+     ]
+    }
+   },
+   {
+    "obs_id": "2025W25_2A_0113_1",
+    "detector": "SPHEREx-D3",
+    "mjd": 60845.942638296,
+    "wavelength_um_at_detection": 1.786,
+    "ra": 201.3722946274849,
+    "dec": -8.109842399492807,
+    "x": 13.251777599022468,
+    "y": 34.134853789651416,
+    "snr": 6.614477807566557,
+    "err_arcsec": 0.720511706497814,
+    "xi_arcsec": -182.89848935953736,
+    "eta_arcsec": 212.86867784980393,
+    "resid_published_fit_arcsec": [
+     0.8835165259534676,
+     0.08555710703970476
+    ],
+    "resid_linear_fit_arcsec": [
+     0.6468534246975253,
+     1.1467486621793057
+    ],
+    "peak_over_neighbours": 2.436165993452088,
+    "peak_over_neighbours_expected_for_psf": 6.6563671294123425,
+    "sb_ident_from_spherex": {
+     "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-19_22%3A37%3A23&xobs=-6.986500988E%2B03%2C2.029711377E%2B02%2C7.841964430E%2B02%2C-8.024491559E-01%2C1.070679292E%2B00%2C-7.409702557E%2B00&fov-ra-center=13-25-29.35&fov-dec-center=M08-06-35.4&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+     "status": "cached",
+     "n_objects": 11,
+     "objects": [
+      {
+       "Object name": "216 Kleopatra (A880 GB)",
+       "Astrometric RA (hh:mm:ss)": "13:25:43.98",
+       "Astrometric Dec (dd mm'ss\")": "-08 08'30.1\"",
+       "Dist. from center RA (\")": "217.",
+       "Dist. from center Dec (\")": "-115.",
+       "Dist. from center Norm (\")": "245.6",
+       "Visual magnitude (V)": "12.8",
+       "RA rate (\"/h)": "5.000E+00",
+       "Dec rate (\"/h)": "1.622E+01"
+      },
+      {
+       "Object name": "11957 (1994 DS)",
+       "Astrometric RA (hh:mm:ss)": "13:25:21.28",
+       "Astrometric Dec (dd mm'ss\")": "-08 10'06.9\"",
+       "Dist. from center RA (\")": "-120.",
+       "Dist. from center Dec (\")": "-211.",
+       "Dist. from center Norm (\")": "243.1",
+       "Visual magnitude (V)": "18.9",
+       "RA rate (\"/h)": "1.472E+01",
+       "Dec rate (\"/h)": "1.022E+01"
+      },
+      {
+       "Object name": "17080 (1999 HE9)",
+       "Astrometric RA (hh:mm:ss)": "13:25:17.07",
+       "Astrometric Dec (dd mm'ss\")": "-08 00'37.6\"",
+       "Dist. from center RA (\")": "-182.",
+       "Dist. from center Dec (\")": "358.",
+       "Dist. from center Norm (\")": "401.6",
+       "Visual magnitude (V)": "19.1",
+       "RA rate (\"/h)": "8.111E+00",
+       "Dec rate (\"/h)": "1.579E+01"
+      },
+      {
+       "Object name": "105401 (2000 QM144)",
+       "Astrometric RA (hh:mm:ss)": "13:25:31.47",
+       "Astrometric Dec (dd mm'ss\")": "-08 03'13.9\"",
+       "Dist. from center RA (\")": "31.5",
+       "Dist. from center Dec (\")": "202.",
+       "Dist. from center Norm (\")": "204.0",
+       "Visual magnitude (V)": "20.8",
+       "RA rate (\"/h)": "1.046E+01",
+       "Dec rate (\"/h)": "1.261E+01"
+      },
+      {
+       "Object name": "210278 (2007 TJ29)",
+       "Astrometric RA (hh:mm:ss)": "13:25:29.82",
+       "Astrometric Dec (dd mm'ss\")": "-08 10'42.3\"",
+       "Dist. from center RA (\")": "7.02",
+       "Dist. from center Dec (\")": "-247.",
+       "Dist. from center Norm (\")": "247.0",
+       "Visual magnitude (V)": "22.1",
+       "RA rate (\"/h)": "7.736E+00",
+       "Dec rate (\"/h)": "1.093E+01"
+      },
+      {
+       "Object name": "(2001 DT108)",
+       "Astrometric RA (hh:mm:ss)": "13:25:28.81",
+       "Astrometric Dec (dd mm'ss\")": "-08 01'29.8\"",
+       "Dist. from center RA (\")": "-8.09",
+       "Dist. from center Dec (\")": "306.",
+       "Dist. from center Norm (\")": "305.7",
+       "Visual magnitude (V)": "25.0",
+       "RA rate (\"/h)": "-7.480E-01",
+       "Dec rate (\"/h)": "1.413E+00"
+      },
+      {
+       "Object name": "(2014 SH19)",
+       "Astrometric RA (hh:mm:ss)": "13:25:19.90",
+       "Astrometric Dec (dd mm'ss\")": "-08 05'17.7\"",
+       "Dist. from center RA (\")": "-140.",
+       "Dist. from center Dec (\")": "77.7",
+       "Dist. from center Norm (\")": "160.4",
+       "Visual magnitude (V)": "24.1",
+       "RA rate (\"/h)": "8.048E+00",
+       "Dec rate (\"/h)": "1.353E+01"
+      },
+      {
+       "Object name": "(2015 XT196)",
+       "Astrometric RA (hh:mm:ss)": "13:25:49.88",
+       "Astrometric Dec (dd mm'ss\")": "-08 04'38.0\"",
+       "Dist. from center RA (\")": "305.",
+       "Dist. from center Dec (\")": "117.",
+       "Dist. from center Norm (\")": "326.7",
+       "Visual magnitude (V)": "23.9",
+       "RA rate (\"/h)": "8.452E+00",
+       "Dec rate (\"/h)": "1.426E+01"
+      },
+      {
+       "Object name": "(2021 PY75)",
+       "Astrometric RA (hh:mm:ss)": "13:25:17.68",
+       "Astrometric Dec (dd mm'ss\")": "-08 02'30.5\"",
+       "Dist. from center RA (\")": "-173.",
+       "Dist. from center Dec (\")": "245.",
+       "Dist. from center Norm (\")": "300.0",
+       "Visual magnitude (V)": "24.4",
+       "RA rate (\"/h)": "5.559E+00",
+       "Dec rate (\"/h)": "1.199E+01"
+      },
+      {
+       "Object name": "(2021 QH36)",
+       "Astrometric RA (hh:mm:ss)": "13:25:24.31",
+       "Astrometric Dec (dd mm'ss\")": "-08 09'41.9\"",
+       "Dist. from center RA (\")": "-74.8",
+       "Dist. from center Dec (\")": "-186.",
+       "Dist. from center Norm (\")": "200.9",
+       "Visual magnitude (V)": "22.9",
+       "RA rate (\"/h)": "8.877E+00",
+       "Dec rate (\"/h)": "1.252E+01"
+      },
+      {
+       "Object name": "(2022 UO59)",
+       "Astrometric RA (hh:mm:ss)": "13:25:26.97",
+       "Astrometric Dec (dd mm'ss\")": "-08 03'31.5\"",
+       "Dist. from center RA (\")": "-35.3",
+       "Dist. from center Dec (\")": "184.",
+       "Dist. from center Norm (\")": "187.3",
+       "Visual magnitude (V)": "22.9",
+       "RA rate (\"/h)": "7.902E+00",
+       "Dec rate (\"/h)": "5.285E+00"
+      }
+     ]
+    }
+   },
+   {
+    "obs_id": "2025W25_2A_0113_2",
+    "detector": "SPHEREx-D3",
+    "mjd": 60845.94414833,
+    "wavelength_um_at_detection": 1.8275,
+    "ra": 201.37212362558188,
+    "dec": -8.110039570419449,
+    "x": 13.825645864662281,
+    "y": 34.2937756788708,
+    "snr": 5.788502997687502,
+    "err_arcsec": 0.7264149678782744,
+    "xi_arcsec": -183.50784995823255,
+    "eta_arcsec": 212.15878435038897,
+    "resid_published_fit_arcsec": [
+     0.3296588733987278,
+     -0.6949427234513905
+    ],
+    "resid_linear_fit_arcsec": [
+     0.0833921790685963,
+     0.40931110804331183
+    ],
+    "peak_over_neighbours": 2.9029766168375133,
+    "peak_over_neighbours_expected_for_psf": 6.636024904349067,
+    "sb_ident_from_spherex": {
+     "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-19_22%3A39%3A34&xobs=-7.022754622E%2B03%2C3.402268467E%2B02%2C-1.870350558E%2B02%2C2.475900799E-01%2C1.029964916E%2B00%2C-7.454575261E%2B00&fov-ra-center=13-25-29.31&fov-dec-center=M08-06-36.1&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+     "status": "cached",
+     "n_objects": 11,
+     "objects": [
+      {
+       "Object name": "216 Kleopatra (A880 GB)",
+       "Astrometric RA (hh:mm:ss)": "13:25:43.99",
+       "Astrometric Dec (dd mm'ss\")": "-08 08'29.5\"",
+       "Dist. from center RA (\")": "218.",
+       "Dist. from center Dec (\")": "-113.",
+       "Dist. from center Norm (\")": "245.7",
+       "Visual magnitude (V)": "12.8",
+       "RA rate (\"/h)": "4.291E+00",
+       "Dec rate (\"/h)": "1.652E+01"
+      },
+      {
+       "Object name": "11957 (1994 DS)",
+       "Astrometric RA (hh:mm:ss)": "13:25:21.31",
+       "Astrometric Dec (dd mm'ss\")": "-08 10'06.5\"",
+       "Dist. from center RA (\")": "-119.",
+       "Dist. from center Dec (\")": "-210.",
+       "Dist. from center Norm (\")": "241.6",
+       "Visual magnitude (V)": "18.9",
+       "RA rate (\"/h)": "1.359E+01",
+       "Dec rate (\"/h)": "1.070E+01"
+      },
+      {
+       "Object name": "17080 (1999 HE9)",
+       "Astrometric RA (hh:mm:ss)": "13:25:17.09",
+       "Astrometric Dec (dd mm'ss\")": "-08 00'37.0\"",
+       "Dist. from center RA (\")": "-181.",
+       "Dist. from center Dec (\")": "359.",
+       "Dist. from center Norm (\")": "402.4",
+       "Visual magnitude (V)": "19.1",
+       "RA rate (\"/h)": "7.340E+00",
+       "Dec rate (\"/h)": "1.612E+01"
+      },
+      {
+       "Object name": "105401 (2000 QM144)",
+       "Astrometric RA (hh:mm:ss)": "13:25:31.50",
+       "Astrometric Dec (dd mm'ss\")": "-08 03'13.4\"",
+       "Dist. from center RA (\")": "32.5",
+       "Dist. from center Dec (\")": "203.",
+       "Dist. from center Norm (\")": "205.3",
+       "Visual magnitude (V)": "20.8",
+       "RA rate (\"/h)": "9.411E+00",
+       "Dec rate (\"/h)": "1.305E+01"
+      },
+      {
+       "Object name": "210278 (2007 TJ29)",
+       "Astrometric RA (hh:mm:ss)": "13:25:29.84",
+       "Astrometric Dec (dd mm'ss\")": "-08 10'41.9\"",
+       "Dist. from center RA (\")": "7.88",
+       "Dist. from center Dec (\")": "-246.",
+       "Dist. from center Norm (\")": "245.9",
+       "Visual magnitude (V)": "22.1",
+       "RA rate (\"/h)": "6.978E+00",
+       "Dec rate (\"/h)": "1.126E+01"
+      },
+      {
+       "Object name": "(2001 DT108)",
+       "Astrometric RA (hh:mm:ss)": "13:25:28.80",
+       "Astrometric Dec (dd mm'ss\")": "-08 01'29.7\"",
+       "Dist. from center RA (\")": "-7.53",
+       "Dist. from center Dec (\")": "306.",
+       "Dist. from center Norm (\")": "306.5",
+       "Visual magnitude (V)": "25.0",
+       "RA rate (\"/h)": "-8.102E-01",
+       "Dec rate (\"/h)": "1.440E+00"
+      },
+      {
+       "Object name": "(2014 SH19)",
+       "Astrometric RA (hh:mm:ss)": "13:25:19.92",
+       "Astrometric Dec (dd mm'ss\")": "-08 05'17.2\"",
+       "Dist. from center RA (\")": "-139.",
+       "Dist. from center Dec (\")": "78.9",
+       "Dist. from center Norm (\")": "160.2",
+       "Visual magnitude (V)": "24.1",
+       "RA rate (\"/h)": "7.159E+00",
+       "Dec rate (\"/h)": "1.391E+01"
+      },
+      {
+       "Object name": "(2015 XT196)",
+       "Astrometric RA (hh:mm:ss)": "13:25:49.90",
+       "Astrometric Dec (dd mm'ss\")": "-08 04'37.5\"",
+       "Dist. from center RA (\")": "306.",
+       "Dist. from center Dec (\")": "119.",
+       "Dist. from center Norm (\")": "327.9",
+       "Visual magnitude (V)": "23.9",
+       "RA rate (\"/h)": "7.487E+00",
+       "Dec rate (\"/h)": "1.467E+01"
+      },
+      {
+       "Object name": "(2021 PY75)",
+       "Astrometric RA (hh:mm:ss)": "13:25:17.69",
+       "Astrometric Dec (dd mm'ss\")": "-08 02'30.1\"",
+       "Dist. from center RA (\")": "-173.",
+       "Dist. from center Dec (\")": "246.",
+       "Dist. from center Norm (\")": "300.5",
+       "Visual magnitude (V)": "24.4",
+       "RA rate (\"/h)": "4.795E+00",
+       "Dec rate (\"/h)": "1.231E+01"
+      },
+      {
+       "Object name": "(2021 QH36)",
+       "Astrometric RA (hh:mm:ss)": "13:25:24.33",
+       "Astrometric Dec (dd mm'ss\")": "-08 09'41.4\"",
+       "Dist. from center RA (\")": "-73.9",
+       "Dist. from center Dec (\")": "-185.",
+       "Dist. from center Norm (\")": "199.5",
+       "Visual magnitude (V)": "22.9",
+       "RA rate (\"/h)": "8.001E+00",
+       "Dec rate (\"/h)": "1.290E+01"
+      },
+      {
+       "Object name": "(2022 UO59)",
+       "Astrometric RA (hh:mm:ss)": "13:25:26.99",
+       "Astrometric Dec (dd mm'ss\")": "-08 03'31.3\"",
+       "Dist. from center RA (\")": "-34.5",
+       "Dist. from center Dec (\")": "185.",
+       "Dist. from center Norm (\")": "188.0",
+       "Visual magnitude (V)": "22.9",
+       "RA rate (\"/h)": "7.049E+00",
+       "Dec rate (\"/h)": "5.649E+00"
+      }
+     ]
+    }
+   }
+  ],
+  "n_position_groups": 3,
+  "degenerate_track_check": {
+   "n_position_groups": 3,
+   "fit_order": 2,
+   "groups": [
+    {
+     "n": 1,
+     "mjd_min": 60843.500832092,
+     "mjd_max": 60843.500832092,
+     "span_hours": 0.0,
+     "xi": -110.64622716130488,
+     "eta": 173.87661774549463
+    },
+    {
+     "n": 2,
+     "mjd_min": 60843.972526293,
+     "mjd_max": 60844.113082358,
+     "span_hours": 3.3733455600449815,
+     "xi": -124.31825927912016,
+     "eta": 169.414427519375
+    },
+    {
+     "n": 3,
+     "mjd_min": 60845.874527578,
+     "mjd_max": 60845.94414833,
+     "span_hours": 1.6708980480325408,
+     "xi": -183.4545676719922,
+     "eta": 211.99426046613442
+    }
+   ]
+  },
+  "position_groups": [
+   {
+    "group": 0,
+    "members": [
+     "2025W25_1B_0290_3 D6"
+    ],
+    "ra": 201.39256657613737,
+    "dec": -8.120675551188999,
+    "time_span_hours": 0.0,
+    "forced_photometry": [
+     {
+      "epoch": 0,
+      "obs_id": "2025W25_1B_0290_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.49784759,
+      "wavelength_um": 2.2139,
+      "snr": 0.6,
+      "flux": 0.018352279325880672,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 1,
+      "obs_id": "2025W25_1B_0290_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.497847601,
+      "wavelength_um": 4.8641,
+      "snr": 0.13,
+      "flux": 0.018930642564622655,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 2,
+      "obs_id": "2025W25_1B_0290_2",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.499339847,
+      "wavelength_um": 2.2645,
+      "snr": -1.01,
+      "flux": -0.02928442007608697,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 3,
+      "obs_id": "2025W25_1B_0290_2",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.499339847,
+      "wavelength_um": 4.8999,
+      "snr": 0.47,
+      "flux": 0.061621293286246874,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 4,
+      "obs_id": "2025W25_1B_0290_3",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.500832092,
+      "wavelength_um": 2.3088,
+      "snr": -1.09,
+      "flux": -0.03198232987199771,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 5,
+      "obs_id": "2025W25_1B_0290_3",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.500832092,
+      "wavelength_um": 4.9358,
+      "snr": 18.96,
+      "flux": 5.17543938141293,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 6,
+      "obs_id": "2025W25_1B_0290_4",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.502324349,
+      "wavelength_um": 2.3703,
+      "snr": 0.18,
+      "flux": 0.00507919987729225,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 7,
+      "obs_id": "2025W25_1B_0290_4",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.502324349,
+      "wavelength_um": 4.972,
+      "snr": 0.46,
+      "flux": 0.0688552960143876,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 8,
+      "obs_id": "2025W25_1B_0393_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.972526293,
+      "wavelength_um": 1.628,
+      "snr": -0.05,
+      "flux": -0.0016046024919473272,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 9,
+      "obs_id": "2025W25_1B_0393_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.972526293,
+      "wavelength_um": 4.4145,
+      "snr": 0.77,
+      "flux": 0.08647736039607432,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 10,
+      "obs_id": "2025W25_1B_0393_2",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.974018539,
+      "wavelength_um": 1.6653,
+      "snr": 1.53,
+      "flux": 0.058808234781064894,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 11,
+      "obs_id": "2025W25_1B_0393_2",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.974018539,
+      "wavelength_um": 4.4467,
+      "snr": -0.15,
+      "flux": -0.01472796763606407,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 12,
+      "obs_id": "2025W25_1B_0393_3",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.975510796,
+      "wavelength_um": 1.7024,
+      "snr": 0.84,
+      "flux": 0.032301174140379876,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 13,
+      "obs_id": "2025W25_1B_0393_3",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.975510807,
+      "wavelength_um": 4.4788,
+      "snr": -1.33,
+      "flux": -0.13152526707370052,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 14,
+      "obs_id": "2025W25_1B_0431_1",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.108605587,
+      "wavelength_um": 1.3435,
+      "snr": -1.33,
+      "flux": -0.0458070056520867,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 15,
+      "obs_id": "2025W25_1B_0431_1",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.108605599,
+      "wavelength_um": 4.1122,
+      "snr": -1.6,
+      "flux": -0.10101999596887593,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 16,
+      "obs_id": "2025W25_1B_0431_2",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.110097844,
+      "wavelength_um": 1.3762,
+      "snr": -1.29,
+      "flux": -0.04768883108973791,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 17,
+      "obs_id": "2025W25_1B_0431_2",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.110097844,
+      "wavelength_um": 4.1485,
+      "snr": -2.8,
+      "flux": -0.18191147104818906,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 18,
+      "obs_id": "2025W25_1B_0431_3",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.11159009,
+      "wavelength_um": 1.4088,
+      "snr": -0.02,
+      "flux": -0.0006746626863562383,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 19,
+      "obs_id": "2025W25_1B_0431_3",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.11159009,
+      "wavelength_um": 4.1846,
+      "snr": 0.03,
+      "flux": 0.0023973255234749006,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 20,
+      "obs_id": "2025W25_1B_0431_4",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.113082358,
+      "wavelength_um": 1.443,
+      "snr": -0.96,
+      "flux": -0.03354770171794313,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 21,
+      "obs_id": "2025W25_1B_0431_4",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.113082358,
+      "wavelength_um": 4.2207,
+      "snr": 1.59,
+      "flux": 0.12000855740609269,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 22,
+      "obs_id": "2025W25_1B_0570_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60844.652070067,
+      "wavelength_um": 2.417,
+      "snr": -0.6,
+      "flux": -0.03058221145567423,
+      "flags_at_pixel": [
+       "DICHROIC",
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 23,
+      "obs_id": "2025W25_1B_0570_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60844.652070067,
+      "wavelength_um": 5.0078,
+      "snr": -0.24,
+      "flux": -0.035053042779504516,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 24,
+      "obs_id": "2025W25_2A_0095_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60845.874527578,
+      "wavelength_um": 1.742,
+      "snr": -0.06,
+      "flux": -0.0020159770022266546,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 25,
+      "obs_id": "2025W25_2A_0095_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60845.874527578,
+      "wavelength_um": 4.5117,
+      "snr": -1.27,
+      "flux": -0.11826806436467316,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 26,
+      "obs_id": "2025W25_2A_0113_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60845.942638296,
+      "wavelength_um": 1.7852,
+      "snr": 0.47,
+      "flux": 0.016054440404041165,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 27,
+      "obs_id": "2025W25_2A_0113_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60845.942638296,
+      "wavelength_um": 4.5435,
+      "snr": -0.29,
+      "flux": -0.03040055013918314,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 28,
+      "obs_id": "2025W25_2A_0113_2",
+      "detector": "SPHEREx-D3",
+      "mjd": 60845.94414833,
+      "wavelength_um": 1.8267,
+      "snr": -1.26,
+      "flux": -0.042341596969392124,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 29,
+      "obs_id": "2025W25_2A_0113_2",
+      "detector": "SPHEREx-D6",
+      "mjd": 60845.944148319,
+      "wavelength_um": 4.5776,
+      "snr": -0.05,
+      "flux": -0.0055190245367986845,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 30,
+      "obs_id": "2025W25_2A_0253_1",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.62369208,
+      "wavelength_um": 0.8258,
+      "snr": -0.34,
+      "flux": -0.012116687402437763,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 31,
+      "obs_id": "2025W25_2A_0253_1",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.623692092,
+      "wavelength_um": 2.7185,
+      "snr": 0.04,
+      "flux": 0.0014387568441133784,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 32,
+      "obs_id": "2025W25_2A_0253_2",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.625184349,
+      "wavelength_um": 0.8454,
+      "snr": -0.72,
+      "flux": -0.025541742069699065,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 33,
+      "obs_id": "2025W25_2A_0253_2",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.625184349,
+      "wavelength_um": 2.7915,
+      "snr": -1.31,
+      "flux": -0.04159191914053953,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 34,
+      "obs_id": "2025W25_2A_0253_3",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.626676594,
+      "wavelength_um": 0.8656,
+      "snr": -1.58,
+      "flux": -0.05723073728505997,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 35,
+      "obs_id": "2025W25_2A_0253_3",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.626676594,
+      "wavelength_um": 2.8688,
+      "snr": -0.17,
+      "flux": -0.00507694201815687,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 36,
+      "obs_id": "2025W25_2A_0253_4",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.628168851,
+      "wavelength_um": 0.8862,
+      "snr": 0.44,
+      "flux": 0.016378211990465453,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 37,
+      "obs_id": "2025W25_2A_0253_4",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.628168851,
+      "wavelength_um": 2.9474,
+      "snr": 1.47,
+      "flux": 0.04966587129379903,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     }
+    ],
+    "forced_summary": {
+     "short_lt_2.42um": {
+      "n_exposures": 19,
+      "median_snr": -0.34,
+      "n_snr_gt_3": 0,
+      "n_snr_gt_5": 0,
+      "stacked_snr": -1.4338483366910106
+     },
+     "long_ge_2.42um": {
+      "n_exposures": 19,
+      "median_snr": -0.05,
+      "n_snr_gt_3": 1,
+      "n_snr_gt_5": 1,
+      "stacked_snr": 3.3747054452359633
+     }
+    },
+    "catalogs": {
+     "gaia_dr3": {
+      "url": "https://vizier.cfa.harvard.edu/viz-bin/votable?-source=I%2F355%2Fgaiadr3&-c=201.392567+-8.120676&-c.rs=6.0&-out.max=50&-out.add=_r&-sort=_r",
+      "status": "cached",
+      "n": 0,
+      "rows": []
+     },
+     "2mass_psc": {
+      "url": "https://vizier.cfa.harvard.edu/viz-bin/votable?-source=II%2F246%2Fout&-c=201.392567+-8.120676&-c.rs=6.0&-out.max=50&-out.add=_r&-sort=_r",
+      "status": "cached",
+      "n": 0,
+      "rows": []
+     },
+     "allwise": {
+      "url": "https://vizier.cfa.harvard.edu/viz-bin/votable?-source=II%2F328%2Fallwise&-c=201.392567+-8.120676&-c.rs=6.0&-out.max=50&-out.add=_r&-sort=_r",
+      "status": "cached",
+      "n": 0,
+      "rows": []
+     },
+     "simbad": {
+      "query": "SELECT main_id, ra, dec, otype, DISTANCE(POINT('ICRS',ra,dec),POINT('ICRS',201.392567,-8.120676))*3600 AS sep FROM basic WHERE CONTAINS(POINT('ICRS',ra,dec),CIRCLE('ICRS',201.392567,-8.120676,0.003333))=1",
+      "status": "cached",
+      "radius_arcsec": 12.0,
+      "rows": []
+     }
+    }
+   },
+   {
+    "group": 1,
+    "members": [
+     "2025W25_1B_0393_1 D3",
+     "2025W25_1B_0431_4 D2"
+    ],
+    "ra": 201.38873021666475,
+    "dec": -8.121914738734299,
+    "time_span_hours": 3.3733455600449815,
+    "forced_photometry": [
+     {
+      "epoch": 0,
+      "obs_id": "2025W25_1B_0290_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.49784759,
+      "wavelength_um": 2.2133,
+      "snr": 2.52,
+      "flux": 0.08923940661905469,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 1,
+      "obs_id": "2025W25_1B_0290_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.497847601,
+      "wavelength_um": 4.8637,
+      "snr": 1.22,
+      "flux": 0.1726826683948534,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 2,
+      "obs_id": "2025W25_1B_0290_2",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.499339847,
+      "wavelength_um": 2.2639,
+      "snr": 2.69,
+      "flux": 0.09359625505755721,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 3,
+      "obs_id": "2025W25_1B_0290_2",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.499339847,
+      "wavelength_um": 4.8995,
+      "snr": -0.77,
+      "flux": -0.09984943989505439,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 4,
+      "obs_id": "2025W25_1B_0290_3",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.500832092,
+      "wavelength_um": 2.3082,
+      "snr": 2.45,
+      "flux": 0.09133028132599563,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 5,
+      "obs_id": "2025W25_1B_0290_3",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.500832092,
+      "wavelength_um": 4.9353,
+      "snr": -0.45,
+      "flux": -0.06683972347753399,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 6,
+      "obs_id": "2025W25_1B_0290_4",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.502324349,
+      "wavelength_um": 2.3696,
+      "snr": 4.86,
+      "flux": 0.17702792075213913,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 7,
+      "obs_id": "2025W25_1B_0290_4",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.502324349,
+      "wavelength_um": 4.9715,
+      "snr": 0.02,
+      "flux": 0.002950124287567163,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 8,
+      "obs_id": "2025W25_1B_0393_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.972526293,
+      "wavelength_um": 1.6276,
+      "snr": 5.92,
+      "flux": 0.26027215062339504,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 9,
+      "obs_id": "2025W25_1B_0393_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.972526293,
+      "wavelength_um": 4.4141,
+      "snr": -1.31,
+      "flux": -0.12146976786889613,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 10,
+      "obs_id": "2025W25_1B_0393_2",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.974018539,
+      "wavelength_um": 1.6648,
+      "snr": 3.27,
+      "flux": 0.12827503383899472,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 11,
+      "obs_id": "2025W25_1B_0393_2",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.974018539,
+      "wavelength_um": 4.4463,
+      "snr": -1.11,
+      "flux": -0.11030996746436336,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 12,
+      "obs_id": "2025W25_1B_0393_3",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.975510796,
+      "wavelength_um": 1.702,
+      "snr": 2.12,
+      "flux": 0.0861340046807216,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 13,
+      "obs_id": "2025W25_1B_0393_3",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.975510807,
+      "wavelength_um": 4.4784,
+      "snr": -0.11,
+      "flux": -0.011378665486082934,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 14,
+      "obs_id": "2025W25_1B_0431_1",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.108605587,
+      "wavelength_um": 1.3431,
+      "snr": 3.95,
+      "flux": 0.1588878089471055,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 15,
+      "obs_id": "2025W25_1B_0431_1",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.108605599,
+      "wavelength_um": 4.1118,
+      "snr": 1.37,
+      "flux": 0.097537750997503,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 16,
+      "obs_id": "2025W25_1B_0431_2",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.110097844,
+      "wavelength_um": 1.3757,
+      "snr": 4.12,
+      "flux": 0.18658778011847188,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 17,
+      "obs_id": "2025W25_1B_0431_2",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.110097844,
+      "wavelength_um": 4.1481,
+      "snr": -1.79,
+      "flux": -0.10676614168759783,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 18,
+      "obs_id": "2025W25_1B_0431_3",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.11159009,
+      "wavelength_um": 1.4084,
+      "snr": 2.01,
+      "flux": 0.07536347994250357,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 19,
+      "obs_id": "2025W25_1B_0431_3",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.11159009,
+      "wavelength_um": 4.1842,
+      "snr": -0.9,
+      "flux": -0.0672264185507256,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 20,
+      "obs_id": "2025W25_1B_0431_4",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.113082358,
+      "wavelength_um": 1.4426,
+      "snr": 5.48,
+      "flux": 0.22625854915846322,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 21,
+      "obs_id": "2025W25_1B_0431_4",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.113082358,
+      "wavelength_um": 4.2202,
+      "snr": 0.62,
+      "flux": 0.04434190799710221,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 22,
+      "obs_id": "2025W25_1B_0570_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60844.652070067,
+      "wavelength_um": 2.4166,
+      "snr": -0.8,
+      "flux": -0.14307830482761513,
+      "flags_at_pixel": [
+       "NONFUNC",
+       "DICHROIC",
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 23,
+      "obs_id": "2025W25_1B_0570_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60844.652070067,
+      "wavelength_um": 5.0074,
+      "snr": -0.25,
+      "flux": -0.037114514020956064,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 24,
+      "obs_id": "2025W25_2A_0095_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60845.874527578,
+      "wavelength_um": 1.7415,
+      "snr": 2.66,
+      "flux": 0.09751490508100621,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 25,
+      "obs_id": "2025W25_2A_0095_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60845.874527578,
+      "wavelength_um": 4.5113,
+      "snr": -1.25,
+      "flux": -0.12755119325866549,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 26,
+      "obs_id": "2025W25_2A_0113_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60845.942638296,
+      "wavelength_um": 1.7847,
+      "snr": 4.42,
+      "flux": 0.17073155581605115,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 27,
+      "obs_id": "2025W25_2A_0113_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60845.942638296,
+      "wavelength_um": 4.5431,
+      "snr": 0.55,
+      "flux": 0.059815607403660764,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 28,
+      "obs_id": "2025W25_2A_0113_2",
+      "detector": "SPHEREx-D3",
+      "mjd": 60845.94414833,
+      "wavelength_um": 1.8262,
+      "snr": 3.4,
+      "flux": 0.1289368678624958,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 29,
+      "obs_id": "2025W25_2A_0113_2",
+      "detector": "SPHEREx-D6",
+      "mjd": 60845.944148319,
+      "wavelength_um": 4.5772,
+      "snr": 1.45,
+      "flux": 0.182295004405196,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 30,
+      "obs_id": "2025W25_2A_0253_1",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.62369208,
+      "wavelength_um": 0.8256,
+      "snr": 4.3,
+      "flux": 0.1755714308649597,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 31,
+      "obs_id": "2025W25_2A_0253_1",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.623692092,
+      "wavelength_um": 2.7176,
+      "snr": 3.47,
+      "flux": 0.13345853254466591,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 32,
+      "obs_id": "2025W25_2A_0253_2",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.625184349,
+      "wavelength_um": 0.8451,
+      "snr": 4.52,
+      "flux": 0.19323266341773412,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 33,
+      "obs_id": "2025W25_2A_0253_2",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.625184349,
+      "wavelength_um": 2.7906,
+      "snr": 0.74,
+      "flux": 0.025777099847936788,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 34,
+      "obs_id": "2025W25_2A_0253_3",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.626676594,
+      "wavelength_um": 0.8653,
+      "snr": 3.46,
+      "flux": 0.1391147756056647,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 35,
+      "obs_id": "2025W25_2A_0253_3",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.626676594,
+      "wavelength_um": 2.8678,
+      "snr": 1.6,
+      "flux": 0.052678933574923544,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 36,
+      "obs_id": "2025W25_2A_0253_4",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.628168851,
+      "wavelength_um": 0.886,
+      "snr": 3.47,
+      "flux": 0.1442095812483777,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 37,
+      "obs_id": "2025W25_2A_0253_4",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.628168851,
+      "wavelength_um": 2.9464,
+      "snr": 1.62,
+      "flux": 0.05527655088063015,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     }
+    ],
+    "forced_summary": {
+     "short_lt_2.42um": {
+      "n_exposures": 19,
+      "median_snr": 3.46,
+      "n_snr_gt_3": 12,
+      "n_snr_gt_5": 2,
+      "stacked_snr": 14.870727869489814
+     },
+     "long_ge_2.42um": {
+      "n_exposures": 19,
+      "median_snr": 0.02,
+      "n_snr_gt_3": 1,
+      "n_snr_gt_5": 0,
+      "stacked_snr": 1.0828422638690514
+     }
+    },
+    "catalogs": {
+     "gaia_dr3": {
+      "url": "https://vizier.cfa.harvard.edu/viz-bin/votable?-source=I%2F355%2Fgaiadr3&-c=201.388730+-8.121915&-c.rs=6.0&-out.max=50&-out.add=_r&-sort=_r",
+      "status": "cached",
+      "n": 1,
+      "rows": [
+       {
+        "_r": 1.015,
+        "RA_ICRS": 201.38877025234,
+        "DE_ICRS": -8.12219422939,
+        "Source": 3631038366482526848,
+        "Plx": 0.5854,
+        "pmRA": -22.285,
+        "pmDE": -7.823,
+        "Gmag": 18.368713,
+        "BPmag": 18.758322,
+        "RPmag": 17.80986,
+        "AllWISE": "J132533.30-080720.1",
+        "_2MASS": "",
+        "RAJ2000": 201.38887030162,
+        "DEJ2000": -8.12215945964
+       }
+      ]
+     },
+     "2mass_psc": {
+      "url": "https://vizier.cfa.harvard.edu/viz-bin/votable?-source=II%2F246%2Fout&-c=201.388730+-8.121915&-c.rs=6.0&-out.max=50&-out.add=_r&-sort=_r",
+      "status": "cached",
+      "n": 0,
+      "rows": []
+     },
+     "allwise": {
+      "url": "https://vizier.cfa.harvard.edu/viz-bin/votable?-source=II%2F328%2Fallwise&-c=201.388730+-8.121915&-c.rs=6.0&-out.max=50&-out.add=_r&-sort=_r",
+      "status": "cached",
+      "n": 1,
+      "rows": [
+       {
+        "_r": 1.297,
+        "AllWISE": "J132533.30-080720.1",
+        "RAJ2000": 201.3887748,
+        "DEJ2000": -8.1222725,
+        "W1mag": 16.481000900268555,
+        "W2mag": 16.198999404907227,
+        "W3mag": 12.854999542236328,
+        "Jmag": null,
+        "Hmag": null,
+        "Kmag": null,
+        "ex": 0,
+        "pmRA": -778,
+        "pmDE": -534,
+        "qph": "ABUU"
+       }
+      ]
+     },
+     "simbad": {
+      "query": "SELECT main_id, ra, dec, otype, DISTANCE(POINT('ICRS',ra,dec),POINT('ICRS',201.388730,-8.121915))*3600 AS sep FROM basic WHERE CONTAINS(POINT('ICRS',ra,dec),CIRCLE('ICRS',201.388730,-8.121915,0.003333))=1",
+      "status": "cached",
+      "radius_arcsec": 12.0,
+      "rows": []
+     }
+    }
+   },
+   {
+    "group": 2,
+    "members": [
+     "2025W25_2A_0095_1 D3",
+     "2025W25_2A_0113_1 D3",
+     "2025W25_2A_0113_2 D3"
+    ],
+    "ra": 201.37213856982135,
+    "dec": -8.110085273307767,
+    "time_span_hours": 1.6708980480325408,
+    "forced_photometry": [
+     {
+      "epoch": 0,
+      "obs_id": "2025W25_1B_0290_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.49784759,
+      "wavelength_um": 2.2147,
+      "snr": 1.72,
+      "flux": 0.05953017718098563,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 1,
+      "obs_id": "2025W25_1B_0290_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.497847601,
+      "wavelength_um": 4.8647,
+      "snr": 0.17,
+      "flux": 0.022575825633804395,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 2,
+      "obs_id": "2025W25_1B_0290_2",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.499339847,
+      "wavelength_um": 2.2654,
+      "snr": 4.92,
+      "flux": 0.1774504788897394,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 3,
+      "obs_id": "2025W25_1B_0290_2",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.499339847,
+      "wavelength_um": 4.9005,
+      "snr": 0.5,
+      "flux": 0.15283805318199392,
+      "flags_at_pixel": [
+       "HALO"
+      ]
+     },
+     {
+      "epoch": 4,
+      "obs_id": "2025W25_1B_0290_3",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.500832092,
+      "wavelength_um": 2.3097,
+      "snr": 3.4,
+      "flux": 0.11668995816248386,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 5,
+      "obs_id": "2025W25_1B_0290_3",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.500832092,
+      "wavelength_um": 4.9364,
+      "snr": 0.5,
+      "flux": 0.07461652975941911,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 6,
+      "obs_id": "2025W25_1B_0290_4",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.502324349,
+      "wavelength_um": 2.3711,
+      "snr": 2.05,
+      "flux": 0.06648621307975554,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 7,
+      "obs_id": "2025W25_1B_0290_4",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.502324349,
+      "wavelength_um": 4.9725,
+      "snr": 1.78,
+      "flux": 0.25468149935662987,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 8,
+      "obs_id": "2025W25_1B_0393_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.972526293,
+      "wavelength_um": 1.6287,
+      "snr": 3.79,
+      "flux": 0.15270359705295702,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 9,
+      "obs_id": "2025W25_1B_0393_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.972526293,
+      "wavelength_um": 4.4151,
+      "snr": 0.47,
+      "flux": 0.04591321596651532,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 10,
+      "obs_id": "2025W25_1B_0393_2",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.974018539,
+      "wavelength_um": 1.666,
+      "snr": 2.54,
+      "flux": 0.1553448735710451,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 11,
+      "obs_id": "2025W25_1B_0393_2",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.974018539,
+      "wavelength_um": 4.4473,
+      "snr": -0.3,
+      "flux": -0.02924093885649806,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 12,
+      "obs_id": "2025W25_1B_0393_3",
+      "detector": "SPHEREx-D3",
+      "mjd": 60843.975510796,
+      "wavelength_um": 1.7031,
+      "snr": -0.52,
+      "flux": -0.8394585804408369,
+      "flags_at_pixel": [
+       "TRANSIENT",
+       "SOURCE",
+       "HALO"
+      ]
+     },
+     {
+      "epoch": 13,
+      "obs_id": "2025W25_1B_0393_3",
+      "detector": "SPHEREx-D6",
+      "mjd": 60843.975510807,
+      "wavelength_um": 4.4793,
+      "snr": 0.48,
+      "flux": 0.0491139052616025,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 14,
+      "obs_id": "2025W25_1B_0431_1",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.108605587,
+      "wavelength_um": 1.3441,
+      "snr": 4.33,
+      "flux": 0.17806197225954307,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 15,
+      "obs_id": "2025W25_1B_0431_1",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.108605599,
+      "wavelength_um": 4.1128,
+      "snr": 0.26,
+      "flux": 0.01740994633033492,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 16,
+      "obs_id": "2025W25_1B_0431_2",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.110097844,
+      "wavelength_um": 1.3767,
+      "snr": 4.07,
+      "flux": 0.1732193176734004,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 17,
+      "obs_id": "2025W25_1B_0431_2",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.110097844,
+      "wavelength_um": 4.1491,
+      "snr": 0.82,
+      "flux": 0.06241638206789502,
+      "flags_at_pixel": [
+       "OUTLIER"
+      ]
+     },
+     {
+      "epoch": 18,
+      "obs_id": "2025W25_1B_0431_3",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.11159009,
+      "wavelength_um": 1.4094,
+      "snr": 3.95,
+      "flux": 0.1591588726297794,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 19,
+      "obs_id": "2025W25_1B_0431_3",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.11159009,
+      "wavelength_um": 4.1852,
+      "snr": 0.01,
+      "flux": 0.0009828271922706247,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 20,
+      "obs_id": "2025W25_1B_0431_4",
+      "detector": "SPHEREx-D2",
+      "mjd": 60844.113082358,
+      "wavelength_um": 1.4435,
+      "snr": 3.26,
+      "flux": 0.1273419314189314,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 21,
+      "obs_id": "2025W25_1B_0431_4",
+      "detector": "SPHEREx-D5",
+      "mjd": 60844.113082358,
+      "wavelength_um": 4.2212,
+      "snr": -0.33,
+      "flux": -0.023902290190806322,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 22,
+      "obs_id": "2025W25_1B_0570_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60844.652070067,
+      "wavelength_um": 2.4175,
+      "snr": 1.04,
+      "flux": 0.05671417770547349,
+      "flags_at_pixel": [
+       "DICHROIC",
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 23,
+      "obs_id": "2025W25_1B_0570_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60844.652070067,
+      "wavelength_um": 5.0084,
+      "snr": 0.98,
+      "flux": 0.1571276438351431,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 24,
+      "obs_id": "2025W25_2A_0095_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60845.874527578,
+      "wavelength_um": 1.7428,
+      "snr": 5.17,
+      "flux": 0.2108653628533709,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 25,
+      "obs_id": "2025W25_2A_0095_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60845.874527578,
+      "wavelength_um": 4.5123,
+      "snr": 1.07,
+      "flux": 0.11213965610051564,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 26,
+      "obs_id": "2025W25_2A_0113_1",
+      "detector": "SPHEREx-D3",
+      "mjd": 60845.942638296,
+      "wavelength_um": 1.7859,
+      "snr": 6.61,
+      "flux": 0.27317216456157406,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 27,
+      "obs_id": "2025W25_2A_0113_1",
+      "detector": "SPHEREx-D6",
+      "mjd": 60845.942638296,
+      "wavelength_um": 4.5441,
+      "snr": 1.04,
+      "flux": 0.11490861388819548,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 28,
+      "obs_id": "2025W25_2A_0113_2",
+      "detector": "SPHEREx-D3",
+      "mjd": 60845.94414833,
+      "wavelength_um": 1.8275,
+      "snr": 5.79,
+      "flux": 0.241171259852801,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 29,
+      "obs_id": "2025W25_2A_0113_2",
+      "detector": "SPHEREx-D6",
+      "mjd": 60845.944148319,
+      "wavelength_um": 4.5782,
+      "snr": -0.48,
+      "flux": -0.05204123906844386,
+      "flags_at_pixel": []
+     },
+     {
+      "epoch": 30,
+      "obs_id": "2025W25_2A_0253_1",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.62369208,
+      "wavelength_um": 0.8262,
+      "snr": 3.13,
+      "flux": 0.12648489173805966,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 31,
+      "obs_id": "2025W25_2A_0253_1",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.623692092,
+      "wavelength_um": 2.7198,
+      "snr": 2.27,
+      "flux": 0.08413965204521467,
+      "flags_at_pixel": [
+       "OUTLIER"
+      ]
+     },
+     {
+      "epoch": 32,
+      "obs_id": "2025W25_2A_0253_2",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.625184349,
+      "wavelength_um": 0.8457,
+      "snr": 4.1,
+      "flux": 0.1745778995285525,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 33,
+      "obs_id": "2025W25_2A_0253_2",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.625184349,
+      "wavelength_um": 2.7929,
+      "snr": 2.06,
+      "flux": 0.07453892853426598,
+      "flags_at_pixel": [
+       "OUTLIER"
+      ]
+     },
+     {
+      "epoch": 34,
+      "obs_id": "2025W25_2A_0253_3",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.626676594,
+      "wavelength_um": 0.8659,
+      "snr": 2.13,
+      "flux": 0.0843803106265147,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 35,
+      "obs_id": "2025W25_2A_0253_3",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.626676594,
+      "wavelength_um": 2.8701,
+      "snr": 1.35,
+      "flux": 0.04510953602069967,
+      "flags_at_pixel": [
+       "OUTLIER"
+      ]
+     },
+     {
+      "epoch": 36,
+      "obs_id": "2025W25_2A_0253_4",
+      "detector": "SPHEREx-D1",
+      "mjd": 60846.628168851,
+      "wavelength_um": 0.8866,
+      "snr": 4.13,
+      "flux": 0.16811010618629377,
+      "flags_at_pixel": [
+       "SOURCE"
+      ]
+     },
+     {
+      "epoch": 37,
+      "obs_id": "2025W25_2A_0253_4",
+      "detector": "SPHEREx-D4",
+      "mjd": 60846.628168851,
+      "wavelength_um": 2.9487,
+      "snr": 2.24,
+      "flux": 0.07673856316924174,
+      "flags_at_pixel": [
+       "OUTLIER"
+      ]
+     }
+    ],
+    "forced_summary": {
+     "short_lt_2.42um": {
+      "n_exposures": 19,
+      "median_snr": 3.79,
+      "n_snr_gt_3": 13,
+      "n_snr_gt_5": 3,
+      "stacked_snr": 15.051966299247557
+     },
+     "long_ge_2.42um": {
+      "n_exposures": 19,
+      "median_snr": 0.5,
+      "n_snr_gt_3": 0,
+      "n_snr_gt_5": 0,
+      "stacked_snr": 3.4160002773326643
+     }
+    },
+    "catalogs": {
+     "gaia_dr3": {
+      "url": "https://vizier.cfa.harvard.edu/viz-bin/votable?-source=I%2F355%2Fgaiadr3&-c=201.372139+-8.110085&-c.rs=6.0&-out.max=50&-out.add=_r&-sort=_r",
+      "status": "cached",
+      "n": 1,
+      "rows": [
+       {
+        "_r": 0.147,
+        "RA_ICRS": 201.37213724182,
+        "DE_ICRS": -8.11012588275,
+        "Source": 3631038435202010752,
+        "Plx": 0.4056,
+        "pmRA": -4.357,
+        "pmDE": -5.39,
+        "Gmag": 19.347273,
+        "BPmag": 20.234348,
+        "RPmag": 18.462088,
+        "AllWISE": "J132529.29-080636.5",
+        "_2MASS": "",
+        "RAJ2000": 201.37215679972,
+        "DEJ2000": -8.11010192759
+       }
+      ]
+     },
+     "2mass_psc": {
+      "url": "https://vizier.cfa.harvard.edu/viz-bin/votable?-source=II%2F246%2Fout&-c=201.372139+-8.110085&-c.rs=6.0&-out.max=50&-out.add=_r&-sort=_r",
+      "status": "cached",
+      "n": 0,
+      "rows": []
+     },
+     "allwise": {
+      "url": "https://vizier.cfa.harvard.edu/viz-bin/votable?-source=II%2F328%2Fallwise&-c=201.372139+-8.110085&-c.rs=6.0&-out.max=50&-out.add=_r&-sort=_r",
+      "status": "cached",
+      "n": 1,
+      "rows": [
+       {
+        "_r": 0.373,
+        "AllWISE": "J132529.29-080636.5",
+        "RAJ2000": 201.3720717,
+        "DEJ2000": -8.1101645,
+        "W1mag": 16.54800033569336,
+        "W2mag": 16.38599967956543,
+        "W3mag": 12.727999687194824,
+        "Jmag": null,
+        "Hmag": null,
+        "Kmag": null,
+        "ex": 0,
+        "pmRA": -46,
+        "pmDE": -100,
+        "qph": "ABUU"
+       }
+      ]
+     },
+     "simbad": {
+      "query": "SELECT main_id, ra, dec, otype, DISTANCE(POINT('ICRS',ra,dec),POINT('ICRS',201.372139,-8.110085))*3600 AS sep FROM basic WHERE CONTAINS(POINT('ICRS',ra,dec),CIRCLE('ICRS',201.372139,-8.110085,0.003333))=1",
+      "status": "cached",
+      "radius_arcsec": 12.0,
+      "rows": []
+     }
+    }
+   }
+  ],
+  "sb_ident_positive_control": {
+   "what": "sb_ident from SPHEREx at Kleopatra's Horizons position, first exposure",
+   "finds_kleopatra": true,
+   "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-17_11%3A56%3A54&xobs=-7.005557239E%2B03%2C5.669950369E%2B02%2C2.895854446E%2B02%2C-2.235593378E-01%2C1.061839525E%2B00%2C-7.449836262E%2B00&fov-ra-center=13-25-36.02&fov-dec-center=M08-12-44.8&fov-ra-hwidth=0.03&fov-dec-hwidth=0.03&two-pass=true&suppress-first-pass=true&mag-required=false",
+   "status": "cached",
+   "n_objects": 2,
+   "objects": [
+    {
+     "Object name": "216 Kleopatra (A880 GB)",
+     "Astrometric RA (hh:mm:ss)": "13:25:36.02",
+     "Astrometric Dec (dd mm'ss\")": "-08 12'44.8\"",
+     "Dist. from center RA (\")": ".007",
+     "Dist. from center Dec (\")": "-.015",
+     "Dist. from center Norm (\")": ".0166",
+     "Visual magnitude (V)": "12.8",
+     "RA rate (\"/h)": "3.024E+00",
+     "Dec rate (\"/h)": "1.732E+01"
+    },
+    {
+     "Object name": "32888 (1993 TD27)",
+     "Astrometric RA (hh:mm:ss)": "13:25:39.20",
+     "Astrometric Dec (dd mm'ss\")": "-08 13'11.8\"",
+     "Dist. from center RA (\")": "47.1",
+     "Dist. from center Dec (\")": "-27.0",
+     "Dist. from center Norm (\")": "54.34",
+     "Visual magnitude (V)": "19.7",
+     "RA rate (\"/h)": "7.530E+00",
+     "Dec rate (\"/h)": "1.536E+01"
+    }
+   ]
+  },
+  "sb_ident_whole_field_from_spherex": [
+   {
+    "mjd": 60843.4,
+    "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-17_09%3A36%3A00&xobs=6.591294518E%2B03%2C-9.014103406E%2B02%2C2.273973947E%2B03%2C-2.539087070E%2B00%2C-7.620720985E-01%2C7.049573630E%2B00&fov-ra-center=13-25-41.67&fov-dec-center=M08-10-08.3&fov-ra-hwidth=0.14300000000000002&fov-dec-hwidth=0.14300000000000002&two-pass=true&suppress-first-pass=true&mag-required=false",
+    "status": "cached",
+    "n_objects": 16,
+    "objects": [
+     {
+      "Object name": "216 Kleopatra (A880 GB)",
+      "Astrometric RA (hh:mm:ss)": "13:25:35.63",
+      "Astrometric Dec (dd mm'ss\")": "-08 12'56.1\"",
+      "Dist. from center RA (\")": "-89.6",
+      "Dist. from center Dec (\")": "-168.",
+      "Dist. from center Norm (\")": "190.2",
+      "Visual magnitude (V)": "12.8",
+      "RA rate (\"/h)": "1.508E+00",
+      "Dec rate (\"/h)": "-7.756E+00"
+     },
+     {
+      "Object name": "32888 (1993 TD27)",
+      "Astrometric RA (hh:mm:ss)": "13:25:38.15",
+      "Astrometric Dec (dd mm'ss\")": "-08 12'59.3\"",
+      "Dist. from center RA (\")": "-52.2",
+      "Dist. from center Dec (\")": "-171.",
+      "Dist. from center Norm (\")": "178.8",
+      "Visual magnitude (V)": "19.7",
+      "RA rate (\"/h)": "5.035E+00",
+      "Dec rate (\"/h)": "-2.606E+01"
+     },
+     {
+      "Object name": "33460 (1999 FL31)",
+      "Astrometric RA (hh:mm:ss)": "13:25:27.15",
+      "Astrometric Dec (dd mm'ss\")": "-08 14'55.4\"",
+      "Dist. from center RA (\")": "-216.",
+      "Dist. from center Dec (\")": "-287.",
+      "Dist. from center Norm (\")": "359.1",
+      "Visual magnitude (V)": "17.8",
+      "RA rate (\"/h)": "2.051E+01",
+      "Dec rate (\"/h)": "-4.125E+01"
+     },
+     {
+      "Object name": "48754 (1997 GJ22)",
+      "Astrometric RA (hh:mm:ss)": "13:26:09.81",
+      "Astrometric Dec (dd mm'ss\")": "-08 10'38.3\"",
+      "Dist. from center RA (\")": "418.",
+      "Dist. from center Dec (\")": "-30.0",
+      "Dist. from center Norm (\")": "418.9",
+      "Visual magnitude (V)": "19.7",
+      "RA rate (\"/h)": "1.685E+01",
+      "Dec rate (\"/h)": "-2.344E+01"
+     },
+     {
+      "Object name": "207479 (2006 HL27)",
+      "Astrometric RA (hh:mm:ss)": "13:26:11.65",
+      "Astrometric Dec (dd mm'ss\")": "-08 04'55.7\"",
+      "Dist. from center RA (\")": "445.",
+      "Dist. from center Dec (\")": "313.",
+      "Dist. from center Norm (\")": "544.0",
+      "Visual magnitude (V)": "21.0",
+      "RA rate (\"/h)": "1.552E+01",
+      "Dec rate (\"/h)": "-2.474E+01"
+     },
+     {
+      "Object name": "210278 (2007 TJ29)",
+      "Astrometric RA (hh:mm:ss)": "13:25:10.96",
+      "Astrometric Dec (dd mm'ss\")": "-08 08'48.6\"",
+      "Dist. from center RA (\")": "-456.",
+      "Dist. from center Dec (\")": "79.7",
+      "Dist. from center Norm (\")": "462.9",
+      "Visual magnitude (V)": "22.1",
+      "RA rate (\"/h)": "4.061E+00",
+      "Dec rate (\"/h)": "-1.496E+01"
+     },
+     {
+      "Object name": "324327 (2006 JB72)",
+      "Astrometric RA (hh:mm:ss)": "13:25:56.99",
+      "Astrometric Dec (dd mm'ss\")": "-08 18'18.5\"",
+      "Dist. from center RA (\")": "227.",
+      "Dist. from center Dec (\")": "-490.",
+      "Dist. from center Norm (\")": "540.3",
+      "Visual magnitude (V)": "21.4",
+      "RA rate (\"/h)": "4.677E+00",
+      "Dec rate (\"/h)": "-1.010E+01"
+     },
+     {
+      "Object name": "362460 (2010 RV143)",
+      "Astrometric RA (hh:mm:ss)": "13:25:56.43",
+      "Astrometric Dec (dd mm'ss\")": "-08 05'07.3\"",
+      "Dist. from center RA (\")": "219.",
+      "Dist. from center Dec (\")": "301.",
+      "Dist. from center Norm (\")": "372.3",
+      "Visual magnitude (V)": "21.6",
+      "RA rate (\"/h)": "4.621E+00",
+      "Dec rate (\"/h)": "-1.118E+01"
+     },
+     {
+      "Object name": "562597 (2016 AT96)",
+      "Astrometric RA (hh:mm:ss)": "13:26:10.83",
+      "Astrometric Dec (dd mm'ss\")": "-08 03'07.6\"",
+      "Dist. from center RA (\")": "433.",
+      "Dist. from center Dec (\")": "421.",
+      "Dist. from center Norm (\")": "603.7",
+      "Visual magnitude (V)": "23.0",
+      "RA rate (\"/h)": "1.631E+00",
+      "Dec rate (\"/h)": "-2.012E+01"
+     },
+     {
+      "Object name": "644425 (2006 UR392)",
+      "Astrometric RA (hh:mm:ss)": "13:25:49.07",
+      "Astrometric Dec (dd mm'ss\")": "-08 14'29.1\"",
+      "Dist. from center RA (\")": "110.",
+      "Dist. from center Dec (\")": "-261.",
+      "Dist. from center Norm (\")": "283.0",
+      "Visual magnitude (V)": "22.5",
+      "RA rate (\"/h)": "-1.545E+00",
+      "Dec rate (\"/h)": "-2.628E+01"
+     },
+     {
+      "Object name": "(2001 DT108)",
+      "Astrometric RA (hh:mm:ss)": "13:25:32.97",
+      "Astrometric Dec (dd mm'ss\")": "-08 01'52.1\"",
+      "Dist. from center RA (\")": "-129.",
+      "Dist. from center Dec (\")": "496.",
+      "Dist. from center Norm (\")": "512.7",
+      "Visual magnitude (V)": "25.0",
+      "RA rate (\"/h)": "-1.065E+00",
+      "Dec rate (\"/h)": "-6.917E-01"
+     },
+     {
+      "Object name": "(2007 VC386)",
+      "Astrometric RA (hh:mm:ss)": "13:26:08.32",
+      "Astrometric Dec (dd mm'ss\")": "-08 15'34.3\"",
+      "Dist. from center RA (\")": "396.",
+      "Dist. from center Dec (\")": "-326.",
+      "Dist. from center Norm (\")": "512.6",
+      "Visual magnitude (V)": "24.1",
+      "RA rate (\"/h)": "6.276E+00",
+      "Dec rate (\"/h)": "-2.398E+01"
+     },
+     {
+      "Object name": "(2015 XT196)",
+      "Astrometric RA (hh:mm:ss)": "13:25:31.52",
+      "Astrometric Dec (dd mm'ss\")": "-08 02'37.2\"",
+      "Dist. from center RA (\")": "-151.",
+      "Dist. from center Dec (\")": "451.",
+      "Dist. from center Norm (\")": "475.6",
+      "Visual magnitude (V)": "23.9",
+      "RA rate (\"/h)": "3.811E+00",
+      "Dec rate (\"/h)": "-1.857E+01"
+     },
+     {
+      "Object name": "(2019 AR151)",
+      "Astrometric RA (hh:mm:ss)": "13:25:14.45",
+      "Astrometric Dec (dd mm'ss\")": "-08 06'32.4\"",
+      "Dist. from center RA (\")": "-404.",
+      "Dist. from center Dec (\")": "216.",
+      "Dist. from center Norm (\")": "458.2",
+      "Visual magnitude (V)": "22.9",
+      "RA rate (\"/h)": "1.639E+01",
+      "Dec rate (\"/h)": "-2.903E+01"
+     },
+     {
+      "Object name": "(2021 PY75)",
+      "Astrometric RA (hh:mm:ss)": "13:25:08.04",
+      "Astrometric Dec (dd mm'ss\")": "-08 01'34.2\"",
+      "Dist. from center RA (\")": "-499.",
+      "Dist. from center Dec (\")": "514.",
+      "Dist. from center Norm (\")": "716.8",
+      "Visual magnitude (V)": "24.4",
+      "RA rate (\"/h)": "1.776E+00",
+      "Dec rate (\"/h)": "-1.408E+01"
+     },
+     {
+      "Object name": "(2023 UA)",
+      "Astrometric RA (hh:mm:ss)": "13:25:25.04",
+      "Astrometric Dec (dd mm'ss\")": "-08 13'13.0\"",
+      "Dist. from center RA (\")": "-247.",
+      "Dist. from center Dec (\")": "-185.",
+      "Dist. from center Norm (\")": "308.3",
+      "Visual magnitude (V)": "25.1",
+      "RA rate (\"/h)": "-8.689E-01",
+      "Dec rate (\"/h)": "-1.751E+01"
+     }
+    ]
+   },
+   {
+    "mjd": 60845.05,
+    "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-19_01%3A12%3A00&xobs=-3.879864507E%2B03%2C-5.832239512E%2B02%2C5.833746831E%2B03%2C-6.262666540E%2B00%2C9.440849252E-01%2C-4.065304814E%2B00&fov-ra-center=13-25-41.67&fov-dec-center=M08-10-08.3&fov-ra-hwidth=0.14300000000000002&fov-dec-hwidth=0.14300000000000002&two-pass=true&suppress-first-pass=true&mag-required=false",
+    "status": "cached",
+    "n_objects": 21,
+    "objects": [
+     {
+      "Object name": "216 Kleopatra (A880 GB)",
+      "Astrometric RA (hh:mm:ss)": "13:25:40.26",
+      "Astrometric Dec (dd mm'ss\")": "-08 10'00.1\"",
+      "Dist. from center RA (\")": "-20.9",
+      "Dist. from center Dec (\")": "8.18",
+      "Dist. from center Norm (\")": "22.42",
+      "Visual magnitude (V)": "12.8",
+      "RA rate (\"/h)": "7.587E+00",
+      "Dec rate (\"/h)": "9.723E+00"
+     },
+     {
+      "Object name": "17080 (1999 HE9)",
+      "Astrometric RA (hh:mm:ss)": "13:25:09.18",
+      "Astrometric Dec (dd mm'ss\")": "-08 01'34.2\"",
+      "Dist. from center RA (\")": "-482.",
+      "Dist. from center Dec (\")": "514.",
+      "Dist. from center Norm (\")": "705.1",
+      "Visual magnitude (V)": "19.1",
+      "RA rate (\"/h)": "1.094E+01",
+      "Dec rate (\"/h)": "8.695E+00"
+     },
+     {
+      "Object name": "32888 (1993 TD27)",
+      "Astrometric RA (hh:mm:ss)": "13:25:52.40",
+      "Astrometric Dec (dd mm'ss\")": "-08 16'48.7\"",
+      "Dist. from center RA (\")": "159.",
+      "Dist. from center Dec (\")": "-400.",
+      "Dist. from center Norm (\")": "430.9",
+      "Visual magnitude (V)": "19.7",
+      "RA rate (\"/h)": "1.494E+01",
+      "Dec rate (\"/h)": "3.008E+00"
+     },
+     {
+      "Object name": "194633 (2001 XF163)",
+      "Astrometric RA (hh:mm:ss)": "13:25:58.39",
+      "Astrometric Dec (dd mm'ss\")": "-08 01'45.5\"",
+      "Dist. from center RA (\")": "248.",
+      "Dist. from center Dec (\")": "503.",
+      "Dist. from center Norm (\")": "560.8",
+      "Visual magnitude (V)": "21.9",
+      "RA rate (\"/h)": "1.192E+01",
+      "Dec rate (\"/h)": "5.295E+00"
+     },
+     {
+      "Object name": "210278 (2007 TJ29)",
+      "Astrometric RA (hh:mm:ss)": "13:25:22.40",
+      "Astrometric Dec (dd mm'ss\")": "-08 09'59.9\"",
+      "Dist. from center RA (\")": "-286.",
+      "Dist. from center Dec (\")": "8.43",
+      "Dist. from center Norm (\")": "286.3",
+      "Visual magnitude (V)": "22.1",
+      "RA rate (\"/h)": "1.053E+01",
+      "Dec rate (\"/h)": "3.914E+00"
+     },
+     {
+      "Object name": "324327 (2006 JB72)",
+      "Astrometric RA (hh:mm:ss)": "13:26:10.02",
+      "Astrometric Dec (dd mm'ss\")": "-08 16'34.7\"",
+      "Dist. from center RA (\")": "421.",
+      "Dist. from center Dec (\")": "-386.",
+      "Dist. from center Norm (\")": "571.3",
+      "Visual magnitude (V)": "21.4",
+      "RA rate (\"/h)": "1.097E+01",
+      "Dec rate (\"/h)": "8.118E+00"
+     },
+     {
+      "Object name": "342089 (2008 SK48)",
+      "Astrometric RA (hh:mm:ss)": "13:25:58.08",
+      "Astrometric Dec (dd mm'ss\")": "-08 04'52.9\"",
+      "Dist. from center RA (\")": "244.",
+      "Dist. from center Dec (\")": "315.",
+      "Dist. from center Norm (\")": "398.6",
+      "Visual magnitude (V)": "21.0",
+      "RA rate (\"/h)": "3.949E+01",
+      "Dec rate (\"/h)": "1.903E+00"
+     },
+     {
+      "Object name": "362460 (2010 RV143)",
+      "Astrometric RA (hh:mm:ss)": "13:26:09.32",
+      "Astrometric Dec (dd mm'ss\")": "-08 03'46.5\"",
+      "Dist. from center RA (\")": "411.",
+      "Dist. from center Dec (\")": "382.",
+      "Dist. from center Norm (\")": "560.7",
+      "Visual magnitude (V)": "21.6",
+      "RA rate (\"/h)": "1.116E+01",
+      "Dec rate (\"/h)": "7.798E+00"
+     },
+     {
+      "Object name": "562597 (2016 AT96)",
+      "Astrometric RA (hh:mm:ss)": "13:26:15.87",
+      "Astrometric Dec (dd mm'ss\")": "-08 06'12.4\"",
+      "Dist. from center RA (\")": "508.",
+      "Dist. from center Dec (\")": "236.",
+      "Dist. from center Norm (\")": "560.0",
+      "Visual magnitude (V)": "23.0",
+      "RA rate (\"/h)": "9.282E+00",
+      "Dec rate (\"/h)": "2.088E+00"
+     },
+     {
+      "Object name": "647723 (2008 WO75)",
+      "Astrometric RA (hh:mm:ss)": "13:25:19.74",
+      "Astrometric Dec (dd mm'ss\")": "-08 13'34.7\"",
+      "Dist. from center RA (\")": "-326.",
+      "Dist. from center Dec (\")": "-206.",
+      "Dist. from center Norm (\")": "385.5",
+      "Visual magnitude (V)": "22.5",
+      "RA rate (\"/h)": "1.287E+01",
+      "Dec rate (\"/h)": "6.549E+00"
+     },
+     {
+      "Object name": "744211 (2009 EG33)",
+      "Astrometric RA (hh:mm:ss)": "13:25:44.61",
+      "Astrometric Dec (dd mm'ss\")": "-08 02'45.0\"",
+      "Dist. from center RA (\")": "43.6",
+      "Dist. from center Dec (\")": "443.",
+      "Dist. from center Norm (\")": "445.4",
+      "Visual magnitude (V)": "21.8",
+      "RA rate (\"/h)": "2.098E+01",
+      "Dec rate (\"/h)": "-4.387E+00"
+     },
+     {
+      "Object name": "817287 (2012 HU100)",
+      "Astrometric RA (hh:mm:ss)": "13:25:42.25",
+      "Astrometric Dec (dd mm'ss\")": "-08 04'59.5\"",
+      "Dist. from center RA (\")": "8.66",
+      "Dist. from center Dec (\")": "309.",
+      "Dist. from center Norm (\")": "308.9",
+      "Visual magnitude (V)": "22.3",
+      "RA rate (\"/h)": "2.528E+01",
+      "Dec rate (\"/h)": "4.237E+00"
+     },
+     {
+      "Object name": "(2001 DT108)",
+      "Astrometric RA (hh:mm:ss)": "13:25:30.19",
+      "Astrometric Dec (dd mm'ss\")": "-08 01'37.4\"",
+      "Dist. from center RA (\")": "-170.",
+      "Dist. from center Dec (\")": "511.",
+      "Dist. from center Norm (\")": "538.6",
+      "Visual magnitude (V)": "25.0",
+      "RA rate (\"/h)": "-5.264E-01",
+      "Dec rate (\"/h)": "8.396E-01"
+     },
+     {
+      "Object name": "(2014 SH19)",
+      "Astrometric RA (hh:mm:ss)": "13:25:12.68",
+      "Astrometric Dec (dd mm'ss\")": "-08 04'42.4\"",
+      "Dist. from center RA (\")": "-430.",
+      "Dist. from center Dec (\")": "326.",
+      "Dist. from center Norm (\")": "539.9",
+      "Visual magnitude (V)": "24.1",
+      "RA rate (\"/h)": "1.132E+01",
+      "Dec rate (\"/h)": "5.299E+00"
+     },
+     {
+      "Object name": "(2015 KH431)",
+      "Astrometric RA (hh:mm:ss)": "13:25:51.71",
+      "Astrometric Dec (dd mm'ss\")": "-08 13'12.4\"",
+      "Dist. from center RA (\")": "149.",
+      "Dist. from center Dec (\")": "-184.",
+      "Dist. from center Norm (\")": "236.9",
+      "Visual magnitude (V)": "23.9",
+      "RA rate (\"/h)": "2.795E+01",
+      "Dec rate (\"/h)": "8.914E+00"
+     },
+     {
+      "Object name": "(2015 XT196)",
+      "Astrometric RA (hh:mm:ss)": "13:25:42.42",
+      "Astrometric Dec (dd mm'ss\")": "-08 03'52.5\"",
+      "Dist. from center RA (\")": "11.2",
+      "Dist. from center Dec (\")": "376.",
+      "Dist. from center Norm (\")": "376.0",
+      "Visual magnitude (V)": "23.9",
+      "RA rate (\"/h)": "1.202E+01",
+      "Dec rate (\"/h)": "5.375E+00"
+     },
+     {
+      "Object name": "(2016 CM129)",
+      "Astrometric RA (hh:mm:ss)": "13:25:14.52",
+      "Astrometric Dec (dd mm'ss\")": "-08 16'15.2\"",
+      "Dist. from center RA (\")": "-403.",
+      "Dist. from center Dec (\")": "-367.",
+      "Dist. from center Norm (\")": "545.0",
+      "Visual magnitude (V)": "24.2",
+      "RA rate (\"/h)": "1.445E+01",
+      "Dec rate (\"/h)": "5.951E+00"
+     },
+     {
+      "Object name": "(2019 AR151)",
+      "Astrometric RA (hh:mm:ss)": "13:25:58.62",
+      "Astrometric Dec (dd mm'ss\")": "-08 12'56.8\"",
+      "Dist. from center RA (\")": "252.",
+      "Dist. from center Dec (\")": "-169.",
+      "Dist. from center Norm (\")": "302.8",
+      "Visual magnitude (V)": "22.9",
+      "RA rate (\"/h)": "2.554E+01",
+      "Dec rate (\"/h)": "-1.285E+00"
+     },
+     {
+      "Object name": "(2021 PY75)",
+      "Astrometric RA (hh:mm:ss)": "13:25:13.45",
+      "Astrometric Dec (dd mm'ss\")": "-08 02'08.0\"",
+      "Dist. from center RA (\")": "-419.",
+      "Dist. from center Dec (\")": "480.",
+      "Dist. from center Norm (\")": "637.4",
+      "Visual magnitude (V)": "24.4",
+      "RA rate (\"/h)": "8.342E+00",
+      "Dec rate (\"/h)": "4.927E+00"
+     },
+     {
+      "Object name": "(2021 QH36)",
+      "Astrometric RA (hh:mm:ss)": "13:25:15.83",
+      "Astrometric Dec (dd mm'ss\")": "-08 08'49.8\"",
+      "Dist. from center RA (\")": "-384.",
+      "Dist. from center Dec (\")": "78.5",
+      "Dist. from center Norm (\")": "391.7",
+      "Visual magnitude (V)": "22.9",
+      "RA rate (\"/h)": "1.210E+01",
+      "Dec rate (\"/h)": "4.393E+00"
+     },
+     {
+      "Object name": "(2023 UA)",
+      "Astrometric RA (hh:mm:ss)": "13:25:23.45",
+      "Astrometric Dec (dd mm'ss\")": "-08 15'47.5\"",
+      "Dist. from center RA (\")": "-270.",
+      "Dist. from center Dec (\")": "-339.",
+      "Dist. from center Norm (\")": "433.8",
+      "Visual magnitude (V)": "25.2",
+      "RA rate (\"/h)": "5.891E+00",
+      "Dec rate (\"/h)": "2.000E+00"
+     }
+    ]
+   },
+   {
+    "mjd": 60846.7,
+    "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-20_16%3A48%3A00&xobs=-4.761627569E%2B03%2C8.645902932E%2B02%2C-5.101928291E%2B03%2C5.534668597E%2B00%2C5.321458972E-01%2C-5.071425532E%2B00&fov-ra-center=13-25-41.67&fov-dec-center=M08-10-08.3&fov-ra-hwidth=0.14300000000000002&fov-dec-hwidth=0.14300000000000002&two-pass=true&suppress-first-pass=true&mag-required=false",
+    "status": "cached",
+    "n_objects": 21,
+    "objects": [
+     {
+      "Object name": "216 Kleopatra (A880 GB)",
+      "Astrometric RA (hh:mm:ss)": "13:25:47.74",
+      "Astrometric Dec (dd mm'ss\")": "-08 07'17.4\"",
+      "Dist. from center RA (\")": "90.1",
+      "Dist. from center Dec (\")": "171.",
+      "Dist. from center Norm (\")": "193.2",
+      "Visual magnitude (V)": "12.8",
+      "RA rate (\"/h)": "7.655E-01",
+      "Dec rate (\"/h)": "1.341E+01"
+     },
+     {
+      "Object name": "11957 (1994 DS)",
+      "Astrometric RA (hh:mm:ss)": "13:25:35.46",
+      "Astrometric Dec (dd mm'ss\")": "-08 12'54.0\"",
+      "Dist. from center RA (\")": "-92.1",
+      "Dist. from center Dec (\")": "-166.",
+      "Dist. from center Norm (\")": "189.6",
+      "Visual magnitude (V)": "18.9",
+      "RA rate (\"/h)": "7.866E+00",
+      "Dec rate (\"/h)": "5.886E+00"
+     },
+     {
+      "Object name": "105401 (2000 QM144)",
+      "Astrometric RA (hh:mm:ss)": "13:25:40.75",
+      "Astrometric Dec (dd mm'ss\")": "-08 04'52.1\"",
+      "Dist. from center RA (\")": "-13.6",
+      "Dist. from center Dec (\")": "316.",
+      "Dist. from center Norm (\")": "316.5",
+      "Visual magnitude (V)": "20.8",
+      "RA rate (\"/h)": "4.151E+00",
+      "Dec rate (\"/h)": "8.529E+00"
+     },
+     {
+      "Object name": "194633 (2001 XF163)",
+      "Astrometric RA (hh:mm:ss)": "13:26:12.88",
+      "Astrometric Dec (dd mm'ss\")": "-08 03'13.2\"",
+      "Dist. from center RA (\")": "463.",
+      "Dist. from center Dec (\")": "415.",
+      "Dist. from center Norm (\")": "622.2",
+      "Visual magnitude (V)": "22.0",
+      "RA rate (\"/h)": "2.640E+00",
+      "Dec rate (\"/h)": "1.032E+01"
+     },
+     {
+      "Object name": "210278 (2007 TJ29)",
+      "Astrometric RA (hh:mm:ss)": "13:25:36.75",
+      "Astrometric Dec (dd mm'ss\")": "-08 11'21.3\"",
+      "Dist. from center RA (\")": "-73.1",
+      "Dist. from center Dec (\")": "-73.0",
+      "Dist. from center Norm (\")": "103.3",
+      "Visual magnitude (V)": "22.1",
+      "RA rate (\"/h)": "3.181E+00",
+      "Dec rate (\"/h)": "7.971E+00"
+     },
+     {
+      "Object name": "219078 (1998 GX)",
+      "Astrometric RA (hh:mm:ss)": "13:25:19.92",
+      "Astrometric Dec (dd mm'ss\")": "-08 15'40.0\"",
+      "Dist. from center RA (\")": "-323.",
+      "Dist. from center Dec (\")": "-332.",
+      "Dist. from center Norm (\")": "462.9",
+      "Visual magnitude (V)": "21.3",
+      "RA rate (\"/h)": "5.233E+00",
+      "Dec rate (\"/h)": "6.138E+00"
+     },
+     {
+      "Object name": "272127 (2005 MC29)",
+      "Astrometric RA (hh:mm:ss)": "13:25:07.17",
+      "Astrometric Dec (dd mm'ss\")": "-08 09'37.6\"",
+      "Dist. from center RA (\")": "-512.",
+      "Dist. from center Dec (\")": "30.7",
+      "Dist. from center Norm (\")": "513.2",
+      "Visual magnitude (V)": "21.8",
+      "RA rate (\"/h)": "1.064E+01",
+      "Dec rate (\"/h)": "1.429E+01"
+     },
+     {
+      "Object name": "291099 (2005 YL148)",
+      "Astrometric RA (hh:mm:ss)": "13:25:14.70",
+      "Astrometric Dec (dd mm'ss\")": "-08 02'49.0\"",
+      "Dist. from center RA (\")": "-401.",
+      "Dist. from center Dec (\")": "439.",
+      "Dist. from center Norm (\")": "594.5",
+      "Visual magnitude (V)": "20.8",
+      "RA rate (\"/h)": "1.306E+01",
+      "Dec rate (\"/h)": "5.683E+00"
+     },
+     {
+      "Object name": "294177 (2007 TY390)",
+      "Astrometric RA (hh:mm:ss)": "13:25:12.78",
+      "Astrometric Dec (dd mm'ss\")": "-08 15'42.6\"",
+      "Dist. from center RA (\")": "-429.",
+      "Dist. from center Dec (\")": "-334.",
+      "Dist. from center Norm (\")": "543.7",
+      "Visual magnitude (V)": "21.7",
+      "RA rate (\"/h)": "1.387E+01",
+      "Dec rate (\"/h)": "7.393E+00"
+     },
+     {
+      "Object name": "561753 (2015 VM16)",
+      "Astrometric RA (hh:mm:ss)": "13:25:30.48",
+      "Astrometric Dec (dd mm'ss\")": "-08 14'44.9\"",
+      "Dist. from center RA (\")": "-166.",
+      "Dist. from center Dec (\")": "-277.",
+      "Dist. from center Norm (\")": "322.6",
+      "Visual magnitude (V)": "22.0",
+      "RA rate (\"/h)": "1.268E+01",
+      "Dec rate (\"/h)": "1.351E+01"
+     },
+     {
+      "Object name": "647723 (2008 WO75)",
+      "Astrometric RA (hh:mm:ss)": "13:25:38.94",
+      "Astrometric Dec (dd mm'ss\")": "-08 13'35.6\"",
+      "Dist. from center RA (\")": "-40.5",
+      "Dist. from center Dec (\")": "-207.",
+      "Dist. from center Norm (\")": "211.2",
+      "Visual magnitude (V)": "22.5",
+      "RA rate (\"/h)": "4.761E+00",
+      "Dec rate (\"/h)": "1.100E+01"
+     },
+     {
+      "Object name": "653605 (2014 QV462)",
+      "Astrometric RA (hh:mm:ss)": "13:25:15.65",
+      "Astrometric Dec (dd mm'ss\")": "-08 17'53.7\"",
+      "Dist. from center RA (\")": "-386.",
+      "Dist. from center Dec (\")": "-465.",
+      "Dist. from center Norm (\")": "604.9",
+      "Visual magnitude (V)": "22.4",
+      "RA rate (\"/h)": "9.402E+00",
+      "Dec rate (\"/h)": "8.510E+00"
+     },
+     {
+      "Object name": "(2009 VT122)",
+      "Astrometric RA (hh:mm:ss)": "13:25:16.15",
+      "Astrometric Dec (dd mm'ss\")": "-08 10'42.2\"",
+      "Dist. from center RA (\")": "-379.",
+      "Dist. from center Dec (\")": "-33.9",
+      "Dist. from center Norm (\")": "380.5",
+      "Visual magnitude (V)": "22.6",
+      "RA rate (\"/h)": "1.276E+01",
+      "Dec rate (\"/h)": "1.609E+01"
+     },
+     {
+      "Object name": "(2009 WY158)",
+      "Astrometric RA (hh:mm:ss)": "13:25:17.54",
+      "Astrometric Dec (dd mm'ss\")": "-08 03'48.3\"",
+      "Dist. from center RA (\")": "-358.",
+      "Dist. from center Dec (\")": "380.",
+      "Dist. from center Norm (\")": "522.3",
+      "Visual magnitude (V)": "22.9",
+      "RA rate (\"/h)": "9.791E+00",
+      "Dec rate (\"/h)": "1.872E+01"
+     },
+     {
+      "Object name": "(2014 SH19)",
+      "Astrometric RA (hh:mm:ss)": "13:25:26.77",
+      "Astrometric Dec (dd mm'ss\")": "-08 05'51.3\"",
+      "Dist. from center RA (\")": "-221.",
+      "Dist. from center Dec (\")": "257.",
+      "Dist. from center Norm (\")": "339.2",
+      "Visual magnitude (V)": "24.1",
+      "RA rate (\"/h)": "2.705E+00",
+      "Dec rate (\"/h)": "1.003E+01"
+     },
+     {
+      "Object name": "(2015 XT196)",
+      "Astrometric RA (hh:mm:ss)": "13:25:56.99",
+      "Astrometric Dec (dd mm'ss\")": "-08 05'20.5\"",
+      "Dist. from center RA (\")": "228.",
+      "Dist. from center Dec (\")": "288.",
+      "Dist. from center Norm (\")": "366.9",
+      "Visual magnitude (V)": "23.9",
+      "RA rate (\"/h)": "2.650E+00",
+      "Dec rate (\"/h)": "1.048E+01"
+     },
+     {
+      "Object name": "(2016 CM129)",
+      "Astrometric RA (hh:mm:ss)": "13:25:37.01",
+      "Astrometric Dec (dd mm'ss\")": "-08 16'53.8\"",
+      "Dist. from center RA (\")": "-69.2",
+      "Dist. from center Dec (\")": "-406.",
+      "Dist. from center Norm (\")": "411.4",
+      "Visual magnitude (V)": "24.2",
+      "RA rate (\"/h)": "5.835E+00",
+      "Dec rate (\"/h)": "1.068E+01"
+     },
+     {
+      "Object name": "(2021 PY75)",
+      "Astrometric RA (hh:mm:ss)": "13:25:21.93",
+      "Astrometric Dec (dd mm'ss\")": "-08 02'52.9\"",
+      "Dist. from center RA (\")": "-293.",
+      "Dist. from center Dec (\")": "435.",
+      "Dist. from center Norm (\")": "524.9",
+      "Visual magnitude (V)": "24.4",
+      "RA rate (\"/h)": "9.902E-01",
+      "Dec rate (\"/h)": "8.972E+00"
+     },
+     {
+      "Object name": "(2021 QH36)",
+      "Astrometric RA (hh:mm:ss)": "13:25:32.24",
+      "Astrometric Dec (dd mm'ss\")": "-08 10'29.5\"",
+      "Dist. from center RA (\")": "-140.",
+      "Dist. from center Dec (\")": "-21.2",
+      "Dist. from center Norm (\")": "141.7",
+      "Visual magnitude (V)": "22.9",
+      "RA rate (\"/h)": "3.607E+00",
+      "Dec rate (\"/h)": "9.097E+00"
+     },
+     {
+      "Object name": "(2022 UO59)",
+      "Astrometric RA (hh:mm:ss)": "13:25:33.78",
+      "Astrometric Dec (dd mm'ss\")": "-08 06'22.5\"",
+      "Dist. from center RA (\")": "-117.",
+      "Dist. from center Dec (\")": "226.",
+      "Dist. from center Norm (\")": "254.4",
+      "Visual magnitude (V)": "22.9",
+      "RA rate (\"/h)": "2.779E+00",
+      "Dec rate (\"/h)": "1.993E+00"
+     },
+     {
+      "Object name": "(2023 UA)",
+      "Astrometric RA (hh:mm:ss)": "13:25:25.09",
+      "Astrometric Dec (dd mm'ss\")": "-08 18'31.1\"",
+      "Dist. from center RA (\")": "-246.",
+      "Dist. from center Dec (\")": "-503.",
+      "Dist. from center Norm (\")": "559.8",
+      "Visual magnitude (V)": "25.2",
+      "RA rate (\"/h)": "-1.610E+00",
+      "Dec rate (\"/h)": "6.263E+00"
+     }
+    ]
+   }
+  ],
+  "sb_ident_geocentric_500_control": {
+   "what": "the motion_check.json lookup (mpc-code=500), repeated at Kleopatra's own position, first exposure",
+   "finds_kleopatra": true,
+   "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-17_11%3A56%3A54&mpc-code=500&fov-ra-center=13-25-36.02&fov-dec-center=M08-12-44.8&fov-ra-hwidth=0.03&fov-dec-hwidth=0.03&two-pass=true&suppress-first-pass=true",
+   "n_objects": 2,
+   "objects": [
+    {
+     "Object name": "216 Kleopatra (A880 GB)",
+     "Astrometric RA (hh:mm:ss)": "13:25:35.92",
+     "Astrometric Dec (dd mm'ss\")": "-08 12'44.3\"",
+     "Dist. from center RA (\")": "-1.45",
+     "Dist. from center Dec (\")": ".547",
+     "Dist. from center Norm (\")": "1.550",
+     "Visual magnitude (V)": "12.8",
+     "RA rate (\"/h)": "1.204E+00",
+     "Dec rate (\"/h)": "4.731E+00"
+    },
+    {
+     "Object name": "32888 (1993 TD27)",
+     "Astrometric RA (hh:mm:ss)": "13:25:39.03",
+     "Astrometric Dec (dd mm'ss\")": "-08 13'10.9\"",
+     "Dist. from center RA (\")": "44.7",
+     "Dist. from center Dec (\")": "-26.1",
+     "Dist. from center Norm (\")": "51.80",
+     "Visual magnitude (V)": "19.7",
+     "RA rate (\"/h)": "4.524E+00",
+     "Dec rate (\"/h)": "-5.424E+00"
+    }
+   ],
+   "note": "The sb_ident documentation lists 500 (geocentre) as NOT accepted. If this control fails, the 'no match' of motion_check.json carried no information; the xobs (SPHEREx) lookups above replace it."
+  },
+  "figure": "report/figures/motion_followup_track2.png",
+  "conclusion": "The 6 detections fall into 3 fixed sky positions, each seen only within < 4 h (too short for the static-source flag); a polynomial of order 2 passes through 3 points exactly, so the fit says nothing about motion. A straight line through the same points has rms 4.0\" (chi2_red 29) versus 1.4\" for the quadratic. Position 0 (201.39257, -8.12068; 1 member(s)): a single-exposure event in 2025W25_1B_0290_3 D6 at 4.94 um (S/N 19.0); its peak pixel stands 4.5x higher above its neighbours than a PSF-sampled source would, the other exposures of the same visit on the same detector (minutes apart) give forced S/N [0.13, 0.47, 0.46], the simultaneous exposure on the other detector gives [-1.09], and nothing is catalogued there: most likely an unflagged cosmic-ray or detector hit. Catalogue sources within 6\": gaia_dr3 0, 2mass_psc 0, allwise 0, SIMBAD 0. Position 1 (201.38873, -8.12191; 2 member(s)): a STATIC source: forced S/N stacks to 14.9 over 19 exposures below 2.42 um (median 3.5) but 1.1 above; it crosses 5 sigma only in 2 exposure(s). Catalogue sources within 6\": gaia_dr3 1, 2mass_psc 0, allwise 1, SIMBAD 0. Position 2 (201.37214, -8.11009; 3 member(s)): a STATIC source: forced S/N stacks to 15.1 over 19 exposures below 2.42 um (median 3.8) but 3.4 above; it crosses 5 sigma only in 3 exposure(s). Catalogue sources within 6\": gaia_dr3 1, 2mass_psc 0, allwise 1, SIMBAD 0. sb_ident from SPHEREx (positive control finds Kleopatra: True) lists [7, 8, 8, 11, 11, 11] known bodies within 0.1 deg of the members, the nearest 100\" away (none within the 12\" match radius). The geocentric (code 500) lookup used in motion_check.json finds Kleopatra at its own position: True. Most likely explanation: NOT a moving object, but two faint static sources (each with a Gaia DR3 and an AllWISE counterpart) that reach 5 sigma only in a few short-wavelength exposures, plus one single-exposure artefact; the order-2 fit through three positions made them look like a slow track."
+ },
+ "case_search": {
+  "sb_ident_around_kleopatra_field": "sb_ident from SPHEREx (xobs), MJD 60845.0, 1.5 deg half-width around the Kleopatra field, V < 17: Kleopatra (V 12.8), (2052) Tamriko (V 16.2, 0.40 deg away), (641) Agnes (V 16.8, 1.6 deg away).",
+  "neo_scan": "Horizons from SPHEREx, 2025-05-01..2026-07-25, daily, for 40 well-known NEOs; kept days with V < 16 and elongation 88-125 deg. Windows found for 433 Eros, 1036 Ganymed, 1620 Geographos, 2100 Ra-Shalom, 1943 Anteros, 4183 Cuno, 35107 (1991 VH), 3361 Orpheus, 3103 Eger; none for the other 31.",
+  "eros_sia_scan": "SIA at Eros's position every 4 days, MJD 60863-60903; exposures within 1 day whose Eros position is within 0.25 deg: 3 visits at 60862.6-60863.3 (the case used), 2 at 60867.2-60867.4, 1 at 60870.8 and 60882.5, none at the other 7 samples."
+ },
+ "validation_cases": [],
+ "run": {
+  "started_utc": "2026-11-16T06:41:51+00:00",
+  "runtime_s": 91.4,
+  "python": "3.12.3",
+  "numpy": "2.5.4"
+ }
+}

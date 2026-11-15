@@ -181,8 +181,11 @@ def motion_section() -> str:
  <p><b>Found along the way:</b> the SPHEREx pipeline flags the moving asteroid as OUTLIER in
  {d["pipeline_flag_finding"]["n_with_outlier"]} of {d["pipeline_flag_finding"]["n_exposures"]} exposures, so a static-star mask erases it.
  The motion check keeps OUTLIER pixels; the star pipeline is unchanged.</p>
- <p><b>Limits:</b> one object, one 3.3-day window, slow motion only. A second track (6 detections, 5 visits) matches no
- known object and is reported without interpretation. 3-visit tracks can be chance alignments.
+ <p><b>The second track is not a mover:</b> its 6 detections sit at 3 fixed positions: two faint Gaia/AllWISE stars
+ (G 18.4 and 19.4) and one single-exposure detector hit. JPL finds no known object within 100″. A new degenerate-track
+ check flags it (<a href='{REPO}/blob/main/submission/evidence/motion_followup.json'>follow-up evidence</a>).</p>
+ <p><b>Limits:</b> one object, one 3.3-day window, slow motion only. Further known-asteroid cases (Tamriko, Eros) were
+ found but not run: IRSA returned HTTP 502. 3-visit tracks can be chance alignments.
  <b>HIPPARCHUS has not found Planet X.</b></p>
  <img src='img/motion_check.png' alt='Kleopatra in SPHEREx cutouts, linking, residuals and SIMULATED tests' style='width:100%;max-width:1000px'>
  <p class='small'>Evidence: <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/motion_check.json'>motion_check.json</a>
@@ -219,6 +222,10 @@ def epsf_section() -> str:
  <p class='small'>Limits: the fit leaves residuals at the core of bright stars (&chi;&sup2;<sub>&nu;</sub> 4&ndash;18), and both
  methods read the same photons; SIMULATED stars show their errors are only weakly correlated at S/N 10&ndash;50,
  and the agreement holds after that correction. Labels follow a fixed rule; they are not probabilities.</p>
+ <p class='small'><b>Why &chi;&sup2; is high:</b> we checked normalisation, all 8 orientations, zone choice, background
+ and pixel noise; they are fine. The causes are Gaia field stars at the box edge and extra real sky structure in the
+ RW Aur field (fitting them takes the median from 7.4 to 3.2), plus a core mismatch we could not attribute. No fix
+ moves the RW Aur ratios by more than 2%, so the ePSF stays an experimental cross-check.</p>
  <img src='img/epsf_residuals.png' alt='RW Aur data, ePSF model and residuals for two epochs' style='max-width:min(100%,720px)'>
 </section>
 """
@@ -297,7 +304,12 @@ def wavecal_section() -> str:
  wavelengths:</p>
  <table><thead><tr><th>Target</th><th>Published: pairs · largest |σ|</th><th>Calibrated: pairs · largest |σ|</th><th>Pairs that change</th></tr></thead>
  <tbody>{rows}</tbody></table>
- <p><b>No published conclusion changes.</b> We keep the published numbers for reproducibility and say so here. The same audit
+ <p><b>No published conclusion changes.</b> We keep the published numbers for reproducibility and say so here.</p>
+ <p><b>Cause, proven on 280 cutouts:</b> the SIP keywords belong to the sky (RA/Dec) solution, but astropy also attaches
+ them to the wavelength lookup table, which is then read 3–71 pixels away from the star. With SIP removed, the table
+ agrees with the official maps to under 1 nm (median), as IRSA's own tutorials recommend. The pipeline now offers a
+ <code>cwave</code> mode that reads the official <code>CWAVE</code>/<code>CBAND</code> maps; the legacy mode stays for
+ reproducibility. The same audit
  confirmed the ePSF zone layouts (21×21; detector 3: 11×41). <a href='{REPO}/blob/main/submission/evidence/wavecal_check.json'>Evidence</a></p>
 </section>"""
 

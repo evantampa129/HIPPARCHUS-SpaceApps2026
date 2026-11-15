@@ -68,6 +68,7 @@ def _config() -> dict:
         "bad_flag_planes": sorted(quality.BAD_PLANES),
         "warning_flag_planes": sorted(quality.WARN_PLANES),
         "max_wavelength_shift_fraction_of_bandwidth": compare.MAX_DLAMBDA_FRACTION,
+        "default_wavelength_source": quality.DEFAULT_WAVELENGTH_SOURCE,
         "same_visit_days": compare.SAME_VISIT_DAYS,
         "detection_sigma": compare.DETECTION_SIGMA,
         "zodi_subtracted": True,
@@ -122,13 +123,17 @@ def observations(ra: float = Query(..., ge=0, lt=360), dec: float = Query(..., g
 @app.get("/analyze")
 def run_analysis(ra: float = Query(..., ge=0, lt=360), dec: float = Query(..., ge=-90, le=90),
                  detector: str = Query(..., pattern=r"^SPHEREx-D[1-6]$"),
-                 limit: int | None = Query(None, ge=2, le=200)) -> dict:
+                 limit: int | None = Query(None, ge=2, le=200),
+                 wavelength_source: str | None = Query(None, pattern=r"^(wcs|wcs_nosip|cwave)$")) -> dict:
     """Download, check and compare every epoch of one detector. Slow the first time."""
-    key = hashlib.sha256(f"{ra:.6f}|{dec:.6f}|{detector}|{limit}".encode()).hexdigest()[:16]
+    src = wavelength_source or quality.DEFAULT_WAVELENGTH_SOURCE
+    # The default source keeps the old key, so existing analysis ids stay valid.
+    tag = "" if src == "wcs" else f"|{src}"
+    key = hashlib.sha256(f"{ra:.6f}|{dec:.6f}|{detector}|{limit}{tag}".encode()).hexdigest()[:16]
     with _LOCK:
         if key in _RESULTS:
             return _RESULTS[key]["public"]
-    r = analyze(ra, dec, detector, limit)
+    r = analyze(ra, dec, detector, limit, wavelength_source=src)
     if r["archive_status"] == "unavailable":
         raise HTTPException(503, "The IRSA archive could not be reached and no cached listing exists for this position.")
     r["analysis_id"] = key

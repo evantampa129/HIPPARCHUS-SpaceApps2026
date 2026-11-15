@@ -1,0 +1,12 @@
+# Versions the test suite passed with; keeps the image reproducible.
+fastapi==0.163.1
+starlette==1.10.0
+pydantic==2.14.3
+uvicorn==0.54.0
+httpx==0.28.1
+astropy==8.0.2
+numpy==2.5.4
+scipy==1.18.1
+reproject==0.21.0
+matplotlib==3.11.2
+pyvo==1.10.0

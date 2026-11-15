@@ -144,7 +144,7 @@ claims = {c["claim"]: c for c in rob["rw_aur"]["claims"]}
 c15 = next(v for k, v in claims.items() if "1.5" in k)
 call = next(v for k, v in claims.items() if "every" in k)
 cw = rob["wise0855"]["claims"][0]
-n_tests = 54
+n_tests = 85
 
 # 1. Identity
 s = slide()
