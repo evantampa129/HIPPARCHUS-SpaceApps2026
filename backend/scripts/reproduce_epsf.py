@@ -98,6 +98,15 @@ def simulated_checks(t, n_pos=4, seed=7):
             ap = photometry(img, ep.variance, ep.bad, x0, y0)
             ap0 = photometry(ep.image, ep.variance, ep.bad, x0, y0)
             f2 = P.fit(img, ep.variance, ep.bad, x0 + 0.3, y0, e)
+            for snr in (10, 50, 200):
+                F = snr * f0["amp_err"]
+                im2 = ep.image + F * P.render(e["psf"], e["ovs"], x0, y0, xx, yy)
+                g = P.fit(im2, ep.variance, ep.bad, x0, y0, e)
+                a2 = photometry(im2, ep.variance, ep.bad, x0, y0)
+                if g["ok"] and g["amp"] > 0 and a2["flux"] > 0:
+                    out.setdefault("pair_noise", []).append({
+                        "snr": snr, "d": math.log(a2["flux"]) - math.log(g["amp"]),
+                        "quad": math.hypot(a2["flux_err"] / a2["flux"], g["amp_err"] / g["amp"])})
             if f1["ok"]:
                 out["injected"].append({"flux": flux, "amp": f1["amp"], "amp_err": f1["amp_err"],
                                         "pull": (f1["amp"] - f0["amp"] - flux) / flux,
@@ -109,6 +118,16 @@ def simulated_checks(t, n_pos=4, seed=7):
     rec = np.array([(r["amp"] - r["flux"]) / r["flux"] for r in inj])
     ipull = np.array([r["pull"] for r in inj])  # fractional, should be ~1e-15
     apfrac = np.array([r["aperture_minus_blank"] / r["flux"] for r in inj])
+    corr = {}
+    for snr in (10, 50, 200):
+        rr = [r for r in out.get("pair_noise", []) if r["snr"] == snr]
+        if len(rr) > 10:
+            d = np.array([r["d"] for r in rr])
+            # < 1 means the two methods' errors are positively correlated: the true
+            # scatter of their difference is smaller than the quadrature sum.
+            corr[str(snr)] = float(np.std(d) / np.median([r["quad"] for r in rr]))
+    out["difference_scatter_over_quadrature"] = corr
+    out.pop("pair_noise", None)
     out["summary"] = {
         "n_noise_only": len(pulls), "noise_only_pull_std": float(np.std(pulls)),
         "noise_only_false_ge5": int(np.sum(np.abs(pulls) >= 5)), "noise_only_false_ge3": int(np.sum(np.abs(pulls) >= 3)),
@@ -212,6 +231,17 @@ def main():
         print(t["id"], r["label"])
     sim = simulated_checks(next(t for t in api.TARGETS if t["id"] == "wise0855"))
     report["simulated_injection"] = sim
+    k = min(sim["difference_scatter_over_quadrature"].values())  # the strictest (smallest) factor
+    for r in report["targets"]["rw_aur"]["pairs"]:
+        if "z_agreement" in r:
+            r["z_correlated"] = r["z_agreement"] / k
+            r["agreement_correlated"] = label(r["z_correlated"])
+    report["correlation_factor_used"] = k
+    rc = report["targets"]["rw_aur"]
+    rc["agreement_counts_correlated"] = {x: sum(p.get("agreement_correlated") == x for p in rc["pairs"])
+                                        for x in ("compatible", "inconclusive", "discrepant")}
+    print("correlated:", sim["difference_scatter_over_quadrature"], rc["agreement_counts_correlated"],
+          [round(p["z_correlated"], 2) for p in rc["pairs"]])
     print("SIMULATED", sim["summary"])
     report["benchmark"] = {"seconds": time.perf_counter() - t0,
                            "peak_rss_mb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024}

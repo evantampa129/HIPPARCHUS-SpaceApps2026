@@ -286,8 +286,12 @@ all 8 pairs are brighter later and every pair is $\ge5\sigma$ with the ePSF alon
 aperture values because of the $\chi^2$ scaling). The $r=2$\,px aperture holds a steady 96--98\% of the ePSF flux.
 The fit is not perfect: $\chi^2_\nu=4$--18 at S/N $\approx300$, with residuals at the core
 (Fig.~\ref{fig:epsf}), and the best position is 0.12--0.21\,px from the WCS position in every epoch.
-Both methods read the same photons, so their errors are correlated and our $z$ is too small; ``compatible'' is
-therefore a lenient statement and ``discrepant'' a conservative one.
+Both methods read the same photons, so their errors could be correlated. We measured this with SIMULATED stars
+injected into the real WISE~0855 cutouts: the scatter of $\ln(F_\mathrm{ap}/F_\mathrm{ePSF})$ is 0.95 and 0.99 times
+the quadrature error at S/N 10 and 50 (weak correlation), and 1.72 times at S/N 200, where an extra scatter appears,
+probably from the star's position inside the pixel. Dividing $z$ by the strictest factor (0.95) leaves all 8 RW~Aur
+pairs compatible ($|z|\le1.37$). The injected stars follow the ePSF exactly, so this test does not include the
+model error seen in the real residuals.
 
 \textbf{WISE 0855.} Fluxes are below S/N~5, so ratios are not compared (all 27 pairs \emph{inconclusive} by the rule).
 The published claim is still checked: no pair reaches $5\sigma$ with the ePSF either (largest $3.1\sigma$; aperture
@@ -305,7 +309,7 @@ INSUFFICIENT DATA no usable epoch; INCONCLUSIVE anything else. RW~Aur: \textbf{s
 These are labels from a rule, not probabilities.
 
 \textbf{Not validated / future work.} Only one ePSF per epoch (no PSF variation inside the $9\times9$ box), a constant
-background, no wavelength dependence within the channel, and no correlated-error model between the two methods.
+background, no wavelength dependence within the channel; the correlation test above uses stars that match the ePSF exactly.
 
 \begin{figure}[h]\centering
 \includegraphics[width=0.85\linewidth]{figures/epsf_residuals.png}

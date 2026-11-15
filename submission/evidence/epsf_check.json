@@ -46,7 +46,9 @@
      "warnings": [
       "reduced chi2 12.9: the ePSF does not describe these pixels well",
       "reduced chi2 16.1: the ePSF does not describe these pixels well"
-     ]
+     ],
+     "z_correlated": -0.03186548834399706,
+     "agreement_correlated": "compatible"
     },
     {
      "a": "2025W36_1A_0233_2",
@@ -76,7 +78,9 @@
      "warnings": [
       "reduced chi2 12.9: the ePSF does not describe these pixels well",
       "reduced chi2 7.5: the ePSF does not describe these pixels well"
-     ]
+     ],
+     "z_correlated": 0.34340764559403997,
+     "agreement_correlated": "compatible"
     },
     {
      "a": "2025W36_1A_0233_3",
@@ -106,7 +110,9 @@
      "warnings": [
       "reduced chi2 7.2: the ePSF does not describe these pixels well",
       "reduced chi2 7.6: the ePSF does not describe these pixels well"
-     ]
+     ],
+     "z_correlated": 1.233218590727479,
+     "agreement_correlated": "compatible"
     },
     {
      "a": "2025W36_1A_0233_3",
@@ -136,7 +142,9 @@
      "warnings": [
       "reduced chi2 7.2: the ePSF does not describe these pixels well",
       "reduced chi2 17.5: the ePSF does not describe these pixels well"
-     ]
+     ],
+     "z_correlated": 0.928812064230313,
+     "agreement_correlated": "compatible"
     },
     {
      "a": "2025W36_1A_0446_1",
@@ -166,7 +174,9 @@
      "warnings": [
       "reduced chi2 5.3: the ePSF does not describe these pixels well",
       "reduced chi2 4.1: the ePSF does not describe these pixels well"
-     ]
+     ],
+     "z_correlated": 1.2455390258642647,
+     "agreement_correlated": "compatible"
     },
     {
      "a": "2025W36_1A_0606_2",
@@ -196,7 +206,9 @@
      "warnings": [
       "reduced chi2 6.5: the ePSF does not describe these pixels well",
       "reduced chi2 7.0: the ePSF does not describe these pixels well"
-     ]
+     ],
+     "z_correlated": 1.3711830536195702,
+     "agreement_correlated": "compatible"
     },
     {
      "a": "2026W10_2B_0591_4",
@@ -226,7 +238,9 @@
      "warnings": [
       "reduced chi2 7.6: the ePSF does not describe these pixels well",
       "reduced chi2 7.5: the ePSF does not describe these pixels well"
-     ]
+     ],
+     "z_correlated": 0.574505325280932,
+     "agreement_correlated": "compatible"
     },
     {
      "a": "2026W11_1A_0285_1",
@@ -256,7 +270,9 @@
      "warnings": [
       "reduced chi2 4.1: the ePSF does not describe these pixels well",
       "reduced chi2 17.5: the ePSF does not describe these pixels well"
-     ]
+     ],
+     "z_correlated": 0.6100210883974867,
+     "agreement_correlated": "compatible"
     }
    ],
    "epochs": {
@@ -569,7 +585,12 @@
     "n_pairs_brighter_epsf": 8,
     "n_fitted": 8
    },
-   "label": "SUPPORTED VARIABILITY"
+   "label": "SUPPORTED VARIABILITY",
+   "agreement_counts_correlated": {
+    "compatible": 8,
+    "inconclusive": 0,
+    "discrepant": 0
+   }
   },
   "barnard": {
    "verdict": "not fitted: no usable epoch (saturated / flagged pixels)",
@@ -2760,6 +2781,11 @@
    0.8038510962396871,
    0.9689611597716794
   ],
+  "difference_scatter_over_quadrature": {
+   "10": 0.953178052057512,
+   "50": 0.9874641508074127,
+   "200": 1.7234245788319376
+  },
   "summary": {
    "n_noise_only": 104,
    "noise_only_pull_std": 1.0706115538424976,
@@ -2772,8 +2798,9 @@
    "astrometry_0p3px_median_ratio": 0.9295028346028636
   }
  },
+ "correlation_factor_used": 0.953178052057512,
  "benchmark": {
-  "seconds": 13.34964399599994,
-  "peak_rss_mb": 169.33203125
+  "seconds": 13.586673365003662,
+  "peak_rss_mb": 169.703125
  }
 }

@@ -165,7 +165,8 @@ def epsf_section() -> str:
    {100 * abs(sim["noise_only_pull_std"] - 1):.0f}%, {sim["noise_only_false_ge5"]} false &ge;5&sigma; detections.</li>
  </ul>
  <p class='small'>Limits: the fit leaves residuals at the core of bright stars (&chi;&sup2;<sub>&nu;</sub> 4&ndash;18), and both
- methods read the same photons, so "agree" is a lenient test. Labels follow a fixed rule; they are not probabilities.</p>
+ methods read the same photons; SIMULATED stars show their errors are only weakly correlated at S/N 10&ndash;50,
+ and the agreement holds after that correction. Labels follow a fixed rule; they are not probabilities.</p>
  <img src='img/epsf_residuals.png' alt='RW Aur data, ePSF model and residuals for two epochs' style='max-width:min(100%,720px)'>
 </section>
 """
