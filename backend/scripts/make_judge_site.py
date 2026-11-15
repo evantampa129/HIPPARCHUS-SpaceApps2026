@@ -161,7 +161,7 @@ def motion_section() -> str:
     shutil.copy(ROOT / "report" / "figures" / "motion_check.png", OUT / "img" / "motion_check.png")
     return f"""
 <section class='case' id='motion'>
- <h2>Moving-Object Explorer <small>(validation on a known asteroid, not a discovery)</small></h2>
+ <h2>Moving-Object Explorer <small>(validation on known asteroids, not a discovery)</small></h2>
  <p>A distant planet would show up as something that moves between SPHEREx epochs. Before looking for unknown
  movers, we checked that our detection, linking and astrometry work on a known one: the main-belt asteroid
  <b>(216) Kleopatra</b> in {len(d["exposures"])} real SPHEREx exposures, {d["exposures"][0]["date_obs"][:10]} to
@@ -177,19 +177,130 @@ def motion_section() -> str:
   <tr><td>SIMULATED movers, S/N ≥ 7, 2–15″/h</td><td>{100 * lo:.0f}–100% recovered</td></tr>
   <tr><td>False links (SIMULATED / permuted)</td><td>noise-only fields: {noise["runs_with_any_track"]}/{noise["runs"]} runs with a track;
    shuffled epoch times: {ts["runs_with_any_track"]}/{ts["runs"]} runs with a 3-visit track, none with 5 visits</td></tr>
+{followup_rows()}
  </table>
  <p><b>Found along the way:</b> the SPHEREx pipeline flags the moving asteroid as OUTLIER in
  {d["pipeline_flag_finding"]["n_with_outlier"]} of {d["pipeline_flag_finding"]["n_exposures"]} exposures, so a static-star mask erases it.
  The motion check keeps OUTLIER pixels; the star pipeline is unchanged.</p>
  <p><b>The second track is not a mover:</b> its 6 detections sit at 3 fixed positions: two faint Gaia/AllWISE stars
  (G 18.4 and 19.4) and one single-exposure detector hit. JPL finds no known object within 100″. A new degenerate-track
- check flags it (<a href='{REPO}/blob/main/submission/evidence/motion_followup.json'>follow-up evidence</a>).</p>
- <p><b>Limits:</b> one object, one 3.3-day window, slow motion only. Further known-asteroid cases (Tamriko, Eros) were
- found but not run: IRSA returned HTTP 502. 3-visit tracks can be chance alignments.
+ check flags it; with this vetting switched on, the blind search on the same cutouts returns Kleopatra only
+ (<a href='{REPO}/blob/main/submission/evidence/motion_followup.json'>follow-up evidence</a>).</p>
+ <p><b>Limits:</b> three known asteroids, each over a few days; no wide search for unknown movers. For the fast Eros an
+ order-2 polynomial does not describe the apparent path well, although the residuals against Horizons stay small.
+ 3-visit tracks can be chance alignments.
  <b>HIPPARCHUS has not found Planet X.</b></p>
  <img src='img/motion_check.png' alt='Kleopatra in SPHEREx cutouts, linking, residuals and SIMULATED tests' style='width:100%;max-width:1000px'>
+ <div class='grid'><img src='img/motion_followup_2052tamriko.png' alt='(2052) Tamriko: blind detections and residuals against JPL Horizons'>
+ <img src='img/motion_followup_433eros.png' alt='(433) Eros: blind detections and residuals against JPL Horizons'></div>
  <p class='small'>Evidence: <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/evidence/motion_check.json'>motion_check.json</a>
  · reproduce with <code>backend/scripts/reproduce_motion.py</code></p>
+</section>"""
+
+
+def followup_rows() -> str:
+    """Table rows for the fainter (Tamriko) and faster (Eros) known asteroids, from motion_followup.json."""
+    f = EVID / "motion_followup.json"
+    if not f.exists():
+        return ""
+    d = json.loads(f.read_text())
+    rows = []
+    for c in d["validation_cases"]:
+        r = c["residuals_vs_horizons_spherex_arcsec"]["all_detections_near_prediction"]
+        fm = c["fitted_motion"]
+        # We only show linked cases; the text below depends on it.
+        assert c["linked"] and r["rms_ra_cosdec"] < 1 and r["rms_dec"] < 1
+        rows.append(f"""  <tr><td>{esc(c["object"])} ({esc(c["why_chosen"].split(":")[0].lower())})</td><td>{fm["n_detections"]} detections, {fm["n_visits"]} visits;
+   {r["rms_ra_cosdec"]:.2f}″ / {r["rms_dec"]:.2f}″ rms vs Horizons from SPHEREx; rate {fm["measured_rate_arcsec_h"]["total"]:.3f} vs
+   {fm["horizons_same_model_rate_arcsec_h"]["total"]:.3f} ″/h</td></tr>""")
+    for c in d["validation_cases"]:
+        shutil.copy(ROOT / c["figure"], OUT / "img" / Path(c["figure"]).name)
+    return "\n".join(rows)
+
+
+def psfsub_section() -> str:
+    """EXPERIMENTAL image subtraction and joint A/B fit, read from psfsub_check.json / jointpsf_check.json."""
+    fs, fj = EVID / "psfsub_check.json", EVID / "jointpsf_check.json"
+    if not (fs.exists() and fj.exists()):
+        return ""
+    s, j = json.loads(fs.read_text()), json.loads(fj.read_text())
+    rec = s["recommendation"]
+    adopted = [m for m, r in rec.items() if r["decision"] != "DO NOT INTEGRATE"]
+    assert not adopted and j["decision"]["separates_A_and_B"] is False, "PSF card out of date"
+    for f in ("psfsub_example.png", "jointpsf_identifiability.png"):
+        shutil.copy(ROOT / "report" / "figures" / f, OUT / "img" / f)
+    return f"""
+<section class='case' id='psfsub'>
+ <h2>PSF-matched subtraction and a joint fit of RW Aur A and B <small>(EXPERIMENTAL, not adopted)</small></h2>
+ <p>We tried {len(rec)} image-subtraction methods (Gaussian and Alard&ndash;Lupton kernels, ZOGY with white and
+ coloured noise) against our direct aperture comparison, with a rule fixed before running: a method is adopted only
+ if its blank-sky noise is calibrated and it does better on both targets. None passed, so the published numbers still
+ come from the direct method, which these runs reproduce to 10<sup>&minus;14</sup>&sigma;.</p>
+ <p><b>Can SPHEREx separate RW Aur A and B?</b> {esc(j["decision"]["verdict"])}. B sits 1.5″ from A, a fifth of the
+ PSF core; in a joint fit the two fluxes are almost perfectly anti-correlated, while A+B stays stable. So every
+ RW Aur number on this page is for A+B together.</p>
+ <div class='grid'><img src='img/psfsub_example.png' alt='Difference images of one RW Aur pair with each subtraction method'>
+ <img src='img/jointpsf_identifiability.png' alt='Joint A/B fit: flux of B per epoch and the A-B correlation'></div>
+ <p class='small'>Evidence: <a href='{REPO}/blob/main/submission/evidence/psfsub_check.json'>psfsub_check.json</a> ·
+ <a href='{REPO}/blob/main/submission/evidence/jointpsf_check.json'>jointpsf_check.json</a> · report Section 8.1</p>
+</section>"""
+
+
+def explorers_section() -> str:
+    """Screenshots of the three explorers in the app (real app, real data)."""
+    shots = [("explorer_sky_desktop.png", "All-Sky Explorer: the official SPHEREx DR1 HiPS (a coadd, not a time series) with our targets"),
+             ("explorer_spectral_desktop.png", "Spectral Explorer: wavelength and flux of every RW Aur exposure, never coadded"),
+             ("explorer_pair_desktop.png", "Native-pixel viewer: the two epochs of a pair and their difference")]
+    for f, _ in shots:
+        shutil.copy(ROOT / "presentation" / "screens" / f, OUT / "img" / f)
+    figs = "".join(f"<figure><img src='img/{f}' alt='{esc(c)}'><figcaption class='small'>{esc(c)}</figcaption></figure>" for f, c in shots)
+    return f"""
+<section class='case' id='explorers'>
+ <h2>Explorers in the app</h2>
+ <p>Three views in the local app: the whole sky, the spectrum over time, and the native pixels of a pair. Screenshots
+ of the real app on real SPHEREx data.</p>
+ <div class='grid wide'>{figs}</div>
+</section>"""
+
+
+def manim_section() -> str:
+    """Gallery of the ten Manim scenes; every number on screen comes from the evidence files."""
+    man = json.loads((ROOT / "visualizations" / "manim" / "MANIFEST.json").read_text())
+    vids = {p.name[:3]: p.name for p in (OUT / "media" / "manim").glob("m??_*.mp4")}
+    items = []
+    for sc in man["scenes"]:
+        v = vids[sc["scene"].lower()]
+        items.append(f"""<figure><video controls muted preload='none' poster='media/manim/{v[:-4]}_poster.png'>
+  <source src='media/manim/{v}' type='video/mp4'></video><figcaption class='small'><b>{esc(sc["scene"])}</b> {esc(sc["title"])}
+  · {esc(" + ".join(sc["labels"]))}</figcaption></figure>""")
+    return f"""
+<section class='case' id='scenes'>
+ <h2>Ten short scenes <small>(Manim)</small></h2>
+ <p>Each scene reads its numbers from the evidence files at render time, and each frame carries its label
+ (DATA-DRIVEN, SIMULATED, CONCEPTUAL, HISTORICAL ILLUSTRATION or EXPERIMENTAL) and its source.
+ Source: <a href='{REPO}/tree/main/visualizations/manim'>visualizations/manim</a>.</p>
+ <div class='gallery wide'>{"".join(items)}</div>
+</section>"""
+
+
+def repro_section() -> str:
+    """Links to the reproduction bundles, mini reports, notebooks and benchmark status."""
+    cases = [("rw_aur", "RW Aurigae"), ("barnard", "Barnard's Star"), ("wise0855", "WISE 0855"), ("kleopatra", "(216) Kleopatra")]
+    rows = "".join(f"""<tr><td>{n}</td><td><a href='{REPO}/raw/main/submission/bundles/{c}.zip'>bundle (.zip)</a></td>
+  <td><a href='{REPO}/blob/main/submission/bundles/reports/{c}.pdf'>mini report (PDF)</a></td>
+  <td><a href='{REPO}/blob/main/notebooks/reproduce_{c}.ipynb'>notebook</a></td></tr>""" for c, n in cases)
+    b = json.loads((ROOT / "submission" / "benchmark" / "results.json").read_text())
+    nb = len(b.get("blocked", []))
+    return f"""
+<section class='case' id='reproduce'>
+ <h2>Reproduce a case</h2>
+ <p>Each bundle holds the evidence, every cutout URL with its SHA-256, the settings, the environment and a small
+ stand-alone checker (<code>python tools/bundle.py verify</code>) that reports any archive file that changed.</p>
+ <table><tr><th>Case</th><th>Bundle</th><th>Report</th><th>Notebook</th></tr>{rows}</table>
+ <p class='small'><b>Benchmark:</b> a 32-object manifest (variables, stable CALSPEC stars, saturated stars, Y dwarfs,
+ asteroids) with a held-out split fixed in advance. The archive runs for {nb} objects are blocked: IRSA answered HTTP 502
+ during the whole run, so there are no held-out star metrics yet
+ (<a href='{REPO}/blob/main/submission/benchmark/results.json'>results.json</a>).</p>
 </section>"""
 
 
@@ -472,6 +583,8 @@ nav a{{margin-right:14px}}
 .tag{{font-size:13px;padding:2px 8px;border-radius:12px;vertical-align:middle}} .tag.ok{{background:var(--ok)}} .tag.warn{{background:var(--warn)}} .tag.neutral{{background:var(--na)}}
 .lead{{font-size:17px}} .grid{{display:grid;grid-template-columns:1fr 1fr;gap:16px}}
 @media (max-width:640px){{.grid{{grid-template-columns:1fr}}}}
+.gallery{{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}} .gallery video,.grid img{{width:100%}} figure{{margin:0}}
+.wide figure{{max-width:none}} .wide figure img{{image-rendering:auto;max-height:520px;object-fit:cover;object-position:top}}
 h3{{margin:18px 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}}
 .imgs{{display:flex;gap:8px;flex-wrap:wrap}} figure{{margin:0;flex:1 1 140px;max-width:220px}} figure img{{width:100%;image-rendering:pixelated;border:1px solid var(--line)}}
 figcaption{{font-size:13px;color:var(--muted);text-align:center}}
@@ -509,7 +622,7 @@ so nothing here waits for a live archive download.</p>
 <nav><a href='#rw_aur'>RW Aurigae</a><a href='#barnard'>Barnard's Star</a><a href='#wise0855'>WISE 0855</a>
 <a href='{REPO}/blob/main/report/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Report (PDF)</a>
 <a href='{REPO}/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Slides (PDF)</a>
-<a href='#film'>Video</a><a href='{REPO}'>Code</a>
+<a href='#film'>Video</a><a href='#explorers'>Explorers</a><a href='#scenes'>Scenes</a><a href='#reproduce'>Reproduce</a><a href='{REPO}'>Code</a>
 <a href='{REPO}#data-credits-and-ai-use'>Data, credits &amp; AI use</a><a href='{REPO}/blob/main/FINAL_IMPLEMENTATION_CHECKLIST.md'>Checklist</a></nav>
 </header>
 <section id='film' class='case media' aria-label='Film, slides and report'>
@@ -547,6 +660,10 @@ so nothing here waits for a live archive download.</p>
 {compat_section()}
 {irsa_tools_section()}
 {motion_section()}
+{psfsub_section()}
+{explorers_section()}
+{manim_section()}
+{repro_section()}
 <section class='case'>
  <h2>Why this matters for “Planet X and SPHEREx”</h2>
  <p>SPHEREx sees every part of the sky many times, each time at a slightly different wavelength. A distant moving
@@ -561,8 +678,8 @@ so nothing here waits for a live archive download.</p>
    <li>Astrometric check: centroid shift between epochs per pair (RW Aur 0.14–0.78″, well under a 6.15″ pixel)
    and proper-motion propagation of catalogue positions (Barnard's Star, 10″/yr)</li></ul></div>
   <div><h3>Future research (not done)</h3><ul>
-   <li>Searching many fields for unknown movers (our moving-object check below is validated on one known asteroid only)</li>
-   <li>Separating blended stars with a joint PSF fit (our ePSF fit below is a single-source check only)</li>
+   <li>Searching many fields for unknown movers (our moving-object check below is validated on three known asteroids only)</li>
+   <li>Separating blended stars: our joint A/B fit below shows SPHEREx cannot separate RW Aur A and B</li>
    <li>Calibrating against many field stars with larger cutouts</li></ul>
    <p class='muted'>HIPPARCHUS has not found Planet X or any new object.</p></div>
  </div>
@@ -570,7 +687,7 @@ so nothing here waits for a live archive download.</p>
 {''.join(sections)}
 <footer>Team AETHENOVA, NASA Space Apps Challenge 2026 (Planet X and SPHEREx). Data: NASA SPHEREx via NASA/IPAC
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
-data; no simulated value appears on this page (the SIMULATED injection-recovery test is only in the report).
+data; simulated values are labelled SIMULATED wherever they appear.
 AI tools helped with the logos, the video edit, code, method review and writing; they produced no measurement and did not
 validate the science (<a href='{REPO}#data-credits-and-ai-use'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit {esc(commit)}.</footer>
 </main></body></html>
