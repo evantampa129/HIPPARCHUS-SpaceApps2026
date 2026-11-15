@@ -6,8 +6,8 @@ Checked on 17 Nov 2026. Every line below comes from a command we ran on that dat
 
 | | Commit | Notes |
 |---|---|---|
-| Public repo `evantampa129/HIPPARCHUS-SpaceApps2026`, branch `main` | `653a7e9` (code and results); this file is added in the next commit | Ten new commits on top of `667adb2`, pushed in order, no force-push, no history rewrite |
-| Private working repo, branch `final-aethenova` | content of `00c8028` | Stays private. The public tree equals it minus four files we do not publish (three team logo images and an internal deployment plan) |
+| Public repo `evantampa129/HIPPARCHUS-SpaceApps2026`, branch `main` | the commit before this file (code and results) | Eleven new commits on top of the previous `main` |
+| Private working repo, branch `final-aethenova` | same content | Stays private. The public tree equals it minus four files we do not publish (three team logo images and an internal deployment plan) |
 
 Repository visibility was not changed (checked with `gh repo view` after the push).
 
