@@ -63,8 +63,43 @@ SUMMARY = {
                 "All 58 epochs are saturated or flagged at the star. HIPPARCHUS refuses to compare instead of "
                 "reporting a fake change."),
     "wise0855": ("No significant change", "neutral",
-                 "27 valid pairs, none changes by 5σ or more (largest |σ| = 1.9). The significances scatter like noise."),
+                 "In 27 valid pairs no change reaches 5σ (largest |σ| = 1.9). The target is faint (S/N 0.1–5.2 per "
+                 "epoch), so this means no change was detected at this sensitivity, not that the brightness is constant."),
 }
+
+
+# The 15-second overview. Every number is copied from the evidence files (checked in main()).
+CARDS = [
+    ("rw_aur", "RW Aurigae", "MEASURED VARIABILITY", "ok", "img/rw_aur_diff.png", "difference image, real SPHEREx data",
+     "The young star is brighter one year later at the same wavelength, while a control star in the same images is not.",
+     "×2.56 at 0.763/0.770 µm · 175σ formal, ≈12σ with calibration systematics",
+     "Both stars of the binary are inside one 6.15″ pixel; RW Aur is a known variable, so this is a measurement, not a discovery."),
+    ("barnard", "Barnard's Star", "COMPARISON REJECTED", "warn", "img/barnard_epoch.png", "one real epoch, flagged pixels marked",
+     "The star saturates the detector, so any brightness difference would be an artefact; HIPPARCHUS refuses to compare.",
+     "58 of 58 epochs flagged at the star (OVERFLOW in 56) · 0 valid pairs",
+     "Says nothing about whether the star varies; a fainter-limit detector or other data would be needed."),
+    ("wise0855", "WISE 0855-0714", "NO SIGNIFICANT CHANGE DETECTED", "neutral", "img/wise0855_z.png",
+     "significance map of the most extreme pair",
+     "The coldest known brown dwarf is barely detected; none of its valid pairs changes by 5σ or more.",
+     "27 valid pairs · largest |σ| = 1.9 · S/N 0.1–5.2 per epoch",
+     "Not evidence of constant brightness: changes below about 5σ of these large errors would be missed."),
+]
+
+
+def check_cards(tid: str, d: dict) -> None:
+    """Stop the build if a number written in CARDS no longer matches the evidence."""
+    cs = d["comparisons"]
+    if tid == "rw_aur":
+        c = max(cs, key=lambda c: c["significance"])
+        assert (d["n_epochs"], round(c["flux_ratio"], 2), round(c["significance"])) == (56, 2.56, 175)
+    elif tid == "barnard":
+        flagged = sum(any(i["code"] == "flagged_pixels" for i in e["issues"]) for e in d["epochs"])
+        overflow = sum(any("OVERFLOW" in i["message"] for i in e["issues"]) for e in d["epochs"])
+        assert (d["n_epochs"], d["n_usable"], flagged, overflow, len(cs)) == (58, 0, 58, 56, 0)
+    elif tid == "wise0855":
+        snr = [c["flux_a"]["flux"] / c["flux_a"]["flux_err"] for c in cs]
+        assert (len(cs), round(max(abs(c["significance"]) for c in cs), 1)) == (27, 1.9)
+        assert (round(min(snr), 1), round(max(snr), 1)) == (0.1, 5.2)
 
 
 def esc(x) -> str:
@@ -103,7 +138,7 @@ def capsule(d: dict, rob: dict, cat: dict, graph: dict) -> dict:
     }
 
 
-def heatmap(rob: dict, settings: dict) -> str:
+def heatmap(rob: dict, settings: dict, show_ratio: bool = True) -> str:
     claims = rob.get("claims", [])
     if not claims:
         return "<p class='muted'>No stability grid: there is no valid pair to vary the settings on.</p>"
@@ -116,7 +151,12 @@ def heatmap(rob: dict, settings: dict) -> str:
             c = next((c for c in cells if c["r_ap"] == r and c["annulus"] == list(an)), None)
             ok = c and c["claim_holds"] and c["claim_holds"].get(first)
             cls = "na" if not c or c["claim_holds"] is None else ("ok" if ok else "no")
-            txt = f"×{c['strongest_ratio']:.2f}<br><small>{c['max_abs_sig']:.1f}σ</small>" if c else "–"
+            if not c:
+                txt = "–"
+            elif show_ratio:
+                txt = f"×{c['strongest_ratio']:.2f}<br><small>{c['max_abs_sig']:.1f}σ</small>"
+            else:
+                txt = f"{c['max_abs_sig']:.1f}σ"
             tds.append(f"<td class='{cls}'>{txt}</td>")
         rows.append(f"<tr><th>{r}{' (used)' if r == 2 else ''}</th>{''.join(tds)}</tr>")
     head = "".join(f"<th>{a[0]}–{a[1]}</th>" for a in settings["annuli_px"])
@@ -124,7 +164,8 @@ def heatmap(rob: dict, settings: dict) -> str:
                   f"<span class='muted'>({c['n_holding']}/{c['n_checks']} checks)</span></li>" for c in claims)
     return (f"<ul class='claims'>{lis}</ul><table class='heat'><tr><th>aperture px \\ sky annulus px</th>{head}</tr>"
             f"{''.join(rows)}</table><p class='muted'>Cells test “{esc(first)}”: green holds, red fails, grey = "
-            f"some pair not measurable. Value: strongest ratio and largest |σ|. Labels follow a fixed rule "
+            f"some pair not measurable. Value: {'strongest ratio and ' if show_ratio else ''}largest formal |σ| (no "
+            f"calibration floor). Labels follow a fixed rule "
             f"(robust = all checks, sensitive = at least half); they are not probabilities.</p>")
 
 
@@ -135,10 +176,14 @@ def pair_table(d: dict, rob: dict) -> str:
     for c in sorted(d["comparisons"], key=lambda c: -abs(c["significance"])):
         s2 = sys_sig.get((c["a"], c["b"]))
         cs = c["control_star"]["ratio"] if c["control_star"] else None
+        sa, sb = (c[k]["flux"] / c[k]["flux_err"] for k in ("flux_a", "flux_b"))
+        # A ratio of two fluxes measured at S/N < 5 is dominated by noise (×0.5 or ×2.9 for a constant
+        # source), so it is not shown; the significance is the meaningful number there.
+        ratio = f"×{c['flux_ratio']:.2f}" if min(sa, sb) >= 5 else "<span class='muted'>n/a (S/N&lt;5)</span>"
         rows.append(f"<tr><td>{date[c['a']]} → {date[c['b']]}</td><td>{c['lambda_a_um']:.3f}/{c['lambda_b_um']:.3f}</td>"
-                    f"<td>×{c['flux_ratio']:.2f}</td><td>{c['significance']:+.1f}</td>"
+                    f"<td>{sa:.0f} / {sb:.0f}</td><td>{ratio}</td><td>{c['significance']:+.1f}</td>"
                     f"<td>{'' if s2 is None else f'{s2:+.1f}'}</td><td>{'' if cs is None else f'×{cs:.2f}'}</td></tr>")
-    return ("<div class='scroll'><table class='pairs'><tr><th>dates (a → b)</th><th>λ µm</th><th>flux ratio</th>"
+    return ("<div class='scroll'><table class='pairs'><tr><th>dates (a → b)</th><th>λ µm</th><th>S/N a / b</th><th>flux ratio</th>"
             "<th>σ formal</th><th>σ with calibration floor*</th><th>control star</th></tr>" + "".join(rows) + "</table></div><p class='muted'>* Formal error plus the field-star calibration floor; blank where no "
             "floor could be measured (fewer than 3 pairs with reference stars). Blank control star: none passed the "
             "criteria in that pair.</p>")
@@ -159,6 +204,7 @@ def main():
         graph = json.loads((EVID / f"graph_{tid}_{det.lower()}.json").read_text())
         rob = rob_all["targets"][tid]
         cat = cat_all["targets"].get(tid, {})
+        check_cards(tid, d)
         cap = capsule(d, rob, cat, graph)
         (OUT / f"capsule_{tid}.json").write_text(json.dumps(cap, indent=1) + "\n")
 
@@ -187,6 +233,8 @@ def main():
                     f"recorded for this epoch: {esc(iss.rstrip('.'))}.</p>")
 
         dates = sorted(e["date_obs"][:10] for e in d["epochs"])
+        snr = [c["flux_a"]["flux"] / c["flux_a"]["flux_err"] for c in d["comparisons"]]
+        low_snr = bool(snr) and sorted(snr)[len(snr) // 2] < 5  # median S/N below 5: ratios are not meaningful
         head, cls, text = SUMMARY[tid]
         refused = ", ".join(f"{k.replace('_', ' ')} {v}" for k, v in d["refused_pairs"].items())
         q = "".join(f"<li><a href='{esc(x['url'])}'>{esc(x['release'])} archive query</a> "
@@ -199,7 +247,9 @@ def main():
                    f"and reprojection (checked: blank-sky null test spread 0.91, ideal 1). "
                    f"{'A calibration floor of ' + format(100 * fl, '.1f') + '% from field stars is shown separately. ' if fl else ''}"
                    f"With {tr.get('n_tests')} pairs tested, the chance of any false 5σ event is "
-                   f"{tr.get('p_any_false_alarm', 0):.1e}.</p>")
+                   f"{tr.get('p_any_false_alarm', 0):.1e} if the tests were independent with Gaussian errors. They "
+                   f"are not fully independent (pairs share epochs), so this is a rough guide; formal σ values also "
+                   f"leave out calibration systematics.</p>")
         sections.append(f"""
 <section class='case' id='{tid}'>
  <h2>{esc(t['name'])} <span class='tag {cls}'>{esc(head)}</span></h2>
@@ -213,7 +263,7 @@ def main():
  <h3>Comparison</h3>{imgs}
  {pair_table(d, rob) if d['comparisons'] else ''}
  <h3>Uncertainty</h3>{unc or "<p>No measurement, so no uncertainty: the comparison is refused.</p>"}
- <h3>Challenged: stability fingerprint</h3>{heatmap(rob, rob_all['settings'])}
+ <h3>Challenged: stability fingerprint</h3>{heatmap(rob, rob_all['settings'], show_ratio=low_snr is False)}
  <h3>Limitations</h3><ul>{''.join(f'<li>{esc(x)}</li>' for x in LIMITS[tid])}</ul>
  <h3>Provenance</h3><ul>{q}<li>Datasets: SPHEREx DR1 <a href='https://doi.org/10.26131/IRSA678'>doi:10.26131/IRSA678</a>,
    QR3 <a href='https://doi.org/10.26131/IRSA662'>doi:10.26131/IRSA662</a> (NASA/IPAC IRSA)</li>
@@ -243,6 +293,16 @@ table{{border-collapse:collapse;font-size:14px;margin:6px 0}} th,td{{border:1px 
 .heat td.ok{{background:var(--ok)}} .heat td.no{{background:var(--no)}} .heat td.na{{background:var(--na)}}
 .lab{{text-transform:uppercase;font-size:12px;padding:1px 6px;border-radius:8px;background:var(--na)}} .lab.robust{{background:var(--ok)}} .lab.sensitive{{background:var(--warn)}}
 footer{{color:var(--muted);font-size:13px;margin:24px 0}}
+.cards{{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}}
+@media (max-width:820px){{.cards{{grid-template-columns:1fr}}}}
+.rc{{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--na);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px}}
+.rc.ok{{border-top-color:#2e9e5e}} .rc.warn{{border-top-color:#c99a1c}} .rc.neutral{{border-top-color:#7d8697}}
+.rc h2{{margin:0;font-size:20px}} .rc p{{margin:4px 0}} .cimg img{{width:100%;max-width:200px;display:block;margin:0 auto;image-rendering:pixelated;border:1px solid var(--line)}}
+.verdict{{font-weight:700;letter-spacing:.06em;font-size:13px}} .key{{font-weight:600}} .lim{{font-size:14px;color:var(--muted)}}
+.flowd{{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;counter-reset:s}}
+@media (max-width:820px){{.flowd{{grid-template-columns:1fr}}}}
+.flowd li{{border:1px solid var(--line);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px;position:relative}}
+.flowd li b{{color:var(--acc);letter-spacing:.06em}} .flowd em{{font-style:normal;font-size:14px;border-left:3px solid var(--acc);padding-left:8px}}
 </style></head><body><main>
 <header><h1>HIPPARCHUS · Judge Mode</h1>
 <p class='flow'>OBSERVE → VERIFY → CHALLENGE → EXPLAIN</p>
@@ -255,6 +315,47 @@ so nothing here waits for a live archive download.</p>
 <a href='{REPO}/blob/main/presentation/hipparchus_7_slides.pdf'>Slides (PDF)</a>
 <a href='{REPO}/blob/main/video/hipparchus_demo_30s.mp4'>Video</a><a href='{REPO}'>Code</a></nav>
 </header>
+<section class='cards' aria-label='Results at a glance'>
+{''.join(f"""<article class='rc {cls}'><a class='cimg' href='#{tid}'><img src='{img}' alt='{esc(alt)}'></a>
+ <div><p class='verdict'>{esc(v)}</p><h2>{esc(name)}</h2><p>{esc(s)}</p><p class='key'>{esc(k)}</p>
+ <p class='lim'><b>Limitation:</b> {esc(lim)}</p><a href='#{tid}'>Detailed evidence →</a></div></article>"""
+          for tid, name, v, cls, img, alt, s, k, lim in CARDS)}
+</section>
+
+<section class='case'>
+ <h2>How the science is challenged, step by step</h2>
+ <ol class='flowd'>
+  <li><b>OBSERVE</b><span>Find every SPHEREx epoch of the field in IRSA (DR1 + QR3) and read the wavelength at the star.</span>
+   <em>RW Aur: 56 epochs on detector 1 · Barnard: 58 epochs on detector 6</em></li>
+  <li><b>VERIFY</b><span>Compare only same detector, |Δλ| ≤ half a channel, no flagged pixel on the star.</span>
+   <em>Barnard: 0 of 58 epochs usable (OVERFLOW/BLOOM flags) → rejected · RW Aur: 8 of 1540 pairs pass</em></li>
+  <li><b>CHALLENGE</b><span>Repeat with other apertures, sky annuli, masks, calibration, wavelength rules; drop each pair.</span>
+   <em>RW Aur “×1.5 at ≥5σ”: holds 24/24 → robust · “brighter in every pair”: 18/24 → sensitive</em></li>
+  <li><b>EXPLAIN</b><span>Report the result with its formal and systematic uncertainty, limitations and evidence chain.</span>
+   <em>175σ formal → ≈12σ with the 12.5% field-star calibration floor; binary unresolved</em></li>
+ </ol>
+</section>
+
+<section class='case'>
+ <h2>Why this matters for “Planet X and SPHEREx”</h2>
+ <p>SPHEREx sees every part of the sky many times, each time at a slightly different wavelength. A distant moving
+ or changing object is found by comparing those epochs, and most apparent differences are instrumental: wavelength
+ changes along the linear variable filter, saturation, flags, zodiacal light. HIPPARCHUS is the step that decides
+ whether two epochs can be compared at all, and how far a measured difference can be trusted.</p>
+ <div class='grid'>
+  <div><h3>Implemented and tested</h3><ul>
+   <li>Multi-epoch search of real SPHEREx DR1/QR3 data, with checksums and DOIs</li>
+   <li>Compatibility decision per pair (detector, wavelength, flags) with the reason for every refusal</li>
+   <li>Brightness change with formal and systematic errors, control star, robustness checks</li>
+   <li>Astrometric check: centroid shift between epochs per pair (RW Aur 0.14–0.78″, well under a 6.15″ pixel)
+   and proper-motion propagation of catalogue positions (Barnard's Star, 10″/yr)</li></ul></div>
+  <div><h3>Future research (not done)</h3><ul>
+   <li>Searching whole fields for sources that move between epochs, as a distant planet would</li>
+   <li>Forced photometry with the SPHEREx PSF to separate blended stars</li>
+   <li>Calibrating against many field stars with larger cutouts</li></ul>
+   <p class='muted'>HIPPARCHUS has not found Planet X or any new object.</p></div>
+ </div>
+</section>
 {''.join(sections)}
 <footer>Team AITHENOVA, NASA Space Apps Challenge 2026 (Planet X and SPHEREx). Data: NASA SPHEREx via NASA/IPAC
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
