@@ -2,13 +2,18 @@
 
 Team **AITHENOVA**: NASA Space Apps Challenge 2026, *Planet X and SPHEREx* (Athens).
 
-You give HIPPARCHUS a sky position (RA/Dec). It finds the real SPHEREx exposures of that field in NASA/IPAC IRSA, checks
+**Observe → verify → challenge → explain.** You give HIPPARCHUS a sky position (RA/Dec). It finds the real SPHEREx exposures of that field in NASA/IPAC IRSA, checks
 each one (WCS, wavelength at the star, 18 quality flag planes, variance), and compares two epochs only when they were
 seen at the same wavelength on the same detector. If a comparison isn't valid, it says so and gives the reason instead
 of reporting a fake "detection".
 
 We don't claim to have found Planet X or anything new. RW Aur comes out 2.5× brighter after a year. That is a
-measurement of a star already known to vary, and it shows the method works.
+measurement of a star already known to vary (and, at 6.15″ pixels, of both stars of the binary together), and it
+shows the method works. Its 175σ is a formal significance; with the 12.5% calibration scatter of the field stars it
+is about 12σ.
+
+A static **Judge Mode** page with the three cases (images, dates, uncertainties, stability heatmap, limitations and
+an evidence capsule per target) is in `docs/` and is rebuilt by `backend/scripts/make_judge_site.py`.
 
 ## Layout
 

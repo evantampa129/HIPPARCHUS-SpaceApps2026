@@ -81,7 +81,7 @@ text(s, [("SPHEREx images the whole sky again and again in 102 colours (0.75–5
      0.6, 1.4, 12.1, 5.4, 20)
 
 # 3. How it works
-s = slide("How HIPPARCHUS works, on real NASA data")
+s = slide("Observe → verify → challenge → explain")
 text(s, [("1. Search: IRSA SIA v2, SPHEREx DR1 (doi:10.26131/IRSA678) + QR3 (doi:10.26131/IRSA662), live, with SHA-256 of every archive answer", TXT),
          ("2. Cutouts: 0.05° server-side FITS cutouts, cached and checksum-verified", TXT),
          ("3. Check each epoch: zodiacal model removed, wavelength read AT the star, 18 pipeline flag planes, variance, edges", TXT),
@@ -103,7 +103,7 @@ s = slide("Result A: RW Aur, 2.5x brighter in a year")
 pic(s, png("rwaur_pair"), 0.6, 1.3, w=7.4)
 pic(s, png("rwaur_ratios"), 8.2, 1.3, w=4.6)
 text(s, [("8 valid pairs out of 1540 (1480 fail the wavelength test, 1387 involve saturated epochs).", TXT),
-         ("Strongest: 2025-09 → 2026-09 at 0.763/0.770 µm: flux ×2.56, 175σ formal. All 8 pairs brighter later; chain ×1.67 then ×1.42 agrees.", OK),
+         ("Strongest: 2025-09 → 2026-09 at 0.763/0.770 µm: flux ×2.56, 175σ formal (12σ with a 12.5% calibration floor). All 8 pairs brighter at our 2 px aperture (not at 1.5 px); chain ×1.67 then ×1.42 agrees.", OK),
          ("Control star in the same images: ×0.86–1.07, |σ| ≤ 2.2, so calibration agrees. Centroid shift < 0.8″.", TXT),
          ("RW Aur is a known variable young binary (both stars in our aperture): a measurement, not a discovery.", MUTED, 15)],
      0.6, 4.35, 12.1, 2.6, 17)
@@ -119,7 +119,7 @@ text(s, [("Barnard's Star: 58 epochs, 0 usable: saturation flags on the star in 
 # 7. Impact
 s = slide("Impact and next steps")
 text(s, [("Impact: anyone can ask 'has this star changed?' of SPHEREx data and get an answer that respects the instrument, or a clear refusal.", TXT),
-         ("Creativity: a variability tool whose main feature is refusing invalid comparisons; LVF-aware wavelength matching; built-in control star.", TXT),
+         ("Creativity: it does not just show differences; it checks they can be interpreted, challenges its own result (stability fingerprint) and keeps the evidence.", TXT),
          ("Validity: real DR1/QR3 data, checksums, 35 tests, control stars, blank-sky null test (spread 0.91, ideal 1), SIMULATED injection-recovery (44% at S/N 5, 99% at 7), evidence graph to DOIs, SIMBAD + Gaia DR3 match, stability checks (main claims robust in 24/24 and 34/34 checks), 8-page report.", TXT),
          ("AI use: logos (watermarked) and video assembly, reference cross-checks, coding assistant. All code run and tested by me; all results from real SPHEREx images.", MUTED, 15),
          ("Next: proper-motion search for Planet X-like movers across fields, PSF photometry to separate blended stars (RW Aur is a 1.6″ binary), all-sky cube.", ACC),

@@ -1,0 +1,544 @@
+{
+ "target": {
+  "id": "rw_aur",
+  "name": "RW Aurigae",
+  "ra": 76.956,
+  "dec": 30.401,
+  "detector": "SPHEREx-D1",
+  "why": "Young star known to vary; unsaturated in detector 1, so a real comparison is possible."
+ },
+ "coordinates_deg": {
+  "ra": 76.956,
+  "dec": 30.401
+ },
+ "detector": "SPHEREx-D1",
+ "archive_queries": [
+  {
+   "release": "spherex_dr1",
+   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+76.956+30.401+0.001&RESPONSEFORMAT=VOTABLE",
+   "sha256": "834b363072d7aa859211a3fbed758f93d774f0d4c47fc12414e8d6268d953886"
+  },
+  {
+   "release": "spherex_qr3",
+   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+76.956+30.401+0.001&RESPONSEFORMAT=VOTABLE",
+   "sha256": "2231193d531ff01278e2d56ee4c58aa9f41a13ec023ca9640c16cf3544083f4e"
+  }
+ ],
+ "datasets": [
+  "doi:10.26131/IRSA678 (SPHEREx DR1)",
+  "doi:10.26131/IRSA662 (SPHEREx QR3)"
+ ],
+ "epochs_found": 56,
+ "epochs_usable": 18,
+ "observations": [
+  {
+   "obs_id": "2025W36_1A_0233_2",
+   "date": "2025-09-02T00:43:23.979",
+   "wavelength_um": 0.7453958220635862,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W36_1A/l2b-v27-2026-232/1/level2_2025W36_1A_0233_2D1_spx_l2b-v27-2026-232.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W36_1A/l2b-v27-2026-232/1/level2_2025W36_1A_0233_2D1_spx_l2b-v27-2026-232.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "8bc9910f132d8cff9fcf9614760f162657049722c896129ef1adb7582b6f2dfb"
+  },
+  {
+   "obs_id": "2025W36_1A_0233_3",
+   "date": "2025-09-02T00:45:32.909",
+   "wavelength_um": 0.7632065851123939,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W36_1A/l2b-v27-2026-232/1/level2_2025W36_1A_0233_3D1_spx_l2b-v27-2026-232.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W36_1A/l2b-v27-2026-232/1/level2_2025W36_1A_0233_3D1_spx_l2b-v27-2026-232.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "e2c7f211100976db1723eea2d4af7a0fade1af0620a4f5cfa3d109be2ff56c62"
+  },
+  {
+   "obs_id": "2025W36_1A_0446_1",
+   "date": "2025-09-02T23:27:24.334",
+   "wavelength_um": 0.7808499207509608,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W36_1A/l2b-v27-2026-232/1/level2_2025W36_1A_0446_1D1_spx_l2b-v27-2026-232.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W36_1A/l2b-v27-2026-232/1/level2_2025W36_1A_0446_1D1_spx_l2b-v27-2026-232.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "f5c8ad1c599840451a04012b591ed2738373de5dacf1276e78a5db6969a730c2"
+  },
+  {
+   "obs_id": "2025W36_1A_0606_2",
+   "date": "2025-09-03T17:24:32.428",
+   "wavelength_um": 0.8784873156882116,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W36_1A/l2b-v27-2026-232/1/level2_2025W36_1A_0606_2D1_spx_l2b-v27-2026-232.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W36_1A/l2b-v27-2026-232/1/level2_2025W36_1A_0606_2D1_spx_l2b-v27-2026-232.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "abbafac8d27cc8a60b03d781f82576bdb793d29418df3a796d5a8a2e70f36048"
+  },
+  {
+   "obs_id": "2026W10_1A_0445_2",
+   "date": "2026-03-04T07:56:46.935",
+   "wavelength_um": 0.8779813308350701,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W10_1A/l2b-v27-2026-229/1/level2_2026W10_1A_0445_2D1_spx_l2b-v27-2026-229.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W10_1A/l2b-v27-2026-229/1/level2_2026W10_1A_0445_2D1_spx_l2b-v27-2026-229.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "2f69d713cf9479abc6aef8cd9605570e62e312412883ea7d91322d0dc4d9b1a2"
+  },
+  {
+   "obs_id": "2026W10_2B_0591_3",
+   "date": "2026-03-08T16:12:52.076",
+   "wavelength_um": 0.7390348771553458,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W10_2B/l2b-v27-2026-231/1/level2_2026W10_2B_0591_3D1_spx_l2b-v27-2026-231.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W10_2B/l2b-v27-2026-231/1/level2_2026W10_2B_0591_3D1_spx_l2b-v27-2026-231.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "f8b41466c63d187a6027acabbaf01a3c4c1719afe4a5ee61a325c366b6387576"
+  },
+  {
+   "obs_id": "2026W10_2B_0591_4",
+   "date": "2026-03-08T16:15:01.007",
+   "wavelength_um": 0.756644297476894,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W10_2B/l2b-v27-2026-231/1/level2_2026W10_2B_0591_4D1_spx_l2b-v27-2026-231.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W10_2B/l2b-v27-2026-231/1/level2_2026W10_2B_0591_4D1_spx_l2b-v27-2026-231.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "4b6b0f94d9a41dbd9e01c780263c024f1a7c056805e2d478e215380ccddd1f97"
+  },
+  {
+   "obs_id": "2026W11_1A_0285_1",
+   "date": "2026-03-10T10:32:45.196",
+   "wavelength_um": 0.7742239913473395,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W11_1A/l2b-v27-2026-232/1/level2_2026W11_1A_0285_1D1_spx_l2b-v27-2026-232.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2026W11_1A/l2b-v27-2026-232/1/level2_2026W11_1A_0285_1D1_spx_l2b-v27-2026-232.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "25dffb6457076e3a5e30bdb792ddd9b0493178dbbf02e7f5b0fb14752a3eff7f"
+  },
+  {
+   "obs_id": "2026W37_1A_0234_2",
+   "date": "2026-09-08T06:36:13.650",
+   "wavelength_um": 0.752182758171844,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr3/level2/2026W37_1A/l2b-v27-2026-255/1/level2_2026W37_1A_0234_2D1_spx_l2b-v27-2026-255.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr3/level2/2026W37_1A/l2b-v27-2026-255/1/level2_2026W37_1A_0234_2D1_spx_l2b-v27-2026-255.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "8599abf8918249bf492e44b9c87ec65b4a671134122a0640b0d6171da6407d93"
+  },
+  {
+   "obs_id": "2026W37_1A_0234_3",
+   "date": "2026-09-08T06:38:22.582",
+   "wavelength_um": 0.7700237543094984,
+   "usable": true,
+   "issues": [],
+   "image_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr3/level2/2026W37_1A/l2b-v27-2026-255/1/level2_2026W37_1A_0234_3D1_spx_l2b-v27-2026-255.fits",
+   "cutout_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr3/level2/2026W37_1A/l2b-v27-2026-255/1/level2_2026W37_1A_0234_3D1_spx_l2b-v27-2026-255.fits?center=76.956%2C30.401&size=0.05",
+   "cutout_sha256": "1035648d217eb0f1b42e5c409b3853ee1c87679e7c0f270d93fa874e0ba0d773"
+  }
+ ],
+ "method": {
+  "collections": [
+   "spherex_dr1",
+   "spherex_qr3"
+  ],
+  "cutout_size_deg": 0.05,
+  "aperture_radius_px": 2.0,
+  "sky_annulus_px": [
+   4.0,
+   7.0
+  ],
+  "bad_flag_planes": [
+   "BLOOM",
+   "COLD",
+   "CROSSTALK",
+   "GHOST",
+   "GHOST_EXT",
+   "GHOST_FPA",
+   "HALO",
+   "HOT",
+   "MISSING_DATA",
+   "NONFUNC",
+   "NONLINEAR",
+   "OUTLIER",
+   "OVERFLOW",
+   "PERSIST",
+   "SNOWBALL",
+   "STREAK",
+   "SUR_ERROR",
+   "TRANSIENT"
+  ],
+  "warning_flag_planes": [
+   "DICHROIC",
+   "PHANMISS"
+  ],
+  "max_wavelength_shift_fraction_of_bandwidth": 0.5,
+  "same_visit_days": 0.5,
+  "detection_sigma": 5.0,
+  "zodi_subtracted": true,
+  "software": {
+   "hipparchus": "0.1.0",
+   "python": "3.12.3",
+   "astropy": "8.0.2",
+   "numpy": "2.5.4",
+   "reproject": "0.21.0"
+  }
+ },
+ "compatibility": {
+  "valid_pairs": 8,
+  "refused_pairs_by_reason": {
+   "wavelength_mismatch": 1480,
+   "flagged_pixels": 1387
+  }
+ },
+ "measurements": [
+  {
+   "a": "2025W36_1A_0233_2",
+   "b": "2026W10_2B_0591_3",
+   "dt_days": 187.6454640860029,
+   "lambda_a_um": 0.7453958220635862,
+   "lambda_b_um": 0.7390348771553458,
+   "flux_ratio": 1.6206894504563238,
+   "delta_flux": 49.85694708171633,
+   "delta_flux_err": 0.6211423001813269,
+   "significance": 80.26654611537782,
+   "control_star": {
+    "x": 15.0,
+    "y": 25.0,
+    "flux_a": 2.4444219022989273,
+    "flux_b": 2.3170026461822677,
+    "ratio": 0.9478734599797095,
+    "significance": -0.5241628215705723
+   }
+  },
+  {
+   "a": "2025W36_1A_0233_2",
+   "b": "2026W37_1A_0234_2",
+   "dt_days": 371.24501934,
+   "lambda_a_um": 0.7453958220635862,
+   "lambda_b_um": 0.752182758171844,
+   "flux_ratio": 2.5035813894696424,
+   "delta_flux": 120.77533734902181,
+   "delta_flux_err": 0.6962112681139899,
+   "significance": 173.47512584247258,
+   "control_star": {
+    "x": 15.0,
+    "y": 25.0,
+    "flux_a": 2.4444219022989273,
+    "flux_b": 2.6163305978557263,
+    "ratio": 1.0703269330859466,
+    "significance": 0.7160453903239322
+   }
+  },
+  {
+   "a": "2025W36_1A_0233_3",
+   "b": "2026W10_2B_0591_4",
+   "dt_days": 187.64546409800096,
+   "lambda_a_um": 0.7632065851123939,
+   "lambda_b_um": 0.756644297476894,
+   "flux_ratio": 1.6676714402661559,
+   "delta_flux": 55.56381641883212,
+   "delta_flux_err": 0.6584629676296042,
+   "significance": 84.38411748325935,
+   "control_star": {
+    "x": 14.0,
+    "y": 24.0,
+    "flux_a": 3.230363190174103,
+    "flux_b": 2.9120695195059856,
+    "ratio": 0.9014681470999047,
+    "significance": -1.0832223738900901
+   }
+  },
+  {
+   "a": "2025W36_1A_0233_3",
+   "b": "2026W37_1A_0234_3",
+   "dt_days": 371.2450193640034,
+   "lambda_a_um": 0.7632065851123939,
+   "lambda_b_um": 0.7700237543094984,
+   "flux_ratio": 2.558575455811674,
+   "delta_flux": 129.70511434051406,
+   "delta_flux_err": 0.7408439180460845,
+   "significance": 175.07751792388433,
+   "control_star": {
+    "x": 14.0,
+    "y": 24.0,
+    "flux_a": 3.230363190174103,
+    "flux_b": 2.794038400661598,
+    "ratio": 0.8649301134808348,
+    "significance": -1.4424759917410652
+   }
+  },
+  {
+   "a": "2025W36_1A_0446_1",
+   "b": "2026W11_1A_0285_1",
+   "dt_days": 188.46204701399984,
+   "lambda_a_um": 0.7808499207509608,
+   "lambda_b_um": 0.7742239913473395,
+   "flux_ratio": 1.4051471427144122,
+   "delta_flux": 40.466877229618404,
+   "delta_flux_err": 0.7358894896064611,
+   "significance": 54.99042696106351,
+   "control_star": null
+  },
+  {
+   "a": "2025W36_1A_0606_2",
+   "b": "2026W10_1A_0445_2",
+   "dt_days": 181.60572346099798,
+   "lambda_a_um": 0.8784873156882116,
+   "lambda_b_um": 0.8779813308350701,
+   "flux_ratio": 1.085057760865031,
+   "delta_flux": 14.27214789021184,
+   "delta_flux_err": 0.7708793006862982,
+   "significance": 18.51411482641399,
+   "control_star": null
+  },
+  {
+   "a": "2026W10_2B_0591_4",
+   "b": "2026W37_1A_0234_2",
+   "dt_days": 183.59806299699994,
+   "lambda_a_um": 0.756644297476894,
+   "lambda_b_um": 0.752182758171844,
+   "flux_ratio": 1.4245489774802604,
+   "delta_flux": 59.8047574241607,
+   "delta_flux_err": 0.7450640773247814,
+   "significance": 80.26793834819547,
+   "control_star": {
+    "x": 3.0,
+    "y": 7.0,
+    "flux_a": 27.193750649690628,
+    "flux_b": 26.4819718000292,
+    "ratio": 0.9738256462364994,
+    "significance": -2.1951935613511675
+   }
+  },
+  {
+   "a": "2026W11_1A_0285_1",
+   "b": "2026W37_1A_0234_3",
+   "dt_days": 181.83723826400092,
+   "lambda_a_um": 0.7742239913473395,
+   "lambda_b_um": 0.7700237543094984,
+   "flux_ratio": 1.5001748173862999,
+   "delta_flux": 70.55174728273482,
+   "delta_flux_err": 0.8323727600966817,
+   "significance": 84.75979833186769,
+   "control_star": {
+    "x": 14.0,
+    "y": 3.0,
+    "flux_a": 3.485550582408905,
+    "flux_b": 3.11589223345864,
+    "ratio": 0.8939454929112549,
+    "significance": -1.0998800443441428
+   }
+  }
+ ],
+ "robustness": {
+  "verdict": "brightened by at least x1.5 at >= 5 sigma in some pair: robust; every valid pair brighter later, at least one >= 5 sigma: sensitive",
+  "claims": [
+   {
+    "claim": "brightened by at least x1.5 at >= 5 sigma in some pair",
+    "verdict": "robust",
+    "n_checks": 24,
+    "n_holding": 24,
+    "settings_grid": [
+     12,
+     12
+    ],
+    "leave_one_pair_out": [
+     8,
+     8
+    ],
+    "with_systematic_floor": true,
+    "wavelength_rule": [
+     3,
+     3
+    ],
+    "failing_settings": []
+   },
+   {
+    "claim": "every valid pair brighter later, at least one >= 5 sigma",
+    "verdict": "sensitive",
+    "n_checks": 24,
+    "n_holding": 18,
+    "settings_grid": [
+     6,
+     12
+    ],
+    "leave_one_pair_out": [
+     8,
+     8
+    ],
+    "with_systematic_floor": true,
+    "wavelength_rule": [
+     3,
+     3
+    ],
+    "failing_settings": [
+     [
+      1.5,
+      [
+       3.5,
+       6.0
+      ],
+      "as_flagged",
+      "none"
+     ],
+     [
+      1.5,
+      [
+       3.5,
+       6.0
+      ],
+      "flags_grown_1px",
+      "none"
+     ],
+     [
+      1.5,
+      [
+       4.0,
+       7.0
+      ],
+      "as_flagged",
+      "none"
+     ],
+     [
+      1.5,
+      [
+       4.0,
+       7.0
+      ],
+      "flags_grown_1px",
+      "none"
+     ],
+     [
+      1.5,
+      [
+       5.0,
+       8.0
+      ],
+      "as_flagged",
+      "none"
+     ],
+     [
+      1.5,
+      [
+       5.0,
+       8.0
+      ],
+      "flags_grown_1px",
+      "none"
+     ]
+    ]
+   }
+  ],
+  "systematic_floor": 0.12517501805145284,
+  "trials": {
+   "n_tests": 8,
+   "p_single": 5.733031437583866e-07,
+   "p_any_false_alarm": 4.5864159469166665e-06,
+   "sigma_bonferroni": 5.3869511706219635
+  }
+ },
+ "catalogue_match": {
+  "preset": {
+   "ra": 76.956,
+   "dec": 30.401
+  },
+  "epoch": 2026.0,
+  "simbad": {
+   "main_id": "V* RW Aur",
+   "ra": 76.95652603458333,
+   "dec": 30.401438173888888,
+   "pmra": 7.23,
+   "pmdec": -20.33,
+   "otype": "TT*",
+   "ra_epoch": 76.95658657557826,
+   "dec_epoch": 30.401291346111112,
+   "sep_from_preset_arcsec": 2.1017377281249714
+  },
+  "gaia_counterpart": {
+   "source_id": "156430817820015232",
+   "ra": 76.95654431103,
+   "dec": 30.40131614989,
+   "pmra": 4.906,
+   "pmdec": -24.578,
+   "g": 13.035076,
+   "ra_epoch": 76.9565601113146,
+   "dec_epoch": 30.401247877667778,
+   "sep_from_target_arcsec": 0.1767489528942441
+  },
+  "gaia_in_aperture": [
+   {
+    "source_id": "156430817820015232",
+    "ra": 76.95654431103,
+    "dec": 30.40131614989,
+    "pmra": 4.906,
+    "pmdec": -24.578,
+    "g": 13.035076,
+    "ra_epoch": 76.9565601113146,
+    "dec_epoch": 30.401247877667778,
+    "sep_from_target_arcsec": 0.1767489528942441
+   },
+   {
+    "source_id": "156430822114424576",
+    "ra": 76.95608119553,
+    "dec": 30.4012045891,
+    "pmra": 2.641,
+    "pmdec": -27.398,
+    "g": 12.184072,
+    "ra_epoch": 76.9560897011362,
+    "dec_epoch": 30.401128483544444,
+    "sep_from_target_arcsec": 1.650450590381929
+   },
+   {
+    "source_id": "156430856474162688",
+    "ra": 76.95576839814,
+    "dec": 30.40300437168,
+    "pmra": 1.075,
+    "pmdec": -1.194,
+    "g": 18.826244,
+    "ra_epoch": 76.95577186034946,
+    "dec_epoch": 30.403001055013334,
+    "sep_from_target_arcsec": 6.654524155427936
+   }
+  ],
+  "preset_offset_arcsec": 2.1017377281249714,
+  "preset_offset_px": 0.34174597205284085,
+  "simbad_service": {
+   "status": "ok",
+   "server": "https://simbad.cfa.harvard.edu/simbad/sim-tap/sync",
+   "query": "SELECT main_id, ra, dec, pmra, pmdec, otype FROM basic WHERE CONTAINS(POINT('ICRS', ra, dec), CIRCLE('ICRS', 76.956, 30.401, 0.1))=1",
+   "sha256": "fcf2f7dc48105b0fab38b695f9c408fc6d7c70a3716969ff0501af60f8a1c001",
+   "errors": [],
+   "n_rows": 17
+  },
+  "gaia_service": {
+   "status": "ok",
+   "server": "https://vizier.cfa.harvard.edu/viz-bin/asu-tsv",
+   "params": {
+    "-source": "I/355/gaiadr3",
+    "-c": "76.956 +30.401",
+    "-c.rs": 120.0,
+    "-out": "Source,RA_ICRS,DE_ICRS,pmRA,pmDE,Gmag",
+    "-out.max": 5000
+   },
+   "sha256": "ba602d9ef535b9d2dd40e7b8d44735fde5266d1bd50362eaabc96954c0b3d1c8",
+   "errors": [
+    "https://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query: TypeError"
+   ],
+   "n_rows": 106
+  }
+ },
+ "evidence_graph": {
+  "nodes": 180,
+  "edges": 186,
+  "file": "submission/evidence/graph_rw_aur_spherex-d1.json"
+ },
+ "limitations": [
+  "The 175\u03c3 value is the formal statistical significance. With the 12.5% calibration floor measured from field stars it is at most 12.4\u03c3; the size of the change (\u00d72.5) is the robust result.",
+  "SPHEREx pixels are 6.15\u2033, so the aperture holds both stars of the RW Aur binary (1.6\u2033 apart) and a faint G = 18.8 star: this is the combined light of the system.",
+  "The field-star calibration uses only 0\u20132 reference stars per cutout, so the 12.5% floor is itself uncertain.",
+  "\u201cBrighter in every pair\u201d is sensitive: it fails with a 1.5 px aperture. \u201cAt least \u00d71.5 at \u22655\u03c3\u201d holds in every check.",
+  "RW Aur is a known variable young star: a measurement, not a discovery."
+ ],
+ "reproduce": [
+  "cd backend && python scripts/reproduce_evidence.py",
+  "python scripts/reproduce_robustness.py",
+  "python scripts/make_judge_site.py"
+ ],
+ "note": "Generated from the saved evidence files; no new measurement was made for this summary."
+}
