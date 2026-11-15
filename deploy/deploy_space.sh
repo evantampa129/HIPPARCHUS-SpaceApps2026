@@ -5,8 +5,8 @@
 #   deploy/deploy_space.sh --build         # stage and build/run-test the image locally
 #   deploy/deploy_space.sh --push USER/hipparchus
 #
-# --push needs the `hf` CLI logged in (`hf auth login`, a write token). The Space
-# is created public on free CPU hardware ("cpu-basic"), which costs nothing.
+# --push needs the `hf` CLI logged in (`hf auth login`, a write token). Since November 2026 Hugging Face
+# answers 402 for Docker Spaces without a PRO plan, even on cpu-basic, so we only build and run locally.
 # Only an explicit allowlist is copied: no cutout cache, no slides, no report,
 # no video, no .env, and nothing that is not already in the public repository. The evidence
 # and the prebuilt bundles are copied whole: the reproduction and mini-report routes read them.
@@ -39,7 +39,7 @@ case "${1:-}" in
     echo "run: docker run --rm -p 7860:7860 hipparchus-space   then open http://localhost:7860" ;;
   --push)
     REPO="${2:?usage: --push USER/SPACE}"
-    # cpu-basic is the free tier; never pass a paid --flavor here.
+    # cpu-basic is the smallest hardware; never pass a bigger --flavor here.
     hf repos create "$REPO" --type space --sdk docker --public --exist-ok
     hf upload "$REPO" "$OUT" . --repo-type space --commit-message "Deploy public demo"
     echo "https://huggingface.co/spaces/$REPO" ;;

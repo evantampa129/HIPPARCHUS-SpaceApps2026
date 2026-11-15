@@ -21,7 +21,7 @@ Repository visibility was not changed: the public repo is PUBLIC, the private on
 | Page sections `#rw_aur #barnard #wise0855 #motion #psfsub #explorers #scenes #reproduce #film` | all present |
 | `submission/FEATURE_AUDIT.json`, `FINAL_IMPLEMENTATION_CHECKLIST.md`, report PDF, film (raw.githubusercontent.com) | 200 |
 
-Public interactive app (Hugging Face Space): **not deployed**. The image builds and was verified locally. Deploying needs the team's own Hugging Face login (`deploy/deploy_space.sh --push`).
+Public interactive app: **not hosted**. The Docker image builds and runs locally; the home page, health, explorer, reproduction-bundle and mini-report routes all answer 200 inside the container. Pushing it to Hugging Face failed with HTTP 402: Docker Spaces now need a paid plan, and we keep the project at zero cost. Judge Mode on GitHub Pages is the public demo; the README shows how to run the image.
 
 ## Deliverables
 
@@ -52,4 +52,4 @@ Scanned the whole public tree and the contents of every bundle zip for access to
 
 ## Not done by this release
 
-A push to GitHub is not a Space Apps portal submission. The portal submission and the Hugging Face deployment are actions the team takes itself.
+A push to GitHub is not a Space Apps portal submission. The portal submission is an action the team takes itself.

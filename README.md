@@ -108,6 +108,16 @@ cd ../backend && uvicorn hipparchus.serve:app --port 8080  # app + API on http:/
 
 The first analysis of a target downloads its cutouts (1–4 minutes); after that it reads from the cache.
 
+Or as one container, the same read-only public demo we tested (rate limits on, POST refused):
+
+```bash
+deploy/deploy_space.sh --build                    # stages an allowlist of public files and builds the image
+docker run --rm -p 7860:7860 hipparchus-space     # then open http://localhost:7860
+```
+
+We do not host it: Hugging Face now asks for a paid plan for Docker Spaces, and we kept the project at zero cost.
+The public results live on the Judge Mode page instead.
+
 The app has three explorers besides the comparison view: an **All-Sky Explorer** on the official SPHEREx DR1 HiPS
 (Aladin Lite, loaded from jsDelivr at runtime), a **Spectral Explorer** that shows the wavelength and flux of every
 exposure (never a coadd), and a **native-pixel viewer** for each epoch and pair.

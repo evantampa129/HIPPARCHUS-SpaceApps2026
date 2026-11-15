@@ -512,7 +512,7 @@
    "next_step": ""
   },
   {
-   "feature": "Public interactive app (free Hugging Face Space)",
+   "feature": "Public interactive app (hosted)",
    "status": "PARTIALLY_IMPLEMENTED",
    "source": [
     "deploy/Dockerfile",
@@ -525,8 +525,8 @@
    ],
    "n_tests": 10,
    "public_url": "",
-   "limitations": "Image built and verified locally; not deployed (needs the team's own Hugging Face login).",
-   "next_step": "deploy/deploy_space.sh --push"
+   "limitations": "Docker image built and verified locally (all routes 200); not hosted: Hugging Face answered 402, Docker Spaces now need a paid plan. Judge Mode on GitHub Pages is the public demo.",
+   "next_step": "Find free hosting for the image, or run it locally."
   },
   {
    "feature": "Machine-learning ranking of candidates",

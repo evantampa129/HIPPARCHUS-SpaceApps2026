@@ -110,9 +110,9 @@ FEATURES = [
      ["report/HIPPARCHUS_AETHENOVA_FINAL.tex"], ["report/HIPPARCHUS_AETHENOVA_FINAL.pdf"], [], "", "", ""),
     ("Six-slide deck", "IMPLEMENTED_AND_VERIFIED",
      ["presentation/build_deck.py"], ["presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf"], [], "", "", ""),
-    ("Public interactive app (free Hugging Face Space)", "PARTIALLY_IMPLEMENTED",
+    ("Public interactive app (hosted)", "PARTIALLY_IMPLEMENTED",
      ["deploy/Dockerfile", "deploy/deploy_space.sh", B + "guard.py"], [], [T + "test_guard.py"], "",
-     "Image built and verified locally; not deployed (needs the team's own Hugging Face login).", "deploy/deploy_space.sh --push"),
+     "Docker image built and verified locally (all routes 200); not hosted: Hugging Face answered 402, Docker Spaces now need a paid plan. Judge Mode on GitHub Pages is the public demo.", "Find free hosting for the image, or run it locally."),
     ("Machine-learning ranking of candidates", "NOT_IMPLEMENTED", [], [], [], "",
      "No labelled data to train or test it fairly; we use fixed rules instead.", ""),
 ]
