@@ -10,6 +10,7 @@ loads instantly and shows exactly the published numbers.
 
 import html
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -227,6 +228,23 @@ def main():
     if (OUT / "img").exists():
         shutil.rmtree(OUT / "img")
     (OUT / "img").mkdir(parents=True)
+    for logo in ("hipparchus-logo_ai.png", "aethenova-logo_ai.png"):
+        shutil.copy(ROOT / "presentation" / "assets" / logo, OUT / "img" / logo)
+    # We serve the newest film from the Pages site itself so it plays inline; the repo keeps the source.
+    film = next(f for f in (ROOT / "video" / "hipparchus_aethenova_29s.mp4", ROOT / "video" / "hipparchus_demo_30s.mp4")
+                if f.exists())
+    (OUT / "media").mkdir(exist_ok=True)
+    # We take the poster from the film's own first second, so it always matches the film.
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "1", "-i", str(film), "-frames:v", "1", "-vf", "scale=960:-2",
+                    str(OUT / "img" / "film_poster.png")], check=True)
+    for old in (OUT / "media").glob("*.mp4"):
+        old.unlink()
+    shutil.copy(film, OUT / "media" / film.name)
+    srt = film.with_suffix(".en.srt")
+    if srt.exists():
+        # WebVTT differs from SRT only in the header and the decimal mark of the timestamps.
+        vtt = re.sub(r"(\d\d:\d\d:\d\d),(\d\d\d)", r"\1.\2", srt.read_text())
+        (OUT / "media" / (film.stem + ".en.vtt")).write_text("WEBVTT\n\n" + vtt)
     rob_all = json.loads((EVID / "robustness.json").read_text())
     cat_all = json.loads((EVID / "catalog_match.json").read_text())
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
@@ -333,13 +351,20 @@ footer{{color:var(--muted);font-size:13px;margin:24px 0}}
 .rc.ok{{border-top-color:#2e9e5e}} .rc.warn{{border-top-color:#c99a1c}} .rc.neutral{{border-top-color:#7d8697}}
 .rc h2{{margin:0;font-size:20px}} .rc p{{margin:4px 0}} .cimg img{{width:100%;max-width:200px;display:block;margin:0 auto;image-rendering:pixelated;border:1px solid var(--line)}}
 .team{{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}}
+.brand{{display:flex;gap:14px;flex-wrap:wrap;align-items:center}} .brand img{{height:96px;width:auto;border-radius:6px}}
+.ai{{margin:4px 0 0;font-size:12px;color:var(--muted)}}
+.media{{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:18px;align-items:center}}
+.media video{{width:100%;aspect-ratio:16/9;border-radius:8px;background:#000}}
+@media (max-width:820px){{.media{{grid-template-columns:1fr}} .brand img{{height:64px}}}}
 .verdict{{font-weight:700;letter-spacing:.06em;font-size:13px}} .key{{font-weight:600}} .lim{{font-size:14px;color:var(--muted)}}
 .flowd{{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;counter-reset:s}}
 @media (max-width:820px){{.flowd{{grid-template-columns:1fr}}}}
 .flowd li{{border:1px solid var(--line);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px;position:relative}}
 .flowd li b{{color:var(--acc);letter-spacing:.06em}} .flowd em{{font-style:normal;font-size:14px;border-left:3px solid var(--acc);padding-left:8px}}
 </style></head><body><main>
-<header><h1>HIPPARCHUS · Judge Mode</h1>
+<header><div class='brand'><img src='img/hipparchus-logo_ai.png' alt='HIPPARCHUS logo'><img src='img/aethenova-logo_ai.png' alt='Team AETHENOVA logo'></div>
+<p class='ai'>Both logos are AI-generated.</p>
+<h1>HIPPARCHUS · Judge Mode</h1>
 <p class='team'>Team AETHENOVA · The universe is never still.</p>
 <p class='flow'>OBSERVE → VERIFY → CHALLENGE → EXPLAIN</p>
 <p>HIPPARCHUS does not just show the difference between two SPHEREx images. It checks whether the difference can be
@@ -349,9 +374,18 @@ so nothing here waits for a live archive download.</p>
 <nav><a href='#rw_aur'>RW Aurigae</a><a href='#barnard'>Barnard's Star</a><a href='#wise0855'>WISE 0855</a>
 <a href='{REPO}/blob/main/report/hipparchus_scientific_report.pdf'>Report (PDF)</a>
 <a href='{REPO}/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Slides (PDF)</a>
-<a href='{REPO}/blob/main/video/hipparchus_demo_30s.mp4'>Video</a><a href='{REPO}'>Code</a>
+<a href='#film'>Video</a><a href='{REPO}'>Code</a>
 <a href='{REPO}/blob/main/docs/DATA_PROVENANCE.md'>Data provenance</a><a href='{REPO}/blob/main/docs/SCIENTIFIC_REFERENCES.md'>References</a><a href='{REPO}/blob/main/docs/AI_USAGE_DISCLOSURE.md'>AI use</a><a href='{REPO}/blob/main/FINAL_IMPLEMENTATION_CHECKLIST.md'>Checklist</a></nav>
 </header>
+<section id='film' class='case media' aria-label='Film, slides and report'>
+ <video controls preload='metadata' poster='img/film_poster.png'><source src='media/{film.name}' type='video/mp4'>
+ {"<track kind='captions' srclang='en' label='English' src='media/" + film.stem + ".en.vtt' default>" if srt.exists() else ""}</video>
+ <div><h2>See it in 30 seconds</h2><p>The film uses real screen recordings of the app and real SPHEREx images. English captions.</p>
+ <p><a href='{REPO}/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Six-slide presentation (PDF)</a> ·
+ <a href='{REPO}/raw/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pptx'>PPTX</a><br>
+ <a href='{REPO}/blob/main/report/hipparchus_scientific_report.pdf'>Research report (PDF)</a><br>
+ <a href='{REPO}#reproduce-the-results'>Reproduce every number</a></p></div>
+</section>
 <section class='cards' aria-label='Results at a glance'>
 {''.join(f"""<article class='rc {cls}'><a class='cimg' href='#{tid}'><img src='{img}' alt='{esc(alt)}'></a>
  <div><p class='verdict'>{esc(v)}</p><h2>{esc(name)}</h2><p>{esc(s)}</p><p class='key'>{esc(k)}</p>
@@ -389,7 +423,7 @@ so nothing here waits for a live archive download.</p>
    and proper-motion propagation of catalogue positions (Barnard's Star, 10″/yr)</li></ul></div>
   <div><h3>Future research (not done)</h3><ul>
    <li>Searching whole fields for sources that move between epochs, as a distant planet would</li>
-   <li>Forced photometry with the SPHEREx PSF to separate blended stars</li>
+   <li>Separating blended stars with a joint PSF fit (our ePSF fit below is a single-source check only)</li>
    <li>Calibrating against many field stars with larger cutouts</li></ul>
    <p class='muted'>HIPPARCHUS has not found Planet X or any new object.</p></div>
  </div>
@@ -398,8 +432,8 @@ so nothing here waits for a live archive download.</p>
 <footer>Team AETHENOVA, NASA Space Apps Challenge 2026 (Planet X and SPHEREx). Data: NASA SPHEREx via NASA/IPAC
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
 data; no simulated value appears on this page (the SIMULATED injection-recovery test is only in the report).
-AI tools were used for the graphics, the demo video, cross-checking NASA/IRSA references and as a coding assistant;
-all code was run and tested by the author. Built by <code>backend/scripts/make_judge_site.py</code> at commit {esc(commit)}.</footer>
+AI tools helped with the logos, the video edit, code, method review and writing; they produced no measurement and did not
+validate the science (<a href='{REPO}/blob/main/docs/AI_USAGE_DISCLOSURE.md'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit {esc(commit)}.</footer>
 </main></body></html>
 """
     (OUT / "index.html").write_text(page)
