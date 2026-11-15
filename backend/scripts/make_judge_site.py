@@ -480,8 +480,8 @@ def main():
     film = next(f for f in (ROOT / "video" / "hipparchus_aethenova_29s.mp4", ROOT / "video" / "hipparchus_demo_30s.mp4")
                 if f.exists())
     (OUT / "media").mkdir(exist_ok=True)
-    # We take the poster from the film's own first second, so it always matches the film.
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "1", "-i", str(film), "-frames:v", "1", "-vf", "scale=960:-2",
+    # We take the poster from the film itself (the RW Aur evidence scene), so it always matches the film.
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "21", "-i", str(film), "-frames:v", "1", "-vf", "scale=960:-2",
                     str(OUT / "img" / "film_poster.png")], check=True)
     for old in [*(OUT / "media").glob("*.mp4"), *(OUT / "media").glob("*.vtt")]:
         old.unlink()
