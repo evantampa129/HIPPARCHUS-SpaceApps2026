@@ -29,21 +29,49 @@ Status as of 16 Nov 2026. Filled in from the commands we actually ran; this file
 | Public interactive app (no login) | READY, NOT DEPLOYED | `deploy/` (free Hugging Face Docker Space), `backend/hipparchus/guard.py`; local image verified with a live RW Aur analysis | `test_guard.py` (10) | Needs the team to log in to Hugging Face once and run `deploy/deploy_space.sh --push`; Judge Mode on GitHub Pages is the public demo meanwhile |
 | Machine-learning ranking | NOT IMPLEMENTED | — | — | No labelled data to train or test on fairly |
 
+## Validated scientific results (reproduced from the evidence files)
+
+- **RW Aur:** ×2.56 brighter in a year at 0.76 µm, 8/1540 valid pairs, 175σ formal (≈12σ with the 12.5% calibration
+  floor); "×1.5 at ≥5σ" holds in 24/24 settings. Same in all three wavelength modes. RW Aur A+B are unresolved.
+- **Barnard's Star:** comparison refused, 0/58 usable epochs (saturation/flags on the star).
+- **WISE 0855:** no ≥5σ change, 27 pairs, max 1.93σ (legacy `wcs`); 28 pairs, max 2.05σ with official CWAVE/CBAND.
+- **Wavelength:** astropy applies the celestial SIP terms to the spectral lookup table; proven on 280 cutouts; legacy
+  differs from CWAVE by up to 18 nm. No published conclusion changes.
+- **(216) Kleopatra:** blind linking over 7 SPHEREx visits; 0.15″/0.18″ rms against JPL Horizons computed from SPHEREx;
+  rates within 0.8σ. The second track is two faint static stars plus one detector hit, not a mover.
+- **HIPPARCHUS has not found Planet X.**
+
+## Experimental
+
+- ePSF photometry: 8/8 RW Aur ratios within 2% of aperture; χ²_red explained in part (field stars, sky structure),
+  residual core mismatch unexplained. Not used for published numbers.
+- `cwave` wavelength mode: validated, available, not the default for the published numbers.
+- Degenerate-track check for moving objects: tested, not yet part of the published run.
+
+## Remaining research opportunities
+
+- Switch the default wavelength source to `cwave` in a new versioned release of the evidence.
+- Joint PSF fit of RW Aur A and B and of field stars; understand the ePSF core mismatch.
+- Run the prepared known-asteroid cases ((2052) Tamriko, (433) Eros, fast mover) once IRSA SIA is stable; wire the
+  degenerate-track check into the linker; extend to many fields for unknown movers.
+- Deploy the public interactive app (`deploy/`) on a free Hugging Face Space.
+- Not implemented: IRSA tools comparison, spectral-response overlap diagnostic, observation compatibility graph.
+
 ## Public Release Verification
 
-Checked on 16 Nov 2026, before the commit that adds this section.
+Checked on 16 Nov 2026.
 
 | Item | Value |
 |---|---|
-| Private repo (`final-aethenova`) HEAD | `52f9698` (pushed; repository stays private) |
-| Public repo (`main`) HEAD | `e6042d9` |
-| GitHub Pages | built; latest build built e6042d9; https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/ returns 200 and shows the Moving-Object Explorer |
+| Private repo (`final-aethenova`) | `815115f` verified (this checklist update is the next commit); repository stays private |
+| Public repo (`main`) | `9fd0cc0` verified and served by Pages (this checklist update is the next commit) |
+| GitHub Pages | built from `9fd0cc0`; https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/ returns 200 with the updated Moving-Object Explorer |
 | Backend tests | 85 passed (`cd backend && pytest -q`) |
 | Frontend build | `npm run build` OK |
 | Deck | 6 slides (PPTX + PDF) |
 | Report | 14 pages |
 | Video | 29.42 s, 1920×1080, 30 fps, H.264 + AAC; plays on the Judge Mode page with English captions |
-| Links | Pages: page, film, captions, figures, logos all 200; every relative link on the page 200. GitHub: report, deck (PDF/PPTX), film, evidence, AI disclosure, checklist all 200 |
+| Public interactive app | ready in `deploy/`, verified locally with a live RW Aur analysis; not deployed (no host login on the build machine) |
+| Links | every link on the page returns 200, except the IRSA archive-query links, which returned 502 because IRSA was down at check time |
 | Secrets scan | no tokens, keys, `.env` or private e-mail in the public tree |
-| Size | public tree ≈ 42 MB; largest file is the 7.8 MB film |
-| Remaining issues | items marked NOT IMPLEMENTED / PARTIAL above; minor axis-label overlap in `motion_check.png`; Space Apps portal submission is done by the team, not by this repository |
+| Remaining issues | items marked NOT IMPLEMENTED / PARTIAL above; minor axis-label overlap in `motion_check.png` (needs a 16-min rerun); Space Apps portal submission is done by the team |
