@@ -1,13 +1,13 @@
 {
- "generated_at": "2026-11-16T09:58:41+00:00",
+ "generated_at": "2026-11-17T10:55:15+00:00",
  "label": "REAL SPHEREx data (no simulations in this benchmark)",
  "manifest": "submission/benchmark/manifest.json",
- "manifest_sha256": "b4ec0fe0f123721df64a45e5cd4e8a3e6d0b2d222f97e6acceda8fd8f06c7de5",
+ "manifest_sha256": "825246e45437a25d7de365ef3fdb1f6598d80f656a9e065c62a559dd00672aa4",
  "run": {
-  "started_utc": "2026-11-16T09:28:21+00:00",
+  "started_utc": "2026-11-17T10:14:20+00:00",
   "online": true,
   "budget_s": 1800.0,
-  "finished_utc": "2026-11-16T09:58:41+00:00"
+  "finished_utc": "2026-11-17T10:55:15+00:00"
  },
  "metrics": {
   "all": {
@@ -18,67 +18,63 @@
    ],
    "objects_by_status": {
     "known_variable": {
-     "measured": 1,
-     "BLOCKED_BY_EXTERNAL_SERVICE": 8
+     "measured": 9
     },
     "saturated": {
-     "measured": 1,
-     "BLOCKED_BY_EXTERNAL_SERVICE": 4
+     "measured": 5
     },
     "low_snr": {
-     "measured": 1,
-     "no_coordinates": 3,
-     "BLOCKED_BY_EXTERNAL_SERVICE": 1
+     "measured": 5
     },
     "known_asteroid": {
      "measured": 3
     },
     "stable_control": {
-     "BLOCKED_BY_EXTERNAL_SERVICE": 10
+     "measured": 10
     }
    },
    "completeness": {
-    "k": 1,
-    "n": 1,
-    "rate": 1.0,
-    "lo": 0.20654329147389294,
-    "hi": 1.0,
+    "k": 6,
+    "n": 8,
+    "rate": 0.75,
+    "lo": 0.40926987910258916,
+    "hi": 0.9285223111419724,
     "note": "known variables with >= 1 valid pair; a variable may simply not have varied between the SPHEREx visits, so this is a lower bound"
    },
    "precision": {
-    "k": 1,
-    "n": 1,
-    "rate": 1.0,
-    "lo": 0.20654329147389294,
-    "hi": 1.0
+    "k": 6,
+    "n": 9,
+    "rate": 0.6666666666666666,
+    "lo": 0.35419734749908977,
+    "hi": 0.879418401317257
    },
    "false_positive_rate_objects_stable": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null
+    "k": 2,
+    "n": 5,
+    "rate": 0.4,
+    "lo": 0.1176182311592533,
+    "hi": 0.769280067791163
    },
    "false_positive_rate_objects_low_snr": {
-    "k": 0,
-    "n": 1,
-    "rate": 0.0,
-    "lo": 0.0,
-    "hi": 0.7934567085261071
+    "k": 1,
+    "n": 5,
+    "rate": 0.2,
+    "lo": 0.03622316096978745,
+    "hi": 0.6244717358814613
    },
    "false_positive_rate_pairs_stable": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null,
+    "k": 5,
+    "n": 381,
+    "rate": 0.013123359580052493,
+    "lo": 0.00561810826728344,
+    "hi": 0.030348897378675833,
     "note": "pairs of one object share epochs, so they are not independent"
    },
    "saturated_refusal_rate": {
-    "k": 1,
-    "n": 1,
+    "k": 5,
+    "n": 5,
     "rate": 1.0,
-    "lo": 0.20654329147389294,
+    "lo": 0.5655085052479191,
     "hi": 1.0
    },
    "asteroid_recovery": {
@@ -89,53 +85,53 @@
     "hi": 1.0
    },
    "photometric_bias_stable_pairs": {
-    "n": 0,
-    "median": null,
-    "err": null,
+    "n": 381,
+    "median": -0.009956802526966513,
+    "err": 0.0014691312218476846,
     "what": "median(flux_b / flux_a - 1) over valid pairs of stable controls"
    },
    "photometric_bias_control_stars": {
-    "n": 6,
-    "median": -0.07532919646019287,
-    "err": 0.030290632065958528,
+    "n": 236,
+    "median": -0.021999437042435344,
+    "err": 0.003924736890784904,
     "what": "same, for the in-field control star of every valid pair of every measured star target"
    },
    "significance_stable_pairs": {
-    "n": 0,
-    "mean": null,
-    "std": null
+    "n": 381,
+    "mean": -0.3974124157047717,
+    "std": 1.5198518123118105
    },
    "outcomes": {
     "rw_aur": "TP",
     "barnard": "refused_ok",
     "wise0855": "TN",
     "kleopatra": "recovered",
-    "aa_tau": null,
-    "dr_tau": null,
-    "gm_aur": null,
-    "dg_tau": null,
-    "v1647_ori": null,
-    "ex_lup": null,
-    "v2492_cyg": null,
-    "tw_hya": null,
-    "p330e": null,
-    "p177d": null,
-    "bd17_4708": null,
-    "g191b2b": null,
-    "gd71": null,
-    "gd153": null,
-    "hd37725": null,
-    "hd116405": null,
-    "hd180609": null,
-    "hd55677": null,
-    "procyon": null,
-    "arcturus": null,
-    "vega": null,
-    "61cyga": null,
-    "wise1828": null,
-    "wise0350": null,
-    "wise1405": null,
-    "wise2056": null,
+    "aa_tau": "TP",
+    "dr_tau": "TP",
+    "gm_aur": "FN",
+    "dg_tau": "TP",
+    "v1647_ori": "FN",
+    "ex_lup": "TP",
+    "v2492_cyg": "TP",
+    "tw_hya": "no_valid_pair",
+    "p330e": "TN",
+    "p177d": "FP",
+    "bd17_4708": "no_valid_pair",
+    "g191b2b": "FP",
+    "gd71": "TN",
+    "gd153": "TN",
+    "hd37725": "no_valid_pair",
+    "hd116405": "no_valid_pair",
+    "hd180609": "no_valid_pair",
+    "hd55677": "no_valid_pair",
+    "procyon": "refused_ok",
+    "arcturus": "refused_ok",
+    "vega": "refused_ok",
+    "61cyga": "refused_ok",
+    "wise1828": "TN",
+    "wise0350": "TN",
+    "wise1405": "FP",
+    "wise2056": "TN",
     "tamriko": "recovered",
     "eros": "recovered"
    }
@@ -146,54 +142,53 @@
    ],
    "objects_by_status": {
     "known_variable": {
-     "BLOCKED_BY_EXTERNAL_SERVICE": 3
+     "measured": 3
     },
     "stable_control": {
-     "BLOCKED_BY_EXTERNAL_SERVICE": 7
+     "measured": 7
     },
     "low_snr": {
-     "no_coordinates": 2,
-     "BLOCKED_BY_EXTERNAL_SERVICE": 1
+     "measured": 3
     },
     "known_asteroid": {
      "measured": 2
     }
    },
    "completeness": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null,
+    "k": 3,
+    "n": 3,
+    "rate": 1.0,
+    "lo": 0.43849391955098227,
+    "hi": 1.0,
     "note": "known variables with >= 1 valid pair; a variable may simply not have varied between the SPHEREx visits, so this is a lower bound"
    },
    "precision": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null
+    "k": 3,
+    "n": 5,
+    "rate": 0.6,
+    "lo": 0.23071993220883708,
+    "hi": 0.8823817688407467
    },
    "false_positive_rate_objects_stable": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null
+    "k": 2,
+    "n": 4,
+    "rate": 0.5,
+    "lo": 0.15003570882017148,
+    "hi": 0.8499642911798285
    },
    "false_positive_rate_objects_low_snr": {
     "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null
+    "n": 3,
+    "rate": 0.0,
+    "lo": 0.0,
+    "hi": 0.5615060804490177
    },
    "false_positive_rate_pairs_stable": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null,
+    "k": 5,
+    "n": 248,
+    "rate": 0.020161290322580645,
+    "lo": 0.008641570420160682,
+    "hi": 0.04631996095511648,
     "note": "pairs of one object share epochs, so they are not independent"
    },
    "saturated_refusal_rate": {
@@ -211,36 +206,36 @@
     "hi": 1.0
    },
    "photometric_bias_stable_pairs": {
-    "n": 0,
-    "median": null,
-    "err": null,
+    "n": 248,
+    "median": -0.010433370690163035,
+    "err": 0.002222446012911249,
     "what": "median(flux_b / flux_a - 1) over valid pairs of stable controls"
    },
    "photometric_bias_control_stars": {
-    "n": 0,
-    "median": null,
-    "err": null,
+    "n": 195,
+    "median": -0.023831122693757867,
+    "err": 0.004513949750080579,
     "what": "same, for the in-field control star of every valid pair of every measured star target"
    },
    "significance_stable_pairs": {
-    "n": 0,
-    "mean": null,
-    "std": null
+    "n": 248,
+    "mean": -0.5414024698945951,
+    "std": 1.829590921152381
    },
    "outcomes": {
-    "aa_tau": null,
-    "dg_tau": null,
-    "v2492_cyg": null,
-    "p177d": null,
-    "bd17_4708": null,
-    "g191b2b": null,
-    "gd71": null,
-    "gd153": null,
-    "hd116405": null,
-    "hd180609": null,
-    "wise1828": null,
-    "wise0350": null,
-    "wise2056": null,
+    "aa_tau": "TP",
+    "dg_tau": "TP",
+    "v2492_cyg": "TP",
+    "p177d": "FP",
+    "bd17_4708": "no_valid_pair",
+    "g191b2b": "FP",
+    "gd71": "TN",
+    "gd153": "TN",
+    "hd116405": "no_valid_pair",
+    "hd180609": "no_valid_pair",
+    "wise1828": "TN",
+    "wise0350": "TN",
+    "wise2056": "TN",
     "tamriko": "recovered",
     "eros": "recovered"
    }
@@ -251,61 +246,61 @@
    ],
    "objects_by_status": {
     "known_variable": {
-     "BLOCKED_BY_EXTERNAL_SERVICE": 5
+     "measured": 5
     },
     "stable_control": {
-     "BLOCKED_BY_EXTERNAL_SERVICE": 3
+     "measured": 3
     },
     "saturated": {
-     "BLOCKED_BY_EXTERNAL_SERVICE": 4
+     "measured": 4
     },
     "low_snr": {
-     "no_coordinates": 1
+     "measured": 1
     }
    },
    "completeness": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null,
+    "k": 2,
+    "n": 4,
+    "rate": 0.5,
+    "lo": 0.15003570882017148,
+    "hi": 0.8499642911798285,
     "note": "known variables with >= 1 valid pair; a variable may simply not have varied between the SPHEREx visits, so this is a lower bound"
    },
    "precision": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null
+    "k": 2,
+    "n": 3,
+    "rate": 0.6666666666666666,
+    "lo": 0.2076549551264879,
+    "hi": 0.9385096847238394
    },
    "false_positive_rate_objects_stable": {
     "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null
+    "n": 1,
+    "rate": 0.0,
+    "lo": 0.0,
+    "hi": 0.7934567085261071
    },
    "false_positive_rate_objects_low_snr": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null
+    "k": 1,
+    "n": 1,
+    "rate": 1.0,
+    "lo": 0.20654329147389294,
+    "hi": 1.0
    },
    "false_positive_rate_pairs_stable": {
     "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null,
+    "n": 133,
+    "rate": 0.0,
+    "lo": 0.0,
+    "hi": 0.028073334424619414,
     "note": "pairs of one object share epochs, so they are not independent"
    },
    "saturated_refusal_rate": {
-    "k": 0,
-    "n": 0,
-    "rate": null,
-    "lo": null,
-    "hi": null
+    "k": 4,
+    "n": 4,
+    "rate": 1.0,
+    "lo": 0.5100999795960008,
+    "hi": 1.0
    },
    "asteroid_recovery": {
     "k": 0,
@@ -315,36 +310,36 @@
     "hi": null
    },
    "photometric_bias_stable_pairs": {
-    "n": 0,
-    "median": null,
-    "err": null,
+    "n": 133,
+    "median": -0.008917663043450319,
+    "err": 0.0017601945556895452,
     "what": "median(flux_b / flux_a - 1) over valid pairs of stable controls"
    },
    "photometric_bias_control_stars": {
-    "n": 0,
-    "median": null,
-    "err": null,
+    "n": 35,
+    "median": -0.006591563827913149,
+    "err": 0.00677220587943581,
     "what": "same, for the in-field control star of every valid pair of every measured star target"
    },
    "significance_stable_pairs": {
-    "n": 0,
-    "mean": null,
-    "std": null
+    "n": 133,
+    "mean": -0.1289196830801387,
+    "std": 0.514491315873745
    },
    "outcomes": {
-    "dr_tau": null,
-    "gm_aur": null,
-    "v1647_ori": null,
-    "ex_lup": null,
-    "tw_hya": null,
-    "p330e": null,
-    "hd37725": null,
-    "hd55677": null,
-    "procyon": null,
-    "arcturus": null,
-    "vega": null,
-    "61cyga": null,
-    "wise1405": null
+    "dr_tau": "TP",
+    "gm_aur": "FN",
+    "v1647_ori": "FN",
+    "ex_lup": "TP",
+    "tw_hya": "no_valid_pair",
+    "p330e": "TN",
+    "hd37725": "no_valid_pair",
+    "hd55677": "no_valid_pair",
+    "procyon": "refused_ok",
+    "arcturus": "refused_ok",
+    "vega": "refused_ok",
+    "61cyga": "refused_ok",
+    "wise1405": "FP"
    }
   },
   "dev": {
@@ -441,333 +436,7 @@
    }
   }
  },
- "blocked": {
-  "aa_tau": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:28:21+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:28:33+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:28:54+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:29:36+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:30:57+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:33:38+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:38:39+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:43:40+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:48:41+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:53:42+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "dr_tau": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:53:43+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:53:54+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:54:15+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:54:56+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:56:17+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "gm_aur": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:56:18+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:56:29+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:56:50+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:57:31+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "dg_tau": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+66.769595+26.104313+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+66.769595+26.104313+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:57:32+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+66.769595+26.104313+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:57:43+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+66.769595+26.104313+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:05+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "v1647_ori": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+86.554744+-0.101365+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+86.554744+-0.101365+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:06+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+86.554744+-0.101365+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:17+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "ex_lup": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+240.772785+-40.307226+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+240.772785+-40.307226+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:18+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "v2492_cyg": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+312.859298+44.089935+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+312.859298+44.089935+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:19+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "tw_hya": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+165.465672+-34.704832+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+165.465672+-34.704832+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:20+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "p330e": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+247.890811+30.145942+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+247.890811+30.145942+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:24+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "p177d": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+239.806492+47.611651+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+239.806492+47.611651+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:26+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "bd17_4708": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+332.884576+18.093255+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+332.884576+18.093255+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:26+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "g191b2b": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+76.377727+52.830414+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+76.377727+52.830414+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:28+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "gd71": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+88.115659+15.885759+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+88.115659+15.885759+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:29+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "gd153": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+194.259378+22.029821+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+194.259378+22.029821+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:30+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "hd37725": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+85.476665+29.297294+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+85.476665+29.297294+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:31+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "hd116405": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+200.6881+44.714904+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+200.6881+44.714904+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:32+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "hd180609": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+288.196614+64.176936+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+288.196614+64.176936+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:33+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "hd55677": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+108.630354+13.86017+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+108.630354+13.86017+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:35+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "procyon": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+114.820315+5.2175+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+114.820315+5.2175+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:36+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "arcturus": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+213.906939+19.167964+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+213.906939+19.167964+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:37+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "vega": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+279.236596+38.785756+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+279.236596+38.785756+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:38+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "61cyga": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+316.763311+38.772887+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+316.763311+38.772887+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:39+00:00",
-     "status": 502
-    }
-   ]
-  },
-  "wise0350": {
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+57.49972+-56.977556+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+57.49972+-56.977556+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:40+00:00",
-     "status": 502
-    }
-   ]
-  }
- },
+ "blocked": {},
  "objects": {
   "rw_aur": {
    "status": "measured",
@@ -856,364 +525,762 @@
    "median_residual_arcsec": 0.20696065364884164
   },
   "aa_tau": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/aa_tau.json",
+   "n_epochs": 56,
+   "n_usable": 48,
+   "n_valid_pairs": 41,
+   "n_changed": 39,
+   "max_abs_significance": 203.5870724560385,
+   "refused_pairs": {
+    "flagged_pixels": 412,
+    "wavelength_mismatch": 1474,
+    "aperture_invalid": 4
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:28:21+00:00",
-     "status": 502
+     "sha256": "be9bdf7524c72d643eff8458476fa4bafe4357495f80edeee68848f75aa4f97f",
+     "status": "live"
     },
     {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:28:33+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:28:54+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:29:36+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:30:57+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:33:38+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:38:39+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:43:40+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:48:41+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:53:42+00:00",
-     "status": 502
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+68.73096+24.481249+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "5900df6ab414b879c84a9d1a5f6aac70a327ebc1fe6143e4e5e3116d53e8dd59",
+     "status": "live"
     }
    ]
   },
   "dr_tau": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/dr_tau.json",
+   "n_epochs": 55,
+   "n_usable": 13,
+   "n_valid_pairs": 6,
+   "n_changed": 6,
+   "max_abs_significance": 55.74897047906747,
+   "refused_pairs": {
+    "flagged_pixels": 1407,
+    "wavelength_mismatch": 1422,
+    "aperture_invalid": 2
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:53:43+00:00",
-     "status": 502
+     "sha256": "e18be99ec8faadc768e9e1bbd16a9d1f6c7829affd4f185abe8dee2a68606686",
+     "status": "live"
     },
     {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:53:54+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:54:15+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:54:56+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:56:17+00:00",
-     "status": 502
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+71.775936+16.978459+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "5d7e3d4531153309957ccf627dd971dfa5252777c6ca760e242809dac93d7a71",
+     "status": "live"
     }
    ]
   },
   "gm_aur": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/gm_aur.json",
+   "n_epochs": 56,
+   "n_usable": 17,
+   "n_valid_pairs": 6,
+   "n_changed": 0,
+   "max_abs_significance": 1.5324244325712157,
+   "refused_pairs": {
+    "flagged_pixels": 1387,
+    "wavelength_mismatch": 1478,
+    "off_edge": 55,
+    "aperture_invalid": 1
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:56:18+00:00",
-     "status": 502
+     "sha256": "6957576e49f7408ffc872ff4cabce6fa10e064ee47c4caedf238fceaa4e50d8a",
+     "status": "cached"
     },
     {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:56:29+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:56:50+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:57:31+00:00",
-     "status": 502
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+73.795788+30.366317+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "26259a4ade9fd98be0c3fd920ed36e6516948e5de4f6c647101e10bec8af8f37",
+     "status": "cached"
     }
    ]
   },
   "dg_tau": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+66.769595+26.104313+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/dg_tau.json",
+   "n_epochs": 55,
+   "n_usable": 14,
+   "n_valid_pairs": 9,
+   "n_changed": 7,
+   "max_abs_significance": 43.013829780365036,
+   "refused_pairs": {
+    "flagged_pixels": 1394,
+    "wavelength_mismatch": 1422
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+66.769595+26.104313+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:57:32+00:00",
-     "status": 502
+     "sha256": "0c29a756a15a98cd3d4da62eb4ded5f3d28b3e07e85d9766961e1a9293079186",
+     "status": "live"
     },
     {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+66.769595+26.104313+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:57:43+00:00",
-     "status": 502
-    },
-    {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+66.769595+26.104313+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:05+00:00",
-     "status": 502
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+66.769595+26.104313+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "9c83535c646cade8f108bdf9593062420bb7a1d8446274378b670527e3f51b45",
+     "status": "live"
     }
    ]
   },
   "v1647_ori": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+86.554744+-0.101365+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/v1647_ori.json",
+   "n_epochs": 72,
+   "n_usable": 59,
+   "n_valid_pairs": 84,
+   "n_changed": 0,
+   "max_abs_significance": 2.071532482047096,
+   "refused_pairs": {
+    "wavelength_mismatch": 2435,
+    "flagged_pixels": 845,
+    "aperture_invalid": 3
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+86.554744+-0.101365+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:06+00:00",
-     "status": 502
+     "sha256": "a72b0a00db61fef420c61285e6aca2534d73c4af233e17d347dbe3019e96386f",
+     "status": "live"
     },
     {
-     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+86.554744+-0.101365+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:17+00:00",
-     "status": 502
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+86.554744+-0.101365+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "ac6ac4630427cac8da4289f040c1d28702a4247cd1b4d7578425283874afffa2",
+     "status": "live"
     }
    ]
   },
   "ex_lup": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+240.772785+-40.307226+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/ex_lup.json",
+   "n_epochs": 61,
+   "n_usable": 30,
+   "n_valid_pairs": 26,
+   "n_changed": 6,
+   "max_abs_significance": 14.46314801827279,
+   "refused_pairs": {
+    "wavelength_mismatch": 1730,
+    "flagged_pixels": 1395
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+240.772785+-40.307226+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:18+00:00",
-     "status": 502
+     "sha256": "d98b19691d4f1bda270a2a4df0a883e86660c1f22874c2b61c1e6074cc398c7f",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+240.772785+-40.307226+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "21d5a915643da5f9c425be6ead1b4d079c0b726edf32da12b1b30b97d15e731a",
+     "status": "live"
     }
    ]
   },
   "v2492_cyg": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+312.859298+44.089935+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/v2492_cyg.json",
+   "n_epochs": 89,
+   "n_usable": 81,
+   "n_valid_pairs": 166,
+   "n_changed": 89,
+   "max_abs_significance": 57.38913358492832,
+   "refused_pairs": {
+    "wavelength_mismatch": 3712,
+    "flagged_pixels": 676,
+    "aperture_invalid": 6
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+312.859298+44.089935+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:19+00:00",
-     "status": 502
+     "sha256": "d284701aafc257c067fe0576c9a87855230253fe969731f58d922b23e96dd046",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+312.859298+44.089935+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "41a689acb0b78392d9a08474a4f9793422edab24bab7f36432ad4689ded5d23f",
+     "status": "live"
     }
    ]
   },
   "tw_hya": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+165.465672+-34.704832+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/tw_hya.json",
+   "n_epochs": 82,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 3321,
+    "wavelength_mismatch": 3151
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+165.465672+-34.704832+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:20+00:00",
-     "status": 502
+     "sha256": "cb4e6650330f4dca61d691f510c968e57052fdf00aa23ee9fa56363d3d89e44a",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+165.465672+-34.704832+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "338d9fac4b37e800b4955bcafd3fb1e51e96d30229fcfa5d27aa4aa7f1b50dc2",
+     "status": "live"
     }
    ]
   },
   "p330e": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+247.890811+30.145942+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/p330e.json",
+   "n_epochs": 85,
+   "n_usable": 78,
+   "n_valid_pairs": 133,
+   "n_changed": 0,
+   "max_abs_significance": 2.4392263252323967,
+   "refused_pairs": {
+    "wavelength_mismatch": 3398,
+    "flagged_pixels": 567,
+    "aperture_invalid": 11
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+247.890811+30.145942+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:24+00:00",
-     "status": 502
+     "sha256": "314900dfef708e17ffc4e9cfea5443492f82fea732e4f56a879584de0fc0a8ba",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+247.890811+30.145942+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "1a91073c41322bfd42a4002909a43606c5f31aff8376d41a441116803836031f",
+     "status": "live"
     }
    ]
   },
   "p177d": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+239.806492+47.611651+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/p177d.json",
+   "n_epochs": 64,
+   "n_usable": 61,
+   "n_valid_pairs": 78,
+   "n_changed": 2,
+   "max_abs_significance": 5.264419933620656,
+   "refused_pairs": {
+    "wavelength_mismatch": 1928,
+    "off_edge": 125,
+    "flagged_pixels": 63,
+    "aperture_invalid": 6
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+239.806492+47.611651+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:26+00:00",
-     "status": 502
+     "sha256": "70127bf368fdcb9fbbd5cd5490bf9ae07703f2fd423d993029d9dbac526eb861",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+239.806492+47.611651+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "2c276e386225c9be41b7a6f3dfae8008b195f5ed23f0854d9a1f8b0da340c14d",
+     "status": "live"
     }
    ]
   },
   "bd17_4708": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+332.884576+18.093255+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/bd17_4708.json",
+   "n_epochs": 57,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 1596,
+    "wavelength_mismatch": 1514,
+    "bad_variance": 56,
+    "nan_pixels": 56
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+332.884576+18.093255+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:26+00:00",
-     "status": 502
+     "sha256": "062972e5dcf66e28032c2d0a8c97c50cf05423abb99d15381b6f8b4d17ce6013",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+332.884576+18.093255+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "8426e6983ca765333f0911d17c795897bf12fd457b9f4d2a72a24a01cad437df",
+     "status": "live"
     }
    ]
   },
   "g191b2b": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+76.377727+52.830414+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/g191b2b.json",
+   "n_epochs": 60,
+   "n_usable": 48,
+   "n_valid_pairs": 56,
+   "n_changed": 3,
+   "max_abs_significance": 6.991272730491667,
+   "refused_pairs": {
+    "wavelength_mismatch": 1677,
+    "flagged_pixels": 642,
+    "aperture_invalid": 4
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+76.377727+52.830414+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:28+00:00",
-     "status": 502
+     "sha256": "352bff04ea903f1befe2379dfe548db92613c86f52fe0ba4865e5ba62c48f0ef",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+76.377727+52.830414+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "4f1ea9752409ebe4f83d9bb0c2c379d75347bb4c7158e6569aaaf25302551d2e",
+     "status": "live"
     }
    ]
   },
   "gd71": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+88.115659+15.885759+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/gd71.json",
+   "n_epochs": 52,
+   "n_usable": 48,
+   "n_valid_pairs": 50,
+   "n_changed": 0,
+   "max_abs_significance": 2.9912807590203374,
+   "refused_pairs": {
+    "wavelength_mismatch": 1266,
+    "flagged_pixels": 198
+   },
+   "failed_downloads": 4,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+88.115659+15.885759+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:29+00:00",
-     "status": 502
+     "sha256": "1a3da301f26eb08d44c3517bd370ce4a17c950b62f4a439b8207cbad53645ad5",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+88.115659+15.885759+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "57b67b7b160bc0503067d5c0cbfd3e33eb76efcfbe3f08d9a8c78f6537970a96",
+     "status": "live"
     }
    ]
   },
   "gd153": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+194.259378+22.029821+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/gd153.json",
+   "n_epochs": 58,
+   "n_usable": 56,
+   "n_valid_pairs": 64,
+   "n_changed": 0,
+   "max_abs_significance": 4.180945918336287,
+   "refused_pairs": {
+    "wavelength_mismatch": 1581,
+    "flagged_pixels": 113,
+    "aperture_invalid": 3
+   },
+   "failed_downloads": 1,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+194.259378+22.029821+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:30+00:00",
-     "status": 502
+     "sha256": "3ae2fb4ce952824952ab75e12e0d2ae953b3f327190426a4bf64d1b321c1e7ee",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+194.259378+22.029821+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "8c209e35ec4c753f472d7200a302e2b2ee4fa8bf7a251e0d040dc73b543d15f4",
+     "status": "live"
     }
    ]
   },
   "hd37725": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+85.476665+29.297294+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/hd37725.json",
+   "n_epochs": 54,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 1431,
+    "wavelength_mismatch": 1370
+   },
+   "failed_downloads": 1,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+85.476665+29.297294+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:31+00:00",
-     "status": 502
+     "sha256": "3c798e27aaa436f994aa75a978b65b28553cd8e17089b9bdd81bd47add7d0e5b",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+85.476665+29.297294+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "58a75317533080c5c9ae1a1682644d92bfd445abff5c3cb7ac093e1e01ee3e74",
+     "status": "live"
     }
    ]
   },
   "hd116405": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+200.6881+44.714904+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/hd116405.json",
+   "n_epochs": 59,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 1711,
+    "wavelength_mismatch": 1644,
+    "off_edge": 58
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+200.6881+44.714904+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:32+00:00",
-     "status": 502
+     "sha256": "c667f0acc16019156672e42439b67e5ac96cf314a577bbb2946cb7cc18017cc4",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+200.6881+44.714904+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "535b528083313777401b82051d52e5b635437be40e4c2de597984b77755c4216",
+     "status": "live"
     }
    ]
   },
   "hd180609": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+288.196614+64.176936+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/hd180609.json",
+   "n_epochs": 119,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 7021,
+    "wavelength_mismatch": 6643,
+    "off_edge": 118
+   },
+   "failed_downloads": 1,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+288.196614+64.176936+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:33+00:00",
-     "status": 502
+     "sha256": "289ba3345de2c0c844ef290d33d4516def4712c858f3ef293962a7d5f569054e",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+288.196614+64.176936+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "15700dd23fe938048207989f6e063461e7ab4c273407dba25f46f93b93ff2349",
+     "status": "live"
     }
    ]
   },
   "hd55677": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+108.630354+13.86017+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/hd55677.json",
+   "n_epochs": 37,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 666,
+    "wavelength_mismatch": 638
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+108.630354+13.86017+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:35+00:00",
-     "status": 502
+     "sha256": "e5e9ef037fdb14396c92c6023163fad2c7e6d0948e5babf6f0e1be69870bdf1f",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+108.630354+13.86017+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "fa538a0a6daf723452a8645c90efb86c1d6ddc68903b280bed9fb13ca1cdd3bd",
+     "status": "live"
     }
    ]
   },
   "procyon": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+114.820315+5.2175+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/procyon.json",
+   "n_epochs": 38,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 703,
+    "wavelength_mismatch": 683,
+    "bad_variance": 703,
+    "nan_pixels": 703,
+    "off_edge": 37
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+114.820315+5.2175+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:36+00:00",
-     "status": 502
+     "sha256": "b4af33d26a9db81f7ae16f27dab4bfd32cf63c40b57511f88f561f17744fb705",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+114.820315+5.2175+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "fa538a0a6daf723452a8645c90efb86c1d6ddc68903b280bed9fb13ca1cdd3bd",
+     "status": "live"
     }
    ]
   },
   "arcturus": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+213.906939+19.167964+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/arcturus.json",
+   "n_epochs": 59,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 1711,
+    "wavelength_mismatch": 1632,
+    "bad_variance": 1711,
+    "nan_pixels": 1711,
+    "off_edge": 58
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+213.906939+19.167964+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:37+00:00",
-     "status": 502
+     "sha256": "223d1d150fc5f982cd20daf9d52149b3d1d53e374a5d2595469eca4dcce416f7",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+213.906939+19.167964+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "7b8d341e4bde28bc4d2f42cf62b89a2b1a65406d995dad36de4034c8673b030c",
+     "status": "live"
     }
    ]
   },
   "vega": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+279.236596+38.785756+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/vega.json",
+   "n_epochs": 67,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 2211,
+    "wavelength_mismatch": 2107,
+    "bad_variance": 2211,
+    "nan_pixels": 2211
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+279.236596+38.785756+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:38+00:00",
-     "status": 502
+     "sha256": "490e88988fb966178724cd5b4dc3cd11b74eeeffe90c4626f77679054d78c84a",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+279.236596+38.785756+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "8336de973700ffe47b29a920ff5679e02928dba3f664f527a412372ea74ec762",
+     "status": "live"
     }
    ]
   },
   "61cyga": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+316.763311+38.772887+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/61cyga.json",
+   "n_epochs": 79,
+   "n_usable": 0,
+   "n_valid_pairs": 0,
+   "n_changed": 0,
+   "max_abs_significance": null,
+   "refused_pairs": {
+    "flagged_pixels": 3081,
+    "wavelength_mismatch": 2919,
+    "bad_variance": 3081,
+    "nan_pixels": 3081
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+316.763311+38.772887+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:39+00:00",
-     "status": 502
+     "sha256": "0f8efd999398f5143c0cae06dcb3eb5ae5d596b0d2335d2d0e73a9644d2abf5d",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+316.763311+38.772887+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "3767bdf1586550e1b0363f5f4580f25e34df9a7401bbef402b7998c1ddbb5e0e",
+     "status": "live"
     }
    ]
   },
   "wise1828": {
-   "status": "no_coordinates",
-   "note": "run `run_benchmark.py resolve` first"
+   "status": "measured",
+   "source": "data/cache/benchmark/results/wise1828.json",
+   "n_epochs": 64,
+   "n_usable": 57,
+   "n_valid_pairs": 64,
+   "n_changed": 0,
+   "max_abs_significance": 2.2286191805561777,
+   "refused_pairs": {
+    "wavelength_mismatch": 1923,
+    "flagged_pixels": 363,
+    "off_edge": 63,
+    "aperture_invalid": 6
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
+    {
+     "release": "spherex_dr1",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+277.134515+26.844577+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "fe04ce4e2430564d16bb0889b45e9b9909039d5d4bcd8cd065b844a0c58a6265",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+277.134515+26.844577+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "3fa16253330a6374cffface56f9d8644f71b4f1fbebabcbb336b3ed779fddf10",
+     "status": "live"
+    }
+   ]
   },
   "wise0350": {
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
-   "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+57.49972+-56.977556+0.001&RESPONSEFORMAT=VOTABLE",
-   "attempts": [
+   "status": "measured",
+   "source": "data/cache/benchmark/results/wise0350.json",
+   "n_epochs": 23,
+   "n_usable": 18,
+   "n_valid_pairs": 3,
+   "n_changed": 0,
+   "max_abs_significance": 0.9027773897385206,
+   "refused_pairs": {
+    "wavelength_mismatch": 248,
+    "flagged_pixels": 100
+   },
+   "failed_downloads": 71,
+   "archive_queries": [
     {
+     "release": "spherex_dr1",
      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+57.49972+-56.977556+0.001&RESPONSEFORMAT=VOTABLE",
-     "utc": "2026-11-16T09:58:40+00:00",
-     "status": 502
+     "sha256": "598264ddc8d70a5123904ed3721a17041559b7c0d40e2e5ba591f30f4ac73455",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+57.49972+-56.977556+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "1a12048b0fd8135dc316726bb377758628b4fbe10103f1816f1fcfce116c7081",
+     "status": "live"
     }
    ]
   },
   "wise1405": {
-   "status": "no_coordinates",
-   "note": "run `run_benchmark.py resolve` first"
+   "status": "measured",
+   "source": "data/cache/benchmark/results/wise1405.json",
+   "n_epochs": 89,
+   "n_usable": 73,
+   "n_valid_pairs": 128,
+   "n_changed": 1,
+   "max_abs_significance": 23.23580549062148,
+   "refused_pairs": {
+    "flagged_pixels": 1288,
+    "wavelength_mismatch": 3709,
+    "aperture_invalid": 10
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
+    {
+     "release": "spherex_dr1",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+211.308714+55.573549+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "219bd202d7120a3ad7cfdafc4d84207b9705f0f1ba40db5b999134fb1c22c173",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+211.308714+55.573549+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "fe24939688df2ad11e27a1a8aba38ec8d595b23b2a0c64516355e34c8bf02a4e",
+     "status": "live"
+    }
+   ]
   },
   "wise2056": {
-   "status": "no_coordinates",
-   "note": "run `run_benchmark.py resolve` first"
+   "status": "measured",
+   "source": "data/cache/benchmark/results/wise2056.json",
+   "n_epochs": 57,
+   "n_usable": 46,
+   "n_valid_pairs": 51,
+   "n_changed": 0,
+   "max_abs_significance": 1.6629776718897604,
+   "refused_pairs": {
+    "wavelength_mismatch": 1515,
+    "flagged_pixels": 468,
+    "off_edge": 111,
+    "aperture_invalid": 2
+   },
+   "failed_downloads": 0,
+   "archive_queries": [
+    {
+     "release": "spherex_dr1",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+314.124135+15.000431+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "b6847e4a71478c111dd39787d0d95603849d37587eaca14fd249766b542f3cdd",
+     "status": "live"
+    },
+    {
+     "release": "spherex_qr3",
+     "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+314.124135+15.000431+0.001&RESPONSEFORMAT=VOTABLE",
+     "sha256": "a2cc7ded2b505a7ef7db55e8ba60924f59676673acefc262fd8f11f55b91a21f",
+     "status": "live"
+    }
+   ]
   },
   "tamriko": {
    "status": "measured",

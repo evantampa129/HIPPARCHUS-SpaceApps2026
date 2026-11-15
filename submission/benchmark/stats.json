@@ -1,0 +1,389 @@
+{
+ "label": "REAL SPHEREx data; secondary analysis of run_benchmark.py results, detection rule unchanged",
+ "detection_rule": "formal |significance| >= 5 (fixed before the run)",
+ "calibration_floor": 0.12517501805145284,
+ "bootstrap": {
+  "resample": "objects",
+  "n": 5000,
+  "seed": 20261117
+ },
+ "splits": {
+  "held_out": {
+   "stable_objects_with_pairs": [
+    "p177d",
+    "g191b2b",
+    "gd71",
+    "gd153"
+   ],
+   "stable_objects_flagged": [
+    "g191b2b",
+    "p177d"
+   ],
+   "pair_fpr": {
+    "k": 5,
+    "n": 248,
+    "rate": 0.020161290322580645,
+    "ci95_cluster_bootstrap": {
+     "lo": 0.0,
+     "hi": 0.04128440366972477,
+     "n_boot": 5000
+    }
+   },
+   "false_positive_pairs": [
+    {
+     "object": "p177d",
+     "a": "2025W28_2A_0289_1",
+     "b": "2026W02_2A_0150_4",
+     "flux_ratio": 0.9326940663542971,
+     "significance": -5.264419933620656,
+     "significance_with_floor": -0.5349117406895902,
+     "dlambda_nm": 5.922263416911933
+    },
+    {
+     "object": "p177d",
+     "a": "2026W02_2A_0150_4",
+     "b": "2026W29_1A_0255_1",
+     "flux_ratio": 1.069246838999296,
+     "significance": 5.017636058035601,
+     "significance_with_floor": 0.549868334357892,
+     "dlambda_nm": 5.49965533816954
+    },
+    {
+     "object": "g191b2b",
+     "a": "2025W36_2B_0012_2",
+     "b": "2026W36_2A_0658_1",
+     "flux_ratio": 0.9351765629832103,
+     "significance": -5.407682218862193,
+     "significance_with_floor": -0.5155040207316551,
+     "dlambda_nm": 10.940824438918417
+    },
+    {
+     "object": "g191b2b",
+     "a": "2025W36_2B_0012_3",
+     "b": "2026W36_2A_0657_1",
+     "flux_ratio": 0.9130012592953016,
+     "significance": -6.991272730491667,
+     "significance_with_floor": -0.6916077083760007,
+     "dlambda_nm": 11.547697108012954
+    },
+    {
+     "object": "g191b2b",
+     "a": "2026W10_1A_0261_2",
+     "b": "2026W36_2A_0765_1",
+     "flux_ratio": 1.0790815137333059,
+     "significance": 6.749074495234852,
+     "significance_with_floor": 0.6290176828535099,
+     "dlambda_nm": 9.341429613650586
+    }
+   ],
+   "exposures_in_fp_pairs": {
+    "n_pairs": 5,
+    "n_distinct_exposures": 9,
+    "repeated": [
+     "2026W02_2A_0150_4"
+    ]
+   },
+   "photometric_bias_stable": {
+    "median_ratio_minus_1": -0.010433370690163035,
+    "ci95_cluster_bootstrap": {
+     "lo": -0.014995393388917366,
+     "hi": -0.0038609080430046516,
+     "n_boot": 5000
+    }
+   },
+   "variable_pair_detection": {
+    "k": 135,
+    "n": 216,
+    "rate": 0.625,
+    "ci95_cluster_bootstrap": {
+     "lo": 0.536144578313253,
+     "hi": 0.9512195121951219,
+     "n_boot": 5000
+    }
+   },
+   "secondary_with_floor": {
+    "what": "SECONDARY: same pairs, |significance| >= 5 after adding the 0.125 calibration floor",
+    "stable_pairs_flagged": 0,
+    "stable_objects_flagged": [],
+    "variable_objects_detected": [
+     "aa_tau",
+     "v2492_cyg"
+    ],
+    "variable_objects_with_pairs": [
+     "aa_tau",
+     "dg_tau",
+     "v2492_cyg"
+    ]
+   }
+  },
+  "calibration": {
+   "stable_objects_with_pairs": [
+    "p330e"
+   ],
+   "stable_objects_flagged": [],
+   "pair_fpr": {
+    "k": 0,
+    "n": 133,
+    "rate": 0.0,
+    "ci95_cluster_bootstrap": {
+     "lo": 0.0,
+     "hi": 0.0,
+     "n_boot": 5000
+    }
+   },
+   "false_positive_pairs": [],
+   "exposures_in_fp_pairs": {
+    "n_pairs": 0,
+    "n_distinct_exposures": 0,
+    "repeated": []
+   },
+   "photometric_bias_stable": {
+    "median_ratio_minus_1": -0.008917663043450319,
+    "ci95_cluster_bootstrap": {
+     "lo": -0.008917663043450319,
+     "hi": -0.008917663043450319,
+     "n_boot": 5000
+    }
+   },
+   "variable_pair_detection": {
+    "k": 12,
+    "n": 122,
+    "rate": 0.09836065573770492,
+    "ci95_cluster_bootstrap": {
+     "lo": 0.0,
+     "hi": 0.5454545454545454,
+     "n_boot": 5000
+    }
+   },
+   "secondary_with_floor": {
+    "what": "SECONDARY: same pairs, |significance| >= 5 after adding the 0.125 calibration floor",
+    "stable_pairs_flagged": 0,
+    "stable_objects_flagged": [],
+    "variable_objects_detected": [],
+    "variable_objects_with_pairs": [
+     "dr_tau",
+     "gm_aur",
+     "v1647_ori",
+     "ex_lup"
+    ]
+   }
+  },
+  "all": {
+   "stable_objects_with_pairs": [
+    "p330e",
+    "p177d",
+    "g191b2b",
+    "gd71",
+    "gd153"
+   ],
+   "stable_objects_flagged": [
+    "g191b2b",
+    "p177d"
+   ],
+   "pair_fpr": {
+    "k": 5,
+    "n": 381,
+    "rate": 0.013123359580052493,
+    "ci95_cluster_bootstrap": {
+     "lo": 0.0,
+     "hi": 0.033582089552238806,
+     "n_boot": 5000
+    }
+   },
+   "false_positive_pairs": [
+    {
+     "object": "p177d",
+     "a": "2025W28_2A_0289_1",
+     "b": "2026W02_2A_0150_4",
+     "flux_ratio": 0.9326940663542971,
+     "significance": -5.264419933620656,
+     "significance_with_floor": -0.5349117406895902,
+     "dlambda_nm": 5.922263416911933
+    },
+    {
+     "object": "p177d",
+     "a": "2026W02_2A_0150_4",
+     "b": "2026W29_1A_0255_1",
+     "flux_ratio": 1.069246838999296,
+     "significance": 5.017636058035601,
+     "significance_with_floor": 0.549868334357892,
+     "dlambda_nm": 5.49965533816954
+    },
+    {
+     "object": "g191b2b",
+     "a": "2025W36_2B_0012_2",
+     "b": "2026W36_2A_0658_1",
+     "flux_ratio": 0.9351765629832103,
+     "significance": -5.407682218862193,
+     "significance_with_floor": -0.5155040207316551,
+     "dlambda_nm": 10.940824438918417
+    },
+    {
+     "object": "g191b2b",
+     "a": "2025W36_2B_0012_3",
+     "b": "2026W36_2A_0657_1",
+     "flux_ratio": 0.9130012592953016,
+     "significance": -6.991272730491667,
+     "significance_with_floor": -0.6916077083760007,
+     "dlambda_nm": 11.547697108012954
+    },
+    {
+     "object": "g191b2b",
+     "a": "2026W10_1A_0261_2",
+     "b": "2026W36_2A_0765_1",
+     "flux_ratio": 1.0790815137333059,
+     "significance": 6.749074495234852,
+     "significance_with_floor": 0.6290176828535099,
+     "dlambda_nm": 9.341429613650586
+    }
+   ],
+   "exposures_in_fp_pairs": {
+    "n_pairs": 5,
+    "n_distinct_exposures": 9,
+    "repeated": [
+     "2026W02_2A_0150_4"
+    ]
+   },
+   "photometric_bias_stable": {
+    "median_ratio_minus_1": -0.009956802526966513,
+    "ci95_cluster_bootstrap": {
+     "lo": -0.014920795037813184,
+     "hi": -0.005430320139988454,
+     "n_boot": 5000
+    }
+   },
+   "variable_pair_detection": {
+    "k": 147,
+    "n": 338,
+    "rate": 0.4349112426035503,
+    "ci95_cluster_bootstrap": {
+     "lo": 0.1,
+     "hi": 0.7647058823529411,
+     "n_boot": 5000
+    }
+   },
+   "secondary_with_floor": {
+    "what": "SECONDARY: same pairs, |significance| >= 5 after adding the 0.125 calibration floor",
+    "stable_pairs_flagged": 0,
+    "stable_objects_flagged": [],
+    "variable_objects_detected": [
+     "aa_tau",
+     "v2492_cyg"
+    ],
+    "variable_objects_with_pairs": [
+     "aa_tau",
+     "dr_tau",
+     "gm_aur",
+     "dg_tau",
+     "v1647_ori",
+     "ex_lup",
+     "v2492_cyg"
+    ]
+   }
+  }
+ },
+ "primary_metrics_held_out": {
+  "splits": [
+   "held_out"
+  ],
+  "objects_by_status": {
+   "known_variable": {
+    "measured": 3
+   },
+   "stable_control": {
+    "measured": 7
+   },
+   "low_snr": {
+    "measured": 3
+   },
+   "known_asteroid": {
+    "measured": 2
+   }
+  },
+  "completeness": {
+   "k": 3,
+   "n": 3,
+   "rate": 1.0,
+   "lo": 0.43849391955098227,
+   "hi": 1.0,
+   "note": "known variables with >= 1 valid pair; a variable may simply not have varied between the SPHEREx visits, so this is a lower bound"
+  },
+  "precision": {
+   "k": 3,
+   "n": 5,
+   "rate": 0.6,
+   "lo": 0.23071993220883708,
+   "hi": 0.8823817688407467
+  },
+  "false_positive_rate_objects_stable": {
+   "k": 2,
+   "n": 4,
+   "rate": 0.5,
+   "lo": 0.15003570882017148,
+   "hi": 0.8499642911798285
+  },
+  "false_positive_rate_objects_low_snr": {
+   "k": 0,
+   "n": 3,
+   "rate": 0.0,
+   "lo": 0.0,
+   "hi": 0.5615060804490177
+  },
+  "false_positive_rate_pairs_stable": {
+   "k": 5,
+   "n": 248,
+   "rate": 0.020161290322580645,
+   "lo": 0.008641570420160682,
+   "hi": 0.04631996095511648,
+   "note": "pairs of one object share epochs, so they are not independent"
+  },
+  "saturated_refusal_rate": {
+   "k": 0,
+   "n": 0,
+   "rate": null,
+   "lo": null,
+   "hi": null
+  },
+  "asteroid_recovery": {
+   "k": 2,
+   "n": 2,
+   "rate": 1.0,
+   "lo": 0.34237195288961925,
+   "hi": 1.0
+  },
+  "photometric_bias_stable_pairs": {
+   "n": 248,
+   "median": -0.010433370690163035,
+   "err": 0.002222446012911249,
+   "what": "median(flux_b / flux_a - 1) over valid pairs of stable controls"
+  },
+  "photometric_bias_control_stars": {
+   "n": 195,
+   "median": -0.023831122693757867,
+   "err": 0.004513949750080579,
+   "what": "same, for the in-field control star of every valid pair of every measured star target"
+  },
+  "significance_stable_pairs": {
+   "n": 248,
+   "mean": -0.5414024698945951,
+   "std": 1.829590921152381
+  },
+  "outcomes": {
+   "aa_tau": "TP",
+   "dg_tau": "TP",
+   "v2492_cyg": "TP",
+   "p177d": "FP",
+   "bd17_4708": "no_valid_pair",
+   "g191b2b": "FP",
+   "gd71": "TN",
+   "gd153": "TN",
+   "hd116405": "no_valid_pair",
+   "hd180609": "no_valid_pair",
+   "wise1828": "TN",
+   "wise0350": "TN",
+   "wise2056": "TN",
+   "tamriko": "recovered",
+   "eros": "recovered"
+  }
+ }
+}
