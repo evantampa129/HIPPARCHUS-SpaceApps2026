@@ -501,7 +501,7 @@ so nothing here waits for a live archive download.</p>
    <li>Astrometric check: centroid shift between epochs per pair (RW Aur 0.14–0.78″, well under a 6.15″ pixel)
    and proper-motion propagation of catalogue positions (Barnard's Star, 10″/yr)</li></ul></div>
   <div><h3>Future research (not done)</h3><ul>
-   <li>Searching whole fields for sources that move between epochs, as a distant planet would</li>
+   <li>Searching many fields for unknown movers (our moving-object check below is validated on one known asteroid only)</li>
    <li>Separating blended stars with a joint PSF fit (our ePSF fit below is a single-source check only)</li>
    <li>Calibrating against many field stars with larger cutouts</li></ul>
    <p class='muted'>HIPPARCHUS has not found Planet X or any new object.</p></div>
