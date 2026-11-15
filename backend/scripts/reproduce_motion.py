@@ -629,7 +629,7 @@ def figure(r, epochs, dets, t, xi, eta, ep, kleo, hx_all, hy_all, ra0, dec0, sim
     import matplotlib.pyplot as plt
 
     fig = plt.figure(figsize=(13, 9.5))
-    gs = fig.add_gridspec(3, 6, height_ratios=[1, 1, 1.05], hspace=0.45, wspace=0.35)
+    gs = fig.add_gridspec(3, 6, height_ratios=[1, 1, 1.05], hspace=0.45, wspace=0.75)
     vis = M.visits([e.mjd for e in epochs])
     # One real cutout per visit (the one with the strongest asteroid detection).
     picks = []
@@ -695,6 +695,7 @@ def figure(r, epochs, dets, t, xi, eta, ep, kleo, hx_all, hy_all, ra0, dec0, sim
         y = [next(x["recovery_rate"] for x in sim if x["snr"] == s and x["speed_arcsec_h"] == v) for v in speeds]
         ax.plot(speeds, [np.nan if v is None else v for v in y], "o-", label=f"S/N {s}")
     ax.set_xscale("log"), ax.set_ylim(-0.05, 1.05)
+    ax.set_xticks([2, 5, 15, 30]), ax.set_xticklabels(["2", "5", "15", "30"]), ax.minorticks_off()
     ax.set_xlabel("SIMULATED speed [arcsec/hour]"), ax.set_ylabel("recovery fraction")
     ax.set_title("SIMULATED movers injected into the real cutouts", fontsize=9, color="tab:orange")
     ax.legend(fontsize=7)

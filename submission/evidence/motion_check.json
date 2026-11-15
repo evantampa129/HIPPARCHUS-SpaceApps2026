@@ -2415,9 +2415,9 @@
   "Tracks not matching Kleopatra were found. Each is listed with a JPL sb_ident lookup at its position; they are reported without interpretation (a slow 'track' can also come from a blended source whose centroid shifts with wavelength across detectors) and no new object is claimed."
  ],
  "run": {
-  "started_utc": "2026-11-15T23:19:18+00:00",
-  "finished_utc": "2026-11-15T23:35:27+00:00",
-  "runtime_s": 969.4,
+  "started_utc": "2026-11-16T07:02:23+00:00",
+  "finished_utc": "2026-11-16T07:19:41+00:00",
+  "runtime_s": 1038.5,
   "python": "3.12.3",
   "numpy": "2.5.4"
  }

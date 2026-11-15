@@ -74,4 +74,4 @@ Checked on 16 Nov 2026.
 | Public interactive app | ready in `deploy/`, verified locally with a live RW Aur analysis; not deployed (no host login on the build machine) |
 | Links | every link on the page returns 200, except the IRSA archive-query links, which returned 502 because IRSA was down at check time |
 | Secrets scan | no tokens, keys, `.env` or private e-mail in the public tree |
-| Remaining issues | items marked NOT IMPLEMENTED / PARTIAL above; minor axis-label overlap in `motion_check.png` (needs a 16-min rerun); Space Apps portal submission is done by the team |
+| Remaining issues | items marked NOT IMPLEMENTED / PARTIAL above; Space Apps portal submission is done by the team |
