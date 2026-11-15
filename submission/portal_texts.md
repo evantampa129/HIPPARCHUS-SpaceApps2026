@@ -26,7 +26,7 @@ quality flags, noise), compares only pairs that are truly comparable, measures t
 errors, and then tries to break its own result. When a comparison cannot be trusted, it refuses and says why. On three
 real targets it measured RW Aurigae 2.56× brighter in a year, refused Barnard's Star (saturated in all 58 epochs) and
 found no significant change in WISE 0855−0714. As a first step towards Planet X, we validated a moving-object search on
-the known asteroid (216) Kleopatra, matching JPL Horizons to 0.15–0.18″. HIPPARCHUS has not found Planet X.
+three known asteroids, matching JPL Horizons to 0.15–0.18″ for (216) Kleopatra. HIPPARCHUS has not found Planet X.
 
 ---
 
@@ -86,15 +86,22 @@ pipeline flags a moving asteroid as OUTLIER in 35 of 38 exposures, so static-sta
 **Towards Planet X.** A distant planet would appear as a source that moves between epochs. Before searching for unknown
 movers we validated a blind moving-object search on the known asteroid (216) Kleopatra in 38 real SPHEREx exposures:
 it was linked across 7 visits, and its positions match JPL Horizons computed from SPHEREx's own orbit to 0.15″/0.18″
-rms; the fitted rates agree within 0.8σ. SIMULATED movers at S/N ≥ 7 are recovered in 75–100% of trials. A second
-candidate track turned out to be two faint static stars and a detector hit, and we added a check that catches this.
-HIPPARCHUS has not found Planet X, and we do not claim it.
+rms; the fitted rates agree within 0.8σ. The same search, run blind, also found two more known asteroids: the fainter
+(2052) Tamriko (0.54″/0.56″ rms, at the field-star measurement floor) and the fast near-Earth asteroid (433) Eros
+(about 72″/h, 0.15″/0.20″ rms). SIMULATED movers at S/N ≥ 7 are recovered in 75–100% of trials. A second candidate
+track in the Kleopatra field turned out to be two faint static stars and a detector hit, and we added a vetting step
+that catches this. HIPPARCHUS has not found Planet X, and we do not claim it.
 
 **Benefits.** Anyone can ask SPHEREx whether a star changed and get an answer that respects the instrument, or a clear
 refusal with reasons. Every number is reproducible from public data.
 
-**Tools.** Python (Astropy, NumPy, SciPy, reproject, astroquery, Matplotlib), FastAPI, React/TypeScript/Vite, LaTeX,
-python-pptx, Remotion and FFmpeg for the film. MIT licence.
+**Reproducibility.** Each published case has a downloadable bundle (evidence, every cutout URL with its SHA-256,
+settings, environment and a stand-alone checker), a one-page report and a notebook. Experimental work that did not pass
+its pre-set rule (PSF-matched/ZOGY subtraction, a joint fit of RW Aur A and B, which SPHEREx cannot separate) is
+documented and not used for any result.
+
+**Tools.** Python (Astropy, NumPy, SciPy, reproject, astroquery, Matplotlib), FastAPI, React/TypeScript/Vite, Aladin
+Lite, Manim, LaTeX, python-pptx, Remotion and FFmpeg for the film. MIT licence.
 
 ---
 
