@@ -26,6 +26,8 @@
 \author{Evangelos Tampachaniotis (Team AETHENOVA) \\ NASA Space Apps Challenge 2026, Athens \\ \small Challenge: Planet X and SPHEREx}
 \date{15 November 2026}
 
+% We let LaTeX stretch spaces a little more so long \texttt{} file names do not stick out of the margin.
+\setlength{\emergencystretch}{3em}
 \begin{document}
 \maketitle
 \noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep}{\small
@@ -337,8 +339,8 @@ The app shows the same checks as a heatmap for each preset. The full analysis of
 takes 29\,s with 215\,MB of memory.
 
 \textbf{What we did not do, and why.} The SPHEREx images carry an empirical PSF per detector zone (HDU \texttt{EPSF}),
-so forced PSF photometry is possible; Section~\ref{sec:epsf} tests it as a second measurement. Proper image
-subtraction \parencite{zackay2016} we did not try. A real zero-point fit across epochs \parencite[ubercalibration,][]{padmanabhan2008} needs many stars per
+so forced PSF photometry is possible; Section~\ref{sec:epsf} tests it as a second measurement, and
+Section~\ref{sec:psfsub} benchmarks PSF-matched and proper image subtraction \parencite{zackay2016} (not adopted). A real zero-point fit across epochs \parencite[ubercalibration,][]{padmanabhan2008} needs many stars per
 image and larger cutouts. Learned real/bogus classifiers \parencite{duev2019,mahabal2019} and conformal $p$-values
 \parencite{bates2023} need a large labelled or null set that three targets do not provide.
 
@@ -411,6 +413,35 @@ background, no wavelength dependence within the channel; the correlation test ab
 \caption{ePSF fit to two RW~Aur epochs on the native pixels (EXPERIMENTAL): data, model, residual/rms.}\label{fig:epsf}
 \end{figure}
 
+% We report both experiments even though neither is adopted: the negative results are part of the evidence.
+\subsection{PSF-matched subtraction and a joint fit of RW~Aur A and B (EXPERIMENTAL, not adopted)}\label{sec:psfsub}
+\textbf{Subtraction.} On the legitimate pairs (8 RW~Aur, 27 WISE~0855) we compared our direct difference with a
+Gaussian-kernel match, an Alard--Lupton-style kernel and two ZOGY variants \parencite{zackay2016}, using each epoch's
+zone ePSF. ZOGY assumes white noise, known PSFs and no resampling covariance; none holds exactly for undersampled,
+reprojected $6.15''$ cutouts, so one variant adds an interpolation noise term. The direct method reproduces every
+published significance (largest difference $10^{-14}\sigma$). In the clean WISE~0855 field (254 blank spots) the ZOGY
+variant with interpolation noise has a calibrated null (MAD-based width 0.97) and recovers 91\% of SIMULATED point sources
+at $S/N=7$ ($n=158$), against 11\% for our aperture difference; most of the gain comes from weighting the pixels by the
+PSF, not from matching the PSFs. In the RW~Aur field (88 blank spots) every method's null is miscalibrated near the bright
+star and the PSF mismatch leaves tens of spurious $\ge5\sigma$ peaks. Under the acceptance rule fixed before the run, no
+method is adopted; the RW~Aur and WISE~0855 conclusions hold under all of them
+(\texttt{psfsub\_check.json}).
+
+\textbf{Can SPHEREx split RW~Aur A and B?} No. B lies 0.24\,px ($1.52''$) from A. A joint multi-epoch ePSF fit with a
+second component gives A--B flux correlations of $-0.92$ to $-0.997$ per epoch; the fitted B fraction runs from $-0.18$ to
+1.14 between epochs and swings from 0 to $\ge0.8$ when the assumed positions move by $\pm0.15$\,px. In SIMULATED tests
+with a 0.1\,px PSF error, a single star fitted as a pair and a true pair give B fractions only 0.7 of their scatter
+apart, so the better $\chi^2$ of the pair model mostly absorbs ePSF shape error. Sharing one sky position across
+epochs fits worse ($\chi^2_\nu$ 7.02 joint vs 3.55 per epoch, single source). The A+B ratios of the 8 published pairs
+agree with the aperture ratios within 1.7\% in every model, so the published blended ratios stand
+(\texttt{jointpsf\_check.json}, Fig.~\ref{fig:jointpsf}).
+
+\begin{figure}[h]\centering
+\includegraphics[width=\linewidth]{figures/jointpsf_identifiability.png}
+\caption{RW~Aur A/B identifiability on real pixels (EXPERIMENTAL). Left: profile likelihood in the B fraction per epoch;
+middle: in the assumed separation; right: per-epoch vs joint fits.}\label{fig:jointpsf}
+\end{figure}
+
 \section{Spectral calibration note}\label{sec:wavecal}
 The pair rule of Section~\ref{sec:method} needs the wavelength and channel width at the target. All numbers in this report read them
 from the \texttt{WCS-WAVE} lookup table carried by every spectral image and cutout: a $9\times9$ grid of control points
@@ -456,8 +487,8 @@ grid and detector 3 an $11\times41$ grid, as documented. Our zone selection pick
 both layouts.
 
 \section{Comparison with IRSA's own SPHEREx tools}\label{sec:irsatools}
-We ran two of IRSA's own tools on exactly our exposures (\texttt{compare\_irsa\_tools.py},
-\texttt{irsa\_tools\_check.json}, Fig.~\ref{fig:irsatools}).
+We ran two of IRSA's own tools on exactly our exposures (Fig.~\ref{fig:irsatools}). The script is
+\texttt{compare\_irsa\_tools.py} and its results are in \texttt{irsa\_tools\_check.json}.
 
 \paragraph{Source Discovery Tool (SDT).} We ran IRSA's tutorial package unmodified (irsa-tutorials commit
 \texttt{8a83a9e3}) on fresh cutouts of the same exposures, matched by observation ID, and converted our fluxes to mJy
@@ -582,7 +613,8 @@ Agreement with IRSA tools & validated & SDT/ours 0.9998 per exposure, 8/8 RW~Aur
 Pair rule vs spectral overlap & validated & rule equals top-hat overlap $\ge0.5$; graph rebuilds 8/27/0 published pairs (\texttt{compat\_check.json})\\
 Moving-object search & validated on one asteroid & (216) Kleopatra: $0.15''$/$0.18''$ rms vs JPL Horizons from SPHEREx (\texttt{motion\_check.json}, Section~\ref{sec:motion-check})\\\midrule
 Discovery of unknown movers & not demonstrated & no wide search; Planet X not found (Sections~\ref{sec:planetx}, \ref{sec:motion})\\
-Resolved RW~Aur components & not demonstrated & the two stars are $1.6''$ apart, $6.15''$ pixels; both are measured together\\
+PSF-matched / ZOGY subtraction & experimental, not adopted & failed the pre-set rule in the RW~Aur field; published conclusions unchanged (\texttt{psfsub\_check.json}, Section~\ref{sec:psfsub})\\
+Resolved RW~Aur components & not demonstrated & joint fit: A--B flux correlation $-0.92$ to $-0.997$; B fraction set by assumed positions (\texttt{jointpsf\_check.json})\\
 Barnard's Star photometry & not demonstrated & every epoch saturated; no flux is reported\\
 Calibrated probabilities & not demonstrated & labels come from fixed rules, not probabilities\\
 Machine-learning ranking & not demonstrated & no labelled set of real and false changes to train or test on\\\bottomrule
