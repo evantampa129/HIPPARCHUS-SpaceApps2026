@@ -563,7 +563,7 @@ positions or on single-exposure hits. Re-running the blind search on the same ca
 on returns one track instead of two: Kleopatra, unchanged (\path{submission/evidence/motion_followup.json}).
 
 \subsection{Two more known asteroids: a fainter and a faster case}\label{sec:motion-more}
-We ran the same blind search, with vetting, on two other known objects chosen to stress the method
+We ran the same blind search (default linking, no vetting) on two other known objects chosen to stress the method
 (Fig.~\ref{fig:motion-more}). Both were linked without using their ephemerides; Horizons from SPHEREx was used only
 afterwards to check them.
 \begin{itemize}
@@ -577,7 +577,10 @@ not describe the apparent path well ($\chi^2_\nu=63$), while the Horizons residu
 but the polynomial model is too simple for fast movers.
 \end{itemize}
 As with Kleopatra, the SPHEREx pipeline flags the asteroid as OUTLIER in most exposures (30 of 34 for Tamriko, 20 of 20
-for Eros). Three known objects, all within days: the method works on real cases of different brightness and speed,
+for Eros). With vetting switched on, each asteroid still comes out as exactly one track that matches Horizons
+(Tamriko 1 of 2 surviving tracks, Eros 1 of 6). The other survivors are 3--4 single detections, one per visit, with fit
+rms $1.5$--$4.7''$ and far from any known object: chance alignments. Vetting removes static stars and detector hits;
+it does not remove chance alignments, which needs a false-alarm estimate we have not built. Three known objects, all within days: the method works on real cases of different brightness and speed,
 which is still not survey-level completeness. HIPPARCHUS has not found Planet X.
 
 \begin{figure}[p]\centering
@@ -634,7 +637,7 @@ ePSF photometry & experimental & 8/8 RW~Aur pairs compatible with the aperture r
 Agreement with IRSA tools & validated & SDT/ours 0.9998 per exposure, 8/8 RW~Aur verdicts; MOST image list 36/36 (\texttt{irsa\_tools\_check.json})\\
 Pair rule vs spectral overlap & validated & rule equals top-hat overlap $\ge0.5$; graph rebuilds 8/27/0 published pairs (\texttt{compat\_check.json})\\
 Moving-object search & validated on three known asteroids & (216) Kleopatra: $0.15''$/$0.18''$ rms vs JPL Horizons from SPHEREx (\texttt{motion\_check.json}); (2052) Tamriko $0.54''$/$0.56''$, (433) Eros $0.15''$/$0.20''$ (\texttt{motion\_followup.json}, Sections~\ref{sec:motion-check}, \ref{sec:motion-more})\\
-Track vetting & validated on one field & rejects the static-star/detector-hit track, keeps Kleopatra unchanged (\texttt{motion\_followup.json})\\\midrule
+Track vetting & validated on one field & rejects static-star/detector-hit tracks and keeps each asteroid; chance alignments of 3--4 detections survive (\texttt{motion\_followup.json})\\\midrule
 Discovery of unknown movers & not demonstrated & no wide search; Planet X not found (Sections~\ref{sec:planetx}, \ref{sec:motion})\\
 PSF-matched / ZOGY subtraction & experimental, not adopted & failed the pre-set rule in the RW~Aur field; published conclusions unchanged (\texttt{psfsub\_check.json}, Section~\ref{sec:psfsub})\\
 Resolved RW~Aur components & not demonstrated & joint fit: A--B flux correlation $-0.92$ to $-0.997$; B fraction set by assumed positions (\texttt{jointpsf\_check.json})\\
