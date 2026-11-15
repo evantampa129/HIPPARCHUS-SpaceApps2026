@@ -379,11 +379,24 @@ small error in the lookup would have to be systematic between epochs to change a
 
 \subsection{CWAVE/CBAND audit}\label{sec:wavecal-audit}
 % WAVECAL-RESULTS
-% We fill this subsection in from wavecal_check.json once the audit is final;
-% until then it only says where the audit is described, with no numbers.
-The audit compares the wavelength and bandwidth at the target from the \texttt{WCS-WAVE} lookup with the values from
-the \texttt{CWAVE}/\texttt{CBAND} calibration maps, for the epochs used in this report. It is described in
-\path{submission/evidence/wavecal_check.json}; its results will be summarised here.
+% We report the audit side by side; the production code and published evidence are unchanged.
+We downloaded the official SPHEREx Spectral WCS calibration (version \texttt{cal-swcs-v5-2026-191}, the same files
+under DR1 and QR3) and read \texttt{CWAVE}/\texttt{CBAND} at the parent-detector pixel of each target. The audit found a
+real problem in our pipeline: astropy applies the celestial SIP distortion terms to the alternate \texttt{W} WCS too, so
+the production code reads the \texttt{WCS-WAVE} table at a shifted pixel. Read without SIP, the table agrees with
+\texttt{CWAVE} to 0.3\,nm (median); with SIP, the median and maximum differences are 0.58/1.59\,nm for RW~Aur and
+3.74/17.8\,nm for WISE~0855 (up to 0.48 of a channel width).
+
+With calibrated wavelengths, no RW~Aur or Barnard decision changes: RW~Aur keeps the same 8 valid pairs, ratio
+$\times2.56$ and $175\sigma$, and both stability claims hold. For WISE~0855, two pairs become ineligible and three become
+eligible, giving 28 valid pairs instead of 27; the largest change is $2.05\sigma$ instead of $1.93\sigma$, so ``no
+$\ge5\sigma$ change'' still holds. No published conclusion changes. We keep the published numbers as they are, for
+reproducibility, and will switch the pipeline to \texttt{CWAVE}/\texttt{CBAND} in the next version. Details:
+\path{submission/evidence/wavecal_check.json}, \path{backend/scripts/reproduce_wavecal.py}.
+
+The same audit checked the ePSF tables in all 204 cached cutouts: detectors 1, 2, 4, 5 and 6 use a $21\times21$ zone
+grid and detector 3 an $11\times41$ grid, as documented. Our zone selection picks the zone containing the star for
+both layouts.
 
 \section{Moving objects}\label{sec:motion}
 Section~\ref{sec:planetx} explains why a distant planet would appear in our comparisons, if at all, as a source present

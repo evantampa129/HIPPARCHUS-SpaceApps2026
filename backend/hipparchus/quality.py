@@ -99,7 +99,11 @@ def load(path: str, obs_id: str, ra: float, dec: float) -> Epoch:
         if missing:
             raise ValueError(f"{obs_id}: FITS file lacks the {', '.join(missing)} extension(s)")
         # The spectral WCS uses SIP-style keywords that astropy warns about. The
-        # celestial solution is unaffected, so these warnings are only noise.
+        # celestial solution is unaffected. We found later that astropy also applies
+        # the celestial SIP terms to WCS(key="W"), so the wavelength below is read at a
+        # slightly shifted pixel (up to ~18 nm on WISE 0855). We keep it unchanged so the
+        # published numbers stay reproducible; spectral_cal.py and reproduce_wavecal.py
+        # show that no published conclusion changes with the calibrated CWAVE/CBAND.
         warnings.simplefilter("ignore", FITSFixedWarning)
 
         hdr = h["IMAGE"].header
