@@ -3514,10 +3514,3076 @@
   "neo_scan": "Horizons from SPHEREx, 2025-05-01..2026-07-25, daily, for 40 well-known NEOs; kept days with V < 16 and elongation 88-125 deg. Windows found for 433 Eros, 1036 Ganymed, 1620 Geographos, 2100 Ra-Shalom, 1943 Anteros, 4183 Cuno, 35107 (1991 VH), 3361 Orpheus, 3103 Eger; none for the other 31.",
   "eros_sia_scan": "SIA at Eros's position every 4 days, MJD 60863-60903; exposures within 1 day whose Eros position is within 0.25 deg: 3 visits at 60862.6-60863.3 (the case used), 2 at 60867.2-60867.4, 1 at 60870.8 and 60882.5, none at the other 7 samples."
  },
- "validation_cases": [],
+ "validation_cases": [
+  {
+   "label": "REAL SPHEREx data, KNOWN object",
+   "object": "(2052) Tamriko",
+   "why_chosen": "FAINTER case: main-belt asteroid 0.4 deg from the Kleopatra field, V ~16.2 in the same 3.3-day window (Kleopatra V 12.8), i.e. close to the single-exposure detection limit; found with sb_ident from SPHEREx.",
+   "horizons_command": "2052;",
+   "field": {
+    "ra_center": 201.41412845912873,
+    "dec_center": -7.776125090908357,
+    "cutout_size_deg": 0.22,
+    "window_mjd": [
+     60843.4,
+     60846.7
+    ],
+    "track_half_extent_deg": 0.07020645662405964
+   },
+   "archive": {
+    "queries": [
+     {
+      "release": "spherex_dr1",
+      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+201.41412845912873+-7.776125090908357+0.001&RESPONSEFORMAT=VOTABLE",
+      "sha256": "bd217f6d96a226995e7da89443f63a09419d1e218ce9c643aa7a8727ceae0e6e",
+      "status": "cached"
+     },
+     {
+      "release": "spherex_qr3",
+      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+201.41412845912873+-7.776125090908357+0.001&RESPONSEFORMAT=VOTABLE",
+      "sha256": "6abfc7fa68ef3b60e3d96f1da7dfa476535a8a0b64272175d871a5d8a033c7bf",
+      "status": "cached"
+     }
+    ],
+    "n_exposures_in_window": 34,
+    "cutouts_failed": []
+   },
+   "horizons_query_urls_spherex": [
+    "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%272052%3B%27&EPHEM_TYPE=OBSERVER&CENTER=%27500%40-163182%27&TLIST=60843.49784759+60843.49784760+60843.49933985+60843.49933985+60843.50083209+60843.50083209+60843.97252629+60843.97252629+60843.97401854+60843.97401854+60843.97551080+60843.97551081+60844.10860559+60844.10860560+60844.11009784+60844.11009784+60844.11159009+60844.11159009+60844.11308236+60844.11308236+60845.87452758+60845.87452758+60845.94263830+60845.94263830+60845.94414833+60845.94414832+60846.62369208+60846.62369209+60846.62518435+60846.62518435+60846.62667659+60846.62667659+60846.62816885+60846.62816885&TLIST_TYPE=MJD&TIME_TYPE=UT&QUANTITIES=%271%2C3%2C9%2C20%2C23%27&ANG_FORMAT=DEG&CSV_FORMAT=YES&EXTRA_PREC=YES&OBJ_DATA=NO"
+   ],
+   "coarse_track_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%272052%3B%27&EPHEM_TYPE=OBSERVER&CENTER=%27500%40-163182%27&START_TIME=%27JD+2460843.9%27&STOP_TIME=%27JD+2460847.2%27&STEP_SIZE=%271h%27&QUANTITIES=%271%27&ANG_FORMAT=DEG&CSV_FORMAT=YES&OBJ_DATA=NO",
+   "V_mag_range_horizons": [
+    16.157,
+    16.204
+   ],
+   "horizons_rate_range_arcsec_h": [
+    5.551946950561847,
+    7.276625401946977
+   ],
+   "n_visits_with_object_inside_cutout": 6,
+   "n_visits_total": 6,
+   "blind_search": {
+    "n_detections": 2117,
+    "n_static": 2048,
+    "tracks": [
+     {
+      "track": 0,
+      "n_detections": 23,
+      "n_visits": 6,
+      "rate_ra_cosdec_arcsec_h": 5.702287418711086,
+      "rate_dec_arcsec_h": 2.107174588999201,
+      "fit_rms_arcsec": 0.6482587638825212,
+      "median_offset_from_horizons_arcsec": 0.4321467834516928,
+      "matches_horizons": true
+     },
+     {
+      "track": 1,
+      "n_detections": 5,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": -1.8146200423727512,
+      "rate_dec_arcsec_h": -1.6165170040301846,
+      "fit_rms_arcsec": 0.7681129857851287,
+      "median_offset_from_horizons_arcsec": 80.23071744557778,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 3,
+         "mjd_min": 60843.972526293,
+         "mjd_max": 60844.110097844,
+         "span_hours": 3.3017172240070067,
+         "xi": -114.17637482319894,
+         "eta": -104.34132652651276
+        },
+        {
+         "n": 2,
+         "mjd_min": 60846.625184349,
+         "mjd_max": 60846.626676594,
+         "span_hours": 0.03581387997837737,
+         "xi": -220.3834996851099,
+         "eta": -196.68677516391332
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60845.388424268654,
+       "ra": 201.37606577605405,
+       "dec": -7.806524804460909
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-19_09%3A19%3A19&xobs=-3.182593006E%2B03%2C-6.986892345E%2B02%2C6.229117596E%2B03%2C-6.699733862E%2B00%2C8.279947376E-01%2C-3.325711961E%2B00&fov-ra-center=13-25-30.26&fov-dec-center=M07-48-23.5&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 13,
+       "objects": [
+        {
+         "Object name": "2052 Tamriko (1976 UN)",
+         "Astrometric RA (hh:mm:ss)": "13:25:41.32",
+         "Astrometric Dec (dd mm'ss\")": "-07 46'11.5\"",
+         "Dist. from center RA (\")": "164.",
+         "Dist. from center Dec (\")": "132.",
+         "Dist. from center Norm (\")": "210.9",
+         "Visual magnitude (V)": "16.2",
+         "RA rate (\"/h)": "1.225E+01",
+         "Dec rate (\"/h)": "6.466E+00"
+        },
+        {
+         "Object name": "128920 (2004 TV65)",
+         "Astrometric RA (hh:mm:ss)": "13:25:22.33",
+         "Astrometric Dec (dd mm'ss\")": "-07 50'23.3\"",
+         "Dist. from center RA (\")": "-118.",
+         "Dist. from center Dec (\")": "-120.",
+         "Dist. from center Norm (\")": "168.1",
+         "Visual magnitude (V)": "21.4",
+         "RA rate (\"/h)": "1.169E+01",
+         "Dec rate (\"/h)": "3.858E-01"
+        },
+        {
+         "Object name": "256031 (2006 UH42)",
+         "Astrometric RA (hh:mm:ss)": "13:25:17.58",
+         "Astrometric Dec (dd mm'ss\")": "-07 43'13.3\"",
+         "Dist. from center RA (\")": "-188.",
+         "Dist. from center Dec (\")": "310.",
+         "Dist. from center Norm (\")": "362.9",
+         "Visual magnitude (V)": "20.8",
+         "RA rate (\"/h)": "2.096E+01",
+         "Dec rate (\"/h)": "-1.654E+00"
+        },
+        {
+         "Object name": "278146 (2007 DW2)",
+         "Astrometric RA (hh:mm:ss)": "13:25:44.89",
+         "Astrometric Dec (dd mm'ss\")": "-07 45'54.9\"",
+         "Dist. from center RA (\")": "217.",
+         "Dist. from center Dec (\")": "149.",
+         "Dist. from center Norm (\")": "263.4",
+         "Visual magnitude (V)": "20.8",
+         "RA rate (\"/h)": "3.255E+01",
+         "Dec rate (\"/h)": "-6.451E+00"
+        },
+        {
+         "Object name": "330352 (2006 VE40)",
+         "Astrometric RA (hh:mm:ss)": "13:25:08.26",
+         "Astrometric Dec (dd mm'ss\")": "-07 48'48.7\"",
+         "Dist. from center RA (\")": "-327.",
+         "Dist. from center Dec (\")": "-25.2",
+         "Dist. from center Norm (\")": "327.9",
+         "Visual magnitude (V)": "21.3",
+         "RA rate (\"/h)": "2.542E+01",
+         "Dec rate (\"/h)": "6.327E+00"
+        },
+        {
+         "Object name": "355166 (2006 VP169)",
+         "Astrometric RA (hh:mm:ss)": "13:25:14.24",
+         "Astrometric Dec (dd mm'ss\")": "-07 49'21.4\"",
+         "Dist. from center RA (\")": "-238.",
+         "Dist. from center Dec (\")": "-57.9",
+         "Dist. from center Norm (\")": "245.0",
+         "Visual magnitude (V)": "23.0",
+         "RA rate (\"/h)": "6.922E+00",
+         "Dec rate (\"/h)": "2.854E+00"
+        },
+        {
+         "Object name": "388131 (2005 VW108)",
+         "Astrometric RA (hh:mm:ss)": "13:25:07.78",
+         "Astrometric Dec (dd mm'ss\")": "-07 47'53.5\"",
+         "Dist. from center RA (\")": "-334.",
+         "Dist. from center Dec (\")": "30.0",
+         "Dist. from center Norm (\")": "335.5",
+         "Visual magnitude (V)": "22.2",
+         "RA rate (\"/h)": "1.706E+01",
+         "Dec rate (\"/h)": "-3.882E+00"
+        },
+        {
+         "Object name": "552683 (2010 JS211)",
+         "Astrometric RA (hh:mm:ss)": "13:25:24.48",
+         "Astrometric Dec (dd mm'ss\")": "-07 46'13.4\"",
+         "Dist. from center RA (\")": "-85.9",
+         "Dist. from center Dec (\")": "130.",
+         "Dist. from center Norm (\")": "156.0",
+         "Visual magnitude (V)": "22.1",
+         "RA rate (\"/h)": "2.498E+01",
+         "Dec rate (\"/h)": "1.231E+01"
+        },
+        {
+         "Object name": "794816 (2007 JD48)",
+         "Astrometric RA (hh:mm:ss)": "13:25:37.67",
+         "Astrometric Dec (dd mm'ss\")": "-07 52'08.2\"",
+         "Dist. from center RA (\")": "110.",
+         "Dist. from center Dec (\")": "-225.",
+         "Dist. from center Norm (\")": "250.2",
+         "Visual magnitude (V)": "22.5",
+         "RA rate (\"/h)": "1.914E+01",
+         "Dec rate (\"/h)": "-2.563E+00"
+        },
+        {
+         "Object name": "(2001 TL253)",
+         "Astrometric RA (hh:mm:ss)": "13:25:15.96",
+         "Astrometric Dec (dd mm'ss\")": "-07 51'30.4\"",
+         "Dist. from center RA (\")": "-213.",
+         "Dist. from center Dec (\")": "-187.",
+         "Dist. from center Norm (\")": "283.0",
+         "Visual magnitude (V)": "24.2",
+         "RA rate (\"/h)": "7.694E+00",
+         "Dec rate (\"/h)": "-7.327E-02"
+        },
+        {
+         "Object name": "(2014 JV122)",
+         "Astrometric RA (hh:mm:ss)": "13:25:50.70",
+         "Astrometric Dec (dd mm'ss\")": "-07 42'49.7\"",
+         "Dist. from center RA (\")": "304.",
+         "Dist. from center Dec (\")": "334.",
+         "Dist. from center Norm (\")": "451.4",
+         "Visual magnitude (V)": "22.8",
+         "RA rate (\"/h)": "8.867E+00",
+         "Dec rate (\"/h)": "-1.984E+00"
+        },
+        {
+         "Object name": "(2017 HT70)",
+         "Astrometric RA (hh:mm:ss)": "13:25:07.36",
+         "Astrometric Dec (dd mm'ss\")": "-07 52'55.1\"",
+         "Dist. from center RA (\")": "-340.",
+         "Dist. from center Dec (\")": "-272.",
+         "Dist. from center Norm (\")": "435.3",
+         "Visual magnitude (V)": "23.2",
+         "RA rate (\"/h)": "1.729E+01",
+         "Dec rate (\"/h)": "5.851E+00"
+        },
+        {
+         "Object name": "(2017 SO349)",
+         "Astrometric RA (hh:mm:ss)": "13:25:38.14",
+         "Astrometric Dec (dd mm'ss\")": "-07 46'55.3\"",
+         "Dist. from center RA (\")": "117.",
+         "Dist. from center Dec (\")": "88.2",
+         "Dist. from center Norm (\")": "146.6",
+         "Visual magnitude (V)": "23.1",
+         "RA rate (\"/h)": "1.585E+01",
+         "Dec rate (\"/h)": "3.407E+00"
+        }
+       ]
+      }
+     },
+     {
+      "track": 2,
+      "n_detections": 3,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": 1.8407282552376396,
+      "rate_dec_arcsec_h": -0.1897767382781301,
+      "fit_rms_arcsec": 1.8495893004959887,
+      "median_offset_from_horizons_arcsec": 58.98676924729694,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 1,
+       "groups": [
+        {
+         "n": 2,
+         "mjd_min": 60843.972526293,
+         "mjd_max": 60844.110097844,
+         "span_hours": 3.3017172240070067,
+         "xi": -198.02912645522065,
+         "eta": -73.08959359918276
+        },
+        {
+         "n": 1,
+         "mjd_min": 60846.625184349,
+         "mjd_max": 60846.625184349,
+         "span_hours": 0.0,
+         "xi": -84.65227378763635,
+         "eta": -84.76356107351067
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60844.96661680822,
+       "ra": 201.36981364514074,
+       "dec": -7.79756525121679
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-18_23%3A11%3A55&xobs=5.240773438E%2B03%2C-9.638062859E%2B02%2C4.585508156E%2B03%2C-4.999710714E%2B00%2C-4.763608478E-01%2C5.608872593E%2B00&fov-ra-center=13-25-28.76&fov-dec-center=M07-47-51.2&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 9,
+       "objects": [
+        {
+         "Object name": "2052 Tamriko (1976 UN)",
+         "Astrometric RA (hh:mm:ss)": "13:25:37.03",
+         "Astrometric Dec (dd mm'ss\")": "-07 46'29.4\"",
+         "Dist. from center RA (\")": "123.",
+         "Dist. from center Dec (\")": "81.8",
+         "Dist. from center Norm (\")": "147.6",
+         "Visual magnitude (V)": "16.2",
+         "RA rate (\"/h)": "8.561E+00",
+         "Dec rate (\"/h)": "-9.559E+00"
+        },
+        {
+         "Object name": "128920 (2004 TV65)",
+         "Astrometric RA (hh:mm:ss)": "13:25:18.62",
+         "Astrometric Dec (dd mm'ss\")": "-07 49'37.3\"",
+         "Dist. from center RA (\")": "-151.",
+         "Dist. from center Dec (\")": "-106.",
+         "Dist. from center Norm (\")": "184.3",
+         "Visual magnitude (V)": "21.4",
+         "RA rate (\"/h)": "7.812E+00",
+         "Dec rate (\"/h)": "-1.652E+01"
+        },
+        {
+         "Object name": "278146 (2007 DW2)",
+         "Astrometric RA (hh:mm:ss)": "13:25:30.31",
+         "Astrometric Dec (dd mm'ss\")": "-07 43'19.4\"",
+         "Dist. from center RA (\")": "23.0",
+         "Dist. from center Dec (\")": "272.",
+         "Dist. from center Norm (\")": "272.7",
+         "Visual magnitude (V)": "20.8",
+         "RA rate (\"/h)": "2.572E+01",
+         "Dec rate (\"/h)": "-3.680E+01"
+        },
+        {
+         "Object name": "355166 (2006 VP169)",
+         "Astrometric RA (hh:mm:ss)": "13:25:13.01",
+         "Astrometric Dec (dd mm'ss\")": "-07 49'09.5\"",
+         "Dist. from center RA (\")": "-234.",
+         "Dist. from center Dec (\")": "-78.3",
+         "Dist. from center Norm (\")": "246.9",
+         "Visual magnitude (V)": "23.0",
+         "RA rate (\"/h)": "3.730E+00",
+         "Dec rate (\"/h)": "-1.095E+01"
+        },
+        {
+         "Object name": "552683 (2010 JS211)",
+         "Astrometric RA (hh:mm:ss)": "13:25:13.33",
+         "Astrometric Dec (dd mm'ss\")": "-07 47'08.8\"",
+         "Dist. from center RA (\")": "-229.",
+         "Dist. from center Dec (\")": "42.4",
+         "Dist. from center Norm (\")": "233.2",
+         "Visual magnitude (V)": "22.1",
+         "RA rate (\"/h)": "1.967E+01",
+         "Dec rate (\"/h)": "-1.106E+01"
+        },
+        {
+         "Object name": "553807 (2011 WB165)",
+         "Astrometric RA (hh:mm:ss)": "13:25:45.94",
+         "Astrometric Dec (dd mm'ss\")": "-07 52'29.3\"",
+         "Dist. from center RA (\")": "255.",
+         "Dist. from center Dec (\")": "-278.",
+         "Dist. from center Norm (\")": "377.5",
+         "Visual magnitude (V)": "22.3",
+         "RA rate (\"/h)": "6.328E+00",
+         "Dec rate (\"/h)": "-2.763E+01"
+        },
+        {
+         "Object name": "794816 (2007 JD48)",
+         "Astrometric RA (hh:mm:ss)": "13:25:30.49",
+         "Astrometric Dec (dd mm'ss\")": "-07 50'33.5\"",
+         "Dist. from center RA (\")": "25.6",
+         "Dist. from center Dec (\")": "-162.",
+         "Dist. from center Norm (\")": "164.3",
+         "Visual magnitude (V)": "22.5",
+         "RA rate (\"/h)": "1.382E+01",
+         "Dec rate (\"/h)": "-2.582E+01"
+        },
+        {
+         "Object name": "(2001 TL253)",
+         "Astrometric RA (hh:mm:ss)": "13:25:15.63",
+         "Astrometric Dec (dd mm'ss\")": "-07 50'32.0\"",
+         "Dist. from center RA (\")": "-195.",
+         "Dist. from center Dec (\")": "-161.",
+         "Dist. from center Norm (\")": "252.8",
+         "Visual magnitude (V)": "24.2",
+         "RA rate (\"/h)": "3.193E+00",
+         "Dec rate (\"/h)": "-1.957E+01"
+        },
+        {
+         "Object name": "(2017 SO349)",
+         "Astrometric RA (hh:mm:ss)": "13:25:32.27",
+         "Astrometric Dec (dd mm'ss\")": "-07 46'31.9\"",
+         "Dist. from center RA (\")": "52.2",
+         "Dist. from center Dec (\")": "79.3",
+         "Dist. from center Norm (\")": "94.96",
+         "Visual magnitude (V)": "23.1",
+         "RA rate (\"/h)": "1.136E+01",
+         "Dec rate (\"/h)": "-1.614E+01"
+        }
+       ]
+      }
+     },
+     {
+      "track": 3,
+      "n_detections": 3,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": -0.8912960959297265,
+      "rate_dec_arcsec_h": -3.0431557645889478,
+      "fit_rms_arcsec": 2.4288663592115642,
+      "median_offset_from_horizons_arcsec": 411.9259355418412,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 1,
+       "groups": [
+        {
+         "n": 2,
+         "mjd_min": 60843.972526293,
+         "mjd_max": 60844.11159009,
+         "span_hours": 3.3375311279087327,
+         "xi": -167.97161473186293,
+         "eta": 360.7658239722814
+        },
+        {
+         "n": 1,
+         "mjd_min": 60846.625184349,
+         "mjd_max": 60846.625184349,
+         "span_hours": 0.0,
+         "xi": -223.05005337147696,
+         "eta": 172.79714714406322
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60845.623338554666,
+       "ra": 201.35761724323174,
+       "dec": -7.70777869250298
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-06-19_14%3A57%3A36&xobs=1.436077192E%2B03%2C8.825248308E%2B02%2C-6.825661699E%2B03%2C7.354934252E%2B00%2C-5.750475656E-01%2C1.472790270E%2B00&fov-ra-center=13-25-25.83&fov-dec-center=M07-42-28.0&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 6,
+       "objects": [
+        {
+         "Object name": "2052 Tamriko (1976 UN)",
+         "Astrometric RA (hh:mm:ss)": "13:25:43.73",
+         "Astrometric Dec (dd mm'ss\")": "-07 45'54.3\"",
+         "Dist. from center RA (\")": "266.",
+         "Dist. from center Dec (\")": "-206.",
+         "Dist. from center Norm (\")": "336.6",
+         "Visual magnitude (V)": "16.2",
+         "RA rate (\"/h)": "4.773E-01",
+         "Dec rate (\"/h)": "7.239E-01"
+        },
+        {
+         "Object name": "256031 (2006 UH42)",
+         "Astrometric RA (hh:mm:ss)": "13:25:22.20",
+         "Astrometric Dec (dd mm'ss\")": "-07 43'51.3\"",
+         "Dist. from center RA (\")": "-53.9",
+         "Dist. from center Dec (\")": "-83.3",
+         "Dist. from center Norm (\")": "99.24",
+         "Visual magnitude (V)": "20.8",
+         "RA rate (\"/h)": "3.466E+00",
+         "Dec rate (\"/h)": "-1.019E+01"
+        },
+        {
+         "Object name": "482146 (2010 TD9)",
+         "Astrometric RA (hh:mm:ss)": "13:25:10.32",
+         "Astrometric Dec (dd mm'ss\")": "-07 41'26.9\"",
+         "Dist. from center RA (\")": "-231.",
+         "Dist. from center Dec (\")": "61.1",
+         "Dist. from center Norm (\")": "238.5",
+         "Visual magnitude (V)": "22.9",
+         "RA rate (\"/h)": "-1.637E+00",
+         "Dec rate (\"/h)": "-1.912E+00"
+        },
+        {
+         "Object name": "552683 (2010 JS211)",
+         "Astrometric RA (hh:mm:ss)": "13:25:30.69",
+         "Astrometric Dec (dd mm'ss\")": "-07 45'32.1\"",
+         "Dist. from center RA (\")": "72.2",
+         "Dist. from center Dec (\")": "-184.",
+         "Dist. from center Norm (\")": "197.7",
+         "Visual magnitude (V)": "22.1",
+         "RA rate (\"/h)": "7.815E+00",
+         "Dec rate (\"/h)": "3.931E+00"
+        },
+        {
+         "Object name": "(2015 VD106)",
+         "Astrometric RA (hh:mm:ss)": "13:25:40.86",
+         "Astrometric Dec (dd mm'ss\")": "-07 41'44.5\"",
+         "Dist. from center RA (\")": "223.",
+         "Dist. from center Dec (\")": "43.5",
+         "Dist. from center Norm (\")": "227.6",
+         "Visual magnitude (V)": "31.6",
+         "RA rate (\"/h)": "-1.152E+01",
+         "Dec rate (\"/h)": "-4.250E+00"
+        },
+        {
+         "Object name": "(2017 SO349)",
+         "Astrometric RA (hh:mm:ss)": "13:25:41.42",
+         "Astrometric Dec (dd mm'ss\")": "-07 46'59.5\"",
+         "Dist. from center RA (\")": "232.",
+         "Dist. from center Dec (\")": "-272.",
+         "Dist. from center Norm (\")": "357.0",
+         "Visual magnitude (V)": "23.1",
+         "RA rate (\"/h)": "1.503E+00",
+         "Dec rate (\"/h)": "-3.568E+00"
+        }
+       ]
+      }
+     }
+    ],
+    "with_vetting": {
+     "vet_settings": {
+      "radius_arcsec": 6.0,
+      "min_dt_hours": 4.0
+     },
+     "n_tracks": 2,
+     "n_matching_horizons": 1,
+     "n_rejected_degenerate": 16
+    }
+   },
+   "linked": true,
+   "exposures": [
+    {
+     "obs_id": "2025W25_1B_0290_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D3",
+     "mjd_mid": 60843.49784759,
+     "wavelength_um": 2.2904,
+     "cutout_sha256": "6bf9ec307609622cd0472aa0f14be33830fb003e1e5e13428c95a3147970f21b",
+     "horizons_spherex": {
+      "ra": 201.350913389,
+      "dec": -7.796170237
+     },
+     "V_mag_horizons": 16.157,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 2,
+      "SOURCE": 9
+     },
+     "measured": {
+      "ra": 201.35089008326284,
+      "dec": -7.796146892314775,
+      "snr": 17.37206674250891,
+      "err_arcsec": 0.25553112297494146,
+      "x": 34.253829581300636,
+      "y": 89.83167021485565,
+      "resid_ra_cosdec_arcsec": -0.08313780627204892,
+      "resid_dec_arcsec": 0.08402848328185542,
+      "resid_vs_geocentric_arcsec": [
+       1.5173501859902956,
+       -0.5103903713382039
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0290_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D6",
+     "mjd_mid": 60843.497847601,
+     "wavelength_um": 4.9175,
+     "cutout_sha256": "4fe15645f68db3796dba082a81c4440ce1d982bd546d584a0df3c082a7df8550",
+     "horizons_spherex": {
+      "ra": 201.35091339,
+      "dec": -7.796170236
+     },
+     "V_mag_horizons": 16.157,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 1,
+      "SOURCE": 9
+     },
+     "measured": {
+      "ra": 201.35030065420946,
+      "dec": -7.7959791642538345,
+      "snr": 6.230431997650822,
+      "err_arcsec": 0.7628296841590714,
+      "x": 33.73846459168565,
+      "y": 89.36621719341721,
+      "resid_ra_cosdec_arcsec": -2.185566411516305,
+      "resid_dec_arcsec": 0.687530111742106,
+      "resid_vs_geocentric_arcsec": [
+       -0.5850784197928363,
+       0.09311485711265277
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0290_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D3",
+     "mjd_mid": 60843.499339847,
+     "wavelength_um": 2.3426,
+     "cutout_sha256": "7c7ed1649943cdb8401fccf663690a4854fbd4296061ea55a62b574a983242a8",
+     "horizons_spherex": {
+      "ra": 201.350979149,
+      "dec": -7.796006788
+     },
+     "V_mag_horizons": 16.157,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 1,
+      "SOURCE": 9
+     },
+     "measured": {
+      "ra": 201.35115735805348,
+      "dec": -7.795911064403507,
+      "snr": 18.67721351256863,
+      "err_arcsec": 0.2514283269696195,
+      "x": 34.8631382744952,
+      "y": 89.0763857752292,
+      "resid_ra_cosdec_arcsec": 0.6355724547933619,
+      "resid_dec_arcsec": 0.3447000837417278,
+      "resid_vs_geocentric_arcsec": [
+       2.2922581421503594,
+       0.2506502073238863
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0290_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D6",
+     "mjd_mid": 60843.499339847,
+     "wavelength_um": 4.9535,
+     "cutout_sha256": "504066bcbc49413f94493763cd6cc0acf41b2b756e1b24c72a34a2c538d07c71",
+     "horizons_spherex": {
+      "ra": 201.350979149,
+      "dec": -7.796006788
+     },
+     "V_mag_horizons": 16.157,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "SOURCE": 10
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_1B_0290_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D3",
+     "mjd_mid": 60843.500832092,
+     "wavelength_um": 2.3889,
+     "cutout_sha256": "7e278871224bf00e0cb76d792a6881c7a15525279faf69113d4ac080485fe143",
+     "horizons_spherex": {
+      "ra": 201.351036079,
+      "dec": -7.795842855
+     },
+     "V_mag_horizons": 16.157,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 2,
+      "SOURCE": 10
+     },
+     "measured": {
+      "ra": 201.35102381087768,
+      "dec": -7.795927707340868,
+      "snr": 13.022608375642404,
+      "err_arcsec": 0.24495027403001288,
+      "x": 34.73780947747667,
+      "y": 90.59332400836428,
+      "resid_ra_cosdec_arcsec": -0.04371158450180701,
+      "resid_dec_arcsec": -0.30547517842950356,
+      "resid_vs_geocentric_arcsec": [
+       1.6376417852036695,
+       0.1026031975327868
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0290_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D6",
+     "mjd_mid": 60843.500832092,
+     "wavelength_um": 4.9894,
+     "cutout_sha256": "ab6441fd2246267838e9d10bc7c49b159f6c9b3cf105b1168fa90dba84128f6a",
+     "horizons_spherex": {
+      "ra": 201.351036079,
+      "dec": -7.795842855
+     },
+     "V_mag_horizons": 16.157,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "SOURCE": 10
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_1B_0393_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D3",
+     "mjd_mid": 60843.972526293,
+     "wavelength_um": 1.6877,
+     "cutout_sha256": "7c954bcafa52855fb982860baaa93b08b5a6ef289c94d756a29050ceb074f697",
+     "horizons_spherex": {
+      "ra": 201.367315586,
+      "dec": -7.788712318
+     },
+     "V_mag_horizons": 16.164,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 5
+     },
+     "measured": {
+      "ra": 201.36729966499374,
+      "dec": -7.7885113778705675,
+      "snr": 23.125172577233602,
+      "err_arcsec": 0.20262795983282075,
+      "x": 40.984716970507904,
+      "y": 81.10175777136317,
+      "resid_ra_cosdec_arcsec": -0.05686689446440596,
+      "resid_dec_arcsec": 0.7233784442449007,
+      "resid_vs_geocentric_arcsec": [
+       1.4686756699792909,
+       -0.1500930060981318
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0393_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D6",
+     "mjd_mid": 60843.972526293,
+     "wavelength_um": 4.4644,
+     "cutout_sha256": "325b075963ab7a9100394f97dd42cedea7249592fcf3c0d17c518c7707bc143f",
+     "horizons_spherex": {
+      "ra": 201.367315586,
+      "dec": -7.788712318
+     },
+     "V_mag_horizons": 16.164,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "PERSIST": 1,
+      "OUTLIER": 2
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_1B_0393_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D3",
+     "mjd_mid": 60843.974018539,
+     "wavelength_um": 1.7262,
+     "cutout_sha256": "e9ea78034068e178c8f027a525d26a3e5cca97d6e88206c1a4fc6d0b11b6d080",
+     "horizons_spherex": {
+      "ra": 201.367389517,
+      "dec": -7.78855221
+     },
+     "V_mag_horizons": 16.164,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 5
+     },
+     "measured": {
+      "ra": 201.36746892501134,
+      "dec": -7.788476795370205,
+      "snr": 19.14272501498197,
+      "err_arcsec": 0.18881953688542902,
+      "x": 41.656673200826766,
+      "y": 81.2285752264184,
+      "resid_ra_cosdec_arcsec": 0.28320195777791923,
+      "resid_dec_arcsec": 0.2715240508821992,
+      "resid_vs_geocentric_arcsec": [
+       1.8823263807772719,
+       -0.10804446731385298
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0393_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D6",
+     "mjd_mid": 60843.974018539,
+     "wavelength_um": 4.497,
+     "cutout_sha256": "17b2a579956da0a62be551dbbec02d1424e3e876f28e1f2c237963cfb7724c85",
+     "horizons_spherex": {
+      "ra": 201.367389517,
+      "dec": -7.78855221
+     },
+     "V_mag_horizons": 16.164,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 3
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_1B_0393_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D3",
+     "mjd_mid": 60843.975510796,
+     "wavelength_um": 1.7655,
+     "cutout_sha256": "c1cff34a0d5acbb3811b45c4478b5547d3cc412182fdde9f298b75bfc8b02da0",
+     "horizons_spherex": {
+      "ra": 201.367454926,
+      "dec": -7.788390101
+     },
+     "V_mag_horizons": 16.164,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 4,
+      "HALO": 1
+     },
+     "measured": {
+      "ra": 201.36756297051673,
+      "dec": -7.788102491800591,
+      "snr": 18.31507824377229,
+      "err_arcsec": 0.20652676740691514,
+      "x": 41.71573526894522,
+      "y": 81.14216305191924,
+      "resid_ra_cosdec_arcsec": 0.38525862801978406,
+      "resid_dec_arcsec": 1.0354359861390208,
+      "resid_vs_geocentric_arcsec": [
+       2.0275324116705065,
+       1.1569886197185966
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0393_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D6",
+     "mjd_mid": 60843.975510807,
+     "wavelength_um": 4.5301,
+     "cutout_sha256": "1ed88d79179d4884c32900e99ceb02f3195fa65b8eff934035da37228981da4d",
+     "horizons_spherex": {
+      "ra": 201.367454927,
+      "dec": -7.7883901
+     },
+     "V_mag_horizons": 16.164,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 2,
+      "HALO": 1
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_1B_0431_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D2",
+     "mjd_mid": 60844.108605587,
+     "wavelength_um": 1.3941,
+     "cutout_sha256": "9b5f48946ba7991aba8552d86161ed95031c233039b0b3ca2dbcda93335292cb",
+     "horizons_spherex": {
+      "ra": 201.372218507,
+      "dec": -7.786623094
+     },
+     "V_mag_horizons": 16.166,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 4
+     },
+     "measured": {
+      "ra": 201.37224016266396,
+      "dec": -7.786759173961745,
+      "snr": 26.097254693317534,
+      "err_arcsec": 0.19067944398987732,
+      "x": 43.85995136711119,
+      "y": 79.0186485946559,
+      "resid_ra_cosdec_arcsec": 0.07729005673246547,
+      "resid_dec_arcsec": -0.4898803522362698,
+      "resid_vs_geocentric_arcsec": [
+       1.6068569259089998,
+       -1.2929458389472614
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0431_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D5",
+     "mjd_mid": 60844.108605599,
+     "wavelength_um": 4.1685,
+     "cutout_sha256": "b92497c9c93bdd893627171953fbfd202928726283a3d5ca3e18986d7149f3da",
+     "horizons_spherex": {
+      "ra": 201.372218507,
+      "dec": -7.786623093
+     },
+     "V_mag_horizons": 16.166,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 2
+     },
+     "measured": {
+      "ra": 201.3722385531243,
+      "dec": -7.786303704252187,
+      "snr": 5.121400935188497,
+      "err_arcsec": 0.869787098880891,
+      "x": 44.3526599629764,
+      "y": 78.8846275614931,
+      "resid_ra_cosdec_arcsec": 0.07138693806811602,
+      "resid_dec_arcsec": 1.1498069097827397,
+      "resid_vs_geocentric_arcsec": [
+       1.6009502404673697,
+       0.34674142271632746
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0431_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D2",
+     "mjd_mid": 60844.110097844,
+     "wavelength_um": 1.4283,
+     "cutout_sha256": "e8b35874185fdde24b1a39b14125e48183256e1813a8cd87c9c7befeb3ed6451",
+     "horizons_spherex": {
+      "ra": 201.372292174,
+      "dec": -7.786463072
+     },
+     "V_mag_horizons": 16.166,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 4
+     },
+     "measured": {
+      "ra": 201.37228920518922,
+      "dec": -7.786444354775043,
+      "snr": 18.284244194537756,
+      "err_arcsec": 0.1315368112660309,
+      "x": 43.48047453193897,
+      "y": 78.37732643464798,
+      "resid_ra_cosdec_arcsec": -0.010595839908120297,
+      "resid_dec_arcsec": 0.06738098175004836,
+      "resid_vs_geocentric_arcsec": [
+       1.5882465711406155,
+       -0.2405012976672083
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0431_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D5",
+     "mjd_mid": 60844.110097844,
+     "wavelength_um": 4.2051,
+     "cutout_sha256": "c3f9a547474327941cb5ee8c7b4afa34d511a2fe4f9f9819540c5663422da18a",
+     "horizons_spherex": {
+      "ra": 201.372292174,
+      "dec": -7.786463072
+     },
+     "V_mag_horizons": 16.166,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 2
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_1B_0431_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D2",
+     "mjd_mid": 60844.11159009,
+     "wavelength_um": 1.4623,
+     "cutout_sha256": "5ef5584377a74dd5460ab5606c0c5a7a3679f85186921857c79a4baa75d53cc4",
+     "horizons_spherex": {
+      "ra": 201.372357321,
+      "dec": -7.78630143
+     },
+     "V_mag_horizons": 16.166,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 4
+     },
+     "measured": {
+      "ra": 201.37229227032523,
+      "dec": -7.786356641499389,
+      "snr": 23.50662986477468,
+      "err_arcsec": 0.1466353590046617,
+      "x": 43.63808828512728,
+      "y": 78.84211373321376,
+      "resid_ra_cosdec_arcsec": -0.23200381515258073,
+      "resid_dec_arcsec": -0.19878438992802927,
+      "resid_vs_geocentric_arcsec": [
+       1.4056852771839203,
+       -0.005636487990024364
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0431_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D5",
+     "mjd_mid": 60844.11159009,
+     "wavelength_um": 4.2414,
+     "cutout_sha256": "4f6166292db57cb429a1e3732f9d91de441137582b29961a37d0c9dcb3e7022a",
+     "horizons_spherex": {
+      "ra": 201.372357321,
+      "dec": -7.78630143
+     },
+     "V_mag_horizons": 16.166,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 2
+     },
+     "measured": {
+      "ra": 201.3723270265778,
+      "dec": -7.785913452992325,
+      "snr": 6.145205542632138,
+      "err_arcsec": 0.993797459375035,
+      "x": 44.03901319979223,
+      "y": 78.95329308104445,
+      "resid_ra_cosdec_arcsec": -0.10819234784781884,
+      "resid_dec_arcsec": 1.39670695172115,
+      "resid_vs_geocentric_arcsec": [
+       1.5294967444886822,
+       1.5898548536591548
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0431_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D2",
+     "mjd_mid": 60844.113082358,
+     "wavelength_um": 1.4985,
+     "cutout_sha256": "26d2060c703909314a3117551724d45956fec5119728996d7a5e39459ce4dd6b",
+     "horizons_spherex": {
+      "ra": 201.372413742,
+      "dec": -7.786140822
+     },
+     "V_mag_horizons": 16.167,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 4
+     },
+     "measured": {
+      "ra": 201.37252484383927,
+      "dec": -7.785995287584236,
+      "snr": 20.389399859349115,
+      "err_arcsec": 0.17477649535009557,
+      "x": 43.54467224339287,
+      "y": 78.09977635649106,
+      "resid_ra_cosdec_arcsec": 0.3962279212676947,
+      "resid_dec_arcsec": 0.5239630803406143,
+      "resid_vs_geocentric_arcsec": [
+       2.041604546322503,
+       1.2144336770786097
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_1B_0431_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D5",
+     "mjd_mid": 60844.113082358,
+     "wavelength_um": 4.2778,
+     "cutout_sha256": "89add0496dbb010336b4effa6ad566710c23c30a1e90a4dd2c564a2ba2bdc884",
+     "horizons_spherex": {
+      "ra": 201.372413742,
+      "dec": -7.786140822
+     },
+     "V_mag_horizons": 16.167,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 4
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_2A_0095_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D3",
+     "mjd_mid": 60845.874527578,
+     "wavelength_um": 1.8168,
+     "cutout_sha256": "8de6d58929a3abe59d9dcf800393199f068396bf88caa82d872772b6009d7b62",
+     "horizons_spherex": {
+      "ra": 201.443586101,
+      "dec": -7.763434442
+     },
+     "V_mag_horizons": 16.193,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "SOURCE": 10,
+      "HALO": 1
+     },
+     "measured": {
+      "ra": 201.4435891011544,
+      "dec": -7.763555823391829,
+      "snr": 20.84914599468154,
+      "err_arcsec": 3.1047797617439885,
+      "x": 76.89804565940268,
+      "y": 49.896974697861616,
+      "resid_ra_cosdec_arcsec": 0.01067116319322281,
+      "resid_dec_arcsec": -0.43697383073943996,
+      "resid_vs_geocentric_arcsec": [
+       1.4136653572254971,
+       -1.3400623805738832
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_2A_0095_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D6",
+     "mjd_mid": 60845.874527578,
+     "wavelength_um": 4.5715,
+     "cutout_sha256": "55a60c8a13075b3358624ec4c037d1a0b74cb98bdb82596cabc22fcc099635f8",
+     "horizons_spherex": {
+      "ra": 201.443586101,
+      "dec": -7.763434442
+     },
+     "V_mag_horizons": 16.193,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "SOURCE": 10
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_2A_0113_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D3",
+     "mjd_mid": 60845.942638296,
+     "wavelength_um": 1.8627,
+     "cutout_sha256": "abbcc49013afa641d54713fabc76cca8229afa56050f6679a89ea1b28d5be355",
+     "horizons_spherex": {
+      "ra": 201.446630587,
+      "dec": -7.762657815
+     },
+     "V_mag_horizons": 16.194,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 3,
+      "SOURCE": 6
+     },
+     "measured": {
+      "ra": 201.446598541977,
+      "dec": -7.762640057423056,
+      "snr": 17.11122522543287,
+      "err_arcsec": 0.30247455014855323,
+      "x": 78.38315564148132,
+      "y": 49.06526405187416,
+      "resid_ra_cosdec_arcsec": -0.1143000511094101,
+      "resid_dec_arcsec": 0.06393604426482113,
+      "resid_vs_geocentric_arcsec": [
+       1.2949869215226641,
+       -0.7813362605575236
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_2A_0113_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D6",
+     "mjd_mid": 60845.942638296,
+     "wavelength_um": 4.6045,
+     "cutout_sha256": "010273c0018732bd3ba1b1d865a9f128daef9acbeda2e311bbec28afba59b282",
+     "horizons_spherex": {
+      "ra": 201.446630587,
+      "dec": -7.762657815
+     },
+     "V_mag_horizons": 16.194,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 1,
+      "SOURCE": 4
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_2A_0113_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D3",
+     "mjd_mid": 60845.94414833,
+     "wavelength_um": 1.9054,
+     "cutout_sha256": "e9c852f841866e64b55048d711bc960ef9f26c5e77b97ed3ba8a7584f7b2a4de",
+     "horizons_spherex": {
+      "ra": 201.446718591,
+      "dec": -7.762503438
+     },
+     "V_mag_horizons": 16.194,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 5,
+      "SOURCE": 3
+     },
+     "measured": {
+      "ra": 201.44659921200397,
+      "dec": -7.762576139326884,
+      "snr": 20.99471690978587,
+      "err_arcsec": 0.3492486380739105,
+      "x": 77.9702150255663,
+      "y": 48.938724324756905,
+      "resid_ra_cosdec_arcsec": -0.4258464308772574,
+      "resid_dec_arcsec": -0.2616921769984373,
+      "resid_vs_geocentric_arcsec": [
+       1.0559031925461255,
+       -0.6115093647477963
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_2A_0113_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D6",
+     "mjd_mid": 60845.944148319,
+     "wavelength_um": 4.6389,
+     "cutout_sha256": "dfc86788c5f2438922deaa2fb24c7a93b4ad919172348dcc9e58747481a6854b",
+     "horizons_spherex": {
+      "ra": 201.446718591,
+      "dec": -7.762503437
+     },
+     "V_mag_horizons": 16.194,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 2,
+      "SOURCE": 5
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_2A_0253_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60846.62369208,
+     "wavelength_um": 0.8633,
+     "cutout_sha256": "c4608cbb0d6040f117d74e825ef459a22097d18394da1c2a1cf37756c1fde465",
+     "horizons_spherex": {
+      "ra": 201.478240332,
+      "dec": -7.755442738
+     },
+     "V_mag_horizons": 16.204,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 5,
+      "SOURCE": 2
+     },
+     "measured": {
+      "ra": 201.47838150836637,
+      "dec": -7.755406640706637,
+      "snr": 27.457373057900835,
+      "err_arcsec": 0.2627335474896429,
+      "x": 93.95556658280982,
+      "y": 39.10722403892221,
+      "resid_ra_cosdec_arcsec": 0.5036065013184157,
+      "resid_dec_arcsec": 0.12987422720526354,
+      "resid_vs_geocentric_arcsec": [
+       1.9523005419260357,
+       -0.1470652378659878
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_2A_0253_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60846.623692092,
+     "wavelength_um": 2.8618,
+     "cutout_sha256": "78559b12b4b2b60b856f49168c5f69649d04144d0dc0617e1c17341b0270db8b",
+     "horizons_spherex": {
+      "ra": 201.478240332,
+      "dec": -7.755442737
+     },
+     "V_mag_horizons": 16.204,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 3,
+      "SOURCE": 6
+     },
+     "measured": {
+      "ra": 201.47826581392016,
+      "dec": -7.755498269801863,
+      "snr": 11.082748952867142,
+      "err_arcsec": 0.5292343000695214,
+      "x": 93.28240914174782,
+      "y": 39.55185304491606,
+      "resid_ra_cosdec_arcsec": 0.09086565818287795,
+      "resid_dec_arcsec": -0.1999319612432089,
+      "resid_vs_geocentric_arcsec": [
+       1.5395596993355696,
+       -0.47686782631230074
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_2A_0253_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60846.625184349,
+     "wavelength_um": 0.8842,
+     "cutout_sha256": "b02cdde19e1c5b21cfd907f8007c728b7314bc0db5bd2df899d53e344bde43c7",
+     "horizons_spherex": {
+      "ra": 201.478323033,
+      "dec": -7.755290906
+     },
+     "V_mag_horizons": 16.204,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 3,
+      "SOURCE": 2
+     },
+     "measured": {
+      "ra": 201.47839150161894,
+      "dec": -7.75524050525161,
+      "snr": 21.187977577447786,
+      "err_arcsec": 0.2842152728376189,
+      "x": 93.45245923953084,
+      "y": 39.06844143023026,
+      "resid_ra_cosdec_arcsec": 0.24426036960542774,
+      "resid_dec_arcsec": 0.18140588286274806,
+      "resid_vs_geocentric_arcsec": [
+       1.7327095861317048,
+       0.3993201389549057
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_2A_0253_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60846.625184349,
+     "wavelength_um": 2.9402,
+     "cutout_sha256": "8b9b34168428dd5f77c398f7e64b97e24265c93e17c9d292da76e2e07a0f9701",
+     "horizons_spherex": {
+      "ra": 201.478323033,
+      "dec": -7.755290906
+     },
+     "V_mag_horizons": 16.204,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 3,
+      "SOURCE": 5
+     },
+     "measured": {
+      "ra": 201.4783835635293,
+      "dec": -7.755432330658324,
+      "snr": 10.549437422790604,
+      "err_arcsec": 0.36951185909668316,
+      "x": 93.64471093432289,
+      "y": 39.663295730377236,
+      "resid_ra_cosdec_arcsec": 0.2158398038615985,
+      "resid_dec_arcsec": -0.5091618052683202,
+      "resid_vs_geocentric_arcsec": [
+       1.7042890203878756,
+       -0.2912475491761626
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_2A_0253_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60846.626676594,
+     "wavelength_um": 0.9053,
+     "cutout_sha256": "e19c5e86b203c455f99e2b28c6e986e66752eabd91fe4cf7721139208c0968f6",
+     "horizons_spherex": {
+      "ra": 201.478397799,
+      "dec": -7.755140246
+     },
+     "V_mag_horizons": 16.204,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 4,
+      "SOURCE": 2
+     },
+     "measured": {
+      "ra": 201.47844146666583,
+      "dec": -7.755199490909049,
+      "snr": 21.462191641171653,
+      "err_arcsec": 0.20203619302518325,
+      "x": 93.56504236422225,
+      "y": 39.06016329875825,
+      "resid_ra_cosdec_arcsec": 0.1557335899647967,
+      "resid_dec_arcsec": -0.21330541586335983,
+      "resid_vs_geocentric_arcsec": [
+       1.655604238309195,
+       0.49526563533790124
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_2A_0253_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60846.626676594,
+     "wavelength_um": 3.0215,
+     "cutout_sha256": "b33193562731840b2a05f4a4d4b2ddcede2a13f22d8d7d95eb171110292837c5",
+     "horizons_spherex": {
+      "ra": 201.478397799,
+      "dec": -7.755140246
+     },
+     "V_mag_horizons": 16.204,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 3,
+      "SOURCE": 4
+     },
+     "measured": {
+      "ra": 201.4783236570985,
+      "dec": -7.755279458833928,
+      "snr": 9.768496487132301,
+      "err_arcsec": 0.4996450245440326,
+      "x": 93.4746730284243,
+      "y": 39.74537152428631,
+      "resid_ra_cosdec_arcsec": -0.264545939774564,
+      "resid_dec_arcsec": -0.5011265639830071,
+      "resid_vs_geocentric_arcsec": [
+       1.2353247085698342,
+       0.20744448721825393
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W25_2A_0253_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60846.628168851,
+     "wavelength_um": 0.9272,
+     "cutout_sha256": "0ebed46f693a3b8688afee2d073214fedb2aa4da70002482442f96e279f22613",
+     "horizons_spherex": {
+      "ra": 201.478464576,
+      "dec": -7.754993354
+     },
+     "V_mag_horizons": 16.204,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "TRANSIENT": 1,
+      "SUR_ERROR": 1,
+      "NONFUNC": 1,
+      "OUTLIER": 3,
+      "SOURCE": 2
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W25_2A_0253_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60846.628168851,
+     "wavelength_um": 3.1044,
+     "cutout_sha256": "b19c070a40918cea1b9c9a95b893a0d497319a8a4f148d10007bf931d822abc9",
+     "horizons_spherex": {
+      "ra": 201.478464576,
+      "dec": -7.754993354
+     },
+     "V_mag_horizons": 16.204,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 3,
+      "SOURCE": 5
+     },
+     "measured": {
+      "ra": 201.47830920735692,
+      "dec": -7.755057705430882,
+      "snr": 11.386113222003296,
+      "err_arcsec": 0.518425985082916,
+      "x": 93.01008320791942,
+      "y": 38.67800410936848,
+      "resid_ra_cosdec_arcsec": -0.5542474155761568,
+      "resid_dec_arcsec": -0.23158145089749382,
+      "resid_vs_geocentric_arcsec": [
+       0.9285061435289208,
+       0.9541003078922046
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    }
+   ],
+   "residuals_vs_horizons_spherex_arcsec": {
+    "all_detections_near_prediction": {
+     "n": 23,
+     "mean_ra_cosdec": -0.043873891052817145,
+     "mean_dec": 0.14398948314661414,
+     "rms_ra_cosdec": 0.5364587674371601,
+     "rms_dec": 0.5577599009163007,
+     "median_total": 0.49982794859139296,
+     "max_total": 2.291156518813233
+    },
+    "linked_track_members": {
+     "n": 23,
+     "mean_ra_cosdec": -0.043873891052817145,
+     "mean_dec": 0.14398948314661414,
+     "rms_ra_cosdec": 0.5364587674371601,
+     "rms_dec": 0.5577599009163007,
+     "median_total": 0.49982794859139296,
+     "max_total": 2.291156518813233
+    }
+   },
+   "fitted_motion": {
+    "t_ref_mjd": 60844.55798704268,
+    "fit_order": 2,
+    "n_detections": 23,
+    "n_visits": 6,
+    "measured_rate_arcsec_h": {
+     "ra_cosdec": 5.702287418711086,
+     "dec": 2.107174588999201,
+     "err_ra_cosdec": 0.010666264133109563,
+     "err_dec": 0.010666264133109563,
+     "total": 6.079166600292732
+    },
+    "horizons_same_model_rate_arcsec_h": {
+     "ra_cosdec": 5.706431853077174,
+     "dec": 2.1053732238700182,
+     "total": 6.082430509722459
+    },
+    "rate_difference_sigma": [
+     -0.3885553849376697,
+     0.16888435413774755
+    ],
+    "fit_rms_arcsec": 0.6482587638825212,
+    "fit_chi2_red": 4.8260165619327315,
+    "time_span_hours": 75.12771026400151
+   },
+   "astrometric_floor_field_stars": {
+    "n_stars": 125,
+    "snr_5_10": {
+     "n_stars": 80,
+     "median_rms_axis_arcsec": 0.7108927992999503,
+     "median_formal_err_arcsec": 0.7136899073493392
+    },
+    "snr_10_20": {
+     "n_stars": 23,
+     "median_rms_axis_arcsec": 0.47557237453625184,
+     "median_formal_err_arcsec": 0.3384808401248085
+    },
+    "snr_20_50": {
+     "n_stars": 18,
+     "median_rms_axis_arcsec": 0.39298980333403993,
+     "median_formal_err_arcsec": 0.19041681309195893
+    },
+    "snr_50_up": {
+     "n_stars": 4,
+     "median_rms_axis_arcsec": 0.24039201351754264,
+     "median_formal_err_arcsec": 0.13969846247045561
+    },
+    "floor_arcsec_bright_snr_ge_20": 0.36753717847258305
+   },
+   "pipeline_flag_finding": {
+    "n_with_outlier_at_prediction": 30,
+    "n_exposures": 34
+   },
+   "runtime_s": 533.4,
+   "figure": "report/figures/motion_followup_2052tamriko.png"
+  },
+  {
+   "label": "REAL SPHEREx data, KNOWN object",
+   "object": "(433) Eros",
+   "why_chosen": "FASTER case: near-Earth asteroid, V ~13.3, ~0.3 au from SPHEREx in July 2025, moving tens of arcsec per hour; three SPHEREx visits in 17 hours cover it. Kleopatra moved ~5 arcsec/hour.",
+   "horizons_command": "433;",
+   "field": {
+    "ra_center": 12.083570531820712,
+    "dec_center": 13.500246753832329,
+    "cutout_size_deg": 0.481,
+    "window_mjd": [
+     60862.55,
+     60863.4
+    ],
+    "track_half_extent_deg": 0.20063940047980378
+   },
+   "archive": {
+    "queries": [
+     {
+      "release": "spherex_dr1",
+      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=CIRCLE+12.083570531820712+13.500246753832329+0.001&RESPONSEFORMAT=VOTABLE",
+      "sha256": "7ad7f65d48443c02a6d0d46181716076b37238853ae9b8982f0260b8c158fcda",
+      "status": "live"
+     },
+     {
+      "release": "spherex_qr3",
+      "url": "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr3&POS=CIRCLE+12.083570531820712+13.500246753832329+0.001&RESPONSEFORMAT=VOTABLE",
+      "sha256": "90aee128e9cf27a11ee086d083a0c76795dbe6c0b25baf7057f5b537a1f027bb",
+      "status": "live"
+     }
+    ],
+    "n_exposures_in_window": 20,
+    "cutouts_failed": []
+   },
+   "horizons_query_urls_spherex": [
+    "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27433%3B%27&EPHEM_TYPE=OBSERVER&CENTER=%27500%40-163182%27&TLIST=60862.62795509+60862.62795510+60862.62944736+60862.62944736+60862.69263724+60862.69263724+60862.69412949+60862.69412949+60862.69562174+60862.69562174+60862.69711400+60862.69711399+60863.30524335+60863.30524335+60863.30673561+60863.30673561+60863.30822787+60863.30822787+60863.30972011+60863.30972011&TLIST_TYPE=MJD&TIME_TYPE=UT&QUANTITIES=%271%2C3%2C9%2C20%2C23%27&ANG_FORMAT=DEG&CSV_FORMAT=YES&EXTRA_PREC=YES&OBJ_DATA=NO"
+   ],
+   "coarse_track_url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27433%3B%27&EPHEM_TYPE=OBSERVER&CENTER=%27500%40-163182%27&START_TIME=%27JD+2460863.05%27&STOP_TIME=%27JD+2460863.9%27&STEP_SIZE=%271h%27&QUANTITIES=%271%27&ANG_FORMAT=DEG&CSV_FORMAT=YES&OBJ_DATA=NO",
+   "V_mag_range_horizons": [
+    13.268,
+    13.281
+   ],
+   "horizons_rate_range_arcsec_h": [
+    72.41993652560737,
+    72.53449654282092
+   ],
+   "n_visits_with_object_inside_cutout": 3,
+   "n_visits_total": 3,
+   "blind_search": {
+    "n_detections": 5367,
+    "n_static": 4975,
+    "tracks": [
+     {
+      "track": 0,
+      "n_detections": 19,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": 56.50158975555615,
+      "rate_dec_arcsec_h": 45.324876051335494,
+      "fit_rms_arcsec": 0.734780481350873,
+      "median_offset_from_horizons_arcsec": 0.7065164821161347,
+      "matches_horizons": true
+     },
+     {
+      "track": 1,
+      "n_detections": 9,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": -81.692953169201,
+      "rate_dec_arcsec_h": -13.045217767995958,
+      "fit_rms_arcsec": 2.210048615273773,
+      "median_offset_from_horizons_arcsec": 1210.4762414058775,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 3,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 2,
+         "mjd_min": 60862.627955101,
+         "mjd_max": 60862.629447358,
+         "span_hours": 0.03581416793167591,
+         "xi": 677.3224081499475,
+         "eta": 41.78562050891852
+        },
+        {
+         "n": 3,
+         "mjd_min": 60862.692637242,
+         "mjd_max": 60862.695621745,
+         "span_hours": 0.0716280720080249,
+         "xi": 547.6573939184417,
+         "eta": 27.863515789469826
+        },
+        {
+         "n": 4,
+         "mjd_min": 60863.305243354,
+         "mjd_max": 60863.309720113,
+         "span_hours": 0.10744221601635218,
+         "xi": -652.780494150411,
+         "eta": -196.77498029972458
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60862.887890051796,
+       "ra": 12.13188667974311,
+       "dec": 13.493711278844263
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_21%3A18%3A33&xobs=6.038510535E%2B03%2C1.950516044E%2B03%2C-3.045818483E%2B03%2C3.418047265E%2B00%2C-1.139367186E-01%2C6.699393482E%2B00&fov-ra-center=00-48-31.65&fov-dec-center=13-29-37.4&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 6,
+       "objects": [
+        {
+         "Object name": "433 Eros (A898 PA)",
+         "Astrometric RA (hh:mm:ss)": "00:48:12.72",
+         "Astrometric Dec (dd mm'ss\")": "+13 28'40.5\"",
+         "Dist. from center RA (\")": "-276.",
+         "Dist. from center Dec (\")": "-56.9",
+         "Dist. from center Norm (\")": "281.9",
+         "Visual magnitude (V)": "13.3",
+         "RA rate (\"/h)": "5.950E+01",
+         "Dec rate (\"/h)": "2.470E+01"
+        },
+        {
+         "Object name": "674811 (2015 SQ32)",
+         "Astrometric RA (hh:mm:ss)": "00:48:48.55",
+         "Astrometric Dec (dd mm'ss\")": "+13 33'26.2\"",
+         "Dist. from center RA (\")": "247.",
+         "Dist. from center Dec (\")": "229.",
+         "Dist. from center Norm (\")": "336.3",
+         "Visual magnitude (V)": "22.1",
+         "RA rate (\"/h)": "5.999E+01",
+         "Dec rate (\"/h)": "1.645E+01"
+        },
+        {
+         "Object name": "(2014 HP267)",
+         "Astrometric RA (hh:mm:ss)": "00:48:19.54",
+         "Astrometric Dec (dd mm'ss\")": "+13 29'13.8\"",
+         "Dist. from center RA (\")": "-177.",
+         "Dist. from center Dec (\")": "-23.6",
+         "Dist. from center Norm (\")": "178.3",
+         "Visual magnitude (V)": "23.9",
+         "RA rate (\"/h)": "2.574E+01",
+         "Dec rate (\"/h)": "4.545E+00"
+        },
+        {
+         "Object name": "(2016 CV379)",
+         "Astrometric RA (hh:mm:ss)": "00:48:46.23",
+         "Astrometric Dec (dd mm'ss\")": "+13 25'59.3\"",
+         "Dist. from center RA (\")": "213.",
+         "Dist. from center Dec (\")": "-218.",
+         "Dist. from center Norm (\")": "304.7",
+         "Visual magnitude (V)": "23.4",
+         "RA rate (\"/h)": "2.394E+01",
+         "Dec rate (\"/h)": "1.250E+01"
+        },
+        {
+         "Object name": "(2021 SG47)",
+         "Astrometric RA (hh:mm:ss)": "00:48:14.45",
+         "Astrometric Dec (dd mm'ss\")": "+13 25'29.1\"",
+         "Dist. from center RA (\")": "-251.",
+         "Dist. from center Dec (\")": "-248.",
+         "Dist. from center Norm (\")": "353.0",
+         "Visual magnitude (V)": "22.1",
+         "RA rate (\"/h)": "6.355E+01",
+         "Dec rate (\"/h)": "8.981E+00"
+        },
+        {
+         "Object name": "(2026 BS)",
+         "Astrometric RA (hh:mm:ss)": "00:48:33.39",
+         "Astrometric Dec (dd mm'ss\")": "+13 27'40.2\"",
+         "Dist. from center RA (\")": "25.4",
+         "Dist. from center Dec (\")": "-117.",
+         "Dist. from center Norm (\")": "119.9",
+         "Visual magnitude (V)": "32.6",
+         "RA rate (\"/h)": "5.406E+01",
+         "Dec rate (\"/h)": "1.919E+01"
+        }
+       ]
+      }
+     },
+     {
+      "track": 2,
+      "n_detections": 8,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": -0.719432699835858,
+      "rate_dec_arcsec_h": 5.162031437244596,
+      "fit_rms_arcsec": 0.41039013242391387,
+      "median_offset_from_horizons_arcsec": 534.6919330641142,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 5,
+         "mjd_min": 60862.627955101,
+         "mjd_max": 60862.695621745,
+         "span_hours": 1.6239994559437037,
+         "xi": -7.808767445758706,
+         "eta": -657.3949658974527
+        },
+        {
+         "n": 3,
+         "mjd_min": 60863.306735611,
+         "mjd_max": 60863.309720113,
+         "span_hours": 0.07162804808467627,
+         "xi": -18.722815188038226,
+         "eta": -574.3219253433867
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60862.971706982695,
+       "ra": 12.08003446652988,
+       "dec": 13.323184058790652
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_23%3A19%3A15&xobs=3.796409020E%2B03%2C9.814106576E%2B01%2C5.916481718E%2B03%2C-6.073187441E%2B00%2C-2.094383067E%2B00%2C3.919622419E%2B00&fov-ra-center=00-48-19.21&fov-dec-center=13-19-23.5&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 3,
+       "objects": [
+        {
+         "Object name": "23253 (2000 YY12)",
+         "Astrometric RA (hh:mm:ss)": "00:48:02.59",
+         "Astrometric Dec (dd mm'ss\")": "+13 14'35.4\"",
+         "Dist. from center RA (\")": "-243.",
+         "Dist. from center Dec (\")": "-288.",
+         "Dist. from center Norm (\")": "376.7",
+         "Visual magnitude (V)": "19.0",
+         "RA rate (\"/h)": "5.537E+01",
+         "Dec rate (\"/h)": "4.995E+00"
+        },
+        {
+         "Object name": "153251 (2001 BR22)",
+         "Astrometric RA (hh:mm:ss)": "00:48:36.78",
+         "Astrometric Dec (dd mm'ss\")": "+13 14'06.7\"",
+         "Dist. from center RA (\")": "256.",
+         "Dist. from center Dec (\")": "-317.",
+         "Dist. from center Norm (\")": "407.7",
+         "Visual magnitude (V)": "21.0",
+         "RA rate (\"/h)": "2.872E+01",
+         "Dec rate (\"/h)": "1.093E+01"
+        },
+        {
+         "Object name": "708760 (2012 JA30)",
+         "Astrometric RA (hh:mm:ss)": "00:48:32.27",
+         "Astrometric Dec (dd mm'ss\")": "+13 16'17.1\"",
+         "Dist. from center RA (\")": "191.",
+         "Dist. from center Dec (\")": "-186.",
+         "Dist. from center Norm (\")": "266.6",
+         "Visual magnitude (V)": "22.5",
+         "RA rate (\"/h)": "2.318E+01",
+         "Dec rate (\"/h)": "4.660E+00"
+        }
+       ]
+      }
+     },
+     {
+      "track": 3,
+      "n_detections": 8,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": 6.954829782228367,
+      "rate_dec_arcsec_h": 0.9630440037122165,
+      "fit_rms_arcsec": 0.594467060518945,
+      "median_offset_from_horizons_arcsec": 1099.0643182180113,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 6,
+         "mjd_min": 60862.627955101,
+         "mjd_max": 60862.69711399,
+         "span_hours": 1.659813335922081,
+         "xi": 683.355405919095,
+         "eta": -617.9662511583757
+        },
+        {
+         "n": 2,
+         "mjd_min": 60863.305243354,
+         "mjd_max": 60863.306735611,
+         "span_hours": 0.03581416793167591,
+         "xi": 753.7970031668876,
+         "eta": -604.6445538274577
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60863.14590339448,
+       "ra": 12.289849462697525,
+       "dec": 13.331114057867058
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-07_03%3A30%3A06&xobs=-1.239748485E%2B03%2C6.825694780E%2B02%2C-6.888635238E%2B03%2C7.170199863E%2B00%2C1.985340774E%2B00%2C-1.099534645E%2B00&fov-ra-center=00-49-09.56&fov-dec-center=13-19-52.0&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 0,
+       "objects": []
+      }
+     },
+     {
+      "track": 4,
+      "n_detections": 8,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": 4.883807659158627,
+      "rate_dec_arcsec_h": 6.3907783749917755,
+      "fit_rms_arcsec": 0.7001740493807731,
+      "median_offset_from_horizons_arcsec": 433.09660998230777,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 6,
+         "mjd_min": 60862.627955101,
+         "mjd_max": 60862.69711399,
+         "span_hours": 1.659813335922081,
+         "xi": 13.20273411595197,
+         "eta": -267.15567229389876
+        },
+        {
+         "n": 2,
+         "mjd_min": 60863.308227867,
+         "mjd_max": 60863.309720113,
+         "span_hours": 0.03581390407634899,
+         "xi": 59.90961129477874,
+         "eta": -210.02543811694977
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60863.22954107357,
+       "ra": 12.09796978703196,
+       "dec": 13.438345258000835
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-07_05%3A30%3A32&xobs=6.511352315E%2B03%2C1.935780731E%2B03%2C-1.844835404E%2B03%2C2.178278872E%2B00%2C-4.820875420E-01%2C7.184344341E%2B00&fov-ra-center=00-48-23.51&fov-dec-center=13-26-18.0&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 3,
+       "objects": [
+        {
+         "Object name": "346762 (2009 BG62)",
+         "Astrometric RA (hh:mm:ss)": "00:48:02.31",
+         "Astrometric Dec (dd mm'ss\")": "+13 31'23.0\"",
+         "Dist. from center RA (\")": "-309.",
+         "Dist. from center Dec (\")": "305.",
+         "Dist. from center Norm (\")": "434.4",
+         "Visual magnitude (V)": "21.2",
+         "RA rate (\"/h)": "2.783E+01",
+         "Dec rate (\"/h)": "1.843E+01"
+        },
+        {
+         "Object name": "708805 (2012 KH15)",
+         "Astrometric RA (hh:mm:ss)": "00:48:04.61",
+         "Astrometric Dec (dd mm'ss\")": "+13 25'24.8\"",
+         "Dist. from center RA (\")": "-276.",
+         "Dist. from center Dec (\")": "-53.2",
+         "Dist. from center Norm (\")": "280.8",
+         "Visual magnitude (V)": "22.5",
+         "RA rate (\"/h)": "2.610E+01",
+         "Dec rate (\"/h)": "1.148E+00"
+        },
+        {
+         "Object name": "(2014 HP267)",
+         "Astrometric RA (hh:mm:ss)": "00:48:33.17",
+         "Astrometric Dec (dd mm'ss\")": "+13 31'11.1\"",
+         "Dist. from center RA (\")": "141.",
+         "Dist. from center Dec (\")": "293.",
+         "Dist. from center Norm (\")": "325.2",
+         "Visual magnitude (V)": "23.9",
+         "RA rate (\"/h)": "2.575E+01",
+         "Dec rate (\"/h)": "3.136E+00"
+        }
+       ]
+      }
+     },
+     {
+      "track": 5,
+      "n_detections": 9,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": -13.182749362407211,
+      "rate_dec_arcsec_h": 2.242743622942686,
+      "fit_rms_arcsec": 1.724024963692856,
+      "median_offset_from_horizons_arcsec": 935.0588987122621,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 5,
+         "mjd_min": 60862.629447358,
+         "mjd_max": 60862.69711399,
+         "span_hours": 1.6239991679904051,
+         "xi": 307.4526263821175,
+         "eta": 354.53701069469525
+        },
+        {
+         "n": 4,
+         "mjd_min": 60863.305243354,
+         "mjd_max": 60863.309720113,
+         "span_hours": 0.10744221601635218,
+         "xi": 185.08543349431807,
+         "eta": 395.017374838727
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60863.29851176654,
+       "ra": 12.137232851262347,
+       "dec": 13.609824030242809
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-07_07%3A09%3A51&xobs=6.674546656E%2B03%2C1.891366089E%2B03%2C-1.191814920E%2B03%2C1.500730389E%2B00%2C-6.768146081E-01%2C7.340919722E%2B00&fov-ra-center=00-48-32.94&fov-dec-center=13-36-35.4&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 3,
+       "objects": [
+        {
+         "Object name": "433 Eros (A898 PA)",
+         "Astrometric RA (hh:mm:ss)": "00:48:50.90",
+         "Astrometric Dec (dd mm'ss\")": "+13 36'06.4\"",
+         "Dist. from center RA (\")": "262.",
+         "Dist. from center Dec (\")": "-29.0",
+         "Dist. from center Norm (\")": "263.5",
+         "Visual magnitude (V)": "13.3",
+         "RA rate (\"/h)": "5.995E+01",
+         "Dec rate (\"/h)": "2.076E+01"
+        },
+        {
+         "Object name": "591415 (2013 QT92)",
+         "Astrometric RA (hh:mm:ss)": "00:48:25.37",
+         "Astrometric Dec (dd mm'ss\")": "+13 37'20.4\"",
+         "Dist. from center RA (\")": "-110.",
+         "Dist. from center Dec (\")": "45.0",
+         "Dist. from center Norm (\")": "119.1",
+         "Visual magnitude (V)": "22.0",
+         "RA rate (\"/h)": "3.447E+01",
+         "Dec rate (\"/h)": "1.542E+01"
+        },
+        {
+         "Object name": "(2014 HP267)",
+         "Astrometric RA (hh:mm:ss)": "00:48:35.91",
+         "Astrometric Dec (dd mm'ss\")": "+13 31'34.6\"",
+         "Dist. from center RA (\")": "43.3",
+         "Dist. from center Dec (\")": "-301.",
+         "Dist. from center Norm (\")": "303.9",
+         "Visual magnitude (V)": "23.9",
+         "RA rate (\"/h)": "2.580E+01",
+         "Dec rate (\"/h)": "2.574E+00"
+        }
+       ]
+      }
+     },
+     {
+      "track": 6,
+      "n_detections": 8,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": 2.087626430229303,
+      "rate_dec_arcsec_h": 0.3222875939492734,
+      "fit_rms_arcsec": 0.9740129671496703,
+      "median_offset_from_horizons_arcsec": 1212.0472986498173,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 5,
+         "mjd_min": 60862.627955101,
+         "mjd_max": 60862.69711399,
+         "span_hours": 1.659813335922081,
+         "xi": 839.550962069962,
+         "eta": -424.2965717843059
+        },
+        {
+         "n": 3,
+         "mjd_min": 60863.305243354,
+         "mjd_max": 60863.308227867,
+         "span_hours": 0.07162831194000319,
+         "xi": 884.3489062909789,
+         "eta": -419.19275380801474
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60862.901623938815,
+       "ra": 12.324765771996866,
+       "dec": 13.382835941697012
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_21%3A38%3A20&xobs=4.844015534E%2B03%2C4.774708961E%2B02%2C5.075602080E%2B03%2C-5.154029284E%2B00%2C-2.026388868E%2B00%2C5.095148547E%2B00&fov-ra-center=00-49-17.94&fov-dec-center=13-22-58.2&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 0,
+       "objects": []
+      }
+     },
+     {
+      "track": 7,
+      "n_detections": 7,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": 3.0583168304926946,
+      "rate_dec_arcsec_h": 1.1728385649394117,
+      "fit_rms_arcsec": 0.5274371355842948,
+      "median_offset_from_horizons_arcsec": 1279.0204542657664,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 4,
+         "mjd_min": 60862.629447358,
+         "mjd_max": 60862.69711399,
+         "span_hours": 1.6239991679904051,
+         "xi": 576.8017819332763,
+         "eta": 570.0295188974587
+        },
+        {
+         "n": 3,
+         "mjd_min": 60863.305243354,
+         "mjd_max": 60863.309720113,
+         "span_hours": 0.10744221601635218,
+         "xi": 636.2493289455832,
+         "eta": 589.3226647636502
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60862.93586769933,
+       "ra": 12.250211428535724,
+       "dec": 13.660076272214058
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_22%3A27%3A38&xobs=-4.698126276E%2B03%2C-4.239825538E%2B02%2C-5.212271044E%2B03%2C5.295459222E%2B00%2C2.043414146E%2B00%2C-4.944515234E%2B00&fov-ra-center=00-49-00.05&fov-dec-center=13-39-36.3&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 3,
+       "objects": [
+        {
+         "Object name": "94980 (2001 YN115)",
+         "Astrometric RA (hh:mm:ss)": "00:49:04.00",
+         "Astrometric Dec (dd mm'ss\")": "+13 39'48.1\"",
+         "Dist. from center RA (\")": "57.5",
+         "Dist. from center Dec (\")": "11.8",
+         "Dist. from center Norm (\")": "58.74",
+         "Visual magnitude (V)": "20.9",
+         "RA rate (\"/h)": "2.190E+01",
+         "Dec rate (\"/h)": "3.204E+01"
+        },
+        {
+         "Object name": "244934 (2003 YQ6)",
+         "Astrometric RA (hh:mm:ss)": "00:48:49.02",
+         "Astrometric Dec (dd mm'ss\")": "+13 37'13.2\"",
+         "Dist. from center RA (\")": "-161.",
+         "Dist. from center Dec (\")": "-143.",
+         "Dist. from center Norm (\")": "215.2",
+         "Visual magnitude (V)": "21.4",
+         "RA rate (\"/h)": "2.690E+01",
+         "Dec rate (\"/h)": "3.339E+01"
+        },
+        {
+         "Object name": "674811 (2015 SQ32)",
+         "Astrometric RA (hh:mm:ss)": "00:48:53.08",
+         "Astrometric Dec (dd mm'ss\")": "+13 34'05.9\"",
+         "Dist. from center RA (\")": "-102.",
+         "Dist. from center Dec (\")": "-330.",
+         "Dist. from center Norm (\")": "345.7",
+         "Visual magnitude (V)": "22.1",
+         "RA rate (\"/h)": "5.448E+01",
+         "Dec rate (\"/h)": "5.447E+01"
+        }
+       ]
+      }
+     },
+     {
+      "track": 8,
+      "n_detections": 7,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": -46.35213770360614,
+      "rate_dec_arcsec_h": 11.682131837220123,
+      "fit_rms_arcsec": 1.18843541561207,
+      "median_offset_from_horizons_arcsec": 806.7143394102296,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 3,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 1,
+         "mjd_min": 60862.627955101,
+         "mjd_max": 60862.627955101,
+         "span_hours": 0.0,
+         "xi": 574.055919303804,
+         "eta": -287.93718534609354
+        },
+        {
+         "n": 2,
+         "mjd_min": 60862.692637242,
+         "mjd_max": 60862.695621745,
+         "span_hours": 0.0716280720080249,
+         "xi": 497.86313622161845,
+         "eta": -270.24825535982495
+        },
+        {
+         "n": 4,
+         "mjd_min": 60863.305243354,
+         "mjd_max": 60863.309720113,
+         "span_hours": 0.10744221601635218,
+         "xi": -190.25875210278576,
+         "eta": -95.59000691540402
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60863.10534280354,
+       "ra": 12.092950900287548,
+       "dec": 13.458079389780952
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-07_02%3A31%3A41&xobs=4.875060810E%2B03%2C5.073408807E%2B02%2C5.042947033E%2B03%2C-5.111531352E%2B00%2C-2.040732441E%2B00%2C5.132123121E%2B00&fov-ra-center=00-48-22.31&fov-dec-center=13-27-29.1&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 4,
+       "objects": [
+        {
+         "Object name": "433 Eros (A898 PA)",
+         "Astrometric RA (hh:mm:ss)": "00:48:33.02",
+         "Astrometric Dec (dd mm'ss\")": "+13 32'29.2\"",
+         "Dist. from center RA (\")": "156.",
+         "Dist. from center Dec (\")": "300.",
+         "Dist. from center Norm (\")": "338.4",
+         "Visual magnitude (V)": "13.3",
+         "RA rate (\"/h)": "5.979E+01",
+         "Dec rate (\"/h)": "2.281E+01"
+        },
+        {
+         "Object name": "708805 (2012 KH15)",
+         "Astrometric RA (hh:mm:ss)": "00:47:59.62",
+         "Astrometric Dec (dd mm'ss\")": "+13 24'46.0\"",
+         "Dist. from center RA (\")": "-331.",
+         "Dist. from center Dec (\")": "-163.",
+         "Dist. from center Norm (\")": "369.0",
+         "Visual magnitude (V)": "22.5",
+         "RA rate (\"/h)": "2.618E+01",
+         "Dec rate (\"/h)": "1.619E+00"
+        },
+        {
+         "Object name": "(2014 HP267)",
+         "Astrometric RA (hh:mm:ss)": "00:48:28.26",
+         "Astrometric Dec (dd mm'ss\")": "+13 30'24.9\"",
+         "Dist. from center RA (\")": "86.8",
+         "Dist. from center Dec (\")": "176.",
+         "Dist. from center Norm (\")": "196.1",
+         "Visual magnitude (V)": "23.9",
+         "RA rate (\"/h)": "2.580E+01",
+         "Dec rate (\"/h)": "3.603E+00"
+        },
+        {
+         "Object name": "(2021 SG47)",
+         "Astrometric RA (hh:mm:ss)": "00:48:36.36",
+         "Astrometric Dec (dd mm'ss\")": "+13 27'38.9\"",
+         "Dist. from center RA (\")": "205.",
+         "Dist. from center Dec (\")": "9.77",
+         "Dist. from center Norm (\")": "205.2",
+         "Visual magnitude (V)": "22.1",
+         "RA rate (\"/h)": "6.376E+01",
+         "Dec rate (\"/h)": "7.373E+00"
+        }
+       ]
+      }
+     },
+     {
+      "track": 9,
+      "n_detections": 7,
+      "n_visits": 3,
+      "rate_ra_cosdec_arcsec_h": 4.005138322189959,
+      "rate_dec_arcsec_h": 5.680577938209581,
+      "fit_rms_arcsec": 1.232952948526698,
+      "median_offset_from_horizons_arcsec": 1026.7577613592578,
+      "matches_horizons": false,
+      "degenerate_track_check": {
+       "n_position_groups": 2,
+       "fit_order": 2,
+       "groups": [
+        {
+         "n": 5,
+         "mjd_min": 60862.629447358,
+         "mjd_max": 60862.69711399,
+         "span_hours": 1.6239991679904051,
+         "xi": 659.5999000489917,
+         "eta": -310.18162212760865
+        },
+        {
+         "n": 2,
+         "mjd_min": 60863.306735611,
+         "mjd_max": 60863.308227867,
+         "span_hours": 0.035814144008327276,
+         "xi": 745.1102561050582,
+         "eta": -196.50270351467145
+        }
+       ]
+      },
+      "position_at_t_ref": {
+       "mjd": 60862.89243129882,
+       "ra": 12.275160633983061,
+       "dec": 13.41918760453423
+      },
+      "sb_ident_from_spherex": {
+       "url": "https://ssd-api.jpl.nasa.gov/sb_ident.api?obs-time=2025-07-06_21%3A25%3A06&xobs=6.816754005E%2B03%2C1.737899884E%2B03%2C-2.289761293E%2B02%2C4.898387791E-01%2C-9.540731303E-01%2C7.447182357E%2B00&fov-ra-center=00-49-06.04&fov-dec-center=13-25-09.1&fov-ra-hwidth=0.1&fov-dec-hwidth=0.1&two-pass=true&suppress-first-pass=true&mag-required=false",
+       "status": "live",
+       "n_objects": 3,
+       "objects": [
+        {
+         "Object name": "20053 Cavefish (1993 FK29)",
+         "Astrometric RA (hh:mm:ss)": "00:49:06.64",
+         "Astrometric Dec (dd mm'ss\")": "+13 30'11.2\"",
+         "Dist. from center RA (\")": "8.73",
+         "Dist. from center Dec (\")": "302.",
+         "Dist. from center Norm (\")": "302.2",
+         "Visual magnitude (V)": "19.6",
+         "RA rate (\"/h)": "4.235E+01",
+         "Dec rate (\"/h)": "-2.459E+00"
+        },
+        {
+         "Object name": "(2007 EF26)",
+         "Astrometric RA (hh:mm:ss)": "00:48:51.69",
+         "Astrometric Dec (dd mm'ss\")": "+13 20'43.2\"",
+         "Dist. from center RA (\")": "-209.",
+         "Dist. from center Dec (\")": "-266.",
+         "Dist. from center Norm (\")": "338.5",
+         "Visual magnitude (V)": "23.6",
+         "RA rate (\"/h)": "6.093E+00",
+         "Dec rate (\"/h)": "3.331E+01"
+        },
+        {
+         "Object name": "(2016 CV379)",
+         "Astrometric RA (hh:mm:ss)": "00:48:46.41",
+         "Astrometric Dec (dd mm'ss\")": "+13 26'00.5\"",
+         "Dist. from center RA (\")": "-286.",
+         "Dist. from center Dec (\")": "51.4",
+         "Dist. from center Norm (\")": "290.9",
+         "Visual magnitude (V)": "23.4",
+         "RA rate (\"/h)": "2.428E+01",
+         "Dec rate (\"/h)": "1.009E+01"
+        }
+       ]
+      }
+     }
+    ],
+    "with_vetting": {
+     "vet_settings": {
+      "radius_arcsec": 6.0,
+      "min_dt_hours": 4.0
+     },
+     "n_tracks": 3,
+     "n_matching_horizons": 0,
+     "n_rejected_degenerate": 29
+    }
+   },
+   "linked": true,
+   "exposures": [
+    {
+     "obs_id": "2025W27_2A_0706_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60862.62795509,
+     "wavelength_um": 0.7431,
+     "cutout_sha256": "27ab3826a0b13ea87171195a69d995c22fb66f80e50ddaad1de3a9c2fdfab7e6",
+     "horizons_spherex": {
+      "ra": 11.952525312,
+      "dec": 13.397327213
+     },
+     "V_mag_horizons": 13.281,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 10,
+      "SOURCE": 1
+     },
+     "measured": {
+      "ra": 11.952509988295805,
+      "dec": 13.397337658956062,
+      "snr": 76.69956313544185,
+      "err_arcsec": 0.1303691470030943,
+      "x": 231.4789812603539,
+      "y": 113.8895193468804,
+      "resid_ra_cosdec_arcsec": -0.05364436667287009,
+      "resid_dec_arcsec": 0.037634091680502024,
+      "resid_vs_geocentric_arcsec": [
+       0.34553809673383284,
+       -2.6741457345452204
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0706_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60862.627955101,
+     "wavelength_um": 2.4248,
+     "cutout_sha256": "a8a916e6a3d3adb94ed8d5eb1db6abb7f29187c839a37b4a07f94066aef7d915",
+     "horizons_spherex": {
+      "ra": 11.952525316,
+      "dec": 13.397327215
+     },
+     "V_mag_horizons": 13.281,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 10,
+      "SOURCE": 3
+     },
+     "measured": {
+      "ra": 11.952523999776748,
+      "dec": 13.397421262915648,
+      "snr": 53.55314916376369,
+      "err_arcsec": 0.07460180397436336,
+      "x": 230.6901221974148,
+      "y": 113.6373907435417,
+      "resid_ra_cosdec_arcsec": -0.004428705470161276,
+      "resid_dec_arcsec": 0.3385768203418138,
+      "resid_vs_geocentric_arcsec": [
+       0.39475725809040796,
+       -2.373206607760835
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0706_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60862.629447358,
+     "wavelength_um": 0.7608,
+     "cutout_sha256": "e0862d46e4761973fbffc8cbb10608a7274c85dbdbf7ccf95f15f222935d53ed",
+     "horizons_spherex": {
+      "ra": 11.953139175,
+      "dec": 13.397541194
+     },
+     "V_mag_horizons": 13.28,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 9,
+      "SOURCE": 1
+     },
+     "measured": {
+      "ra": 11.953181167769088,
+      "dec": 13.397492287379396,
+      "snr": 106.10903904643713,
+      "err_arcsec": 0.17452378770637691,
+      "x": 231.02369315987605,
+      "y": 114.05824122626458,
+      "resid_ra_cosdec_arcsec": 0.14696729229990524,
+      "resid_dec_arcsec": -0.17614236438441822,
+      "resid_vs_geocentric_arcsec": [
+       0.6679999960317673,
+       -3.7420723572871566
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0706_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60862.629447358,
+     "wavelength_um": 2.4742,
+     "cutout_sha256": "c34c93263eda84a376601ae3501e42db6af40cea046d965e50043067e0897d71",
+     "horizons_spherex": {
+      "ra": 11.953139175,
+      "dec": 13.397541194
+     },
+     "V_mag_horizons": 13.28,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 10,
+      "SOURCE": 1
+     },
+     "measured": {
+      "ra": 11.953177469415905,
+      "dec": 13.397525034022118,
+      "snr": 83.26577704436443,
+      "err_arcsec": 0.10486476027065289,
+      "x": 230.97697135448973,
+      "y": 113.82766880490196,
+      "resid_ra_cosdec_arcsec": 0.13407809939548088,
+      "resid_dec_arcsec": -0.05824696971717458,
+      "resid_vs_geocentric_arcsec": [
+       0.6551108031273429,
+       -3.624176962619913
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0720_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60862.692637242,
+     "wavelength_um": 0.7599,
+     "cutout_sha256": "6fca92fcdf1cb52d1b5c97abbd6b9bbf75c300e3d7dafe1538cda4b0e3323a40",
+     "horizons_spherex": {
+      "ra": 11.977532385,
+      "dec": 13.417447118
+     },
+     "V_mag_horizons": 13.279,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 9
+     },
+     "measured": {
+      "ra": 11.977511835292136,
+      "dec": 13.417521824856504,
+      "snr": 97.22247792817807,
+      "err_arcsec": 0.13483284948697002,
+      "x": 213.82389202142798,
+      "y": 119.81746198694785,
+      "resid_ra_cosdec_arcsec": -0.07184379381851613,
+      "resid_dec_arcsec": 0.2689765614700832,
+      "resid_vs_geocentric_arcsec": [
+       0.03466294961077665,
+       -0.42579982210952494
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0720_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60862.692637242,
+     "wavelength_um": 2.4684,
+     "cutout_sha256": "95bf368e479d16a8c30c9f8beca1d6c7a4cf349c51381a921b613a43cf58f837",
+     "horizons_spherex": {
+      "ra": 11.977532385,
+      "dec": 13.417447118
+     },
+     "V_mag_horizons": 13.279,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 8,
+      "SOURCE": 6
+     },
+     "measured": {
+      "ra": 11.977528145102003,
+      "dec": 13.417388899772194,
+      "snr": 69.18046139751934,
+      "err_arcsec": 0.08846580175766343,
+      "x": 213.83332089160797,
+      "y": 119.54737456918255,
+      "resid_ra_cosdec_arcsec": -0.014937633392605676,
+      "resid_dec_arcsec": -0.20958000201574123,
+      "resid_vs_geocentric_arcsec": [
+       0.0915691100366871,
+       -0.9043563855953494
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0720_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60862.694129488,
+     "wavelength_um": 0.7772,
+     "cutout_sha256": "94c07fa13d52ae02a13ec638755728973bb95b622cbf74d01cc8d0252561d6c6",
+     "horizons_spherex": {
+      "ra": 11.978150022,
+      "dec": 13.417635908
+     },
+     "V_mag_horizons": 13.279,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 10
+     },
+     "measured": {
+      "ra": 11.97816496943239,
+      "dec": 13.417605498635934,
+      "snr": 102.70204686239491,
+      "err_arcsec": 0.109205153083515,
+      "x": 213.27292185179112,
+      "y": 119.9335290056186,
+      "resid_ra_cosdec_arcsec": 0.052295166213298216,
+      "resid_dec_arcsec": -0.10949644951080018,
+      "resid_vs_geocentric_arcsec": [
+       0.2944438086123,
+       -1.7493160384853468
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0720_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60862.694129488,
+     "wavelength_um": 2.5368,
+     "cutout_sha256": "2b8405f2f5a2e48f2022648d984db8e31cda4da94b7054fe61a41a35e00736b6",
+     "horizons_spherex": {
+      "ra": 11.978150022,
+      "dec": 13.417635908
+     },
+     "V_mag_horizons": 13.279,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "TRANSIENT": 1,
+      "SUR_ERROR": 1,
+      "NONFUNC": 1,
+      "OUTLIER": 5,
+      "SOURCE": 4
+     },
+     "measured": null
+    },
+    {
+     "obs_id": "2025W27_2A_0720_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60862.695621745,
+     "wavelength_um": 0.796,
+     "cutout_sha256": "905d405db0d35e04a9b500f4a72f87f66ae25d8a54de0c5d49ad576330b0eb37",
+     "horizons_spherex": {
+      "ra": 11.978766336,
+      "dec": 13.417833389
+     },
+     "V_mag_horizons": 13.279,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 11,
+      "SOURCE": 1
+     },
+     "measured": {
+      "ra": 11.978775508909298,
+      "dec": 13.417773180710922,
+      "snr": 101.60706576967215,
+      "err_arcsec": 0.12095246551711375,
+      "x": 213.2858797435406,
+      "y": 120.05528934270733,
+      "resid_ra_cosdec_arcsec": 0.03202866503039559,
+      "resid_dec_arcsec": -0.21676424636643787,
+      "resid_vs_geocentric_arcsec": [
+       0.4052214924704458,
+       -2.7703438511794047
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0720_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60862.695621745,
+     "wavelength_um": 2.6059,
+     "cutout_sha256": "67ff0a9e9047eacd8b650686d4df1e2a5dc6efcb660f51e84e0a15a53e7719a9",
+     "horizons_spherex": {
+      "ra": 11.978766336,
+      "dec": 13.417833389
+     },
+     "V_mag_horizons": 13.279,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 8,
+      "SOURCE": 3
+     },
+     "measured": {
+      "ra": 11.978794991347176,
+      "dec": 13.417860163838297,
+      "snr": 83.37651745824319,
+      "err_arcsec": 0.13661723352115474,
+      "x": 212.82989888231876,
+      "y": 119.0275669380403,
+      "resid_ra_cosdec_arcsec": 0.10038494532750519,
+      "resid_dec_arcsec": 0.09634717460357933,
+      "resid_vs_geocentric_arcsec": [
+       0.4735777727675554,
+       -2.4572324302093875
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0720_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D1",
+     "mjd_mid": 60862.697114002,
+     "wavelength_um": 0.8153,
+     "cutout_sha256": "116d22608746b65db999079ad13dd2fb1af655808fd4cbbfb86e3cb1ef8f937f",
+     "horizons_spherex": {
+      "ra": 11.979380615,
+      "dec": 13.418044388
+     },
+     "V_mag_horizons": 13.279,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 9,
+      "SOURCE": 1
+     },
+     "measured": {
+      "ra": 11.979463939882184,
+      "dec": 13.418033616741537,
+      "snr": 107.01058929806193,
+      "err_arcsec": 0.12359288249403876,
+      "x": 212.83777817425712,
+      "y": 119.15863588564984,
+      "resid_ra_cosdec_arcsec": 0.2917659975585707,
+      "resid_dec_arcsec": -0.03889974476248881,
+      "resid_vs_geocentric_arcsec": [
+       0.7889087036035676,
+       -3.457574295413224
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W27_2A_0720_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D4",
+     "mjd_mid": 60862.69711399,
+     "wavelength_um": 2.6787,
+     "cutout_sha256": "acf4a22edce7b47c48d1df8e9ba73666bd3f677626286cff738e2aeba8ecd53a",
+     "horizons_spherex": {
+      "ra": 11.979380619,
+      "dec": 13.41804439
+     },
+     "V_mag_horizons": 13.279,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 8,
+      "SOURCE": 5
+     },
+     "measured": {
+      "ra": 11.97937737711558,
+      "dec": 13.417998035773483,
+      "snr": 74.59234644400719,
+      "err_arcsec": 0.11283514620748412,
+      "x": 212.23202642481792,
+      "y": 119.21623683115301,
+      "resid_ra_cosdec_arcsec": -0.011423094947531354,
+      "resid_dec_arcsec": -0.16687101467493903,
+      "resid_vs_geocentric_arcsec": [
+       0.48571960961851346,
+       -3.5855491653290983
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W28_1B_0067_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D2",
+     "mjd_mid": 60863.305243354,
+     "wavelength_um": 1.4907,
+     "cutout_sha256": "e21b29f118a0de274042194a0f0af9b45a63efec82101466392964d6bf7c9c1e",
+     "horizons_spherex": {
+      "ra": 12.214869627,
+      "dec": 13.602625932
+     },
+     "V_mag_horizons": 13.268,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 11
+     },
+     "measured": {
+      "ra": 12.214839279523886,
+      "dec": 13.602739380866241,
+      "snr": 108.07819168184358,
+      "err_arcsec": 0.07879189776586157,
+      "x": 48.141656501814204,
+      "y": 167.74882397052914,
+      "resid_ra_cosdec_arcsec": -0.1064055740398544,
+      "resid_dec_arcsec": 0.40836095469796874,
+      "resid_vs_geocentric_arcsec": [
+       0.07429187423923622,
+       -1.0503961806172128
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W28_1B_0067_1",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D5",
+     "mjd_mid": 60863.305243354,
+     "wavelength_um": 4.2697,
+     "cutout_sha256": "a0af60ac20ffe1a4cabbf5677a4d9f5ab8879c1188a237e6302fb1b7547cfb80",
+     "horizons_spherex": {
+      "ra": 12.214869627,
+      "dec": 13.602625932
+     },
+     "V_mag_horizons": 13.268,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 12
+     },
+     "measured": {
+      "ra": 12.214897769619208,
+      "dec": 13.602685477511624,
+      "snr": 60.24026843425444,
+      "err_arcsec": 0.11452314871286512,
+      "x": 48.64018625608412,
+      "y": 167.97311444551278,
+      "resid_ra_cosdec_arcsec": 0.09835753750206777,
+      "resid_dec_arcsec": 0.2144181056989396,
+      "resid_vs_geocentric_arcsec": [
+       0.2790549857811584,
+       -1.244339029616242
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W28_1B_0067_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D2",
+     "mjd_mid": 60863.306735611,
+     "wavelength_um": 1.5271,
+     "cutout_sha256": "63feef339f2a0fe4321697cfcafeeaee33839321b1a5664fb8fcf938121daa50",
+     "horizons_spherex": {
+      "ra": 12.215485907,
+      "dec": 13.602820692
+     },
+     "V_mag_horizons": 13.268,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 11
+     },
+     "measured": {
+      "ra": 12.215560175135364,
+      "dec": 13.602892938911625,
+      "snr": 107.6550141602059,
+      "err_arcsec": 0.12409719152741021,
+      "x": 47.66275974780243,
+      "y": 168.0243340112296,
+      "resid_ra_cosdec_arcsec": 0.25972734458474633,
+      "resid_dec_arcsec": 0.26023108596859856,
+      "resid_vs_geocentric_arcsec": [
+       0.57706249178284,
+       -2.124200742341543
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W28_1B_0067_2",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D5",
+     "mjd_mid": 60863.306735611,
+     "wavelength_um": 4.3066,
+     "cutout_sha256": "2c4b87f531ba272f251a55442dbb125c7e5e2e4a0530ed82b634ce58e52c9e4b",
+     "horizons_spherex": {
+      "ra": 12.215485907,
+      "dec": 13.602820692
+     },
+     "V_mag_horizons": 13.268,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 12
+     },
+     "measured": {
+      "ra": 12.215465895051933,
+      "dec": 13.602787863121577,
+      "snr": 54.8970598341475,
+      "err_arcsec": 0.08896218109039628,
+      "x": 47.67422362251231,
+      "y": 168.37983190815316,
+      "resid_ra_cosdec_arcsec": -0.06995910488308255,
+      "resid_dec_arcsec": -0.1182225335458611,
+      "resid_vs_geocentric_arcsec": [
+       0.2473760423150111,
+       -2.5026543618560027
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W28_1B_0067_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D2",
+     "mjd_mid": 60863.308227867,
+     "wavelength_um": 1.5645,
+     "cutout_sha256": "3629de01b4150100929924a8b5cb56839f99538d769c6e4f08d3a0439acc57c9",
+     "horizons_spherex": {
+      "ra": 12.216100466,
+      "dec": 13.603028079
+     },
+     "V_mag_horizons": 13.268,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 12
+     },
+     "measured": {
+      "ra": 12.216169340004166,
+      "dec": 13.602990149486196,
+      "snr": 96.70342940759639,
+      "err_arcsec": 0.054369674525430414,
+      "x": 47.6530701929212,
+      "y": 167.32012617082103,
+      "resid_ra_cosdec_arcsec": 0.24106650779833672,
+      "resid_dec_arcsec": -0.1364158748748423,
+      "resid_vs_geocentric_arcsec": [
+       0.6890111066937834,
+       -3.4010712172055264
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W28_1B_0067_3",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D5",
+     "mjd_mid": 60863.308227867,
+     "wavelength_um": 4.3438,
+     "cutout_sha256": "2426aa637abe46bb0ae9bf8c92b83d222953463d1b98b981afec2af6cadc5418",
+     "horizons_spherex": {
+      "ra": 12.216100466,
+      "dec": 13.603028079
+     },
+     "V_mag_horizons": 13.268,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 9
+     },
+     "measured": {
+      "ra": 12.216125584061265,
+      "dec": 13.603065209800915,
+      "snr": 72.41576956477206,
+      "err_arcsec": 0.115418212268305,
+      "x": 47.064978191139396,
+      "y": 167.88202795550035,
+      "resid_ra_cosdec_arcsec": 0.08781684766478293,
+      "resid_dec_arcsec": 0.1337194502056036,
+      "resid_vs_geocentric_arcsec": [
+       0.5357614465602296,
+       -3.1309358921250805
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W28_1B_0067_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D2",
+     "mjd_mid": 60863.309720113,
+     "wavelength_um": 1.6023,
+     "cutout_sha256": "d6c0aa40c874995df3142225f098c292341bfb705446a840402b6ccb2a438d29",
+     "horizons_spherex": {
+      "ra": 12.216712589,
+      "dec": 13.60325274
+     },
+     "V_mag_horizons": 13.268,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 13
+     },
+     "measured": {
+      "ra": 12.216624660516281,
+      "dec": 13.603337835112168,
+      "snr": 101.06601399264322,
+      "err_arcsec": 0.07975205074260396,
+      "x": 47.359412276600466,
+      "y": 138.74208620944034,
+      "resid_ra_cosdec_arcsec": -0.30783087671403564,
+      "resid_dec_arcsec": 0.30617603315397446,
+      "resid_vs_geocentric_arcsec": [
+       0.2622081964145764,
+       -3.7765021450712197
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    },
+    {
+     "obs_id": "2025W28_1B_0067_4",
+     "release": "spherex_dr1",
+     "detector": "SPHEREx-D5",
+     "mjd_mid": 60863.309720113,
+     "wavelength_um": 4.381,
+     "cutout_sha256": "2e2b89fb635a90407218db3908d73b8b41f0ef756c27273964983da810794b9d",
+     "horizons_spherex": {
+      "ra": 12.216712589,
+      "dec": 13.60325274
+     },
+     "V_mag_horizons": 13.268,
+     "predicted_inside_cutout": true,
+     "flag_pixels_at_prediction": {
+      "OUTLIER": 12
+     },
+     "measured": {
+      "ra": 12.216718897749121,
+      "dec": 13.603257343093778,
+      "snr": 63.300429857541765,
+      "err_arcsec": 0.11383436387361526,
+      "x": 47.17569348947049,
+      "y": 129.31027115634913,
+      "resid_ra_cosdec_arcsec": 0.0220655409924575,
+      "resid_dec_arcsec": 0.016583295984332835,
+      "resid_vs_geocentric_arcsec": [
+       0.5921046141210695,
+       -4.066094882240861
+      ],
+      "flagged_static": false,
+      "in_linked_track": true
+     }
+    }
+   ],
+   "residuals_vs_horizons_spherex_arcsec": {
+    "all_detections_near_prediction": {
+     "n": 19,
+     "mean_ra_cosdec": 0.04347793654888894,
+     "mean_dec": 0.044757072313299624,
+     "rms_ra_cosdec": 0.14534432370803743,
+     "rms_dec": 0.2038187072247849,
+     "median_total": 0.21911771696154345,
+     "max_total": 0.4341700265292798
+    },
+    "linked_track_members": {
+     "n": 19,
+     "mean_ra_cosdec": 0.04347793654888894,
+     "mean_dec": 0.044757072313299624,
+     "rms_ra_cosdec": 0.14534432370803743,
+     "rms_dec": 0.2038187072247849,
+     "median_total": 0.21911771696154345,
+     "max_total": 0.4341700265292798
+    }
+   },
+   "fitted_motion": {
+    "t_ref_mjd": 60863.01722694261,
+    "fit_order": 2,
+    "n_detections": 19,
+    "n_visits": 3,
+    "measured_rate_arcsec_h": {
+     "ra_cosdec": 56.50158975555615,
+     "dec": 45.324876051335494,
+     "err_ra_cosdec": 0.040450933137575466,
+     "err_dec": 0.040450933137575466,
+     "total": 72.43461902967456
+    },
+    "horizons_same_model_rate_arcsec_h": {
+     "ra_cosdec": 56.500282423743634,
+     "dec": 45.32375425450317,
+     "total": 72.43289731665708
+    },
+    "rate_difference_sigma": [
+     0.03231895313925163,
+     0.02773228564362144
+    ],
+    "fit_rms_arcsec": 0.734780481350873,
+    "fit_chi2_red": 62.54716424947773,
+    "time_span_hours": 16.362360552011523
+   },
+   "astrometric_floor_field_stars": {
+    "n_stars": 335,
+    "snr_5_10": {
+     "n_stars": 140,
+     "median_rms_axis_arcsec": 0.6183823596288462,
+     "median_formal_err_arcsec": 0.6597290722835627
+    },
+    "snr_10_20": {
+     "n_stars": 84,
+     "median_rms_axis_arcsec": 0.444769096005741,
+     "median_formal_err_arcsec": 0.3574197779722908
+    },
+    "snr_20_50": {
+     "n_stars": 81,
+     "median_rms_axis_arcsec": 0.32752953177387273,
+     "median_formal_err_arcsec": 0.17169786999489806
+    },
+    "snr_50_up": {
+     "n_stars": 30,
+     "median_rms_axis_arcsec": 0.19898053957682527,
+     "median_formal_err_arcsec": 0.10063997250081799
+    },
+    "floor_arcsec_bright_snr_ge_20": 0.29945774892779825
+   },
+   "pipeline_flag_finding": {
+    "n_with_outlier_at_prediction": 20,
+    "n_exposures": 20
+   },
+   "runtime_s": 2989.7,
+   "figure": "report/figures/motion_followup_433eros.png"
+  }
+ ],
  "run": {
-  "started_utc": "2026-11-16T07:40:47+00:00",
-  "runtime_s": 145.5,
+  "started_utc": "2026-11-16T07:50:04+00:00",
+  "runtime_s": 3620.3,
   "python": "3.12.3",
   "numpy": "2.5.4"
  }

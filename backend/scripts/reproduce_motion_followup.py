@@ -173,6 +173,60 @@ def rebuild_kleopatra_run():
                 t=t, xi=xi, eta=eta, err=err, ep=ep, snr=snr, static=static, tracks=tracks)
 
 
+VET = {"radius_arcsec": R.STATIC_RADIUS, "min_dt_hours": R.MIN_DT_STATIC}
+
+
+def run_link_vetted(t, xi, eta, err, ep):
+    """R.run_link with the opt-in degenerate-track vetting switched on.
+
+    Everything else (static flag, speed window, tolerance, order) is the
+    published setting; the vetting uses the same radius and time span as the
+    static-source flag, so it adds no new tuned number.
+    """
+    static = M.flag_static(t, xi, eta, R.STATIC_RADIUS, R.MIN_DT_STATIC)
+    rejected = []
+    tracks = M.link(t, xi, eta, err, epoch=ep, v_min=R.V_MIN, v_max=R.V_MAX, tol_arcsec=R.LINK_TOL,
+                    min_visits=R.MIN_VISITS, order=R.ORDER, exclude=static, vet=VET, rejected=rejected)
+    return static, tracks, rejected
+
+
+def vetted_kleopatra(run):
+    """The Kleopatra blind search again, with vetting on: which tracks survive?"""
+    _, tracks, rejected = run_link_vetted(run["t"], run["xi"], run["eta"], run["err"], run["ep"])
+    hz = {ex["mjd_mid"]: ex["horizons_spherex"] for ex in run["prev"]["exposures"]}
+    mjd_sorted = np.array(sorted(hz))
+    hx, hy = M.to_plane([hz[m]["ra"] for m in mjd_sorted], [hz[m]["dec"] for m in mjd_sorted], run["ra0"], run["dec0"])
+    t = run["t"]
+    rows = []
+    for tr in tracks:
+        tx, ty = tr.fit.at(t[tr.members])
+        kx, ky = np.interp(t[tr.members], mjd_sorted, hx), np.interp(t[tr.members], mjd_sorted, hy)
+        med = float(np.median(np.hypot(tx - kx, ty - ky)))
+        vx, vy, _, _ = tr.fit.rate_arcsec_per_hour
+        rows.append({"n_detections": int(len(tr.members)), "n_visits": int(tr.n_visits),
+                     "rate_ra_cosdec_arcsec_h": vx, "rate_dec_arcsec_h": vy, "fit_rms_arcsec": tr.fit.rms_arcsec,
+                     "median_offset_from_horizons_arcsec": med, "matches_horizons": med < R.MATCH_RADIUS})
+    pub = run["prev"]["blind_search"]["tracks"]
+    kleo_pub = [p for p in pub if p["matches_horizons"]][0]
+    kleo_now = [r for r in rows if r["matches_horizons"]]
+    out = {
+        "what": "reproduce_motion.py blind search on the same cached cutouts, with M.link(vet=...) switched on",
+        "vet_settings": VET,
+        "n_tracks_published_without_vetting": len(pub),
+        "n_tracks_with_vetting": len(rows),
+        "tracks": rows,
+        "rejected_candidates": [{"n_detections": int(len(r["members"])), "n_visits": int(len(np.unique(M.visits(t[r["members"]])))),
+                                 **r["check"]} for r in rejected],
+        "only_kleopatra_survives": len(rows) == 1 and len(kleo_now) == 1,
+        "kleopatra_track_unchanged": bool(kleo_now and kleo_now[0]["n_detections"] == kleo_pub["n_detections"]
+                                          and np.isclose(kleo_now[0]["rate_ra_cosdec_arcsec_h"], kleo_pub["rate_ra_cosdec_arcsec_h"])
+                                          and np.isclose(kleo_now[0]["rate_dec_arcsec_h"], kleo_pub["rate_dec_arcsec_h"])),
+    }
+    print(f"  vetted: {len(rows)} track(s), {len(rejected)} degenerate candidate(s) rejected, "
+          f"only Kleopatra: {out['only_kleopatra_survives']}, Kleopatra unchanged: {out['kleopatra_track_unchanged']}")
+    return out
+
+
 def _sigma_px(e):
     fwhm = e.psf_fwhm_arcsec if np.isfinite(e.psf_fwhm_arcsec) else 9.0
     return fwhm / M.pixel_scale_arcsec(e.wcs) * M.FWHM_TO_SIGMA
@@ -420,6 +474,7 @@ def run_case(case):
     dets = R.detect_all(epochs)
     t, xi, eta, err, ep, snr = R.arrays(dets, ra0, dec0)
     static, tracks = R.run_link(t, xi, eta, err, ep)
+    _, tracks_v, rejected_v = run_link_vetted(t, xi, eta, err, ep)
     hx, hy = M.to_plane([e["ra"] for e in eph_sc], [e["dec"] for e in eph_sc], ra0, dec0)
     gx, gy = M.to_plane([e["ra"] for e in eph_geo], [e["dec"] for e in eph_geo], ra0, dec0)
     srt = np.argsort(mjds)
@@ -428,11 +483,15 @@ def run_case(case):
     def pos(tt):
         return np.interp(tt, m_arr[srt], hx[srt]), np.interp(tt, m_arr[srt], hy[srt])
 
-    rows, target = [], None
-    for k, tr in enumerate(tracks):
+    def offset(tr):
+        """Median distance of the fitted track from Horizons (from SPHEREx) at its members' times."""
         tx, ty = tr.fit.at(t[tr.members])
         kx, ky = pos(t[tr.members])
-        med = float(np.median(np.hypot(tx - kx, ty - ky)))
+        return float(np.median(np.hypot(tx - kx, ty - ky)))
+
+    rows, target = [], None
+    for k, tr in enumerate(tracks):
+        med = offset(tr)
         vx, vy, _, _ = tr.fit.rate_arcsec_per_hour
         row = {"track": k, "n_detections": int(len(tr.members)), "n_visits": tr.n_visits,
                "rate_ra_cosdec_arcsec_h": vx, "rate_dec_arcsec_h": vy, "fit_rms_arcsec": tr.fit.rms_arcsec,
@@ -506,7 +565,10 @@ def run_case(case):
         "horizons_rate_range_arcsec_h": [float(min(np.hypot(e["rate_ra_cosdec_arcsec_h"], e["rate_dec_arcsec_h"]) for e in eph_geo)),
                                          float(max(np.hypot(e["rate_ra_cosdec_arcsec_h"], e["rate_dec_arcsec_h"]) for e in eph_geo))],
         "n_visits_with_object_inside_cutout": n_vis_inside, "n_visits_total": int(len(set(vis_all.tolist()))),
-        "blind_search": {"n_detections": len(dets), "n_static": int(static.sum()), "tracks": rows},
+        "blind_search": {"n_detections": len(dets), "n_static": int(static.sum()), "tracks": rows,
+                         "with_vetting": {"vet_settings": VET, "n_tracks": len(tracks_v),
+                                          "n_matching_horizons": sum(1 for tr in tracks_v if offset(tr) < R.MATCH_RADIUS),
+                                          "n_rejected_degenerate": len(rejected_v)}},
         "linked": target is not None,
         "exposures": exposures,
         "residuals_vs_horizons_spherex_arcsec": {"all_detections_near_prediction": stats(m_rows),
@@ -605,6 +667,7 @@ def main():
     run = rebuild_kleopatra_run()
     vet = vet_second_track(run)
     vet["figure"] = track2_figure(run, vet)
+    vetted = vetted_kleopatra(run)
     print("Part 2: further known objects")
     cases = []
     for c in ([] if "--skip-cases" in sys.argv else CASES):
@@ -617,6 +680,7 @@ def main():
         "claim": "none about new objects",
         "settings_from": "reproduce_motion.py (unchanged)",
         "second_track": vet,
+        "kleopatra_with_vetting": vetted,
         "case_search": CASE_SEARCH,
         "validation_cases": cases,
         "run": {"started_utc": started, "runtime_s": round(time.time() - t0, 1), "python": platform.python_version(),
