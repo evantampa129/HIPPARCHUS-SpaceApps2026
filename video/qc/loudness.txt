@@ -1,4 +1,4 @@
-[Parsed_ebur128_0 @ 0x5d17f20e9b80] Summary:
+[Parsed_ebur128_0 @ 0x5a654b8f2c00] Summary:
 
   Integrated loudness:
     I:         -15.7 LUFS
@@ -11,4 +11,3 @@
     LRA high:  -12.9 LUFS
 
   True peak:
-    Peak:       -6.2 dBFS

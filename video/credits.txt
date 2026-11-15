@@ -19,6 +19,13 @@ App screen recording (scene 4)
   video says so. The analysis itself ran from the project's cache of real SPHEREx cutouts.
   Project's own work (see ../LICENSE).
 
+Manim scenes (scenes 1 and 6)
+  remotion/public/manim/m01_ancient_sky.mp4 (CONCEPTUAL / HISTORICAL ILLUSTRATION) and m06_kleopatra.mp4 (DATA-DRIVEN),
+  copied from visualizations/manim/renders/. Rendered by the project's Manim scene library; every number on screen
+  is read from submission/evidence/*.json (M06: motion_check.json, real SPHEREx detections of the known asteroid
+  (216) Kleopatra vs JPL Horizons as seen from SPHEREx). Each clip carries its own label and source line.
+  Project's own work.
+
 Judge Mode page crops (scene 5)
   remotion/public/judge/card_rwaur.png, card_barnard.png, heatmap.png (+ cards.png, flow.png, unused)
   Screenshots of docs/index.html, the page published at

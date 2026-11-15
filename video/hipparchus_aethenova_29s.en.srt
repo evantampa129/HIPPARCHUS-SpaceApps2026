@@ -24,4 +24,4 @@ Barnard’s Star is saturated: comparison refused.
 
 7
 00:00:24,100 --> 00:00:26,950
-Next: moving objects across many epochs. Planet X has not been found.
+Asteroid Kleopatra, tracked in real SPHEREx images, matches JPL Horizons. No Planet X.
