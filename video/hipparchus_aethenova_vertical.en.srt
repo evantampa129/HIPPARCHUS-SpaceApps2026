@@ -1,0 +1,15 @@
+1
+00:00:00,300 --> 00:00:03,900
+RW Aurigae got 2.56× brighter in a year. Real, or an artefact?
+
+2
+00:00:04,200 --> 00:00:09,900
+HIPPARCHUS checks every SPHEREx exposure and compares like with like.
+
+3
+00:00:10,200 --> 00:00:12,900
+Formally 175σ. Now add a 12.5% calibration error…
+
+4
+00:00:13,000 --> 00:00:14,400
+…still 12.4σ. The change holds up.

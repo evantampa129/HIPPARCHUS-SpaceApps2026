@@ -1,3 +1,24 @@
+== hipparchus_aethenova_29s.mp4
 stream|codec_name=h264|width=1920|height=1080|r_frame_rate=30/1
 stream|codec_name=aac|sample_rate=48000|channels=2|r_frame_rate=0/0
-format|duration=29.418000|size=7434370
+format|duration=29.418000|size=8238165
+black segments (blackdetect d=0.3 pix_th=0.05):
+black_start:26.1667 black_end:26.4667
+captions: 7 cues
+
+== hipparchus_aethenova_extended.mp4
+stream|codec_name=h264|width=1920|height=1080|r_frame_rate=30/1
+stream|codec_name=aac|sample_rate=48000|channels=2|r_frame_rate=0/0
+format|duration=80.810000|size=14872270
+black segments (blackdetect d=0.3 pix_th=0.05):
+black_start:77.5667 black_end:77.8667
+captions: 12 cues
+
+== hipparchus_aethenova_vertical.mp4
+stream|codec_name=h264|width=1080|height=1920|r_frame_rate=30/1
+stream|codec_name=aac|sample_rate=48000|channels=2|r_frame_rate=0/0
+format|duration=18.005000|size=4496659
+black segments (blackdetect d=0.3 pix_th=0.05):
+black_start:14.6667 black_end:14.9667
+captions: 4 cues
+

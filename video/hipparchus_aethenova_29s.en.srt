@@ -1,27 +1,27 @@
 1
-00:00:00,300 --> 00:00:03,900
-For two thousand years, we have charted the sky and asked what changes.
+00:00:00,300 --> 00:00:02,900
+RW Aurigae in two real SPHEREx images, a year apart. Is this change real?
 
 2
-00:00:04,200 --> 00:00:07,900
-SPHEREx now maps the whole sky in infrared light, again and again.
+00:00:03,200 --> 00:00:06,900
+A different wavelength can fake a change, so pairs too far apart are refused.
 
 3
-00:00:08,200 --> 00:00:11,900
-RW Aurigae, a year apart. But wavelength and noise can fake a change.
+00:00:07,200 --> 00:00:14,800
+HIPPARCHUS searches the archive, checks every exposure and compares like with like.
 
 4
-00:00:12,200 --> 00:00:17,900
-HIPPARCHUS searches the archive, checks each epoch, compares like with like.
+00:00:15,100 --> 00:00:18,400
+RW Aur got 2.56× brighter: 175σ formally, still 12.4σ with a 12.5% calibration floor.
 
 5
-00:00:18,100 --> 00:00:21,300
-RW Aur: 2.56× brighter. The change holds in 24 of 24 analysis settings.
+00:00:18,600 --> 00:00:20,200
+The change holds in 24 of 24 analysis settings.
 
 6
-00:00:21,400 --> 00:00:23,900
-Barnard’s Star is saturated: comparison refused.
+00:00:20,400 --> 00:00:21,900
+Barnard’s Star saturates SPHEREx: comparison refused.
 
 7
-00:00:24,100 --> 00:00:26,950
+00:00:22,100 --> 00:00:25,900
 Asteroid Kleopatra, tracked in real SPHEREx images, matches JPL Horizons. No Planet X.

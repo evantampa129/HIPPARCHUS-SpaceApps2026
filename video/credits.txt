@@ -1,41 +1,38 @@
 HIPPARCHUS · team AETHENOVA · NASA Space Apps Challenge 2026, "Planet X and SPHEREx"
-Video: hipparchus_aethenova_29s.mp4 (29.4 s, 1920x1080, 30 fps, H.264 + AAC), captions: hipparchus_aethenova_29s.en.srt
-Editable source: remotion/ (render instructions at the top of remotion/src/hipparchus.tsx)
+Three cuts, all 30 fps, H.264 + AAC 48 kHz, English captions burned in and as .srt:
+  hipparchus_aethenova_29s.mp4       29.4 s, 1920x1080  official cut (problem, wavelength, real app, RW Aur, Barnard, Kleopatra, identity)
+  hipparchus_aethenova_extended.mp4  80.8 s, 1920x1080  scientific cut (adds WCS, aperture, ePSF, compatibility graph, shift-and-stack)
+  hipparchus_aethenova_vertical.mp4  18.0 s, 1080x1920  vertical cut (question, real app, one verified result, identity)
+Editable source: remotion/ (src/hipparchus.tsx, src/extended.tsx, src/vertical.tsx); build: remotion/scripts/build.sh [official|extended|vertical]
 Independent student project; not an official NASA product and not endorsed by NASA. No NASA logos or insignia are used.
 
 ASSETS, SOURCE, LICENCE
 -----------------------
-SPHEREx cutouts (scenes 2, 3; also inside the app recording and the Judge Mode crops)
+SPHEREx data (inside the Manim scenes and the app recording)
   remotion/public/img/rw_aur_a.png, rw_aur_b.png, rw_aur_diff.png, wise0855_a.png, barnard_epoch.png
   Copied from docs/img/. Real SPHEREx observations from the NASA/IPAC Infrared Science Archive (IRSA),
   SPHEREx DR1 / QR3, processed by HIPPARCHUS (cutouts, difference image; flagged pixels drawn in dark red).
   Data credit: SPHEREx / NASA/IPAC IRSA. Shown as processed observations, only scaled.
 
-App screen recording (scene 4)
+App screen recording (all three cuts)
   remotion/public/rec/app.mp4, marks.json. Recorded 2026-11-15 (UTC) from the real HIPPARCHUS app run
   locally (backend/ + frontend/dist), driven by remotion/scripts/record_app.mjs in headless Chromium
-  (DevTools screencast). Four cuts at 1x speed, gently zoomed. During the recording IRSA answered
+  (DevTools screencast). Cut into short segments at 1x speed, gently zoomed. During the recording IRSA answered
   HTTP 502, so the app used its cached archive listing; the app labels this ("CACHED listing") and the
   video says so. The analysis itself ran from the project's cache of real SPHEREx cutouts.
   Project's own work (see ../LICENSE).
 
-Manim scenes (scenes 1 and 6)
-  remotion/public/manim/m01_ancient_sky.mp4 (CONCEPTUAL / HISTORICAL ILLUSTRATION) and m06_kleopatra.mp4 (DATA-DRIVEN),
-  copied from visualizations/manim/renders/. Rendered by the project's Manim scene library; every number on screen
-  is read from submission/evidence/*.json (M06: motion_check.json, real SPHEREx detections of the known asteroid
-  (216) Kleopatra vs JPL Horizons as seen from SPHEREx). Each clip carries its own label and source line.
-  Project's own work.
+Manim scenes (most of every cut)
+  remotion/public/manim/m01–m07, m09–m15 *.mp4, copied from visualizations/manim/renders/. Rendered by the project's
+  Manim scene library; every number on screen is read from submission/evidence/*.json and checked by
+  visualizations/manim/tests/. Each clip carries its own label (DATA-DRIVEN, EXPERIMENTAL, CONCEPTUAL, SIMULATED) and
+  source line. M07 (shift-and-stack for a distant planet) is SIMULATED; M15 is CONCEPTUAL. Project's own work.
 
-Judge Mode page crops (scene 5)
-  remotion/public/judge/card_rwaur.png, card_barnard.png, heatmap.png (+ cards.png, flow.png, unused)
-  Screenshots of docs/index.html, the page published at
-  https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/ , made by remotion/scripts/capture_judge.mjs.
-  Project's own work.
+Older assets kept for reference, not used in the current cuts
+  remotion/public/judge/*.png (Judge Mode page crops), remotion/public/img/*.png (SPHEREx cutouts),
+  remotion/public/screens/*.png (app screenshots). Project's own work from real SPHEREx data.
 
-App screenshots (copied for reference, not used in the final cut)
-  remotion/public/screens/01–05_*.png, from presentation/screens/. Project's own work.
-
-Logos (scene 7)
+Logos (identity card at the end of each cut)
   remotion/public/brand/hipparchus-logo_ai.png  (product logo)  from presentation/assets/
   remotion/public/brand/aethenova-logo_ai.png   (team logo)     from presentation/assets/
   AI-GENERATED images, already carrying an "AI-generated" mark; shown uncropped so the mark stays
@@ -45,16 +42,13 @@ Font
   Inter (Light/Regular/Medium/SemiBold/Bold), remotion/public/fonts/, copied from the system package
   fonts-inter. SIL Open Font License 1.1, (c) The Inter Project Authors.
 
-Programmatic graphics (made in code, remotion/src/scenes.tsx)
-  Scene 1 celestial sphere, star field and ecliptic: ILLUSTRATION (labelled on screen).
-  Scene 2 RA/Dec chart and reticle: ILLUSTRATION (labelled); the coordinates of RW Aur are real.
-  Scene 6 moving dot over five epochs: CONCEPT — FUTURE RESEARCH, ILLUSTRATION (labelled). Not data.
-  It does not show, and the video does not claim, any detection: HIPPARCHUS has not found Planet X.
-  Labels, dates and numbers are taken from the project's results (RW Aur x2.56, 175σ formal / ≈12σ
-  with the calibration floor, 24/24 robustness, Barnard's Star 58/58 flagged, refused).
+On-screen claims
+  Every number comes from the project's results: RW Aur x2.56 (pair A+B, unresolved), 175σ formal / 12.4σ with the
+  12.5% calibration floor, 24/24 robustness, Barnard's Star 0/58 usable exposures (refused), Kleopatra 31 detections
+  in 7 visits vs JPL Horizons at 0.15–0.18″ rms. No cut claims a detection of Planet X: HIPPARCHUS has not found it.
 
 Audio
-  remotion/public/audio/ambient.wav, synthesised by remotion/scripts/make_ambient.sh with ffmpeg
+  remotion/public/audio/ambient*.wav (one per cut, transitions on that cut's scene changes), synthesised by remotion/scripts/make_ambient.sh with ffmpeg
   (sine partials + filtered pink noise). No music, no samples, no third-party audio.
   Loudness: two-pass ffmpeg loudnorm to -16 LUFS integrated, true peak <= -1.5 dBTP.
   NO VOICE: no narration recording and no synthetic voice (no local TTS engine was installed).
