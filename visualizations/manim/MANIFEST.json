@@ -1,0 +1,457 @@
+{
+ "what": "HIPPARCHUS Manim scenes M01-M10",
+ "label_types": [
+  "DATA-DRIVEN",
+  "SIMULATED",
+  "CONCEPTUAL",
+  "HISTORICAL ILLUSTRATION",
+  "EXPERIMENTAL"
+ ],
+ "scenes": [
+  {
+   "scene": "M01",
+   "module": "scenes/m01_ancient_sky.py",
+   "class": "M01AncientSky",
+   "title": "From the ancient sky to a coordinate grid",
+   "labels": [
+    "CONCEPTUAL"
+   ],
+   "source_line": "Geometry and schematic chart by HIPPARCHUS · target RA/Dec from submission/evidence",
+   "evidence": [
+    {
+     "file": "submission/evidence/rw_aur_spherex-d1.json",
+     "sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad"
+    },
+    {
+     "file": "submission/evidence/barnard_spherex-d6.json",
+     "sha256": "f7fdc32c09ce0c78011e26c98863d7d85d50b423e1ac7b6dfa72b6bb8e2c130f"
+    },
+    {
+     "file": "submission/evidence/wise0855_spherex-d6.json",
+     "sha256": "71d8e2b813eb58e213676c51aaceae3461255fbd3aab6e97bb9bd67561aff691"
+    }
+   ],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m01_ancient_sky.mp4",
+     "bytes": 454371,
+     "sha256": "8e3193c1ccf13e784cf173181694364cf36aed865f622a2e08c044c184cd5f7e"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m01_ancient_sky.png",
+     "bytes": 590840,
+     "sha256": "227868ecc6b26c79d6a2ae4a31348a4b99b02e36ebe646fefebfee7d42fb3b7a"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m01_ancient_sky.mp4",
+     "bytes": 175902,
+     "sha256": "379c71a82968401b25e982955e8c0546b140182e644f982ddc3f9209cf84c100"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m01_ancient_sky_poster.png",
+     "bytes": 308565,
+     "sha256": "39351e796a65edb303eef662f0c523119d611eddd41b21d81695f89a39a19617"
+    }
+   },
+   "duration_s": 6.8,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M02",
+   "module": "scenes/m02_filters.py",
+   "class": "M02Filters",
+   "title": "Same star, two wavelengths: when can we compare?",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1/QR3, NASA/IPAC IRSA · compat_check.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/compat_check.json",
+     "sha256": "f14bf2fec4a41021e11daf155c9ce4548980e60d667fa91f521f6bb166f28e76"
+    }
+   ],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m02_filters.mp4",
+     "bytes": 514228,
+     "sha256": "7b687b8a0cb2e29d5dd8545d11c89c8a403e5c4ea4631079c2232e94b0116f12"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m02_filters.png",
+     "bytes": 693641,
+     "sha256": "0b83bdac06f5eaf6b93155309a9c3bcdc7906b267aeb43bfb61ea9769a4d9610"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m02_filters.mp4",
+     "bytes": 158624,
+     "sha256": "f67983ebe112f67eaa68a56e546af0fb5a247d1bfb3ba80389c2e42c82562809"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m02_filters_poster.png",
+     "bytes": 365356,
+     "sha256": "6abf067c0955fdc2c1a64f01991e9e26f53cfcf97f0c7ba4286ff8ee9ea70b28"
+    }
+   },
+   "duration_s": 6.4,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M03",
+   "module": "scenes/m03_aperture.py",
+   "class": "M03Aperture",
+   "title": "Aperture photometry on real SPHEREx pixels",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1, NASA/IPAC IRSA · cutout SHA-256 in rw_aur_spherex-d1.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/rw_aur_spherex-d1.json",
+     "sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad"
+    }
+   ],
+   "derived_inputs": [
+    {
+     "path": "visualizations/manim/data/rw_aur_pixels.json",
+     "bytes": 22792,
+     "sha256": "bb3a425646466de39e3d77406a2bf21e9f33b52de53b901acc493a754bd8afa8",
+     "from": "tools/extract_pixels.py (real cached cutout, checksum-checked)"
+    }
+   ],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m03_aperture.mp4",
+     "bytes": 494615,
+     "sha256": "7353e8776aa0058bae625473f3cb2b85ca3caea16daf88d13bcff3de8d6386d0"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m03_aperture.png",
+     "bytes": 599472,
+     "sha256": "c3485f24a55aa02ae86eba556ee2e5fd8ca9b9b464e7a17434e3ff0d24dca96f"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m03_aperture.mp4",
+     "bytes": 147079,
+     "sha256": "314624665f3eaf3e9f0fbfacc27a80f4edbf67e629bfabd6fe4905a9dd3d8f65"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m03_aperture_poster.png",
+     "bytes": 334305,
+     "sha256": "1674678dccd5370e7c33d815ed64de724d636ba631073bc32610a06ceb424bc7"
+    }
+   },
+   "duration_s": 6.3,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M04",
+   "module": "scenes/m04_epsf.py",
+   "class": "M04EPSF",
+   "title": "Second measurement: ePSF fit on native pixels",
+   "labels": [
+    "DATA-DRIVEN",
+    "EXPERIMENTAL"
+   ],
+   "source_line": "SPHEREx DR1, NASA/IPAC IRSA · SPHEREx ePSF calibration · epsf_check.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/epsf_check.json",
+     "sha256": "63a17ab5c79fdb9372fa0e3a78ee226bd4800090950e21d408bf7eb711473bd4"
+    }
+   ],
+   "derived_inputs": [
+    {
+     "path": "visualizations/manim/data/rw_aur_pixels.json",
+     "bytes": 22792,
+     "sha256": "bb3a425646466de39e3d77406a2bf21e9f33b52de53b901acc493a754bd8afa8",
+     "from": "tools/extract_pixels.py (real cached cutout, checksum-checked)"
+    }
+   ],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m04_epsf.mp4",
+     "bytes": 429274,
+     "sha256": "7fc0c1a0d4b24dc5ad18cd573a201b0bef60746b1c69e6045783f7f100abda4b"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m04_epsf.png",
+     "bytes": 572462,
+     "sha256": "1ed8d3a23d9a41eeb71f643e0614ef720e18dfadb1cc897b9dd5f41d4f91ac29"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m04_epsf.mp4",
+     "bytes": 159796,
+     "sha256": "ae348ccd054495183432b412dc0b48b1b9a5d668aaabc8b6c721665bfe473552"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m04_epsf_poster.png",
+     "bytes": 324953,
+     "sha256": "070d5f48c4fd5ca4094daa1ab8b851cd8c7d283f1a39e4ed338909b4f3e84e1a"
+    }
+   },
+   "duration_s": 6.1,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M05",
+   "module": "scenes/m05_fingerprint.py",
+   "class": "M05Fingerprint",
+   "title": "Stability Fingerprint",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1/QR3, NASA/IPAC IRSA · robustness.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/robustness.json",
+     "sha256": "499f7bf3383668ea162ed4f61df20e5fce470f421d990b33c36c76498c6df0f2"
+    }
+   ],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m05_fingerprint.mp4",
+     "bytes": 449910,
+     "sha256": "df620b267071557aec949fb3cb1280e9080544ab6ddb1b30a5c2a79d58db17e9"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m05_fingerprint.png",
+     "bytes": 522148,
+     "sha256": "423ad6159fe67226c5bd28bdbb4cae7ec5beabe5e14ab6387ab169b9e44141ea"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m05_fingerprint.mp4",
+     "bytes": 136859,
+     "sha256": "5dd853c526d46a09563ba7f3f3f7169305e79f5eb82ec90f302f99908a07a097"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m05_fingerprint_poster.png",
+     "bytes": 290734,
+     "sha256": "7712c8e94b39d1d694464cfdbeb61d76852ac06c96c295f94b32c8e9b0f559ac"
+    }
+   },
+   "duration_s": 7.5,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M06",
+   "module": "scenes/m06_kleopatra.py",
+   "class": "M06Kleopatra",
+   "title": "Moving-object check: (216) Kleopatra vs JPL Horizons",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1, NASA/IPAC IRSA · JPL Horizons, observer = SPHEREx · motion_check.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/motion_check.json",
+     "sha256": "e9ec2b867f03e9886fdcbbded3f22e7738ef0122ea891d74eaa433f879528a3c"
+    }
+   ],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m06_kleopatra.mp4",
+     "bytes": 354480,
+     "sha256": "c3b0eb4a8200f09d5adf9c4f6baff1d48dd6aeae47587aa31046004611555632"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m06_kleopatra.png",
+     "bytes": 501569,
+     "sha256": "3982b57f93ceebb18031839aa1b9926ee7e246cd4763bf8b4325f7fe35153c24"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m06_kleopatra.mp4",
+     "bytes": 135351,
+     "sha256": "04e176a461319635a4b35b69009e69c3484f6f8ba5fe91835a8bb59c1a4cbfba"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m06_kleopatra_poster.png",
+     "bytes": 264671,
+     "sha256": "dbdbef08c957bf4cfb3be0f39bda68bcbaaa17d7bcf270a2796a7f5606586030"
+    }
+   },
+   "duration_s": 6.8,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M07",
+   "module": "scenes/m07_shift_stack.py",
+   "class": "M07ShiftStack",
+   "title": "Planet X idea: shift-and-stack over trial velocities",
+   "labels": [
+    "CONCEPTUAL",
+    "SIMULATED"
+   ],
+   "source_line": "SIMULATED noise, stars and mover generated by HIPPARCHUS · no archive data shown",
+   "evidence": [],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m07_shift_stack.mp4",
+     "bytes": 512745,
+     "sha256": "12ce3468f8de51138b7a92256ee558de34caf083c880da41a716a845ee137a72"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m07_shift_stack.png",
+     "bytes": 662474,
+     "sha256": "d0f433f49eff309c708abb21ee6761c8aec9ec1474b7dde09dc763c663428ee3"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m07_shift_stack.mp4",
+     "bytes": 160979,
+     "sha256": "3c3e46fb2519a57e619723f9f30cc8e565a5111ad8766948f882a3cfcc4a6013"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m07_shift_stack_poster.png",
+     "bytes": 390192,
+     "sha256": "a9dad92fc15c2da2d7c41a0557738826c32f9b269e681c503aad285f5017088d"
+    }
+   },
+   "duration_s": 6.4,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M08",
+   "module": "scenes/m08_falsification.py",
+   "class": "M08Falsification",
+   "title": "Observe → Verify → Challenge → Explain",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1/QR3, NASA/IPAC IRSA · Barnard + RW Aur evidence, robustness, ePSF · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/barnard_spherex-d6.json",
+     "sha256": "f7fdc32c09ce0c78011e26c98863d7d85d50b423e1ac7b6dfa72b6bb8e2c130f"
+    },
+    {
+     "file": "submission/evidence/rw_aur_spherex-d1.json",
+     "sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad"
+    },
+    {
+     "file": "submission/evidence/robustness.json",
+     "sha256": "499f7bf3383668ea162ed4f61df20e5fce470f421d990b33c36c76498c6df0f2"
+    },
+    {
+     "file": "submission/evidence/epsf_check.json",
+     "sha256": "63a17ab5c79fdb9372fa0e3a78ee226bd4800090950e21d408bf7eb711473bd4"
+    },
+    {
+     "file": "submission/evidence/compat_check.json",
+     "sha256": "f14bf2fec4a41021e11daf155c9ce4548980e60d667fa91f521f6bb166f28e76"
+    }
+   ],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m08_falsification.mp4",
+     "bytes": 400570,
+     "sha256": "c8cb297458c3fb77bba0fbf0780f134b393f4a2e795434ed12b4c539602521b3"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m08_falsification.png",
+     "bytes": 551341,
+     "sha256": "742687e828f7b3164deab0e7391c8ed1a35467ab366029b709a0a1d648878fe3"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m08_falsification.mp4",
+     "bytes": 140766,
+     "sha256": "1b2a464344e026c56d65a041c2005c848b8b4a0ff790915c7de07fc0d068fd5d"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m08_falsification_poster.png",
+     "bytes": 290226,
+     "sha256": "cdc0807d4eacd2f2e15cec94e18ae060a32adee2ea3785143a535674a258ba6c"
+    }
+   },
+   "duration_s": 6.967,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M09",
+   "module": "scenes/m09_compat_graph.py",
+   "class": "M09CompatGraph",
+   "title": "Observation Compatibility Graph",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1/QR3, NASA/IPAC IRSA · compat_check.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/compat_check.json",
+     "sha256": "f14bf2fec4a41021e11daf155c9ce4548980e60d667fa91f521f6bb166f28e76"
+    }
+   ],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m09_compat_graph.mp4",
+     "bytes": 455610,
+     "sha256": "40f823237acd145d628c0da374137e20e146a2455f25f598fe8ec3e7f17a8722"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m09_compat_graph.png",
+     "bytes": 600661,
+     "sha256": "18232d6ffd118aba84dda56da68638a775dfef313e7116956f9e8b11a1bf3dba"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m09_compat_graph.mp4",
+     "bytes": 163006,
+     "sha256": "fd3c9b10305377acfa4d2efb8f9a58b81e88937e49db3e7e0a377f4d4834cae9"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m09_compat_graph_poster.png",
+     "bytes": 325691,
+     "sha256": "1dbc2b7e565fe63b8a0ace28fa7931958b68e99ed162044fcb7fd376e35e47e6"
+    }
+   },
+   "duration_s": 6.7,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  },
+  {
+   "scene": "M10",
+   "module": "scenes/m10_spectral_time.py",
+   "class": "M10SpectralTime",
+   "title": "RW Aur: wavelength and flux, exposure by exposure",
+   "labels": [
+    "DATA-DRIVEN"
+   ],
+   "source_line": "SPHEREx DR1/QR3, NASA/IPAC IRSA · rw_aur_spherex-d1.json · HIPPARCHUS",
+   "evidence": [
+    {
+     "file": "submission/evidence/rw_aur_spherex-d1.json",
+     "sha256": "a4c15562a64d6deb375d1c233b824deba13b89012c1defc3558c44dc56f401ad"
+    }
+   ],
+   "derived_inputs": [],
+   "outputs": {
+    "mp4": {
+     "path": "visualizations/manim/renders/m10_spectral_time.mp4",
+     "bytes": 404284,
+     "sha256": "c1ea631e79e43980b5bfa8db9f3c61ca2500f0eecd0288a8ff2f8c181ef4b3d8"
+    },
+    "still_png": {
+     "path": "visualizations/manim/renders/m10_spectral_time.png",
+     "bytes": 545284,
+     "sha256": "ababb67fb327728f3f227902a9122f31160e07a7ca5e25251d0a3492b5f8a061"
+    },
+    "web_mp4": {
+     "path": "docs/media/manim/m10_spectral_time.mp4",
+     "bytes": 159763,
+     "sha256": "38cd4e2952a8bb92dff91d6d16a324a5d63fc6cd6c1de96bbc5b8d8c52430f11"
+    },
+    "web_poster_png": {
+     "path": "docs/media/manim/m10_spectral_time_poster.png",
+     "bytes": 289762,
+     "sha256": "d77cbf3d7af0d7aef3190857013bf01c75789ded0bc783776536da5eb2171653"
+    }
+   },
+   "duration_s": 5.3,
+   "video": "1920x1080, 30 fps, H.264 (yuv420p), no audio; web copy 1280x720"
+  }
+ ]
+}
