@@ -1,55 +1,65 @@
 # Public release audit
 
-Checked on 16 Nov 2026. Every line below comes from a command we ran on that date; nothing is assumed.
+Checked on 17 Nov 2026. Every line below comes from a command we ran on that date; nothing is assumed. The previous audit (16 Nov, public commit `fcdd112`) is in the git history of this file.
 
 ## Commits
 
 | | Commit | Notes |
 |---|---|---|
-| Public repo `evantampa129/HIPPARCHUS-SpaceApps2026`, branch `main` | `fcdd112` (code and results); this file is added in the next commit | 25 commits pushed in order, no force-push, no history rewrite |
-| Private working repo, branch `final-aethenova` | `ac5d6e2` | Stays private. The public tree equals this commit minus four files we do not publish (three team logo images and an internal deployment plan) |
+| Public repo `evantampa129/HIPPARCHUS-SpaceApps2026`, branch `main` | `653a7e9` (code and results); this file is added in the next commit | Ten new commits on top of `667adb2`, pushed in order, no force-push, no history rewrite |
+| Private working repo, branch `final-aethenova` | content of `00c8028` | Stays private. The public tree equals it minus four files we do not publish (three team logo images and an internal deployment plan) |
 
-Repository visibility was not changed: the public repo is PUBLIC, the private one is PRIVATE (checked with `gh repo view`).
+Repository visibility was not changed (checked with `gh repo view` after the push).
 
 ## Links and HTTP checks
 
-| URL | Result |
-|---|---|
-| https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/ (Judge Mode) | 200; GitHub Pages build `built` for `fcdd112` |
-| Judge Mode film `media/hipparchus_aethenova_29s.mp4` | 200, 7.4 MB |
-| Film poster, Manim scenes M01 and M06 on the page | 200 |
-| Page sections `#rw_aur #barnard #wise0855 #motion #psfsub #explorers #scenes #reproduce #film` | all present |
-| `submission/FEATURE_AUDIT.json`, `FINAL_IMPLEMENTATION_CHECKLIST.md`, report PDF, film (raw.githubusercontent.com) | 200 |
+Filled in after the push; see the commit that follows this file for the Pages build result.
 
-Public interactive app: **not hosted**. The Docker image builds and runs locally; the home page, health, explorer, reproduction-bundle and mini-report routes all answer 200 inside the container. Pushing it to Hugging Face failed with HTTP 402: Docker Spaces now need a paid plan, and we keep the project at zero cost. Judge Mode on GitHub Pages is the public demo; the README shows how to run the image.
+| URL | Expected |
+|---|---|
+| https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/ (Judge Mode) | 200 |
+| `media/hipparchus_aethenova_29s.mp4`, `_extended.mp4`, `_vertical.mp4` | 200 (8.2 MB, 14.9 MB, 4.5 MB) |
+
+Public interactive app: **not hosted**. Free plans were measured against the app (187 MiB idle, about 350 MiB after two analyses, first analysis about 7 min because it downloads SPHEREx images); the free tiers that fit sleep and lose their disk, the others need a card or a paid plan. Judge Mode on GitHub Pages stays the public demo; the README shows how to run the Docker image.
 
 ## Deliverables
 
 | Item | Measured |
 |---|---|
-| Automated tests | 183 collected, 183 passed: 159 backend (`pytest`, 1 min 51 s) and 24 Manim scene tests (4 min 13 s) |
+| Automated tests | 194 passed: 159 backend (`pytest`) and 35 Manim scene tests |
 | Frontend | `npm run build` clean |
-| Report `report/HIPPARCHUS_AETHENOVA_FINAL.pdf` | 18 pages, XeLaTeX, no undefined references |
-| Deck `presentation/HIPPARCHUS_AETHENOVA_FINAL.pptx/.pdf` | 6 slides / 6 pages |
-| Film `video/hipparchus_aethenova_29s.mp4` | 29.418 s, H.264 1920×1080 30 fps, AAC 48 kHz stereo, −15.7 LUFS; English captions `.en.srt` |
-| Feature audit | 30 features: 22 IMPLEMENTED_AND_VERIFIED, 4 IMPLEMENTED_EXPERIMENTAL, 1 PARTIALLY_IMPLEMENTED, 1 BLOCKED_BY_EXTERNAL_SERVICE, 2 NOT_IMPLEMENTED |
+| Report `report/HIPPARCHUS_AETHENOVA_FINAL.pdf` | 19 pages, XeLaTeX, no undefined references; new section on the held-out benchmark |
+| Deck `presentation/HIPPARCHUS_AETHENOVA_FINAL.pptx/.pdf` | 6 slides / 6 pages; slide 5 carries the benchmark line |
+| Official film `video/hipparchus_aethenova_29s.mp4` | 29.418 s, H.264 1920×1080 30 fps, AAC 48 kHz stereo, −15.7 LUFS, 7 captions |
+| Extended film `video/hipparchus_aethenova_extended.mp4` | 80.81 s, 1920×1080, −15.9 LUFS, 12 captions |
+| Vertical film `video/hipparchus_aethenova_vertical.mp4` | 18.0 s, 1080×1920, −16.0 LUFS, 4 captions |
+| Manim scenes | M01–M15; M07 labelled SIMULATED, M15 labelled CONCEPTUAL |
+| Feature audit | 30 features: 23 IMPLEMENTED_AND_VERIFIED, 4 IMPLEMENTED_EXPERIMENTAL, 1 PARTIALLY_IMPLEMENTED, 2 NOT_IMPLEMENTED |
+
+## Held-out benchmark (real SPHEREx data, rule |σ| ≥ 5 fixed before the run)
+
+- Known variables: 3/3 found (AA Tau, DG Tau, V2492 Cyg).
+- Stable stars: 2 of 4 with valid pairs flagged (P177D, G191-B2B), from 5 of 248 stable pairs (2.0%, object bootstrap 0–4.1%). All five are 6.5–8.7% changes at 5–7σ, below the 12.5% calibration floor measured earlier; formal errors miss that systematic. Two P177D pairs share one exposure.
+- Photometric bias on stable pairs: −1.0% (bootstrap −1.5% to −0.4%).
+- No saturated star fell in the held-out split; in the other splits 5/5 were refused.
+- Thresholds were not changed after seeing these results. The floor check is reported as secondary only.
 
 ## Secrets and sensitive content
 
-Scanned the whole public tree and the contents of every bundle zip for access tokens (GitHub, Hugging Face, AWS, generic `sk-`), private keys, passwords and personal e-mail addresses: none found. One pattern hit was a fragment of base64 image data in a mini report, not a key. Three entries in `submission/evidence/wavecal_check.json` record the absolute local path of a cached calibration file; they reveal only the GitHub user name and were already public before this release.
+Scanned the whole public tree and the contents of every bundle zip for access tokens (GitHub, Hugging Face, AWS, generic `sk-`), private keys and personal e-mail addresses: none found. The three unlabelled team logos and the internal deployment plan are not in the public tree.
 
 ## Scientific issues still open
 
-- RW Aur A and B are not resolved by SPHEREx (6.15″ pixels); the joint fit confirms they cannot be separated. The ×2.56 change is for the pair.
-- ePSF photometry and PSF-matched subtraction stay experimental: χ²_ν well above 1 on bright cores, and no subtraction method passed the rule we set before running it.
-- Moving objects are validated on three known asteroids only. Track vetting removes static stars and detector hits but not chance alignments of 3–4 single detections; a false-alarm estimate is not built. HIPPARCHUS has not found Planet X.
-- Published numbers use the legacy wavelength source for reproducibility; the corrected CWAVE source changes no conclusion.
+- RW Aur A and B are not resolved by SPHEREx (6.15″ pixels); the ×2.56 change is for the pair.
+- Formal errors are too small on stable stars (spread 1.8 instead of 1); the benchmark false alarms come from this.
+- ePSF photometry and PSF-matched subtraction stay experimental.
+- Moving objects are validated on known asteroids only; HIPPARCHUS has not found Planet X.
 
 ## External service failures
 
-- IRSA SIA answered HTTP 502 for the whole benchmark run, so the 32-object held-out benchmark has no star metrics yet (asteroids 3/3 measured; 3 Y dwarfs did not resolve in Sesame). It resumes from cache with `python scripts/run_benchmark.py --online`.
-- IRSA also returned 502 during the film's screen recording; the app's cached listing is shown and labelled as cached.
+- On 17 Nov a benchmark run hit 8 IRSA SIA HTTP 503 errors and 2 DNS failures; the next run recovered all of them.
+- IRSA returned 502 during the film's screen recording; the app's cached listing is shown and labelled as cached.
 
 ## Not done by this release
 
-A push to GitHub is not a Space Apps portal submission. The portal submission is an action the team takes itself.
+A push to GitHub does not change an entry already submitted to the Space Apps portal. The portal submission is an action the team takes itself.
