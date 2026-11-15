@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16",
+ "generated": "2026-11-17",
  "statuses": [
   "IMPLEMENTED_AND_VERIFIED",
   "IMPLEMENTED_EXPERIMENTAL",
@@ -10,14 +10,13 @@
  ],
  "test_totals": {
   "backend": 159,
-  "manim": 24,
-  "all": 183
+  "manim": 35,
+  "all": 194
  },
  "status_counts": {
-  "IMPLEMENTED_AND_VERIFIED": 22,
+  "IMPLEMENTED_AND_VERIFIED": 23,
   "IMPLEMENTED_EXPERIMENTAL": 4,
   "NOT_IMPLEMENTED": 2,
-  "BLOCKED_BY_EXTERNAL_SERVICE": 1,
   "PARTIALLY_IMPLEMENTED": 1
  },
  "features": [
@@ -415,24 +414,26 @@
   },
   {
    "feature": "Benchmark on 32 objects with a fixed held-out split",
-   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
+   "status": "IMPLEMENTED_AND_VERIFIED",
    "source": [
-    "backend/scripts/run_benchmark.py"
+    "backend/scripts/run_benchmark.py",
+    "backend/scripts/benchmark_stats.py"
    ],
    "evidence": [
     "submission/benchmark/manifest.json",
-    "submission/benchmark/results.json"
+    "submission/benchmark/results.json",
+    "submission/benchmark/stats.json"
    ],
    "tests": [
     "backend/tests/test_benchmark.py"
    ],
    "n_tests": 6,
    "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#reproduce",
-   "limitations": "IRSA SIA answered HTTP 502 for the whole run; no held-out star metrics yet. 3 Y dwarfs did not resolve in Sesame.",
-   "next_step": "python scripts/run_benchmark.py --online when IRSA is back (resumes from cache)."
+   "limitations": "Held-out: recall 3/3, but the formal 5σ rule flags 2/4 stable stars (5/248 pairs, 6.5–8.7% changes at the calibration-systematic level). No saturated star in the held-out split (5/5 refused in calibration/dev).",
+   "next_step": "Calibrate the error floor on a separate, larger set of stable stars before changing the rule."
   },
   {
-   "feature": "Manim scene library (M01–M10)",
+   "feature": "Manim scene library (M01–M15)",
    "status": "IMPLEMENTED_AND_VERIFIED",
    "source": [
     "visualizations/manim/scenes/",
@@ -445,19 +446,22 @@
    "tests": [
     "visualizations/manim/tests/"
    ],
-   "n_tests": 24,
+   "n_tests": 35,
    "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#scenes",
-   "limitations": "Full render takes about 30 min.",
+   "limitations": "Full render takes about 40 min. M15 (identity card) is labelled CONCEPTUAL.",
    "next_step": ""
   },
   {
-   "feature": "29 s film (Remotion, with two Manim scenes)",
+   "feature": "Three film cuts: 29.4 s official, 80.8 s scientific, 18 s vertical (Manim scenes + real app recording, Remotion)",
    "status": "IMPLEMENTED_AND_VERIFIED",
    "source": [
-    "video/remotion/src/"
+    "video/remotion/src/",
+    "video/remotion/scripts/build.sh"
    ],
    "evidence": [
     "video/hipparchus_aethenova_29s.mp4",
+    "video/hipparchus_aethenova_extended.mp4",
+    "video/hipparchus_aethenova_vertical.mp4",
     "video/qc/ffprobe.txt"
    ],
    "tests": [],
