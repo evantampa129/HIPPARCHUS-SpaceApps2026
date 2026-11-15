@@ -200,3 +200,7 @@ def evidence(aid: str) -> Response:
 # We keep the explorer endpoints (sky, spectrum, native pixels) in their own router.
 from hipparchus.api_explore import router as explore_router  # noqa: E402
 app.include_router(explore_router)
+
+# Reproduction bundles and mini reports, served from the published evidence.
+from hipparchus import api_repro  # noqa: E402
+app.include_router(api_repro.router)
