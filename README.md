@@ -15,7 +15,7 @@ measurement of a star already known to vary, and it shows the method works.
 ```
 backend/      FastAPI + astropy: archive lookup, cutouts, quality checks, comparison, PNG rendering, tests
 frontend/     React/TypeScript app (timeline, playback, blink, difference and significance maps)
-submission/   evidence files with checksums, and the text for the submission page
+submission/   evidence files with checksums
 report/       technical report (LaTeX + PDF), figures, bibliography
 presentation/ 7-slide deck (PPTX + PDF), app screenshots, watermarked logos
 video/        26 s demo video with English captions, and the scripts that made it
