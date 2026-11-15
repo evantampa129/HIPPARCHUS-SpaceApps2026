@@ -1,0 +1,543 @@
+{
+ "generated": "2026-11-16",
+ "statuses": [
+  "IMPLEMENTED_AND_VERIFIED",
+  "IMPLEMENTED_EXPERIMENTAL",
+  "PARTIALLY_IMPLEMENTED",
+  "BLOCKED_BY_EXTERNAL_SERVICE",
+  "NOT_IMPLEMENTED",
+  "NOT_APPLICABLE"
+ ],
+ "test_totals": {
+  "backend": 159,
+  "manim": 24,
+  "all": 183
+ },
+ "status_counts": {
+  "IMPLEMENTED_AND_VERIFIED": 22,
+  "IMPLEMENTED_EXPERIMENTAL": 4,
+  "NOT_IMPLEMENTED": 2,
+  "BLOCKED_BY_EXTERNAL_SERVICE": 1,
+  "PARTIALLY_IMPLEMENTED": 1
+ },
+ "features": [
+  {
+   "feature": "Live IRSA search (SPHEREx DR1 + QR3) with checksums",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/archive.py"
+   ],
+   "evidence": [
+    "data/manifests/",
+    "submission/evidence/evidence_manifest.json"
+   ],
+   "tests": [
+    "backend/tests/test_archive.py"
+   ],
+   "n_tests": 3,
+   "public_url": "",
+   "limitations": "Needs IRSA online; a release that does not answer is labelled PARTIAL, a cached listing is labelled CACHED.",
+   "next_step": ""
+  },
+  {
+   "feature": "Cutouts and per-epoch quality checks (18 flag planes, variance, wavelength at the star)",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/cutouts.py",
+    "backend/hipparchus/quality.py"
+   ],
+   "evidence": [
+    "submission/evidence/rw_aur_spherex-d1.json"
+   ],
+   "tests": [
+    "backend/tests/test_cutouts.py",
+    "backend/tests/test_quality.py"
+   ],
+   "n_tests": 7,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#rw_aur",
+   "limitations": "Published numbers read the wavelength with astropy's WCS (SIP shift up to 18 nm); a corrected mode exists.",
+   "next_step": ""
+  },
+  {
+   "feature": "Wavelength audit against official CWAVE/CBAND, selectable wavelength source",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/spectral_cal.py"
+   ],
+   "evidence": [
+    "submission/evidence/wavecal_check.json",
+    "submission/evidence/wavecal_robustness_cwave.json"
+   ],
+   "tests": [
+    "backend/tests/test_spectral_cal.py",
+    "backend/tests/test_wavelength_source.py"
+   ],
+   "n_tests": 15,
+   "public_url": "",
+   "limitations": "Published numbers stay on the legacy source for reproducibility; cwave changes no conclusion.",
+   "next_step": ""
+  },
+  {
+   "feature": "Comparability rules, refusals and compatibility graph",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/compare.py",
+    "backend/scripts/reproduce_compat.py"
+   ],
+   "evidence": [
+    "submission/evidence/compat_check.json",
+    "submission/evidence/barnard_spherex-d6.json"
+   ],
+   "tests": [
+    "backend/tests/test_compare.py",
+    "backend/tests/test_compat.py"
+   ],
+   "n_tests": 13,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#barnard",
+   "limitations": "Pair rule (same detector, |Δλ| ≤ half a channel) equals a top-hat overlap ≥ 0.5, not the full response curve.",
+   "next_step": ""
+  },
+  {
+   "feature": "Aperture photometry, difference and significance maps",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/compare.py"
+   ],
+   "evidence": [
+    "submission/evidence/rw_aur_spherex-d1.json",
+    "submission/evidence/wise0855_spherex-d6.json"
+   ],
+   "tests": [
+    "backend/tests/test_compare.py"
+   ],
+   "n_tests": 6,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#rw_aur",
+   "limitations": "6.15″ pixels: RW Aur A+B unresolved; fluxes are relative, not absolutely calibrated.",
+   "next_step": ""
+  },
+  {
+   "feature": "Null test and SIMULATED injection-recovery",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/scripts/reproduce_validation.py"
+   ],
+   "evidence": [
+    "submission/evidence/validation.json"
+   ],
+   "tests": [
+    "backend/tests/test_graph.py"
+   ],
+   "n_tests": 2,
+   "public_url": "",
+   "limitations": "Injections are added after reprojection, so they test detection, not the full pipeline.",
+   "next_step": ""
+  },
+  {
+   "feature": "Stability fingerprint (robustness across analysis settings)",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/robustness.py"
+   ],
+   "evidence": [
+    "submission/evidence/robustness.json"
+   ],
+   "tests": [
+    "backend/tests/test_robustness.py"
+   ],
+   "n_tests": 8,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#rw_aur",
+   "limitations": "Labels follow fixed rules; they are not probabilities.",
+   "next_step": ""
+  },
+  {
+   "feature": "Evidence graph to dataset DOIs and claims registry",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/graph.py",
+    "backend/hipparchus/claims.py"
+   ],
+   "evidence": [
+    "submission/evidence/graph_rw_aur_spherex-d1.json",
+    "submission/FINAL_CLAIMS_AND_ASSETS.json"
+   ],
+   "tests": [
+    "backend/tests/test_graph.py",
+    "backend/tests/test_claims_drift.py"
+   ],
+   "n_tests": 19,
+   "public_url": "",
+   "limitations": "",
+   "next_step": ""
+  },
+  {
+   "feature": "Catalogue match (SIMBAD, Gaia DR3)",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/scripts/reproduce_catalogs.py"
+   ],
+   "evidence": [
+    "submission/evidence/catalog_match.json"
+   ],
+   "tests": [
+    "backend/tests/test_catalogs.py"
+   ],
+   "n_tests": 4,
+   "public_url": "",
+   "limitations": "Needs network; CDS mirrors were used during an outage.",
+   "next_step": ""
+  },
+  {
+   "feature": "Comparison with IRSA's own tools (Source Discovery Tool, MOST)",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/scripts/compare_irsa_tools.py"
+   ],
+   "evidence": [
+    "submission/evidence/irsa_tools_check.json"
+   ],
+   "tests": [
+    "backend/tests/test_irsa_tools.py"
+   ],
+   "n_tests": 12,
+   "public_url": "",
+   "limitations": "The Spectrophotometry Tool is web-only and was not run.",
+   "next_step": ""
+  },
+  {
+   "feature": "ePSF photometry (second, independent measurement)",
+   "status": "IMPLEMENTED_EXPERIMENTAL",
+   "source": [
+    "backend/hipparchus/psf_photometry.py"
+   ],
+   "evidence": [
+    "submission/evidence/epsf_check.json"
+   ],
+   "tests": [
+    "backend/tests/test_psf_photometry.py",
+    "backend/tests/test_epsf_options.py"
+   ],
+   "n_tests": 12,
+   "public_url": "",
+   "limitations": "χ²_ν 4–18 on bright cores; not used by any published number.",
+   "next_step": "Model field stars and sky structure in the fit."
+  },
+  {
+   "feature": "PSF-matched / ZOGY image subtraction benchmark",
+   "status": "IMPLEMENTED_EXPERIMENTAL",
+   "source": [
+    "backend/hipparchus/psfsub.py",
+    "backend/scripts/reproduce_psfsub.py"
+   ],
+   "evidence": [
+    "submission/evidence/psfsub_check.json"
+   ],
+   "tests": [
+    "backend/tests/test_psfsub.py"
+   ],
+   "n_tests": 4,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#psfsub",
+   "limitations": "No method passed the rule fixed before running; not adopted.",
+   "next_step": ""
+  },
+  {
+   "feature": "Joint PSF fit of RW Aur A and B",
+   "status": "IMPLEMENTED_EXPERIMENTAL",
+   "source": [
+    "backend/hipparchus/jointpsf.py",
+    "backend/scripts/reproduce_jointpsf.py"
+   ],
+   "evidence": [
+    "submission/evidence/jointpsf_check.json"
+   ],
+   "tests": [
+    "backend/tests/test_jointpsf.py"
+   ],
+   "n_tests": 4,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#psfsub",
+   "limitations": "Result is negative: SPHEREx does not separate A and B (fluxes anti-correlated, −0.92 to −0.997).",
+   "next_step": ""
+  },
+  {
+   "feature": "Moving objects: blind linking validated on (216) Kleopatra vs JPL Horizons (observer SPHEREx)",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/motion.py",
+    "backend/scripts/reproduce_motion.py"
+   ],
+   "evidence": [
+    "submission/evidence/motion_check.json"
+   ],
+   "tests": [
+    "backend/tests/test_motion.py"
+   ],
+   "n_tests": 8,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#motion",
+   "limitations": "Known asteroid; validation, not a discovery. 3-visit tracks can be chance alignments.",
+   "next_step": ""
+  },
+  {
+   "feature": "Moving objects: (2052) Tamriko (faint) and (433) Eros (fast) vs JPL Horizons",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/scripts/reproduce_motion_followup.py"
+   ],
+   "evidence": [
+    "submission/evidence/motion_followup.json"
+   ],
+   "tests": [
+    "backend/tests/test_motion_vetting.py"
+   ],
+   "n_tests": 9,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#motion",
+   "limitations": "Three known asteroids over a few days each; an order-2 path model is too simple for Eros (χ²_ν 63).",
+   "next_step": ""
+  },
+  {
+   "feature": "Track vetting (static stars, detector hits)",
+   "status": "IMPLEMENTED_EXPERIMENTAL",
+   "source": [
+    "backend/hipparchus/motion.py"
+   ],
+   "evidence": [
+    "submission/evidence/motion_followup.json"
+   ],
+   "tests": [
+    "backend/tests/test_motion_vetting.py"
+   ],
+   "n_tests": 9,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#motion",
+   "limitations": "Removes the static-star/detector-hit track in the Kleopatra field; does not remove chance alignments of 3–4 single detections.",
+   "next_step": "Add a false-alarm estimate per track."
+  },
+  {
+   "feature": "Wide search for unknown movers / Planet X",
+   "status": "NOT_IMPLEMENTED",
+   "source": [],
+   "evidence": [],
+   "tests": [],
+   "n_tests": 0,
+   "public_url": "",
+   "limitations": "HIPPARCHUS has not found Planet X and does not claim it.",
+   "next_step": "Run linking over many fields with a measured false-alarm rate."
+  },
+  {
+   "feature": "All-Sky Explorer (Aladin Lite on the SPHEREx DR1 HiPS)",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "frontend/src/SkyExplorer.tsx",
+    "frontend/src/aladin.ts",
+    "backend/hipparchus/api_explore.py"
+   ],
+   "evidence": [
+    "presentation/screens/explorer_sky_desktop.png"
+   ],
+   "tests": [
+    "backend/tests/test_api_explore.py"
+   ],
+   "n_tests": 9,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#explorers",
+   "limitations": "The HiPS is a coadd, not a time series; Aladin Lite (GPL-3.0) is loaded from jsDelivr at runtime.",
+   "next_step": ""
+  },
+  {
+   "feature": "Spectral Explorer (wavelength and flux per exposure)",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "frontend/src/SpectralExplorer.tsx",
+    "backend/hipparchus/api_explore.py"
+   ],
+   "evidence": [
+    "presentation/screens/explorer_spectral_desktop.png"
+   ],
+   "tests": [
+    "backend/tests/test_api_explore.py"
+   ],
+   "n_tests": 9,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#explorers",
+   "limitations": "Never coadds; three targets precomputed.",
+   "next_step": ""
+  },
+  {
+   "feature": "Native-pixel and difference viewer",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "frontend/src/PixelViewer.tsx",
+    "frontend/src/imaging.ts",
+    "backend/hipparchus/api_explore.py"
+   ],
+   "evidence": [
+    "presentation/screens/explorer_pair_desktop.png"
+   ],
+   "tests": [
+    "backend/tests/test_api_explore.py"
+   ],
+   "n_tests": 9,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#explorers",
+   "limitations": "",
+   "next_step": ""
+  },
+  {
+   "feature": "Reproduction bundles with a stand-alone checker",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/bundle.py",
+    "backend/scripts/make_bundles.py"
+   ],
+   "evidence": [
+    "submission/bundles/rw_aur.zip"
+   ],
+   "tests": [
+    "backend/tests/test_bundle.py"
+   ],
+   "n_tests": 6,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#reproduce",
+   "limitations": "FITS are not inside; the checker downloads them again to detect archive drift.",
+   "next_step": ""
+  },
+  {
+   "feature": "Mini reports (HTML/PDF) and reproduction notebooks",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/hipparchus/minireport.py",
+    "backend/hipparchus/api_repro.py",
+    "notebooks/"
+   ],
+   "evidence": [
+    "submission/bundles/reports/rw_aur.pdf"
+   ],
+   "tests": [
+    "backend/tests/test_minireport.py"
+   ],
+   "n_tests": 5,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#reproduce",
+   "limitations": "Built from the published evidence, not recomputed.",
+   "next_step": ""
+  },
+  {
+   "feature": "Benchmark on 32 objects with a fixed held-out split",
+   "status": "BLOCKED_BY_EXTERNAL_SERVICE",
+   "source": [
+    "backend/scripts/run_benchmark.py"
+   ],
+   "evidence": [
+    "submission/benchmark/manifest.json",
+    "submission/benchmark/results.json"
+   ],
+   "tests": [
+    "backend/tests/test_benchmark.py"
+   ],
+   "n_tests": 6,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#reproduce",
+   "limitations": "IRSA SIA answered HTTP 502 for the whole run; no held-out star metrics yet. 3 Y dwarfs did not resolve in Sesame.",
+   "next_step": "python scripts/run_benchmark.py --online when IRSA is back (resumes from cache)."
+  },
+  {
+   "feature": "Manim scene library (M01–M10)",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "visualizations/manim/scenes/",
+    "visualizations/manim/hviz/"
+   ],
+   "evidence": [
+    "visualizations/manim/MANIFEST.json",
+    "docs/media/manim/"
+   ],
+   "tests": [
+    "visualizations/manim/tests/"
+   ],
+   "n_tests": 24,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#scenes",
+   "limitations": "Full render takes about 30 min.",
+   "next_step": ""
+  },
+  {
+   "feature": "29 s film (Remotion, with two Manim scenes)",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "video/remotion/src/"
+   ],
+   "evidence": [
+    "video/hipparchus_aethenova_29s.mp4",
+    "video/qc/ffprobe.txt"
+   ],
+   "tests": [],
+   "n_tests": 0,
+   "public_url": "https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/#film",
+   "limitations": "Captions only, no voice; IRSA returned 502 during the screen recording, the cached listing is shown and labelled.",
+   "next_step": ""
+  },
+  {
+   "feature": "Judge Mode page",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "backend/scripts/make_judge_site.py"
+   ],
+   "evidence": [
+    "docs/index.html"
+   ],
+   "tests": [],
+   "n_tests": 0,
+   "public_url": "",
+   "limitations": "Static and precomputed; the page generator asserts every card against the evidence.",
+   "next_step": ""
+  },
+  {
+   "feature": "Research report",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "report/HIPPARCHUS_AETHENOVA_FINAL.tex"
+   ],
+   "evidence": [
+    "report/HIPPARCHUS_AETHENOVA_FINAL.pdf"
+   ],
+   "tests": [],
+   "n_tests": 0,
+   "public_url": "",
+   "limitations": "",
+   "next_step": ""
+  },
+  {
+   "feature": "Six-slide deck",
+   "status": "IMPLEMENTED_AND_VERIFIED",
+   "source": [
+    "presentation/build_deck.py"
+   ],
+   "evidence": [
+    "presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf"
+   ],
+   "tests": [],
+   "n_tests": 0,
+   "public_url": "",
+   "limitations": "",
+   "next_step": ""
+  },
+  {
+   "feature": "Public interactive app (free Hugging Face Space)",
+   "status": "PARTIALLY_IMPLEMENTED",
+   "source": [
+    "deploy/Dockerfile",
+    "deploy/deploy_space.sh",
+    "backend/hipparchus/guard.py"
+   ],
+   "evidence": [],
+   "tests": [
+    "backend/tests/test_guard.py"
+   ],
+   "n_tests": 10,
+   "public_url": "",
+   "limitations": "Image built and verified locally; not deployed (needs the team's own Hugging Face login).",
+   "next_step": "deploy/deploy_space.sh --push"
+  },
+  {
+   "feature": "Machine-learning ranking of candidates",
+   "status": "NOT_IMPLEMENTED",
+   "source": [],
+   "evidence": [],
+   "tests": [],
+   "n_tests": 0,
+   "public_url": "",
+   "limitations": "No labelled data to train or test it fairly; we use fixed rules instead.",
+   "next_step": ""
+  }
+ ]
+}
