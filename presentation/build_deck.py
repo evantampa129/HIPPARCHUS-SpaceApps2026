@@ -144,7 +144,7 @@ claims = {c["claim"]: c for c in rob["rw_aur"]["claims"]}
 c15 = next(v for k, v in claims.items() if "1.5" in k)
 call = next(v for k, v in claims.items() if "every" in k)
 cw = rob["wise0855"]["claims"][0]
-n_tests = 183  # 159 backend + 24 Manim (pytest, 16 Nov 2026)
+n_tests = 194  # 159 backend + 35 Manim (pytest, 17 Nov 2026)
 
 # 1. Identity
 s = slide()
@@ -224,7 +224,12 @@ if epsf:
     dev = max(abs(r["ratio_epsf"] / r["ratio_aperture"] - 1) for r in epsf["targets"]["rw_aur"]["pairs"])
     lines.append((f"Second measurement (experimental): fitting the SPHEREx ePSF to native pixels reproduces all "
                   f"{epsf['targets']['rw_aur']['n_pairs']} RW Aur ratios within {100 * dev:.0f}%.", TXT, 14))
+bm = json.loads((ROOT / "submission" / "benchmark" / "results.json").read_text())["metrics"]["held_out"]
+fs, fp = bm["false_positive_rate_objects_stable"], bm["false_positive_rate_pairs_stable"]
 lines += [("Blank-sky null test and SIMULATED injection-recovery confirm the error bars.", TXT, 14),
+          (f"Held-out benchmark (fixed in advance, real data): {bm['completeness']['k']}/{bm['completeness']['n']} variables "
+           f"found, but {fs['k']}/{fs['n']} stable stars flagged ({fp['k']}/{fp['n']} pairs, ~7% changes): "
+           "formal errors miss the calibration systematic.", WARN, 14),
           ("What is ours: not forced photometry itself, but the refusal rules, the self-challenge and an evidence "
            "file for every number.", ACC, 14, True)]
 text(s, lines, 6.5, 1.55, 6.3, 5.2, 14)
