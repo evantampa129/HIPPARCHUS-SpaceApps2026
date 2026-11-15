@@ -224,6 +224,32 @@ def pair_table(d: dict, rob: dict) -> str:
             "criteria in that pair.</p>")
 
 
+def wavecal_section() -> str:
+    """Side-by-side wavelength audit, read from wavecal_check.json (production numbers unchanged)."""
+    d = json.loads((EVID / "wavecal_check.json").read_text())
+    names = {"rw_aur": "RW Aur", "wise0855": "WISE 0855", "barnard": "Barnard's Star"}
+    rows = ""
+    for tid, name in names.items():
+        c = d["conclusions"][tid]
+        pr, ca = c["production"], c["calibrated"]
+        sig = lambda x: f'{x["max_abs_sig"]:.2f}σ' if x["max_abs_sig"] is not None else "—"
+        rows += (f"<tr><td>{name}</td><td>{pr['n_valid_pairs']} · {sig(pr)}</td><td>{ca['n_valid_pairs']} · {sig(ca)}</td>"
+                 f"<td>{len(d['targets'][tid]['changed_pairs_production_vs_calibrated'])}</td></tr>")
+    # We fail the build if the audit ever contradicts a published headline, so the page cannot hide it.
+    assert d["conclusions"]["rw_aur"]["calibrated"]["n_valid_pairs"] == 8
+    assert d["conclusions"]["wise0855"]["calibrated"]["max_abs_sig"] < 5
+    return f"""<section class='case'>
+ <h2>Wavelength audit against the official calibration</h2>
+ <p>We compared the wavelength our pipeline reads at each star with the official SPHEREx <code>CWAVE</code>/<code>CBAND</code>
+ maps ({esc(d['calibration_product']['version'])}). The audit found a real issue: astropy applies the image's distortion
+ terms to the wavelength lookup too, shifting it by up to ~18 nm on WISE 0855. Re-running every pair with the calibrated
+ wavelengths:</p>
+ <table><thead><tr><th>Target</th><th>Published: pairs · largest |σ|</th><th>Calibrated: pairs · largest |σ|</th><th>Pairs that change</th></tr></thead>
+ <tbody>{rows}</tbody></table>
+ <p><b>No published conclusion changes.</b> We keep the published numbers for reproducibility and say so here. The same audit
+ confirmed the ePSF zone layouts (21×21; detector 3: 11×41). <a href='{REPO}/blob/main/submission/evidence/wavecal_check.json'>Evidence</a></p>
+</section>"""
+
 def main():
     if (OUT / "img").exists():
         shutil.rmtree(OUT / "img")
@@ -408,6 +434,7 @@ so nothing here waits for a live archive download.</p>
 </section>
 
 {epsf_section()}
+{wavecal_section()}
 <section class='case'>
  <h2>Why this matters for “Planet X and SPHEREx”</h2>
  <p>SPHEREx sees every part of the sky many times, each time at a slightly different wavelength. A distant moving
