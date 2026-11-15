@@ -1,0 +1,64 @@
+HIPPARCHUS · team AETHENOVA · NASA Space Apps Challenge 2026, "Planet X and SPHEREx"
+Video: hipparchus_aethenova_29s.mp4 (29.4 s, 1920x1080, 30 fps, H.264 + AAC), captions: hipparchus_aethenova_29s.en.srt
+Editable source: remotion/ (render instructions at the top of remotion/src/hipparchus.tsx)
+Independent student project; not an official NASA product and not endorsed by NASA. No NASA logos or insignia are used.
+
+ASSETS, SOURCE, LICENCE
+-----------------------
+SPHEREx cutouts (scenes 2, 3; also inside the app recording and the Judge Mode crops)
+  remotion/public/img/rw_aur_a.png, rw_aur_b.png, rw_aur_diff.png, wise0855_a.png, barnard_epoch.png
+  Copied from docs/img/. Real SPHEREx observations from the NASA/IPAC Infrared Science Archive (IRSA),
+  SPHEREx DR1 / QR3, processed by HIPPARCHUS (cutouts, difference image; flagged pixels drawn in dark red).
+  Data credit: SPHEREx / NASA/IPAC IRSA. Shown as processed observations, only scaled.
+
+App screen recording (scene 4)
+  remotion/public/rec/app.mp4, marks.json. Recorded 2026-11-15 (UTC) from the real HIPPARCHUS app run
+  locally (backend/ + frontend/dist), driven by remotion/scripts/record_app.mjs in headless Chromium
+  (DevTools screencast). Four cuts at 1x speed, gently zoomed. During the recording IRSA answered
+  HTTP 502, so the app used its cached archive listing; the app labels this ("CACHED listing") and the
+  video says so. The analysis itself ran from the project's cache of real SPHEREx cutouts.
+  Project's own work (see ../LICENSE).
+
+Judge Mode page crops (scene 5)
+  remotion/public/judge/card_rwaur.png, card_barnard.png, heatmap.png (+ cards.png, flow.png, unused)
+  Screenshots of docs/index.html, the page published at
+  https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/ , made by remotion/scripts/capture_judge.mjs.
+  Project's own work.
+
+App screenshots (copied for reference, not used in the final cut)
+  remotion/public/screens/01–05_*.png, from presentation/screens/. Project's own work.
+
+Logos (scene 7)
+  remotion/public/brand/hipparchus-logo_ai.png  (product logo)  from presentation/assets/
+  remotion/public/brand/aethenova-logo_ai.png   (team logo)     from presentation/assets/
+  AI-GENERATED images, already carrying an "AI-generated" mark; shown uncropped so the mark stays
+  visible, plus an extra "AI-generated logo" label because the team logo's mark is small on screen.
+
+Font
+  Inter (Light/Regular/Medium/SemiBold/Bold), remotion/public/fonts/, copied from the system package
+  fonts-inter. SIL Open Font License 1.1, (c) The Inter Project Authors.
+
+Programmatic graphics (made in code, remotion/src/scenes.tsx)
+  Scene 1 celestial sphere, star field and ecliptic: ILLUSTRATION (labelled on screen).
+  Scene 2 RA/Dec chart and reticle: ILLUSTRATION (labelled); the coordinates of RW Aur are real.
+  Scene 6 moving dot over five epochs: CONCEPT — FUTURE RESEARCH, ILLUSTRATION (labelled). Not data.
+  It does not show, and the video does not claim, any detection: HIPPARCHUS has not found Planet X.
+  Labels, dates and numbers are taken from the project's results (RW Aur x2.56, 175σ formal / ≈12σ
+  with the calibration floor, 24/24 robustness, Barnard's Star 58/58 flagged, refused).
+
+Audio
+  remotion/public/audio/ambient.wav, synthesised by remotion/scripts/make_ambient.sh with ffmpeg
+  (sine partials + filtered pink noise). No music, no samples, no third-party audio.
+  Loudness: two-pass ffmpeg loudnorm to -16 LUFS integrated, true peak <= -1.5 dBTP.
+  NO VOICE: no narration recording and no synthetic voice (no local TTS engine was installed).
+  The narration text is shown as burned-in English captions and in the .srt.
+
+Software
+  Remotion 4.0.543 (editing/rendering). Remotion licence: free licence, which covers "individuals and
+  companies of up to 3 people" (https://www.remotion.dev/docs/license/pricing, checked 2026-11-15);
+  team AETHENOVA is a single person, so no paid licence is required.
+  ffmpeg / ffprobe, Chromium headless shell, playwright-core (recording and page crops only).
+
+AI DISCLOSURE
+  The two logos are AI-generated (marked). No AI-generated images, video, music or voice are used
+  anywhere else; all observation images and app frames are real.

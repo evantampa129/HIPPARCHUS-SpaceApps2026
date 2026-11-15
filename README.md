@@ -6,7 +6,7 @@ different times, and tells you whether the change is real, or why the comparison
 Team **AETHENOVA** · NASA Space Apps Challenge 2026, *Planet X and SPHEREx* (Athens) · *Ancient curiosity. Infinite discovery.*
 
 [**Live demo (Judge Mode)**](https://evantampa129.github.io/HIPPARCHUS-SpaceApps2026/) ·
-[30 s film](video/hipparchus_demo_30s.mp4) ·
+[29 s film](video/hipparchus_aethenova_29s.mp4) ·
 [6-slide presentation](presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf) ·
 [Research report](report/HIPPARCHUS_AETHENOVA_FINAL.pdf) ·
 [Reproduce](#reproduce-the-results) ·
@@ -115,7 +115,7 @@ docs/          Judge Mode page (GitHub Pages), its images, provenance, reference
 submission/    evidence files with checksums
 report/        research report (LaTeX + PDF), figures, bibliography
 presentation/  six-slide deck (PPTX + PDF) and the script that builds it, screenshots, logos
-video/         demo film, captions and the sources that made it
+video/         29 s film (MP4 + captions), its editable Remotion source, credits and QC frames
 ```
 
 ## Data, credits and AI use

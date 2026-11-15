@@ -263,7 +263,7 @@ def main():
     # We take the poster from the film's own first second, so it always matches the film.
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "1", "-i", str(film), "-frames:v", "1", "-vf", "scale=960:-2",
                     str(OUT / "img" / "film_poster.png")], check=True)
-    for old in (OUT / "media").glob("*.mp4"):
+    for old in [*(OUT / "media").glob("*.mp4"), *(OUT / "media").glob("*.vtt")]:
         old.unlink()
     shutil.copy(film, OUT / "media" / film.name)
     srt = film.with_suffix(".en.srt")
@@ -406,7 +406,7 @@ so nothing here waits for a live archive download.</p>
 <section id='film' class='case media' aria-label='Film, slides and report'>
  <video controls preload='metadata' poster='img/film_poster.png'><source src='media/{film.name}' type='video/mp4'>
  {"<track kind='captions' srclang='en' label='English' src='media/" + film.stem + ".en.vtt' default>" if srt.exists() else ""}</video>
- <div><h2>See it in 30 seconds</h2><p>The film uses real screen recordings of the app and real SPHEREx images. English captions.</p>
+ <div><h2>See it in 29 seconds</h2><p>The film uses real screen recordings of the app and real SPHEREx images. English captions.</p>
  <p><a href='{REPO}/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Six-slide presentation (PDF)</a> ·
  <a href='{REPO}/raw/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pptx'>PPTX</a><br>
  <a href='{REPO}/blob/main/report/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Research report (PDF)</a><br>

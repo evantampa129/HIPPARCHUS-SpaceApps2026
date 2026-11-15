@@ -1,0 +1,8 @@
+node_modules
+out
+build
+dist
+.cache
+*.log
+public/rec/raw
+public/audio/*.wav
