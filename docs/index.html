@@ -58,6 +58,7 @@ so nothing here waits for a live archive download.</p>
  <video controls preload='metadata' poster='img/film_poster.png'><source src='media/hipparchus_aethenova_29s.mp4' type='video/mp4'>
  <track kind='captions' srclang='en' label='English' src='media/hipparchus_aethenova_29s.en.vtt' default></video>
  <div><h2>See it in 29 seconds</h2><p>The film uses real screen recordings of the app and real SPHEREx images. English captions.</p>
+ <p>Also: <a href='media/hipparchus_aethenova_extended.mp4'>80-second scientific cut</a> · <a href='media/hipparchus_aethenova_vertical.mp4'>18-second vertical cut</a> (same scenes and numbers, English captions).</p>
  <p><a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Six-slide presentation (PDF)</a> ·
  <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/raw/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pptx'>PPTX</a><br>
  <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/report/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Research report (PDF)</a><br>
@@ -242,7 +243,17 @@ so nothing here waits for a live archive download.</p>
   <source src='media/manim/m09_compat_graph.mp4' type='video/mp4'></video><figcaption class='small'><b>M09</b> Observation Compatibility Graph
   · DATA-DRIVEN</figcaption></figure><figure><video controls muted preload='none' poster='media/manim/m10_spectral_time_poster.png'>
   <source src='media/manim/m10_spectral_time.mp4' type='video/mp4'></video><figcaption class='small'><b>M10</b> RW Aur: wavelength and flux, exposure by exposure
-  · DATA-DRIVEN</figcaption></figure></div>
+  · DATA-DRIVEN</figcaption></figure><figure><video controls muted preload='none' poster='media/manim/m11_change_real_poster.png'>
+  <source src='media/manim/m11_change_real.mp4' type='video/mp4'></video><figcaption class='small'><b>M11</b> RW Aur: two exposures, one difference
+  · DATA-DRIVEN</figcaption></figure><figure><video controls muted preload='none' poster='media/manim/m12_wcs_poster.png'>
+  <source src='media/manim/m12_wcs.mp4' type='video/mp4'></video><figcaption class='small'><b>M12</b> From pixels to sky: the cutout&#x27;s own WCS
+  · DATA-DRIVEN</figcaption></figure><figure><video controls muted preload='none' poster='media/manim/m13_uncertainty_poster.png'>
+  <source src='media/manim/m13_uncertainty.mp4' type='video/mp4'></video><figcaption class='small'><b>M13</b> RW Aur: how much of 175σ survives calibration?
+  · DATA-DRIVEN</figcaption></figure><figure><video controls muted preload='none' poster='media/manim/m14_barnard_refusal_poster.png'>
+  <source src='media/manim/m14_barnard_refusal.mp4' type='video/mp4'></video><figcaption class='small'><b>M14</b> Barnard&#x27;s Star: why we refuse to compare
+  · DATA-DRIVEN</figcaption></figure><figure><video controls muted preload='none' poster='media/manim/m15_identity_poster.png'>
+  <source src='media/manim/m15_identity.mp4' type='video/mp4'></video><figcaption class='small'><b>M15</b> Identity
+  · CONCEPTUAL</figcaption></figure></div>
 </section>
 
 <section class='case' id='reproduce'>
@@ -258,10 +269,7 @@ so nothing here waits for a live archive download.</p>
   <td><a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/notebooks/reproduce_wise0855.ipynb'>notebook</a></td></tr><tr><td>(216) Kleopatra</td><td><a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/raw/main/submission/bundles/kleopatra.zip'>bundle (.zip)</a></td>
   <td><a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/bundles/reports/kleopatra.pdf'>mini report (PDF)</a></td>
   <td><a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/notebooks/reproduce_kleopatra.ipynb'>notebook</a></td></tr></table>
- <p class='small'><b>Benchmark:</b> a 32-object manifest (variables, stable CALSPEC stars, saturated stars, Y dwarfs,
- asteroids) with a held-out split fixed in advance. The archive runs for 23 objects are blocked: IRSA answered HTTP 502
- during the whole run, so there are no held-out star metrics yet
- (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/benchmark/results.json'>results.json</a>).</p>
+ <p class='small'><b>Held-out benchmark</b> (real SPHEREx DR1, split and detection rule |σ| ≥ 5 fixed before the run): known variables detected 3/3 (95% 44%–100%); stable stars flagged 2/4 (95% 15%–85%); stable pairs flagged 5/248 = 2.0% (object-level bootstrap 95% 0.0–4.1%); asteroids recovered 2/2; photometric bias on stable pairs -1.04% ± 0.22%; no saturated star fell in the held-out split; in the other splits 5/5 (95% 57%–100%) were refused. The false alarms are 6.5–8.7% changes at 5.0–7.0σ, the size of the calibration systematic. <i>Secondary check, not the benchmark rule:</i> with the 12.5% calibration floor measured earlier on RW Aur field stars, 0 stable stars are flagged and 2 of 3 variables are still detected. (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/benchmark/results.json'>results.json</a>, <a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026/blob/main/submission/benchmark/stats.json'>stats.json</a>)</p>
 </section>
 <section class='case'>
  <h2>Why this matters for “Planet X and SPHEREx”</h2>
@@ -345,5 +353,5 @@ so nothing here waits for a live archive download.</p>
 Infrared Science Archive. Independent project, not endorsed by NASA. The images and numbers come from real SPHEREx
 data; simulated values are labelled SIMULATED wherever they appear.
 AI tools helped with the logos, the video edit, code, method review and writing; they produced no measurement and did not
-validate the science (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026#data-credits-and-ai-use'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit e32edad.</footer>
+validate the science (<a href='https://github.com/evantampa129/HIPPARCHUS-SpaceApps2026#data-credits-and-ai-use'>details</a>). Built by <code>backend/scripts/make_judge_site.py</code> at commit 9d3e226.</footer>
 </main></body></html>

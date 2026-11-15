@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.200 --> 00:00:05.566
+RW Aurigae in two real SPHEREx images, a year apart, 2.56× brighter. Is this change real?
+
+2
+00:00:06.300 --> 00:00:11.633
+Each visit sees the star at a slightly different wavelength. Close pairs are compared; the rest are refused.
+
+3
+00:00:12.366 --> 00:00:17.400
+The image's own WCS maps every pixel to right ascension and declination, so both images measure the same star.
+
+4
+00:00:18.133 --> 00:00:23.366
+Aperture photometry sums the star's real pixels and subtracts the local sky.
+
+5
+00:00:24.100 --> 00:00:29.133
+A PSF model fitted on the native pixels cross-checks the aperture. It is still experimental.
+
+6
+00:00:29.866 --> 00:00:36.800
+The working app does this on demand: archive search, quality checks, timeline and comparison.
+
+7
+00:00:37.533 --> 00:00:44.366
+Formal errors give 175σ. With the 12.5% calibration floor it is 12.4σ, still above our 5σ rule.
+
+8
+00:00:45.100 --> 00:00:51.533
+The Stability Fingerprint repeats the claim under every analysis setting: it holds in 24 of 24.
+
+9
+00:00:52.266 --> 00:00:58.300
+Barnard's Star is flagged in all 58 exposures, so HIPPARCHUS refuses to compare it.
+
+10
+00:00:59.033 --> 00:01:04.666
+The compatibility graph links only exposures that can be compared fairly.
+
+11
+00:01:05.400 --> 00:01:11.133
+Asteroid Kleopatra: 31 real detections in 7 visits match JPL Horizons with 0.15–0.18 arcsecond rms.
+
+12
+00:01:11.866 --> 00:01:17.200
+A distant planet would need stacking along trial motions. This is a simulated test: HIPPARCHUS has not found Planet X.

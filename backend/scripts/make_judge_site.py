@@ -290,19 +290,55 @@ def repro_section() -> str:
   <td><a href='{REPO}/blob/main/submission/bundles/reports/{c}.pdf'>mini report (PDF)</a></td>
   <td><a href='{REPO}/blob/main/notebooks/reproduce_{c}.ipynb'>notebook</a></td></tr>""" for c, n in cases)
     b = json.loads((ROOT / "submission" / "benchmark" / "results.json").read_text())
-    nb = len(b.get("blocked", []))
+    stats_f = ROOT / "submission" / "benchmark" / "stats.json"
+    bench = bench_paragraph(b, json.loads(stats_f.read_text()) if stats_f.exists() else None)
     return f"""
 <section class='case' id='reproduce'>
  <h2>Reproduce a case</h2>
  <p>Each bundle holds the evidence, every cutout URL with its SHA-256, the settings, the environment and a small
  stand-alone checker (<code>python tools/bundle.py verify</code>) that reports any archive file that changed.</p>
  <table><tr><th>Case</th><th>Bundle</th><th>Report</th><th>Notebook</th></tr>{rows}</table>
- <p class='small'><b>Benchmark:</b> a 32-object manifest (variables, stable CALSPEC stars, saturated stars, Y dwarfs,
- asteroids) with a held-out split fixed in advance. The archive runs for {nb} objects are blocked: IRSA answered HTTP 502
- during the whole run, so there are no held-out star metrics yet
- (<a href='{REPO}/blob/main/submission/benchmark/results.json'>results.json</a>).</p>
+ {bench}
 </section>"""
 
+
+
+def bench_paragraph(b: dict, st: dict | None) -> str:
+    """Held-out benchmark in a few lines, straight from results.json and stats.json."""
+    m = b["metrics"]["held_out"]
+    pct = lambda x: f"{100 * x:.0f}%"  # noqa: E731
+    fr = lambda d: f"{d['k']}/{d['n']}" + (f" (95% {pct(d['lo'])}–{pct(d['hi'])})" if d.get("rate") is not None else "")  # noqa: E731
+    pf = m["false_positive_rate_pairs_stable"]
+    bias = m["photometric_bias_stable_pairs"]
+    sat = m["saturated_refusal_rate"]
+    cb = (st or {}).get("splits", {}).get("held_out", {}).get("pair_fpr", {}).get("ci95_cluster_bootstrap") or {}
+    sec = (st or {}).get("splits", {}).get("held_out", {}).get("secondary_with_floor", {})
+    out = [f"<b>Held-out benchmark</b> (real SPHEREx DR1, split and detection rule |σ| ≥ 5 fixed before the run):",
+           f"known variables detected {fr(m['completeness'])}; stable stars flagged {fr(m['false_positive_rate_objects_stable'])};",
+           f"stable pairs flagged {pf['k']}/{pf['n']} = {100 * pf['rate']:.1f}%"
+           + (f" (object-level bootstrap 95% {100 * cb['lo']:.1f}–{100 * cb['hi']:.1f}%)" if cb.get("hi") is not None else "") + ";",
+           f"asteroids recovered {m['asteroid_recovery']['k']}/{m['asteroid_recovery']['n']};",
+           f"photometric bias on stable pairs {100 * bias['median']:+.2f}% ± {100 * bias['err']:.2f}%;",
+           ("saturated-star refusals " + fr(sat) + "." if sat["n"] else
+            "no saturated star fell in the held-out split; in the other splits "
+            + fr(b["metrics"]["all"]["saturated_refusal_rate"]) + " were refused.")]
+    fp = (st or {}).get("splits", {}).get("held_out", {}).get("false_positive_pairs", [])
+    if fp:
+        dr = [100 * abs(x["flux_ratio"] - 1) for x in fp]
+        sg = [abs(x["significance"]) for x in fp]
+        out.append(f"The false alarms are {min(dr):.1f}–{max(dr):.1f}% changes at {min(sg):.1f}–{max(sg):.1f}σ, "
+                   "the size of the calibration systematic.")
+    if sec:
+        out.append(
+                   f"<i>Secondary check, not the benchmark rule:</i> with the 12.5% calibration floor measured earlier on RW Aur "
+                   f"field stars, {len(sec.get('stable_objects_flagged', []))} stable stars are flagged and "
+                   f"{len(sec.get('variable_objects_detected', []))} of {len(sec.get('variable_objects_with_pairs', []))} variables are still detected.")
+    nb = len(b.get("blocked", []))
+    if nb:
+        out.append(f"{nb} objects are blocked by IRSA errors (HTTP 503 or DNS failures, each logged with URL and time) and are not counted.")
+    return ("<p class='small'>" + " ".join(out) +
+            f" (<a href='{REPO}/blob/main/submission/benchmark/results.json'>results.json</a>, "
+            f"<a href='{REPO}/blob/main/submission/benchmark/stats.json'>stats.json</a>)</p>")
 
 def epsf_section() -> str:
     """EXPERIMENTAL second measurement (ePSF fit), read from epsf_check.json; empty if absent."""
@@ -481,16 +517,21 @@ def main():
                 if f.exists())
     (OUT / "media").mkdir(exist_ok=True)
     # We take the poster from the film itself (the RW Aur evidence scene), so it always matches the film.
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "21", "-i", str(film), "-frames:v", "1", "-vf", "scale=960:-2",
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", "17", "-i", str(film), "-frames:v", "1", "-vf", "scale=960:-2",
                     str(OUT / "img" / "film_poster.png")], check=True)
     for old in [*(OUT / "media").glob("*.mp4"), *(OUT / "media").glob("*.vtt")]:
         old.unlink()
-    shutil.copy(film, OUT / "media" / film.name)
+    cuts = [film] + [f for f in (ROOT / "video" / "hipparchus_aethenova_extended.mp4",
+                                 ROOT / "video" / "hipparchus_aethenova_vertical.mp4") if f.exists()]
+    for v in cuts:
+        shutil.copy(v, OUT / "media" / v.name)
+        if v.with_suffix(".en.srt").exists():
+            # WebVTT differs from SRT only in the header and the decimal mark of the timestamps.
+            vtt = re.sub(r"(\d\d:\d\d:\d\d),(\d\d\d)", r"\1.\2", v.with_suffix(".en.srt").read_text())
+            (OUT / "media" / (v.stem + ".en.vtt")).write_text("WEBVTT\n\n" + vtt)
     srt = film.with_suffix(".en.srt")
-    if srt.exists():
-        # WebVTT differs from SRT only in the header and the decimal mark of the timestamps.
-        vtt = re.sub(r"(\d\d:\d\d:\d\d),(\d\d\d)", r"\1.\2", srt.read_text())
-        (OUT / "media" / (film.stem + ".en.vtt")).write_text("WEBVTT\n\n" + vtt)
+    other = " · ".join(f"<a href='media/{v.name}'>{'80-second scientific cut' if 'extended' in v.name else '18-second vertical cut'}</a>"
+                       for v in cuts[1:])
     rob_all = json.loads((EVID / "robustness.json").read_text())
     cat_all = json.loads((EVID / "catalog_match.json").read_text())
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
@@ -629,6 +670,7 @@ so nothing here waits for a live archive download.</p>
  <video controls preload='metadata' poster='img/film_poster.png'><source src='media/{film.name}' type='video/mp4'>
  {"<track kind='captions' srclang='en' label='English' src='media/" + film.stem + ".en.vtt' default>" if srt.exists() else ""}</video>
  <div><h2>See it in 29 seconds</h2><p>The film uses real screen recordings of the app and real SPHEREx images. English captions.</p>
+ {"<p>Also: " + other + " (same scenes and numbers, English captions).</p>" if other else ""}
  <p><a href='{REPO}/blob/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Six-slide presentation (PDF)</a> ·
  <a href='{REPO}/raw/main/presentation/HIPPARCHUS_AETHENOVA_FINAL.pptx'>PPTX</a><br>
  <a href='{REPO}/blob/main/report/HIPPARCHUS_AETHENOVA_FINAL.pdf'>Research report (PDF)</a><br>
